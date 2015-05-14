@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserMapper">
+
+
+	<resultMap id="userSelectMap" type="user">
+		<result property="nickname" column="nickname" jdbcType="VARCHAR" />
+		<result property="email" column="email" jdbcType="VARCHAR" />
+		<result property="password" column="password" jdbcType="VARCHAR" />
+		<result property="userImage" column="user_img" jdbcType="VARCHAR" />
+		<result property="joinDate" column="join_date" jdbcType="DATE" />
+	</resultMap>
+
+	<!-- SQL : INSERT -->
+	<insert id="insertUser" parameterType="user">
+		INSERT
+		INTO users( NICKNAME
+		,
+		EMAIL ,
+		PASSWORD ,
+		USERS_IMG ,
+		JOIN_DATE)
+		VALUES ( #{nickname}
+		, #{email}
+		, #{password}
+		,#{userImage}
+		, SYSDATE
+		)
+	</insert>
+
+	<select id="checkedEmail" parameterType="String" resultType="String">
+		SELECT EMAIL
+		FROM USERS
+		WHERE EMAIL LIKE #{value}
+	</select>
+
+	<select id="checkedNickname" parameterType="String" resultType="String">
+		SELECT NICKNAME
+		FROM USERS
+		WHERE NICKNAME LIKE #{value}
+	</select>
+
+	<select id="checkedLoginId" parameterType="user" resultType="String">
+		SELECT EMAIL
+		FROM USERS
+		WHERE EMAIL LIKE #{email}
+	</select>
+	<select id="checkedLoginPassword" parameterType="user"
+		resultType="String">
+		SELECT NICKNAME
+		FROM USERS
+		WHERE EMAIL LIKE #{email} AND
+		PASSWORD LIKE #{password}
+	</select>
+	<!-- SQL : SELECT ONE -->
+	<select id="getUser" parameterType="string" resultMap="userSelectMap">
+		SELECT
+		nickname , email , password , NVL(users_img, 'null') , join_date
+		FROM
+		users
+		WHERE nickname = #{value}
+	</select>
+
+	<update id="updatePassword" parameterType="user">
+		UPDATE users
+		<set>
+			password = #{password}
+		</set>
+		WHERE nickname = #{nickname}
+	</update>
+	<update id="updateImage" parameterType="user">
+		UPDATE users
+		<set>
+			users_img = #{userImage}
+		</set>
+		WHERE nickname = #{nickname}
+	</update>
+
+	<delete id="deleteUser" parameterType="String">
+		DELETE
+		FROM users
+		WHERE
+		nickname = #{value}
+	</delete>
+	<!-- 진호 형님 구현 부분 end -->
+</mapper>

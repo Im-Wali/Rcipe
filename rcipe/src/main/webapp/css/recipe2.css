@@ -1,0 +1,244 @@
+html, body {
+	font-size: 13px
+}
+
+html, body {
+	height: 100%
+}
+
+img {
+	display: inline-block;
+	vertical-align: middle
+}
+
+button, .button {
+	border-style: solid;
+	border-width: 0;
+	cursor: pointer;
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: 400;
+	line-height: normal;
+	margin: 0 0 1.53846rem;
+	position: relative;
+	text-decoration: none;
+	text-align: center;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	display: inline-block;
+	padding-top: 1.23077rem;
+	padding-right: 2.46154rem;
+	padding-bottom: 1.30769rem;
+	padding-left: 2.46154rem;
+	font-size: 1.23077rem;
+	background-color: #c43700;
+	border-color: #c43400;
+	color: #fff;
+	transition: background-color 300ms ease-out
+}
+
+.row {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	max-width: 100rem
+}
+
+.stepbystep {
+	padding: 0 0 !important;
+	font-weight: 700;
+	float: left
+}
+
+.recipeInfo {
+	border-top: .07692rem solid #eee;
+	width: 100%;
+	padding: .76923rem;
+	font-size: .76923rem;
+	color: #a5a5a5;
+	line-height: 1.07692rem
+}
+
+body {
+	background-color: #fff color: #383838;
+	padding: 0;
+	margin: 0;
+	font-family: Verdana, Arial, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+	line-height: 131%;
+	position: relative;
+	cursor: default
+}
+
+h1 {
+	line-height: 45px;
+	font-size: 1.30769rem;
+	margin: 0
+}
+
+.h2Left {
+	font-family: "Century Gothic", Arial, Helvetica, sans-serif;
+	font-size: 1.69231rem;
+	color: #383838;
+	line-height: 2rem;
+	text-transform: lowercase;
+	border-bottom: .07692rem solid #eee;
+	margin: .76923rem 0
+}
+/* 여기만지우면됨 */
+/* section {
+	outline-style: solid;
+	outline-width: 4px;
+} */
+#ingredientList {
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0
+}
+
+.recipeDetail #recipeNutrients {
+	padding-left: .76923rem;
+	padding-right: .76923rem;
+	width: 100%;
+	float: left;
+	padding-left: 0;
+	padding-bottom: 10px
+}
+
+#lowerColumn {
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	max-width: 100rem;
+	background-color: #fff;
+	margin: 1.53846rem auto
+}
+
+#blogs .sBlog {
+	float: left;
+	border: .07692rem solid #eee;
+	padding: .61538rem 0 .61538rem .76923rem;
+	margin-top: .61538rem;
+	margin-bottom: .76923rem;
+	margin-right: .38462rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	background-color: #fff
+}
+
+.recipeInfo {
+	border-top: .07692rem solid #eee;
+	width: 100%;
+	padding: .76923rem;
+	font-size: .76923rem;
+	color: #000000;
+	line-height: 1.07692rem
+}
+
+.brand {
+	color: #000000 !important;
+	font-weight: 700;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+input, button, select, textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.table thead>tr>th, .table tbody>tr>th, .table tfoot>tr>th, .table thead>tr>td,
+	.table tbody>tr>td, .table tfoot>tr>td {
+	padding: 8px;
+	line-height: 1.428571429;
+	vertical-align: top;
+	border-top: 1px solid #dddddd;
+}
+
+table {
+	max-width: 100%;
+	background-color: transparent;
+}
+
+th {
+	text-align: left;
+}
+
+.table {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+#blogs .sBlog {
+	border: 2px solid white;
+	background: silver;
+	padding: 0px;
+	margin: 0px;
+	height:200px;
+}
+#blogs .sBlog > p {
+	text-align: center;
+	background-color: rgba(6,6,6,0.0);
+	color: rgba(6,6,6,0.0);
+	width: 100%;
+	height: 100%;
+	font-weight: bold;
+	font-size: 20px;
+}
+#blogs .sBlog:hover > p {
+	background-color: rgba(6,6,6,0.3);
+	color: white;
+	text-shadow: 3px 3px 10px #000;
+}
+
+<!--여기부터는 testBar19부터는 필요없음.....-->
+#filp {
+	padding: 10px;
+	text-align: center;
+	background-color: #FF3399;
+}
+
+.cardMenu {
+	width: 100%;
+	margin: auto;
+}
+
+.cardSection {
+	padding: 1%;
+	float: left;
+}
+
+.test {
+	padding: 2px;
+	float: left;
+	border: none;
+}
+<!--여기까지-->
+.dropdown:hover .dropdown-menu {
+	display: block;
+}
+<!--이부분도 필요없음-->
+.dropdown-menu-main {
+	margin: 55px;
+}
+
+.dropdown-menu-user {
+	margin-top: 7px;
+}
+<!--end-->
