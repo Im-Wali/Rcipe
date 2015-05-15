@@ -44,7 +44,8 @@ $("cocument")
 										function(e) {
 											if (e.lengthComputable) {
 												// 로그인되고있는 상황을 보여준다.
-												//이부분을 수정하여 ProgressBar를 보여줄수있을거같다.
+												// 이부분을 수정하여 ProgressBar를
+												// 보여줄수있을거같다.
 												var percentage = Math
 														.round((e.loaded * 100)
 																/ e.total);
@@ -58,7 +59,7 @@ $("cocument")
 						xhr.onreadystatechange = function() {
 							if (xhr.readyState == 4 && xhr.status == 200) {
 								// 정확히 수행되면 alert창 띄움
-								alert(xhr.responseText);
+								alert(xhr.responseText().put("massage"));
 							}
 						};
 						xhr.upload
@@ -68,10 +69,10 @@ $("cocument")
 											document.getElementById(fileId).innerHTML = file.name
 													+ ' - uploaded';
 										}, false);
-						//래시피등록,삭제 개시판 등록,삭제 프로필사진 수정 등 다르게 접근하게 위해서
-						//var p=$('#pictureLcation').val();
-						//xhr.open("POST","../app/"+p);
-						xhr.open("POST", "../app/file/upload");
+						// 래시피등록,삭제 개시판 등록,삭제 프로필사진 수정 등 다르게 접근하게 위해서
+						// var p=$('#pictureLcation').val();
+						// xhr.open("POST","../app/"+p);
+						xhr.open("POST", "../app/file/uploadProfile");
 						var fd = new FormData();
 						fd.append("file", file);
 						xhr.send(fd);
