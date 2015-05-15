@@ -28,8 +28,11 @@ public class FileServiceImpl implements FileService {
 	@Override
 	public boolean deleteProfile(String nickname) throws Exception {
 		// TODO Auto-generated method stub
-//		FileUtil.deleteFile(userService.getImge);
-		return userService.deleteImage(nickname);
+		return FileUtil.deleteFile(userService.getUserImage(nickname));
+	}
+	@Override
+	public String getUserImage(String nickname)throws Exception{
+		return userService.getUserImage(nickname);
 	}
 
 }
