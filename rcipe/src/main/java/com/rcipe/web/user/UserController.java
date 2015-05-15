@@ -31,7 +31,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "joinUser", method = RequestMethod.POST)
-	public ModelAndView joinUser(){
+	public ModelAndView joinUser(@ModelAttribute("user") User user){
 //		System.out.println(user);
 		System.out.println("AAAA");
 //		if(userService.insertUser(user)){
