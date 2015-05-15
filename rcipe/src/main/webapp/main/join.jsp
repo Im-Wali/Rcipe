@@ -17,7 +17,7 @@ $("document").ready(function(){
 		   }else{
 			   //AJAX사용
 			   var str;
-			   $.get("../app/user/checkedEmail?joinEmail="+p,function(data){
+			   $.get("../app/user/checkedEmail?email="+p,function(data){
 				   if(data==="true"){
 				 	  	str= "<span style='color:blue;'>사용가능한 이메일입니다.</span>";
 				 	  	$('#isEmail').val("true");
@@ -102,7 +102,7 @@ $("document").ready(function(){
 	    	});
 		}else{
 			alert("인증번호를 발송했습니다. 5분내로 입력해주세요");
-			 $.get("../app/email/send?email="+joinEmail,function(data){
+			 $.get("../app/email/send?email="+joinEmail+"&type=join",function(data){
 				 $('#randomNumber').val(data);
 			 });
 			$("#sendCheckEmailNumber").html('인증번호 재발송');
