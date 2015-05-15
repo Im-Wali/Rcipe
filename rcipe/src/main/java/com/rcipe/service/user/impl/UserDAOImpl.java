@@ -46,7 +46,7 @@ public class UserDAOImpl  implements UserDAO{
 	@Override
 	public String checkedLogin(User user)throws Exception {
 		System.out.println(user.getEmail()+"::"+user.getPassword()+"AAA"+sqlSession.selectOne("UserMapper.checkedLoginPassword",user));
-		return sqlSession.selectOne("UserMapper.checkedLoginId",user) ==null ? "id":(sqlSession.selectOne("UserMapper.checkedLoginPassword",user)==null ? "password":"ture");
+		return sqlSession.selectOne("UserMapper.checkedLoginId",user) ==null ? "id":(sqlSession.selectOne("UserMapper.checkedLoginPassword",user)==null ? "password":"true");
 	}
 	
 	public User getUser(String email) throws Exception {
@@ -66,7 +66,7 @@ public class UserDAOImpl  implements UserDAO{
 	}
 	
 	@Override
-	public int getUserImage(String nickname) throws Exception {
+	public String getUserImage(String nickname) throws Exception {
 		return sqlSession.selectOne("UserMapper.getUserImage", nickname);
 	}
 
@@ -75,9 +75,5 @@ public class UserDAOImpl  implements UserDAO{
 		return sqlSession.update("UserMapper.deleteUser", nickname);
 	}
 	
-	@Override
-	public int deleteImage(String nickname) throws Exception {
-		return sqlSession.delete("UserMapper.deleteImage", nickname);
-	}
 
 }
