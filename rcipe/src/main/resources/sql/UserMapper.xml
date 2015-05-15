@@ -86,5 +86,10 @@
 		WHERE
 		nickname = #{value}
 	</delete>
-	<!-- 진호 형님 구현 부분 end -->
+	<delete id="deleteImage" parameterType="user">
+		DELETE
+		FROM users
+		WHERE
+		users_img = #{value}
+	</delete>
 </mapper>
