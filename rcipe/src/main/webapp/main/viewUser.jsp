@@ -57,16 +57,19 @@ $("document").ready(function() {
 							<div style="font-size: 2em; margin-top: 1%; margin-left: 2%">프로필사진</div>
 							<div>
 								<img src="../img/001.jpg" class="img-circle" role="button"
-									style="width: 150px; height: 150px; margin-right: 1%; margin-top: 1%"
+									style="width: 150px; height: 150px; margin-left:10%; margin-top: 1%"
 									data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false" id="fileUpload">
 							</div>
 							<div style="margin-left: 2%; margin-top: 1%">
-								<button type="button" class="btn btn-warning " id="change_profil" style="margin:1%">
+								<button type="button" class="btn btn-warning " id="change_profil" style="margin-top:1%;margin-right:1%;">
 									프로필 수정</button>
-								<button type="button" class="btn btn-warning " id="delete_profil" style="margin:1%">
+								<button type="button" class="btn btn-warning " id="delete_profil" style="margin-top:1%;margin-right:1%;">
 									프로필 삭제</button>
 								</div>	
+							</div>
+							<div style="margin-top:1%">
+							<span style="color:red;font:bold;">*바꿀 프로필 사진을 사진위로 드래그 하면 자동으로 프로필 사진이 변경됩니다.</span>
 							</div>
 						<hr />
 						<div style="margin-top: 3%">
