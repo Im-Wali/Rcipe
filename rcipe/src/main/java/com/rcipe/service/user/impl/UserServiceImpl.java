@@ -69,5 +69,10 @@ public class UserServiceImpl implements UserService {
 	public boolean deleteUser(String nickname) throws Exception {
 		return userDAO.deleteUser(nickname) == 1 ? true : false;
 	}
+	
+	@Override
+	public boolean deleteImage(User user) throws Exception {
+		return userDAO.deleteImage(user) == 1 ? true : false;
+	}
 
 }
