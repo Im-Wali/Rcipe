@@ -13,7 +13,7 @@ $('ducument').ready(function(){
        	document.loginForm.password.focus();
        	return false;
     }else if(errorMessage == null) {
-    	$.post("../app/user/chechkedloginUser?id="+$('#id').val()+"&password="+$('#password').val(),function(data){
+    	$.post("../app/user/chechkedloginUser?id="+$('#email').val()+"&password="+$('#password').val(),function(data){
 			   if(data==="password"||data==="id"){
 				   	alert("비밀번호또는 아이디(이메일)이 일치하지 않습니다.");
 			       	document.loginForm.password.focus();
@@ -32,7 +32,7 @@ $('ducument').ready(function(){
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<form method="POST" action="#" name="loginForm" id="loginForm">
+<form method="post" action="../app/user/userLogin" name="loginForm" id="loginForm">
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModal" aria-hidden="true">
 		<div class="modal-dialog" style="background-color: #FF9933">
@@ -48,7 +48,7 @@ $('ducument').ready(function(){
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">아이디</label>
-						<input type="text" class="form-control" id="id" name="id">
+						<input type="text" class="form-control" id="email" name="email">
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">비밀번호</label>
