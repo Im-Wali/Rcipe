@@ -14,7 +14,7 @@ public class PojoAspectJ {
 
 
 	public Object invoke(ProceedingJoinPoint joinPoint) throws Throwable {
-		System.out.println("[AroundLOG] "+getClass()+".invoke() start.....");
+		System.out.println("\n[AroundLOG] "+getClass()+".invoke() start.....");
 		System.out.println("[AroundLOG] 타겟 객체 :"+joinPoint.getTarget().getClass().getName());
 		System.out.println("[AroundLOG] 타겟 객체의 호출된 method :"+joinPoint.getSignature().getName());
 		if(joinPoint.getArgs().length !=0){
@@ -22,7 +22,7 @@ public class PojoAspectJ {
 		}
 		Object obj=joinPoint.proceed();
 		System.out.println("[AroundLOG] 타겍 객체의 호출후 return value:"+obj);
-		System.out.println("[AroundLOG] "+getClass()+".invoke() end.....");
+		System.out.println("[AroundLOG] "+getClass()+".invoke() end.....\n");
 		return obj;
 	}
 
