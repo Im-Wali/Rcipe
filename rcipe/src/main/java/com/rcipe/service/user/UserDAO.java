@@ -19,6 +19,6 @@ public interface UserDAO {
 
 	public int deleteUser(String nickname) throws Exception;
 	
-	public int deleteImage(Stirng nickname) throws Exception;
+	public int deleteImage(String nickname) throws Exception;
 	
 }
