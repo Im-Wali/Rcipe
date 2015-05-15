@@ -1,6 +1,10 @@
 package com.rcipe.web.user;
 
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import com.rcipe.service.domain.User;
 import com.rcipe.service.user.UserService;
 
 
 @Controller
-@RequestMapping("/user/*")
+@RequestMapping("/user/")
 public class UserController {
 	
 	@Autowired
@@ -28,8 +34,17 @@ public class UserController {
 	public UserController() {
 		System.out.println(this.getClass());
 	}
+	
+	@RequestMapping(value = "/joinUser", method = RequestMethod.POST)
+	public ModelAndView joinUser(){
+//		System.out.println(user);
+		System.out.println("AAAA");
+//		if(userService.insertUser(user)){
+//		}
+		return new ModelAndView("mainPage.sjp");
+	}
 	@RequestMapping(value = "checkedEmail", method = RequestMethod.GET)
-	public @ResponseBody String checkedEmail(@RequestParam("joinEmail") String joinEmail) throws Exception {
+	public @ResponseBody String checkedEmail(@RequestParam("email") String joinEmail) throws Exception {
 		System.out.println(joinEmail);
 		return userService.checkedEmail(joinEmail)+"";
 	}
@@ -41,16 +56,18 @@ public class UserController {
 	public @ResponseBody String chechkedloginUser(@RequestParam("id") String id,@RequestParam("password") String password,Model model) throws Exception {
 		return userService.checkedLogin(new User(id,password));
 	}
-	@RequestMapping(value = "loginUser", method = RequestMethod.POST)
-	public @ResponseBody String loginUser(@ModelAttribute("user") User user, HttpSession session)
+	@RequestMapping(value = "userLogin", method = RequestMethod.POST)
+	public @ResponseBody String userLogin(@ModelAttribute("user") User user, HttpSession session)
 			throws Exception {
 		// Business Logic
+		System.err.println("loginUser   :"+user);
 		User dbUser = userService.getUser(user.getEmail());
 		if (user.getPassword().equals(dbUser.getPassword())) {
+			System.err.println("AAAAA");
 			session.setAttribute("user", dbUser);
 		}
-
-		return "redirect:/index.jsp";
+		System.out.println("loginUser :"+dbUser);
+		return "mainPage.jsp";
 	}
 //	public @ResponseBody void updatePassword( Model model , HttpSession session, @RequestParam("newPassword") String newPassword) throws Exception{
 	@RequestMapping(value = "updatePassword", method = RequestMethod.GET)
