@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
 	public User getUser(String email) throws Exception {
 		return userDAO.getUser(email);
 	}
-
+	
 	@Override
 	public boolean updatePassword(User user) throws Exception {
 		return userDAO.updatePassword(user) == 1 ? true : false;
@@ -63,6 +63,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean updateImage(User user) throws Exception {
 		return userDAO.updateImage(user) == 1 ? true : false;
+	}
+	
+	@Override
+	public boolean getUserImage(String nickname) throws Exception {
+		return userDAO.getUserImage(nickname) == 1 ? true : false;
 	}
 
 	@Override

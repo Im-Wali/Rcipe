@@ -3,6 +3,7 @@ package com.rcipe.service.user;
 import com.rcipe.service.domain.User;
 
 public interface UserService {
+	
 	public boolean insertUser(User user) throws Exception;
 
 	public boolean checkedEmail(String email) throws Exception;
@@ -16,6 +17,8 @@ public interface UserService {
 	public boolean updatePassword(User user) throws Exception;
 
 	public boolean updateImage(User user) throws Exception;
+	
+	public boolean getUserImage(String nickname) throws Exception;
 
 	public boolean deleteUser(String nickname) throws Exception;
 	

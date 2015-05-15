@@ -54,16 +54,20 @@ public class UserDAOImpl  implements UserDAO{
 		 System.err.println(user);
 		return user;
 	}
-
+	
 	@Override
 	public int updatePassword(User user) throws Exception {
 		return sqlSession.update("UserMapper.updatePassword", user);
 	}
 
-	
 	@Override
 	public int updateImage(User user) throws Exception {
 		return sqlSession.update("UserMapper.updateImage", user);
+	}
+	
+	@Override
+	public int getUserImage(String nickname) throws Exception {
+		return sqlSession.selectOne("UserMapper.getUserImage", nickname);
 	}
 
 	@Override
