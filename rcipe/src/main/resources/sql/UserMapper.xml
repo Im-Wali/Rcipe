@@ -86,10 +86,10 @@
 		WHERE
 		nickname = #{value}
 	</delete>
-	<delete id="deleteImage" parameterType="String">
-		DELETE
-		FROM users
+	<update id="deleteImage" parameterType="String">
+		UPDATE users
+		users_img = null
 		WHERE
 		nickname = #{value}
-	</delete>
+	</update>
 </mapper>
