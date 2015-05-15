@@ -70,7 +70,7 @@
 		<set>
 			password = #{password}
 		</set>
-		WHERE nickname = #{nickname}
+		WHERE email = #{email}
 	</update>
 	<update id="updateImage" parameterType="user">
 		UPDATE users
