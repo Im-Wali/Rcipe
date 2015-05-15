@@ -14,12 +14,13 @@ $("document").ready(function(){
        	document.loginForm.password.focus();
        	return false;
     }else if(errorMessage == null) {
-    	$.post("../app/user/chechkedloginUser?id="+$('#email').val()+"&password="+$('#password').val(),function(data){
+    	$.post("../app/user/chechkedloginUser",{id:$('#email').val(),password:$('#password').val()},function(data){
 			   if(data==="password"||data==="id"){
 				   	alert("비밀번호또는 아이디(이메일)이 일치하지 않습니다.");
 			       	document.loginForm.password.focus();
 			   }else{
-				   alert("로그인을 하셨습니다.")
+				   alert("로그인을 하셨습니다."+data)
+				   
 				   $('#loginForm').submit();
 				   //여기에 다음 로그인으로 
 			   }
@@ -28,7 +29,7 @@ $("document").ready(function(){
     return false;
 	});
 	
-	
+
 	
 });
 </script>
@@ -56,9 +57,6 @@ $("document").ready(function(){
 
 						<label for="recipient-name" class="control-label">이메일</label> <input
 							type="text" class="form-control" id="email" name="email">
-
-						<label for="recipient-name" class="control-label">아이디</label>
-						<input type="text" class="form-control" id="email" name="email">
 
 					</div>
 					<div class="form-group">
