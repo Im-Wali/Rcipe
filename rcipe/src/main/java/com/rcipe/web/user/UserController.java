@@ -1,10 +1,6 @@
 package com.rcipe.web.user;
 
 
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
 import com.rcipe.service.domain.User;
 import com.rcipe.service.user.UserService;
@@ -57,17 +52,20 @@ public class UserController {
 		return userService.checkedLogin(new User(id,password));
 	}
 	@RequestMapping(value = "userLogin", method = RequestMethod.POST)
-	public  String userLogin(@ModelAttribute("user") User user, HttpSession session)
+	public String userLogin(@ModelAttribute("user") User user, HttpSession session)
 			throws Exception {
 		// Business Logic
 		System.err.println("loginUser   :"+user);
 		User dbUser = userService.getUser(user.getEmail());
+		System.err.println("loginUser   :"+dbUser);
+		
 		if (user.getPassword().equals(dbUser.getPassword())) {
 			System.err.println("AAAAA");
 			session.setAttribute("user", dbUser);
 		}
 		System.out.println("loginUser :"+dbUser);
-		return "main/mainPage";
+		
+		return "redirect:/main/mainPage.jsp";
 	}
 //	public @ResponseBody void updatePassword( Model model , HttpSession session, @RequestParam("newPassword") String newPassword) throws Exception{
 	@RequestMapping(value = "updatePassword", method = RequestMethod.GET)
