@@ -24,7 +24,7 @@ import com.rcipe.service.user.UserService;
 
 
 @Controller
-@RequestMapping("/user/*")
+@RequestMapping("/user/")
 public class UserController {
 	
 	@Autowired
@@ -35,13 +35,13 @@ public class UserController {
 		System.out.println(this.getClass());
 	}
 	
-	@RequestMapping(value = "joinUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/joinUser", method = RequestMethod.POST)
 	public ModelAndView joinUser(){
 //		System.out.println(user);
 		System.out.println("AAAA");
 //		if(userService.insertUser(user)){
 //		}
-		return new ModelAndView("mainPage.sjp");
+		return new ModelAndView("mainPage.jsp");
 	}
 	@RequestMapping(value = "checkedEmail", method = RequestMethod.GET)
 	public @ResponseBody String checkedEmail(@RequestParam("email") String joinEmail) throws Exception {
@@ -62,12 +62,15 @@ public class UserController {
 		// Business Logic
 		System.err.println("loginUser   :"+user);
 		User dbUser = userService.getUser(user.getEmail());
+		System.err.println("loginUser   :"+dbUser);
+		
 		if (user.getPassword().equals(dbUser.getPassword())) {
 			System.err.println("AAAAA");
 			session.setAttribute("user", dbUser);
 		}
 		System.out.println("loginUser :"+dbUser);
-		return "mainPage.jsp";
+		
+		return "forward:/mainPage.jsp";
 	}
 //	public @ResponseBody void updatePassword( Model model , HttpSession session, @RequestParam("newPassword") String newPassword) throws Exception{
 	@RequestMapping(value = "updatePassword", method = RequestMethod.GET)
