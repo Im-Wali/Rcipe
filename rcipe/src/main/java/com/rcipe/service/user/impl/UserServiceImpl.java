@@ -71,8 +71,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public boolean deleteImage(User user) throws Exception {
-		return userDAO.deleteImage(user) == 1 ? true : false;
+	public boolean deleteImage(String nickname) throws Exception {
+		return userDAO.deleteImage(nickname) == 1 ? true : false;
 	}
 
 }

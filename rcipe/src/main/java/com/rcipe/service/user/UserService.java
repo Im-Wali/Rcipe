@@ -19,5 +19,5 @@ public interface UserService {
 
 	public boolean deleteUser(String nickname) throws Exception;
 	
-	public boolean deleteImage(User user) throws Exception;
+	public boolean deleteImage(String nickname) throws Exception;
 }
