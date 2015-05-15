@@ -88,8 +88,17 @@
 	</delete>
 	<update id="deleteImage" parameterType="String">
 		UPDATE users
+		<set>
 		users_img = null
+		</set>
 		WHERE
 		nickname = #{value}
 	</update>
+	<update id="updatePassword" parameterType="user">
+      UPDATE users
+      <set>
+         password = #{password}
+      </set>
+      WHERE nickname = #{nickname}
+   </update>
 </mapper>
