@@ -24,7 +24,7 @@ import com.rcipe.service.user.UserService;
 
 
 @Controller
-@RequestMapping("/user/")
+@RequestMapping("/user/*")
 public class UserController {
 	
 	@Autowired
@@ -35,7 +35,7 @@ public class UserController {
 		System.out.println(this.getClass());
 	}
 	
-	@RequestMapping(value = "/joinUser", method = RequestMethod.POST)
+	@RequestMapping(value = "joinUser", method = RequestMethod.POST)
 	public ModelAndView joinUser(){
 //		System.out.println(user);
 		System.out.println("AAAA");
