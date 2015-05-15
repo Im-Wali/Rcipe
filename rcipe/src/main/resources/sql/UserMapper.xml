@@ -59,10 +59,10 @@
 	<!-- SQL : SELECT ONE -->
 	<select id="getUser" parameterType="string" resultMap="userSelectMap">
 		SELECT
-		nickname , email , password , NVL(users_img, 'null') , join_date
+		nickname , email , password , users_img , join_date
 		FROM
 		users
-		WHERE nickname = #{value}
+		WHERE email = #{value}
 	</select>
 
 	<update id="updatePassword" parameterType="user">
