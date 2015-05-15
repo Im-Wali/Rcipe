@@ -6,7 +6,7 @@ $("document").ready(function(){
 	var isSubmit=false;
 	var isPassword=false;
 	var timer;
-	$('#joinEmail').bind('keyup',function (){
+	$('.joinEmail').bind('keyup',function (){
 		   var chk1 = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		   var p=$(this).val();
 		   if(! chk1.test(p)){
@@ -29,7 +29,7 @@ $("document").ready(function(){
 			   });
 		   }
 	});
-	$("#joinPassword1").bind('keyup',function () {
+	$(".joinPassword1").bind('keyup',function () {
 		var p=$(this).val();
 	    chk1 = /^[a-z\d]{8,12}$/i;  //a-z와 0-9이외의 문자가 있는지 확인
 	    chk2 = /[a-z]/i;  //적어도 한개의 a-z 확인
@@ -53,9 +53,9 @@ $("document").ready(function(){
 	    }
 	    return chk1.test(p) && chk2.test(p) && chk3.test(p);
 	} );
-	$("#joinPassword2").bind('keyup',function () {
+	$(".joinPassword2").bind('keyup',function () {
 		var p=$(this).val();
-		var s=$('#joinPassword1').val();
+		var s=$('.joinPassword1').val();
 		if(p===s){
 			$('#joinPassword1Ckecked2').html(function(index,html){
 	    		return "<span style='color:blue;'>비밀번호 확인 완료</span>";
@@ -68,7 +68,7 @@ $("document").ready(function(){
 	    	isPassword=false;
 		}
 	});
-	$("#joinNickname").bind('keyup',function () {
+	$(".joinNickname").bind('keyup',function () {
 		chk1 = /^[a-z\d\가-힝]{2,10}$/i;
 		chk2 = /[가-힝]/;  //적어도 한개의 a-z 확인
 	    chk3 = /[a-z]/i;  //적어도 한개의 0-9 확인
@@ -95,7 +95,7 @@ $("document").ready(function(){
 	});
 	$("#sendCheckEmailNumber").click(function () {
 		var check=$('#isEmail').val();
-		var joinEmail=$('#joinEmail').val();
+		var joinEmail=$('.joinEmail').val();
 		if(check==='false'){
 			$('#sendCheckNumberDiv').html(function(index,html){
 	    		return "<span style='color:red;'>이메일을 제대로 작성되지 않았습니다.</span>";
@@ -153,20 +153,20 @@ $("document").ready(function(){
 		if(isEmail==="false"){
 			alert('이메일을 정확하게 입력해주세요');
 			event.preventDefault();
-			$('#joinEmail').focus();
+			$('.joinEmail').focus();
 		}else if(isNickname==="false"){
 			alert('닉네임을 정확하게 입력해주세요');
 			event.preventDefault();
-			$('#joinNickname').focus();
+			$('.joinNickname').focus();
 		}else if(isPassword==false){
 			alert('패스워드를 정확하게 입력해주세요');
-			$('#joinPassword1').focus();
+			$('.joinPassword1').focus();
 			event.preventDefault();
 		}else if(isSubmit==false){
 			alert('이메일 인증을 해주세요');
 			$('#sendNumber').focus();
 			event.preventDefault();
-		}else{
+		}else{ 
 			alert('회원가입을 축하합니다.');
 		}
 	}); 
@@ -179,7 +179,7 @@ $("document").ready(function(){
 <input type='hidden' id='isEmail' value='false'>
 <!-- 인증번호를 저자하는 부분-->
 <input type='hidden' id='randomNumber' value='false'>
-<form method="POST" action="#" id="addjoin">
+<form method="POST" action="../app/user/joinUser"  id="addjoin" name="addjoin">
 	<div class="modal fade" id="joinModal" tabindex="-1" role="dialog"
 		aria-labelledby="joinModal" aria-hidden="true">
 		<div class="modal-dialog" style="background-color: #FF9933">
@@ -195,25 +195,25 @@ $("document").ready(function(){
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">이메일</label> <input
-							type="text" class="form-control" id="joinEmail"
+							type="text" class="form-control joinEmail" id="email"
 							placeholder="이메일이 아이디로 사용됩니다.">
 							<div id="joinEmailDiv"></div>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">닉네임</label> <input
-							type="text" class="form-control" id="joinNickname"
+							type="text" class="form-control joinNickname" id="nickname"
 							placeholder="영어,한글,숫자로 조합으로 이루어진 2자 이상 10자이내로 입력하세요">
 							<div id="joinNicknameCkecked"></div>
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">비밀번호</label> <input
-							type="password" class="form-control" id="joinPassword1" maxlength="15"
+							type="password" class="form-control joinPassword1" id="password" maxlength="15"
 							placeholder="영어 또는 숫자로 이루어진 8자리 이상 15이하로 입력하세요 ">
 							<div id="joinPassword1Ckecked"></div>
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">비밀번호 확인</label> <input
-							type="password" class="form-control" id="joinPassword2" maxlength="15"
+							type="password" class="form-control  joinPassword2" id="password2" maxlength="15"
 							placeholder="비밀번호확인">
 							<div id="joinPassword1Ckecked2"></div>
 					</div>
@@ -233,7 +233,7 @@ $("document").ready(function(){
 					</div>
 				</div>
 				<div class="modal-footer" style="border-color: black">
-					<button  type="submit" class="btn btn-primary"
+					<button  type="submit" class="btn btn-primary" 
 						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black">회원가입</button>
 					<button type="reset" class="btn btn-primary"
 						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black">최소</button>
