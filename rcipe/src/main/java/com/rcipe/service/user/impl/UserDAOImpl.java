@@ -50,7 +50,9 @@ public class UserDAOImpl  implements UserDAO{
 	}
 	
 	public User getUser(String email) throws Exception {
-		return sqlSession.selectOne("UserMapper.getUser", email);
+		 User user =sqlSession.selectOne("UserMapper.getUser", email);
+		 System.err.println(user);
+		return user;
 	}
 
 	@Override
