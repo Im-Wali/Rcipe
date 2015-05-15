@@ -24,18 +24,18 @@
 	box-shadow: 0 1px 0 #cfcfcf;
 }
 </style>
+
 <script type="text/javascript">
 $("document").ready(function() {
 	function selectCategory(value) {
 		document.getElementById("select_category").innerHTML = value;
 		document.getElementById("selectCartegory").val = value;
 	};
-
+	
 	$("#deleteUser").click(function() {
 		$.get('../app/user/deleteUser?nickname=user01', function(data) {
-		   alert(data);
 		});
-		alert('탈퇴되셨습니다.');
+		alert('회원탈퇴했습니다.');
 	});
 });
 </script>
@@ -62,10 +62,12 @@ $("document").ready(function() {
 									aria-expanded="false" id="fileUpload">
 							</div>
 							<div style="margin-left: 2%; margin-top: 1%">
-								<button type="button" class="btn btn-warning " id="chage_profil">
-									프로필 사진변경</button>
+								<button type="button" class="btn btn-warning " id="change_profil">
+									프로필 수정</button>
+								<button type="button" class="btn btn-warning " id="delete_profil">
+									프로필 삭제</button>
+								</div>	
 							</div>
-						</div>
 						<hr />
 						<div style="margin-top: 3%">
 							<span style="font-size: 2em">닉네임</span><span
