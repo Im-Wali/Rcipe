@@ -12,10 +12,12 @@ public interface UserService {
 	public String checkedLogin(User user) throws Exception;
 
 	public User getUser(String email) throws Exception;
-
+	
 	public boolean updatePassword(User user) throws Exception;
 
 	public boolean updateImage(User user) throws Exception;
 
 	public boolean deleteUser(String nickname) throws Exception;
+	
+	public boolean deleteImage(User user) throws Exception;
 }

@@ -12,10 +12,13 @@ public interface UserDAO {
 	public String checkedLogin(User user) throws Exception;
 
 	public User getUser(String email) throws Exception;
-
+	
 	public int updatePassword(User user) throws Exception;
 
 	public int updateImage(User user) throws Exception;
 
 	public int deleteUser(String nickname) throws Exception;
+	
+	public int deleteImage(User user) throws Exception;
+	
 }
