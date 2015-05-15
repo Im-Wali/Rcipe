@@ -66,8 +66,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public boolean getUserImage(String nickname) throws Exception {
-		return userDAO.getUserImage(nickname) == 1 ? true : false;
+	public String getUserImage(String nickname) throws Exception {
+		return userDAO.getUserImage(nickname);
 	}
 
 	@Override
@@ -75,9 +75,4 @@ public class UserServiceImpl implements UserService {
 		return userDAO.deleteUser(nickname) == 1 ? true : false;
 	}
 	
-	@Override
-	public boolean deleteImage(String nickname) throws Exception {
-		return userDAO.deleteImage(nickname) == 1 ? true : false;
-	}
-
 }
