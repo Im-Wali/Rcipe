@@ -11,6 +11,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,19 +20,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rcipe.commons.MyAuthenticator;
+import com.rcipe.service.domain.User;
+import com.rcipe.service.user.UserService;
+import com.rcipe.service.user.impl.UserServiceImpl;
 
 @Controller
 @RequestMapping("/email/*")
 public class EmailController {
 
+	@Autowired
+	@Qualifier("userServiceImpl")
+	private UserService userService;
+	
+	
    @RequestMapping(value = "send", method = RequestMethod.GET)
    public @ResponseBody String sendMail(@RequestParam("email") String to,@RequestParam("type") String type)
          throws Exception {
       // TODO Auto-generated method stub
       System.out.println("EmailController email : "+to);
       System.out.println("EmailController type : "+type);
-
-      
       
       String host = "smtp.gmail.com";// smtp 서버
       String subject = "G-Mail을 이용한 메일발송";
@@ -61,6 +69,16 @@ public class EmailController {
          str = buf.substring(0, 6);
          System.out.println("str : "+ str);
          content = "임시 비밀번호 : " + str;
+         
+         
+         User tempUser = new User();
+         tempUser.setEmail(to);
+         tempUser.setPassword(str);
+         
+         System.out.println("EmailController"+tempUser);
+         
+         userService.updatePassword(tempUser);
+         
       }
       try {
          // 프로퍼티 값 인스턴스 생성과 기본세션(SMTP 서버 호스트 지정)
