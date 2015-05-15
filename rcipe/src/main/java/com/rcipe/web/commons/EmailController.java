@@ -23,10 +23,14 @@ import com.rcipe.commons.MyAuthenticator;
 public class EmailController {
 
 	@RequestMapping(value = "send", method = RequestMethod.GET)
-	public @ResponseBody String sendMail(@RequestParam("email") String to)
+	public @ResponseBody String sendMail(@RequestParam("email") String to,@RequestParam("type") String type)
 			throws Exception {
 		// TODO Auto-generated method stub
-		System.out.println(to);
+		System.out.println("EmailController email : "+to);
+		System.out.println("EmailController type : "+type);
+
+		
+		
 		String host = "smtp.gmail.com";// smtp 서버
 		String subject = "G-Mail을 이용한 메일발송";
 		String from = "ottuguibudae@gmail.com"; // 보내는 메일
