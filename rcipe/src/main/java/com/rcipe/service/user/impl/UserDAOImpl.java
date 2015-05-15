@@ -70,5 +70,10 @@ public class UserDAOImpl  implements UserDAO{
 	public int deleteUser(String nickname) throws Exception {
 		return sqlSession.update("UserMapper.deleteUser", nickname);
 	}
+	
+	@Override
+	public int deleteImage(User user) throws Exception {
+		return sqlSession.delete("UserMapper.deleteImage", user);
+	}
 
 }
