@@ -62,9 +62,9 @@ $("document").ready(function() {
 									aria-expanded="false" id="fileUpload">
 							</div>
 							<div style="margin-left: 2%; margin-top: 1%">
-								<button type="button" class="btn btn-warning " id="change_profil">
+								<button type="button" class="btn btn-warning " id="change_profil" style="margin:1%">
 									프로필 수정</button>
-								<button type="button" class="btn btn-warning " id="delete_profil">
+								<button type="button" class="btn btn-warning " id="delete_profil" style="margin:1%">
 									프로필 삭제</button>
 								</div>	
 							</div>
