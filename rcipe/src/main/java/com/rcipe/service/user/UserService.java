@@ -18,9 +18,8 @@ public interface UserService {
 
 	public boolean updateImage(User user) throws Exception;
 	
-	public boolean getUserImage(String nickname) throws Exception;
+	public String getUserImage(String nickname) throws Exception;
 
 	public boolean deleteUser(String nickname) throws Exception;
 	
-	public boolean deleteImage(String nickname) throws Exception;
 }
