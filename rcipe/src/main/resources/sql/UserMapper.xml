@@ -60,10 +60,11 @@
 	<!-- SQL : SELECT ONE -->
 	<select id="getUser" parameterType="string" resultMap="userSelectMap">
 		SELECT
-		nickname , email , password , users_img , join_date
+		nickname , email , password , users_img , join_date ,FLAG
 		FROM
 		users
-		WHERE email = #{value}
+		WHERE
+		email = #{value}
 	</select>
 
 	<update id="updatePassword" parameterType="user">
