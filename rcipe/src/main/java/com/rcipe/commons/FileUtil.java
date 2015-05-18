@@ -6,15 +6,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.rcipe.service.domain.User;
 
 //우리 시스템에서 필요한 file에 대한 부분을 공통적으로 쓰는 부분을 모아놓았다.
 public class FileUtil {
