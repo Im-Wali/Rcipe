@@ -62,6 +62,7 @@ public class UserDAOImpl  implements UserDAO{
 
 	@Override
 	public int updateImage(User user) throws Exception {
+		System.out.println(user);
 		return sqlSession.update("UserMapper.updateImage", user);
 	}
 	
