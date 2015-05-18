@@ -23,7 +23,7 @@
 		PASSWORD ,
 		USERS_IMG ,
 		JOIN_DATE,
-		PLAG)
+		FLAG)
 		VALUES ( #{nickname}
 		, #{email}
 		, #{password}
@@ -85,7 +85,7 @@
 	<update id="deleteUser" parameterType="String">
     UPDATE users
     <set>
-      PLAG = 'Y'
+      FLAG = 'Y'
     </set>
     WHERE
     nickname = #{value}
