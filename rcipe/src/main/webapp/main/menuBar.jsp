@@ -122,19 +122,19 @@
 					data-target="#joinModal" data-whatever="Join" data-backdrop="false"
 					style="background-color: #FF9933; border: #FF9933; color: black">회원가입</a></li>
 				<div align="center">
-					<li><a href="inserPage01.jsp" class="btn btn-primary"
+					<li><a href="inserPage.jsp" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">레시피등록</a></li>
 				</div>
 				<div align="center">
-					<li><a href="fav02.jsp" class="btn btn-primary"
+					<li><a href="favorite.jsp" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">즐겨찾기</a></li>
 				</div>
 				<div align="center">
-					<li><a href="boardList03.jsp" class="btn btn-primary"
+					<li><a href="boardList.jsp" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
 				</div>
 				<div align="center">
-					<li><a href="viewUser01.jsp" class="btn btn-primary"
+					<li><a href="viewUser.jsp" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">내정보보기</a></li>
 				</div>
 			</ul>
