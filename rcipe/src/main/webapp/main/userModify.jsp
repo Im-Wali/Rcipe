@@ -75,9 +75,8 @@
 											"../app/user/updatePassword?newPassword="
 													+ p, function(data) {
 
-												alert("비밀번호가 변경 되었습니다.");
-
 											});
+												alert("비밀번호가 변경 되었습니다.");
 
 								});
 					});
@@ -119,3 +118,4 @@
 		</div>
 	</div>
 </form>
+
