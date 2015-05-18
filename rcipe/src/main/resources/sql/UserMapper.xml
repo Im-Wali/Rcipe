@@ -61,8 +61,7 @@
 		nickname , email , password , users_img , join_date
 		FROM
 		users
-		WHERE
-		email = #{value}
+		WHERE email = #{value}
 	</select>
 
 	<update id="updatePassword" parameterType="user">
@@ -81,12 +80,14 @@
 		WHERE nickname = #{nickname}
 	</update>
 
-	<delete id="deleteUser" parameterType="String">
-		DELETE
-		FROM users
-		WHERE
-		nickname = #{value}
-	</delete>
+	<update id="deleteUser" parameterType="String">
+    UPDATE users
+    <set>
+      password =null , users_img=null , join_date=null
+    </set>
+    WHERE
+    nickname = #{value}
+  </update>
 	
 	<select id="getUserImage" parameterType="String" resultType="String">
 		SELECT
