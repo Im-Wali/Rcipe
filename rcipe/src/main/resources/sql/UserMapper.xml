@@ -22,12 +22,14 @@
 		EMAIL ,
 		PASSWORD ,
 		USERS_IMG ,
-		JOIN_DATE)
+		JOIN_DATE,
+		PLAG)
 		VALUES ( #{nickname}
 		, #{email}
 		, #{password}
 		,#{userImage}
 		, SYSDATE
+		, 'N'
 		)
 	</insert>
 
@@ -83,7 +85,7 @@
 	<update id="deleteUser" parameterType="String">
     UPDATE users
     <set>
-      password =null , users_img=null , join_date=null
+      PLAG = 'Y'
     </set>
     WHERE
     nickname = #{value}
