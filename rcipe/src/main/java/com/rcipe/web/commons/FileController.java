@@ -1,15 +1,11 @@
 package com.rcipe.web.commons;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +37,9 @@ public class FileController {
 	@Autowired
 	@Qualifier("fileServiceImpl")
 	FileService fileService;
+	
+	@Autowired
+	private ServletContext ctx;
 
 	@RequestMapping("uploadProfile")
 	public @ResponseBody String  uploadUser(HttpServletRequest request,
@@ -49,13 +48,14 @@ public class FileController {
 //		User user=(User)session.getAttribute("user");
 		User user=new User("user01","user01@naver.com","1111","!!!!");
 		// File("c:\\fileUploadTest\\user"+user.getNickname"+"\\profile");
-		File newFile = new File("c:\\fileUploadTest\\user\\profile");
-		if (!newFile.isDirectory()) {
+		File newFile=new File(ctx.getRealPath("/images")+"/"+user.getNickname());
+		if(!newFile.isDirectory()){
 			newFile.mkdirs();
 		}
-		Map< String, String> map=FileUtil.upload(request, newFile);
-		fileService.deleteProfile(user.getNickname()) ;
-		user.setUserImage(map.get("chageImg"));
+		System.out.println("\t\t\t\t\t\t"+ctx.getRealPath("/images")+"/"+user.getNickname());
+		Map< String, String> map=FileUtil.upload(request,ctx.getRealPath("/images"),user.getNickname());
+		fileService.deleteProfile(user.getNickname(),ctx.getRealPath("/images")) ;
+		user.setUserImage(map.get("changeImg"));
 		fileService.updateProfile(user);
 		//업로드 된 파일 위치를 출력
 		String str=URLEncoder.encode(map+"", "UTF-8");
@@ -66,6 +66,6 @@ public class FileController {
 	public @ResponseBody String deleteUser(HttpSession session)throws Exception {
 //		User user=(User)session.getAttribute("user");
 		User user=new User("user01","user01@naver.com","1111","!!!!");
-		return URLEncoder.encode((fileService.deleteProfile(user.getNickname()) == true ?  "성공적으로 삭제했습니다":"삭제에 실패했습니다."),"UTF-8");
+		return URLEncoder.encode((fileService.deleteProfile(user.getNickname(),ctx.getRealPath("/images")) == true ?  "성공적으로 삭제했습니다":"삭제에 실패했습니다."),"UTF-8");
 	}
 }
