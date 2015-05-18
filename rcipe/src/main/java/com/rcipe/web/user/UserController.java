@@ -31,7 +31,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "joinUser", method = RequestMethod.POST)
-	public ModelAndView joinUser(@ModelAttribute("user") User user){
+	public ModelAndView joinUser(){
 //		System.out.println(user);
 		System.out.println("AAAA");
 //		if(userService.insertUser(user)){
@@ -46,6 +46,14 @@ public class UserController {
 	@RequestMapping(value = "checkedNickname", method = RequestMethod.GET)
 	public @ResponseBody String checkedNickname(@RequestParam("joinNickname") String nickname) throws Exception {
 		return userService.checkedNickname(nickname)+"";
+	}
+	@RequestMapping(value = "checkedPassword", method = RequestMethod.GET)
+	public @ResponseBody String checkedPassword(HttpSession session) throws Exception {
+		User user = (User) session.getAttribute("user");
+		System.out.println("checkedPassword user :"+user);
+		User newUser = userService.getUser(user.getEmail());
+		System.out.println("checkedPassword password :"+newUser.getPassword());
+		return newUser.getPassword()+"";
 	}
 	@RequestMapping(value = "chechkedloginUser", method = RequestMethod.POST)
 	public @ResponseBody String chechkedloginUser(@RequestParam("id") String id,@RequestParam("password") String password,Model model) throws Exception {
@@ -70,10 +78,7 @@ public class UserController {
 //	public @ResponseBody void updatePassword( Model model , HttpSession session, @RequestParam("newPassword") String newPassword) throws Exception{
 	@RequestMapping(value = "updatePassword", method = RequestMethod.GET)
 		public @ResponseBody void updatePassword( @ModelAttribute("user") User user, Model model , HttpSession session, @RequestParam("newPassword") String newPassword) throws Exception{
-		
-		User sessionUser = new User("user01","user01@naver.com","1111","!!!!");
-		System.out.println("sessionUser : "+sessionUser);
-		session.setAttribute("user", sessionUser);		
+		System.out.println(newPassword);
 		User newUser = ((User)session.getAttribute("user"));
 		newUser.setPassword(newPassword);
 		userService.updatePassword(newUser);
