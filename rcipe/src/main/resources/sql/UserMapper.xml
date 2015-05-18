@@ -6,7 +6,6 @@
 
 <mapper namespace="UserMapper">
 
-
 	<resultMap id="userSelectMap" type="user">
 		<result property="nickname" column="nickname" jdbcType="VARCHAR" />
 		<result property="email" column="email" jdbcType="VARCHAR" />
@@ -62,7 +61,8 @@
 		nickname , email , password , users_img , join_date
 		FROM
 		users
-		WHERE email = #{value}
+		WHERE
+		email = #{value}
 	</select>
 
 	<update id="updatePassword" parameterType="user">
@@ -72,6 +72,7 @@
 		</set>
 		WHERE email = #{email}
 	</update>
+	
 	<update id="updateImage" parameterType="user">
 		UPDATE users
 		<set>
@@ -86,19 +87,12 @@
 		WHERE
 		nickname = #{value}
 	</delete>
-	<update id="deleteImage" parameterType="String">
-		UPDATE users
-		<set>
-		users_img = null
-		</set>
-		WHERE
-		nickname = #{value}
-	</update>
-	<update id="updatePassword" parameterType="user">
-      UPDATE users
-      <set>
-         password = #{password}
-      </set>
-      WHERE nickname = #{nickname}
-   </update>
+	
+	<select id="getUserImage" parameterType="String" resultType="String">
+		SELECT
+		users_img
+		FROM
+		users
+		WHERE nickname = #{value}
+	</select>
 </mapper>
