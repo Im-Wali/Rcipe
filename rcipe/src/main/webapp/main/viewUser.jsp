@@ -11,9 +11,6 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/fileUpload.js"></script>
-<script type="text/javascript" src="../js/bootstrap-filestyle.js">
-	
-</script>
 <style type="text/css">
 .form-login {
 	background-color: #DDDDDD;
@@ -33,15 +30,9 @@
 		function selectCategory(value) {
 			document.getElementById("select_category").innerHTML = value;
 			document.getElementById("selectCartegory").val = value;
-		}
-		;
+		};
 
-		$("#deleteUser").click(function() {
-			$.get('../app/user/deleteUser?nickname=user01', function(data) {
-			});
-			alert('회원탈퇴했습니다.');
-		});
-		$("#delete_profil").click(function() {
+$("#delete_profil").click(function() {
 			$.get('../app/file/deleteProfile', function(data) {
 				data = decodeURIComponent(data);
 				data = data.replace(/\+/g, " ");
@@ -87,6 +78,7 @@
     	  	}
     	  }); 
 		});
+
 	});
 </script>
 </HEAD>
@@ -144,10 +136,9 @@
 							<span style="font-size: 2em">비밀번호</span><span
 								style="margin-left: 2%; font-size: 2em">:</span><span></span>
 							<button type="button" class="btn btn-warning " id="chage_profil"
-								style="float: right" id="change_password"
-								style="float: right;margin-right:1% " data-toggle="modal"
-								data-target="#modifyPasswordModal" data-backdrop="false">비밀번호
-								변경</button>
+								style="float: right; margin-right: 1%;" id="change_password"
+								data-toggle="modal" data-target="#modifyPasswordModal"
+								data-backdrop="false">비밀번호 변경</button>
 						</div>
 						<hr />
 						<div style="margin-top: 3%; margin-bottom: 3%">
@@ -158,7 +149,8 @@
 						<hr />
 						<div align="right">
 							<button type="button" class="btn btn-warning " id="deleteUser"
-								style="margin-right: 1%">회원탈퇴</button>
+								style="margin-right: 1%" data-toggle="modal"
+								data-target="#deleteUserPWModal" data-backdrop="false">회원탈퇴</button>
 						</div>
 					</div>
 				</div>
@@ -167,5 +159,6 @@
 		<div class="col-md-2 "></div>
 	</div>
 	<jsp:include page="userModify.jsp"></jsp:include>
+	<jsp:include page="userDeleteModify.jsp"></jsp:include>
 </body>
 </HEAD>
