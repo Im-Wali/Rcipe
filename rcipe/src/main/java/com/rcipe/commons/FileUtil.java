@@ -30,19 +30,14 @@ public class FileUtil {
 		for (String fileName : multipartRequest.getFileMap().keySet()) {
 			for (MultipartFile file : multipartRequest.getFiles(fileName)) {
 				String originalFileName = file.getOriginalFilename();
-				// 이부분을 회원마다 폴더구조를 정해서 관리할 예정이다.
-				// 파일의 확장자를 가지고 온다.
 				String imgExt = originalFileName.substring(
 						originalFileName.lastIndexOf(".") + 1,
 						originalFileName.length());
 				if (imgExt.toUpperCase().equalsIgnoreCase("JPG")) {
-					// 파일의 크기를 byte크기로 가지고 와서 버퍼크기로 지정한다.
 					try {
-						// 해당 위치에 파일을 생성하고
 						String str=nickname+"/"+System.currentTimeMillis()+"."+imgExt;
 						file.transferTo(new File(path+"/"+str));
 						map.put("changeImg",str);
-						// 해당파일에 fileoutputstream을 통해서 파일을 복사한다.
 						System.err.println("File upload success! ");
 					} catch (Exception ie) {
 						System.err.println("File writing error! ");
