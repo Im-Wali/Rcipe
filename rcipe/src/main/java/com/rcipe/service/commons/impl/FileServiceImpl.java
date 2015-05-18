@@ -26,13 +26,9 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public boolean deleteProfile(String nickname) throws Exception {
+	public boolean deleteProfile(String nickname,String path) throws Exception {
 		// TODO Auto-generated method stub
-		return FileUtil.deleteFile(userService.getUserImage(nickname));
+		System.out.println("\t\t\t\t\t\t\t"+path+"/"+userService.getUserImage(nickname));
+		return FileUtil.deleteFile(path+"/"+userService.getUserImage(nickname));
 	}
-	@Override
-	public String getUserImage(String nickname)throws Exception{
-		return userService.getUserImage(nickname);
-	}
-
 }

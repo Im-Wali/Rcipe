@@ -65,9 +65,9 @@ $("document").ready(function() {
 			str=str.replace( /\+/g, " ");
 			var str2=str.split("massage")[1].substring("1").split(",")[0];
 			alert(str2);
-			var str3=str.split("chageImg")[1].substring("1").split("}")[0];
-			/* alert((str3.replace( /\\/g, "/"))); */
-			$("#fileUpload").attr("src","../img/images3.jpg");
+			var str3=str.split("changeImg")[1].substring("1").split("}")[0];
+			alert(str3);
+			$("#fileUpload").attr("src","../images/"+str3);
 			$(":file").filestyle('clear');
 			isFile=false;
 	  	},
