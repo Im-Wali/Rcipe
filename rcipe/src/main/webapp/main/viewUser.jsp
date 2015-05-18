@@ -11,6 +11,9 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/fileUpload.js"></script>
+<script type="text/javascript" src="../js/bootstrap-filestyle.js">
+	
+</script>
 <style type="text/css">
 .form-login {
 	background-color: #DDDDDD;
@@ -26,18 +29,65 @@
 </style>
 
 <script type="text/javascript">
-$("document").ready(function() {
-	function selectCategory(value) {
-		document.getElementById("select_category").innerHTML = value;
-		document.getElementById("selectCartegory").val = value;
-	};
-	
-	$("#deleteUser").click(function() {
-		$.get('../app/user/deleteUser?nickname=user01', function(data) {
+	$("document").ready(function() {
+		function selectCategory(value) {
+			document.getElementById("select_category").innerHTML = value;
+			document.getElementById("selectCartegory").val = value;
+		}
+		;
+
+		$("#deleteUser").click(function() {
+			$.get('../app/user/deleteUser?nickname=user01', function(data) {
+			});
+			alert('회원탈퇴했습니다.');
 		});
-		alert('회원탈퇴했습니다.');
+		$("#delete_profil").click(function() {
+			$.get('../app/file/deleteProfile', function(data) {
+				data = decodeURIComponent(data);
+				data = data.replace(/\+/g, " ");
+				alert(data);
+				$("#fileUpload").attr("src", "../img/test3.jpg");
+			});
+		});
+		//파일 버튼에서 아이콘을 빼주는 script
+		$(":file").filestyle('icon', false);
+		
+		//불리언 변수 함부로 ajxa가 실행하는것을 막는 변수
+		//$(":file").filestyle('clear');이부분을 실행시에 또호출되기때문에
+		var isFile=false;
+		//프로필 수정 버튼에서 파일을 선택하면 실행한다. 파일을 업로드하는 AJAX
+		$('#buttonProfileUpload').change('onload',function() {
+			if(isFile){
+				return;
+			}
+			isFile=true;
+		 	var formData = new FormData();
+			$.each($('#buttonProfileUpload')[0].files, function(i, file) {      
+				formData.append('file', file);
+            });
+    	  $.ajax({
+    	    url: '../app/file/uploadProfile',
+    	    data: formData,
+    	    processData: false,
+    	    contentType: false,
+    	    type: 'POST',
+    	    success: function(data){
+    	    	var str=decodeURIComponent(data);
+				str=str.replace( /\+/g, " ");
+				var str2=str.split("massage")[1].substring("1").split(",")[0];
+				alert(str2);
+				var str3=str.split("chageImg")[1].substring("1").split("}")[0];
+				/* alert((str3.replace( /\\/g, "/"))); */
+				$("#fileUpload").attr("src",str3);
+				$(":file").filestyle('clear');
+				isFile=false;
+    	  	},
+    	  	error:function(data){
+    	  		alert("파일업로드에 실패했습니다.")
+    	  	}
+    	  }); 
+		});
 	});
-});
 </script>
 </HEAD>
 <body>
@@ -54,23 +104,29 @@ $("document").ready(function() {
 						style="background-color: white; margin-top: 1%">
 						<hr />
 						<div style="margin-top: 3%">
-							<div style="font-size: 2em; margin-top: 1%; margin-left: 2%">프로필사진</div>
-							<div>
+							<div style="font-size: 2em; margin-top: 1%; margin-left: 2%;margin-bottom:1%;" align="center">프로필사진</div>
+							<div align="center">
 								<img src="../img/001.jpg" class="img-circle" role="button"
-									style="width: 150px; height: 150px; margin-left:10%; margin-top: 1%"
-									data-toggle="dropdown" aria-haspopup="true"
-									aria-expanded="false" id="fileUpload">
+									style="width: 150px; height: 150px; margin-left: 10%; margin-top: 1%"
+									aria-haspopup="true" aria-expanded="false" id="fileUpload">
 							</div>
-							<div style="margin-left: 2%; margin-top: 1%">
-								<button type="button" class="btn btn-warning " id="change_profil" style="margin-top:1%;margin-right:1%;">
-									프로필 수정</button>
-								<button type="button" class="btn btn-warning " id="delete_profil" style="margin-top:1%;margin-right:1%;">
-									프로필 삭제</button>
-								</div>	
+							<div style="margin-top: 1%" align="center">
+								<span style="color: red; font: bold;">*바꿀 프로필 사진을 사진위로
+									드래그 하면 자동으로 프로필 사진이 변경됩니다.</span>
 							</div>
-							<div style="margin-top:1%">
-							<span style="color:red;font:bold;">*바꿀 프로필 사진을 사진위로 드래그 하면 자동으로 프로필 사진이 변경됩니다.</span>
+							<div style="margin-left: 2%; margin-top: 1%" align="center">
+								<span> <input type="file" class="filestyle" id="buttonProfileUpload"
+									data-buttonName="btn-warning" data-input="false"
+									style="margin-top: 1%; margin-right: 1%;"
+									data-buttonText="프로필 수정">
+								</span> <span>
+									<button type="button" class="btn btn-warning "
+										id="delete_profil" style="margin-top: 1%; margin-right: 1%;">
+										프로필 삭제</button>
+								</span>
 							</div>
+						</div>
+
 						<hr />
 						<div style="margin-top: 3%">
 							<span style="font-size: 2em">닉네임</span><span

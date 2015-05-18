@@ -38,38 +38,20 @@ $("cocument")
 					}
 					function sendFile(file, fileId) {
 						var xhr = new XMLHttpRequest();
-						xhr.upload
-								.addEventListener(
-										"progress",
-										function(e) {
-											if (e.lengthComputable) {
-												// 로그인되고있는 상황을 보여준다.
-												// 이부분을 수정하여 ProgressBar를
-												// 보여줄수있을거같다.
-												var percentage = Math
-														.round((e.loaded * 100)
-																/ e.total);
-												document
-														.getElementById("fileUploadProgress").innerHTML = file.name
-														+ ' - '
-														+ percentage
-														+ '%';
-											}
-										}, false);
 						xhr.onreadystatechange = function() {
 							if (xhr.readyState == 4 && xhr.status == 200) {
 								// 정확히 수행되면 alert창 띄움
-								alert(xhr.responseText().put("massage"));
+								var str=decodeURIComponent(xhr.responseText);
+								str=str.replace( /\+/g, " ");
+								alert(str);
+								var str2=str.split("massage")[1].substring("1").split(",")[0];
+								alert(str2);
+								var str3=str.split("chageImg")[1].substring("1").split("]")[0];
+								alert((str3.replace( /\\/g, "/")));
+								$("#fileUpload").attr("src",str3);
+								alert(str3);
 							}
 						};
-						xhr.upload
-								.addEventListener(
-										"load",
-										function(e) {
-											document.getElementById(fileId).innerHTML = file.name
-													+ ' - uploaded';
-										}, false);
-						// 래시피등록,삭제 개시판 등록,삭제 프로필사진 수정 등 다르게 접근하게 위해서
 						// var p=$('#pictureLcation').val();
 						// xhr.open("POST","../app/"+p);
 						xhr.open("POST", "../app/file/uploadProfile");
