@@ -31,11 +31,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "joinUser", method = RequestMethod.POST)
-	public ModelAndView joinUser(){
-//		System.out.println(user);
-		System.out.println("AAAA");
-//		if(userService.insertUser(user)){
-//		}
+	public ModelAndView joinUser(@ModelAttribute("user") User user)throws Exception{
+		System.out.println(user);
+//		userService.insertUser(user);
 		return new ModelAndView("mainPage.jsp");
 	}
 	@RequestMapping(value = "checkedEmail", method = RequestMethod.GET)
@@ -57,7 +55,13 @@ public class UserController {
 	}
 	@RequestMapping(value = "chechkedloginUser", method = RequestMethod.POST)
 	public @ResponseBody String chechkedloginUser(@RequestParam("id") String id,@RequestParam("password") String password,Model model) throws Exception {
-		return userService.checkedLogin(new User(id,password));
+		User user=userService.checkedLogin(new User(id,password));
+		if(user==null){
+			return "false";
+		}else if("Y".equals(user.getFlag())){
+			return "none";
+		}
+		return "true";
 	}
 	@RequestMapping(value = "userLogin", method = RequestMethod.POST)
 	public String userLogin(@ModelAttribute("user") User user, HttpSession session)

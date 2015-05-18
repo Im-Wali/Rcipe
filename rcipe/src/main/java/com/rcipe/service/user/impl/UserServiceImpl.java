@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public String checkedLogin(User user) throws Exception {
+	public User checkedLogin(User user) throws Exception {
 		return userDAO.checkedLogin(user) ;
 	}
 	@Override

@@ -16,7 +16,7 @@ public class User {
 	private String password;
 	private String userImage;
 	private Date joinDate;
-	
+	private String flag;
 	public User() {
 	}
 	
@@ -26,6 +26,19 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.userImage = userImage;
+	}
+	public User(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
 	}
 
 	public String getUserImage() {
@@ -60,11 +73,6 @@ public class User {
 		this.password = password;
 	}
 
-	public User(String email, String password) {
-		super();
-		this.email = email;
-		this.password = password;
-	}
 
 	public Date getJoinDate() {
 		return joinDate;

@@ -44,9 +44,8 @@ public class UserDAOImpl  implements UserDAO{
 	}
 
 	@Override
-	public String checkedLogin(User user)throws Exception {
-		System.out.println(user.getEmail()+"::"+user.getPassword()+"AAA"+sqlSession.selectOne("UserMapper.checkedLoginPassword",user));
-		return sqlSession.selectOne("UserMapper.checkedLoginId",user) ==null ? "id":(sqlSession.selectOne("UserMapper.checkedLoginPassword",user)==null ? "password":"true");
+	public User checkedLogin(User user)throws Exception {
+		return sqlSession.selectOne("UserMapper.checkedLogin", user);
 	}
 	
 	public User getUser(String email) throws Exception {

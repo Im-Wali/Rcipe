@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class FileUtil {
 
 	public FileUtil() {
-		// TODO Auto-generated constructor stub
 	}
 	
 	//실제 파일을 업로드하고 파일업로드에 대한 메세지와 새로저장한 파일위치(chageImg)를 MAP에 저장해서 리턴ㄴ

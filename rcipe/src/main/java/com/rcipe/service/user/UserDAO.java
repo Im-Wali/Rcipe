@@ -9,7 +9,7 @@ public interface UserDAO {
 
 	public String checkedNickname(String nickname) throws Exception;
 
-	public String checkedLogin(User user) throws Exception;
+	public User checkedLogin(User user)throws Exception ;
 
 	public User getUser(String email) throws Exception;
 
