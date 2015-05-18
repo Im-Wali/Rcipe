@@ -15,23 +15,26 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.rcipe.service.domain.User;
 
+//우리 시스템에서 필요한 file에 대한 부분을 공통적으로 쓰는 부분을 모아놓았다.
 public class FileUtil {
 
 	public FileUtil() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	//실제 파일을 업로드하고 파일업로드에 대한 메세지와 새로저장한 파일위치(chageImg)를 MAP에 저장해서 리턴ㄴ
 	public static  Map<String,String> upload(HttpServletRequest request ,File newFile) throws IOException {
 		Map<String,String> map=new HashMap<String, String>();
 		if (!(request instanceof MultipartHttpServletRequest)) {
+			System.err.println("파일이 넘어 오지 않았음");
 			map.put("massage", "형식에 맞지않습니다.");
 			return map;
 		}
-		
 		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 		for (String fileName : multipartRequest.getFileMap().keySet()) {
 			for (MultipartFile file : multipartRequest.getFiles(fileName)) {
 				String originalFileName = file.getOriginalFilename();
-				
+				System.out.println("fileName  :"+originalFileName);
 				// 이부분을 회원마다 폴더구조를 정해서 관리할 예정이다.
 				// 파일의 확장자를 가지고 온다.
 				String imgExt = originalFileName.substring(
@@ -63,7 +66,7 @@ public class FileUtil {
 					System.err.println("File upload success! ");
 				} else {
 					System.err.println("File type error!  FileType:" + imgExt);
-					map.put("massage", "지원하지않습니다.");
+					map.put("massage", "해당 파일은 지원하지않습니다.");
 					return map;
 				}
 			}
@@ -72,6 +75,7 @@ public class FileUtil {
 		return map;
 	}
 	
+	//파일을 지우는 부분
 	public static boolean deleteFile(String filePath){
 		if(filePath==null){
 			return false;
