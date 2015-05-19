@@ -5,10 +5,12 @@ $("document").ready(function(){
 	//이메일 형식체크,중복체크
 	var isSubmit=false;
 	var isPassword=false;
+	var isPassword2=false;
 	var timer;
 	$('.joinEmail').bind('keyup',function (){
 		   var chk1 = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 		   var p=$(this).val();
+		   isSubmit=false;
 		   if(! chk1.test(p)){
 		      //이메일 형식이 알파벳+숫자@알파벳+숫자.알파벳+숫자 형식일 경우
 			   $('#joinEmailDiv').html(function(index,html){
@@ -48,6 +50,7 @@ $("document").ready(function(){
 	    	});
 	    }else{
 	    	$('#joinPassword1Ckecked').html(function(index,html){
+	    		isPassword2=true;
 	    		return "<span style='color:blue;'>올바른 비밀번호입니다.</span>";
 	    	});
 	    }
@@ -56,7 +59,7 @@ $("document").ready(function(){
 	$(".joinPassword2").bind('keyup',function () {
 		var p=$(this).val();
 		var s=$('.joinPassword1').val();
-		if(p===s){
+		if(p===s&&isPassword2){
 			$('#joinPassword1Ckecked2').html(function(index,html){
 	    		return "<span style='color:blue;'>비밀번호 확인 완료</span>";
 	    	});
@@ -69,7 +72,7 @@ $("document").ready(function(){
 		}
 	});
 	$(".joinNickname").bind('keyup',function () {
-		chk1 = /^[a-z\d\가-힝]{2,10}$/i;
+		chk1 = /^[a-z\d\가-힝]{4,10}$/i;
 		chk2 = /[가-힝]/;  //적어도 한개의 a-z 확인
 	    chk3 = /[a-z]/i;  //적어도 한개의 0-9 확인
 		var p=$(this).val();
@@ -89,7 +92,7 @@ $("document").ready(function(){
 			
 		}else{
 			$('#joinNicknameCkecked').html(function(index,html){
-	    		return "<span style='color:red;'>영어,한글,숫자로 조합으로 이루어진 2자 이상 10자이내로 입력하세요 </span>";
+	    		return "<span style='color:red;'>영어,한글,숫자로 조합으로 이루어진 4자 이상 10자이내로 입력하세요 </span>";
 	    	});
 		}
 	});
