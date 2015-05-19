@@ -75,8 +75,9 @@ $("document").ready(function(){
 		chk1 = /^[a-z\d\가-힝]{4,10}$/i;
 		chk2 = /[가-힝]/;  //적어도 한개의 a-z 확인
 	    chk3 = /[a-z]/i;  //적어도 한개의 0-9 확인
+	    chk4 = /^[가-힝]{2,10}$/i;
 		var p=$(this).val();
-		if(chk1.test(p)&&(chk2.test(p)||chk3.test(p))){
+		if(chk4.test(p)||(chk1.test(p)&&(chk2.test(p)||chk3.test(p)))){
 			//AJAX
 			 var str;
 			   $.get("../app/user/checkedNickname?joinNickname="+p,function(data){
@@ -92,7 +93,7 @@ $("document").ready(function(){
 			
 		}else{
 			$('#joinNicknameCkecked').html(function(index,html){
-	    		return "<span style='color:red;'>영어,한글,숫자로 조합으로 이루어진 4자 이상 10자이내로 입력하세요 </span>";
+	    		return "<span style='color:red;'>한글 2자이상 또는 영어,한글,숫자로 조합으로 이루어진 4자 이상 10자이내로 입력하세요 </span>";
 	    	});
 		}
 	});
@@ -208,7 +209,7 @@ $("document").ready(function(){
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">닉네임</label> <input
 							type="text" class="form-control joinNickname" id="nickname" name="nickname"
-							placeholder="영어,한글,숫자로 조합으로 이루어진 2자 이상 10자이내로 입력하세요">
+							placeholder="한글 2자이상 또는 영어,한글,숫자로 조합으로 이루어진 4자 이상 10자이내로 입력하세요">
 							<div id="joinNicknameCkecked"></div>
 					</div>
 					<div class="form-group">
