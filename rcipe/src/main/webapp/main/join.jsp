@@ -105,6 +105,7 @@ $("document").ready(function(){
 	    	});
 		}else{
 			alert("인증번호를 발송했습니다. 5분내로 입력해주세요");
+			$('#checkSendNumber').attr('disabled',false); 
 			 $.get("../app/email/send?email="+joinEmail+"&type=join",function(data){
 				 $('#randomNumber').val(data);
 			 });
