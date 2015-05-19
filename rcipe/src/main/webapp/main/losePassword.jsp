@@ -30,11 +30,16 @@
 										});
 						$("#sendCheckEmailTempPw")
 								.click(
-										function() {
+										function(event) {
 											var check = $('#isEmail').val();
 											var loseEmail = $('#loseEmail')
 													.val();
-											if (check === 'false') {
+											if(loseEmail==''){
+												alert("이메일을 입력해주세요!");
+												event.preventDefault();
+											}else if (check === 'false') {
+												alert("이메일을 정확히 입력하세요.");
+												event.preventDefault();
 												$('#sendCheckTempPwDiv')
 														.html(
 																function(index,

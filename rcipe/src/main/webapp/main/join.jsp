@@ -37,20 +37,23 @@ $("document").ready(function(){
 	    chk2 = /[a-z]/i;  //적어도 한개의 a-z 확인
 	    chk3 = /\d/;  //적어도 한개의 0-9 확인
 	    if(!chk1.test(p)){
+	    	isPassword2=false;
 	    	$('#joinPassword1Ckecked').html(function(index,html){
 	    		return "<span style='color:red;'>영어,숫자 조합의 8자이상 12자이하을 입력하세요</span>";
 	    	});
 	    }else if(!chk2.test(p)){
+	    	isPassword2=false;
 	    	$('#joinPassword1Ckecked').html(function(index,html){
 	    		return "<span style='color:red;'>적어도 하나이상의 영어가 들어가야합니다.</span>";
 	    	});
 	    }else if(!chk3.test(p)){
+	    	isPassword2=false;
 	    	$('#joinPassword1Ckecked').html(function(index,html){
 	    		return "<span style='color:red;'>적어도 하나이상의 숫자가 들어가야합니다.</span>";
 	    	});
 	    }else{
+	    	isPassword2=true;
 	    	$('#joinPassword1Ckecked').html(function(index,html){
-	    		isPassword2=true;
 	    		return "<span style='color:blue;'>올바른 비밀번호입니다.</span>";
 	    	});
 	    }
