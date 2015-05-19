@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.rcipe.commons.ConvertKo;
 import com.rcipe.service.domain.User;
 import com.rcipe.service.user.UserService;
 
@@ -43,7 +44,7 @@ public class UserController {
 	}
 	@RequestMapping(value = "checkedNickname", method = RequestMethod.GET)
 	public @ResponseBody String checkedNickname(@RequestParam("joinNickname") String nickname) throws Exception {
-		return userService.checkedNickname(nickname)+"";
+		return userService.checkedNickname(ConvertKo.convertKo(nickname))+"";
 	}
 	@RequestMapping(value = "checkedPassword", method = RequestMethod.GET)
 	public @ResponseBody String checkedPassword(HttpSession session) throws Exception {
