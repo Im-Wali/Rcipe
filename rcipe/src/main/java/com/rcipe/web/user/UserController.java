@@ -33,7 +33,7 @@ public class UserController {
 	@RequestMapping(value = "joinUser", method = RequestMethod.POST)
 	public ModelAndView joinUser(@ModelAttribute("user") User user)throws Exception{
 		System.out.println(user);
-//		userService.insertUser(user);
+		userService.insertUser(user);
 		return new ModelAndView("mainPage.jsp");
 	}
 	@RequestMapping(value = "checkedEmail", method = RequestMethod.GET)
@@ -72,7 +72,6 @@ public class UserController {
 		System.err.println("loginUser   :"+dbUser);
 		
 		if (user.getPassword().equals(dbUser.getPassword())) {
-			System.err.println("AAAAA");
 			session.setAttribute("user", dbUser);
 		}
 		System.out.println("loginUser :"+dbUser);

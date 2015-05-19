@@ -15,12 +15,13 @@ $("document").ready(function(){
        	return false;
     }else if(errorMessage == null) {
     	$.post("../app/user/chechkedloginUser",{id:$('#email').val(),password:$('#password').val()},function(data,str){
-			   if(data==="password"||data==="id"){
+			   if(data==="false"){
 				   	alert("비밀번호또는 아이디(이메일)이 일치하지 않습니다.");
 			       	document.loginForm.password.focus();
-			   }else{
+			   }else if(data=="none"){
+				   alert("탈퇴된 회원입니다.")
+			   } else if(data=="true"){
 				   alert("로그인을 하셨습니다.");
-				   
 				   $('#loginForm').submit();
 				   //여기에 다음 로그인으로 
 			   }
@@ -70,13 +71,13 @@ $("document").ready(function(){
 				</div>
 				<div class="modal-footer" style="border-color: black">
 					<button type="button" class="btn btn-primary" id="loseButton"
-						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black"
+						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black;margin-top:1%"
 						id="change_password" data-toggle="modal"
 						data-target="#modifyLosePasswordModal" data-backdrop="false" data-dismiss="modal"
             aria-label="Close" >비밀번호
 						찾기</button>
 					<button type="submit" class="btn btn-primary" id="loginSubmit"
-						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black">로그인</button>
+						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black;margin-top:1%">로그인</button>
 					<!-- 					<input type="image" src="login.gif" alt="로그인" /> -->
 				</div>
 			</div>

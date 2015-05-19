@@ -17,19 +17,21 @@
 	<!-- SQL : INSERT -->
 	<insert id="insertUser" parameterType="user">
 		INSERT
-		INTO users( NICKNAME
-		,
-		EMAIL ,
-		PASSWORD ,
-		USERS_IMG ,
-		JOIN_DATE,
-		FLAG)
-		VALUES ( #{nickname}
-		, #{email}
-		, #{password}
-		,#{userImage}
-		, SYSDATE
-		, 'N'
+		INTO users(  
+		NICKNAME, 
+		EMAIL , 
+		PASSWORD , 
+		USERS_IMG , 
+		JOIN_DATE,  
+		FLAG
+		) 
+		VALUES( 
+		#{nickname}, 
+		#{email}, 
+		#{password}, 
+		null, 
+		SYSDATE, 
+		'N'
 		)
 	</insert>
 
@@ -50,9 +52,9 @@
 		FROM USERS
 		WHERE EMAIL LIKE #{email}
 	</select>
-	<select id="checkedLoginPassword" parameterType="user"
-		resultType="String">
-		SELECT NICKNAME
+	<select id="checkedLogin" parameterType="user"
+		resultType="user">
+		SELECT nickname , email , password , users_img , join_date ,FLAG
 		FROM USERS
 		WHERE EMAIL LIKE #{email} AND
 		PASSWORD LIKE #{password}

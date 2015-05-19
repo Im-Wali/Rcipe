@@ -147,7 +147,7 @@ $("document").ready(function(){
 			$('#sendNumber').val('');
 		}
 	});
-	$("#addjoin").submit(function (event) {
+	$("#joinSubmit").click(function (event) {
 		var isNickname=$('#isNickname').val();
 		var isEmail=$('#isEmail').val();
 		if(isEmail==="false"){
@@ -179,7 +179,7 @@ $("document").ready(function(){
 <input type='hidden' id='isEmail' value='false'>
 <!-- 인증번호를 저자하는 부분-->
 <input type='hidden' id='randomNumber' value='false'>
-<form method="POST" action="../app/user/joinUser"  id="addjoin" name="addjoin">
+<form method="post" action="../app/user/joinUser"  id="joinUser" name="joinUser">
 	<div class="modal fade" id="joinModal" tabindex="-1" role="dialog"
 		aria-labelledby="joinModal" aria-hidden="true">
 		<div class="modal-dialog" style="background-color: #FF9933">
@@ -195,19 +195,19 @@ $("document").ready(function(){
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">이메일</label> <input
-							type="text" class="form-control joinEmail" id="email"
+							type="text" class="form-control joinEmail" id="email" name="email"
 							placeholder="이메일이 아이디로 사용됩니다.">
 							<div id="joinEmailDiv"></div>
 					</div>
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">닉네임</label> <input
-							type="text" class="form-control joinNickname" id="nickname"
+							type="text" class="form-control joinNickname" id="nickname" name="nickname"
 							placeholder="영어,한글,숫자로 조합으로 이루어진 2자 이상 10자이내로 입력하세요">
 							<div id="joinNicknameCkecked"></div>
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">비밀번호</label> <input
-							type="password" class="form-control joinPassword1" id="password" maxlength="15"
+							type="password" class="form-control joinPassword1" id="password" name="password" maxlength="15"
 							placeholder="영어 또는 숫자로 이루어진 8자리 이상 15이하로 입력하세요 ">
 							<div id="joinPassword1Ckecked"></div>
 					</div>
@@ -233,7 +233,7 @@ $("document").ready(function(){
 					</div>
 				</div>
 				<div class="modal-footer" style="border-color: black">
-					<button  type="submit" class="btn btn-primary" 
+					<button  type="submit" class="btn btn-primary" id="joinSubmit"
 						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black">회원가입</button>
 					<button type="reset" class="btn btn-primary"
 						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black">최소</button>
