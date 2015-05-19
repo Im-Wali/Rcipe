@@ -21,7 +21,7 @@
 		NICKNAME, 
 		EMAIL , 
 		PASSWORD , 
-		USERS_IMG , 
+		USER_IMG , 
 		JOIN_DATE,  
 		FLAG
 		) 
@@ -80,7 +80,7 @@
 	<update id="updateImage" parameterType="user">
 		UPDATE users
 		<set>
-			users_img = #{userImage}
+			user_img = #{userImage}
 		</set>
 		WHERE nickname = #{nickname}
 	</update>
@@ -96,7 +96,7 @@
 	
 	<select id="getUserImage" parameterType="String" resultType="String">
 		SELECT
-		users_img
+		user_img
 		FROM
 		users
 		WHERE nickname = #{value}
