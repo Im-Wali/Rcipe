@@ -55,7 +55,7 @@
         <div class="modal-body">
           <div class="form-group">
             <label for="recipient-name" class="control-label">비밀번호입력</label> <input
-              type="text" class="form-control" id="deleteUserPW">
+              type="password" class="form-control" id="deleteUserPW">
             <div id="deleteUserPWCheck"></div>
           </div>
         </div>

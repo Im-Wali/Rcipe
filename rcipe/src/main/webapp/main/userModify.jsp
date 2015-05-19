@@ -96,7 +96,7 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">기존
-							비밀번호입력</label> <input type="text" class="form-control" id="password">
+							비밀번호입력</label> <input type="password" class="form-control" id="password">
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">변경 비밀번호</label> <input
