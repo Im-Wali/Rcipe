@@ -23,190 +23,94 @@
 	border-color: #d2d2d2;
 	border-width: 5px;
 	box-shadow: 0 1px 0 #cfcfcf;
+	
+	.table-fixed thead {
+  width: 97%;
 }
+.table-fixed tbody {
+  height: 230px;
+  overflow-y: auto;
+  width: 100%;
+}
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: block;
+}
+.table-fixed tbody td, .table-fixed thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+
 </style>
 </head>
 <body>
 	<jsp:include page="menuBar.jsp"></jsp:include>
-	<div class="row" style="margin-top: 4%; text-align: right;">
+	<div class="container">
+  <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <label>
+                              게시판
+          </label>
+          <form class="navbar-form navbar-left" role="search" style="float: right;">
+            <button type="button" class="btn btn-warning" style="color: black; margin:2px; float: right;"
+          onclick="open('insertBoard.jsp','_self', '','')">글쓰기</button>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+        </div>
+        <table class="table table-fixed">
+          <thead>
+            <tr>
+              <th class="col-xs-2">#</th><th class="col-xs-6">제목</th><th class="col-xs-2">작성자</th><th class="col-xs-2">올린날짜</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            <tr>
+               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+				
 		<div class="col-md-2 "></div>
-		<div class="col-md-8 " style="height: 1000px">
-			<div align="center" style="margin-bottom:2%">
-				<h2>게시판목록</h2>
-			</div>
-			<div class="form-login " style="margin-bottom: 2%; height: 900px">
-				<!-- 검색폼  -->
-				<form name="searchform" action="" method="get">
-					<div class="row">
-						<span class="col-sm-4 col-sm-offset-8"
-							style="display: inline-block; text-align: center; margin-top: 1%;">
-							<span id="imaginary_container"> <span
-								class="input-group stylish-input-group"> <input
-									type="hidden" id="searchBoard" value="0">
-									<div class="input-group-btn search-panel"
-										style="background-color: white">
-										<button type="button" class="btn btn-default dropdown-toggle"
-											data-toggle="dropdown">
-											<span id="search_contents">전체검색</span> <span class="caret"></span>
-										</button>
-										<ul class="dropdown-menu" role="menu">
-											<li><a id="search_contents_recipe"
-												onclick="javascript:searchContentsResulver('전체검색',0)">전체검색</a></li>
-											<li><a id="search_contents_nickname"
-												onclick="javascript:searchContentsResulver('제목',1)"> 제목</a></li>
-											<li><a id="search_contents_recipe"
-												onclick="javascript:searchContentsResulver('작성자',2)">작성자</a></li>
-											<li><a id="search_contents_nickname"
-												onclick="javascript:searchContentsResulver('내용',3)">내용</a></li>
-										</ul>
-									</div> <input type="text" class="form-control" placeholder="Search"
-									id="inputsearch"> <span class="input-group-addon">
-										<button type="submit">
-											<span class="glyphicon glyphicon-search"></span>
-										</button>
-								</span>
-							</span>
-						</span>
-					</div>
-				</form>
-				<div class="row" style="margin-top: 4%; text-align: left;">
-					<div class="col-md-2">게시판번호</div>
-					<div class="col-md-4">제목</div>
-					<div class="col-md-2">작성자</div>
-					<div class="col-md-2">등록일자</div>
-					<div class="col-md-2">카테고리</div>
-				</div>
-
-				<div class="form-login "
-					style="margin-bottom: 2%; margin-top: 1%; background-color: white;">
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-					<div class="form-login" style="background-color:#EEEEEE; margin-bottom:1%;margin-left:-1%;margin-right:-1%;">
-						<div class="row" style="text-align: left; font-size: 1.2em">
-							<div class="col-md-2">1000</div>
-							<div class="col-md-4">
-								<a href="viewBoard.jsp" style="color: black">오징어손질</a>
-							</div>
-							<div class="col-md-2">마마보이</div>
-							<div class="col-md-2">2015/5/5</div>
-							<div class="col-md-2">전체</div>
-						</div>
-					</div>
-				</div>
-				<button type="button" class="btn btn-warning" style="color: black"
-					onclick="open('insertBoard.jsp','_self', '','')">글쓰기</button>
-			</div>
-		</div>
-		<div class="col-md-2 "></div>
-	</div>
+  </div>
+</div>
 </body>
 </html>
 
