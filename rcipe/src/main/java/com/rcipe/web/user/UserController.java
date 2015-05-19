@@ -34,7 +34,7 @@ public class UserController {
 	public ModelAndView joinUser(@ModelAttribute("user") User user)throws Exception{
 		System.out.println(user);
 		userService.insertUser(user);
-		return new ModelAndView("mainPage.jsp");
+		return new ModelAndView("mainPage");
 	}
 	@RequestMapping(value = "checkedEmail", method = RequestMethod.GET)
 	public @ResponseBody String checkedEmail(@RequestParam("email") String joinEmail) throws Exception {
