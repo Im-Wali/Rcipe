@@ -1,16 +1,19 @@
 package com.rcipe.service.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Board {
 
 	/*
-	 	boardNo		Integer
-		nicname		String
+	 	boardNo			Integer
+		nicname			String
 		boardTitle		String
 		boardContents	String
 		boardCategory	Integer
 		boardDate		Date
+		boardCount		Integer
+		commentList		List
 	 */
 	
 	private Integer boardNo;
@@ -19,6 +22,8 @@ public class Board {
 	private String boardContent;
 	private Integer boardCategory;
 	private Date boardDate;
+	private Integer boardCount;
+	private List commentList;
 	
 	public Board() {
 		// TODO Auto-generated constructor stub
@@ -71,13 +76,30 @@ public class Board {
 	public void setBoardDate(Date boardDate) {
 		this.boardDate = boardDate;
 	}
+	
+	public Integer getBoardCount() {
+		return boardCount;
+	}
+
+	public void setBoardCount(Integer boardCount) {
+		this.boardCount = boardCount;
+	}
+	
+	public List getCommentList() {
+		return commentList;
+	}
+
+	public void setCommentList(List commentList) {
+		this.commentList = commentList;
+	}
 
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", nickname=" + nickname
 				+ ", boardTitle=" + boardTitle + ", boardContent="
 				+ boardContent + ", boardCategory=" + boardCategory
-				+ ", boardDate=" + boardDate + ", toString()="
+				+ ", boardDate=" + boardDate +", boardCount=" +boardCount
+				+ ", commentList=" + commentList +", toString()="
 				+ super.toString() + "]";
 	}
 
