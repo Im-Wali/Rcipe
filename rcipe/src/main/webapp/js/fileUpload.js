@@ -46,11 +46,7 @@ $("cocument")
 								var str2=str.split("massage")[1].substring("1").split(",")[0];
 								alert(str2);
 								var str3=str.split("changeImg")[1].substring("1").split("}")[0];
-								alert(str3);
 								$("#fileUpload").attr("src","../images/"+str3);
-								$(":file").filestyle('clear');
-							}else if(xhr.readyState==4&&xhr.status==500){
-								alert("파일 업로드에 실패했습니다.");
 							}
 						};
 						// var p=$('#pictureLcation').val();
