@@ -82,7 +82,7 @@
 		INTO
 		Boards(board_no, nickname, board_title, board_cont, board_cat,
 		board_date, board_cnt)
-		VALUES(seq_boards_no.CURRVAL,
+		VALUES(seq_boards_no.nextval,
 		#{nickname},
 		#{boardTitle},
 		#{boardContent},
@@ -133,9 +133,9 @@
 		) countTable
 	</select>
 
-	<select id="getBoardImgList" parameterType="int" resultType="string">
-		select * from
-		baords_img
+	<select id="getBoardImgPath" parameterType="Integer" resultType="String">
+		select board_img_path 
+		from baords
 		where board_no = #{value}
 	</select>
 
