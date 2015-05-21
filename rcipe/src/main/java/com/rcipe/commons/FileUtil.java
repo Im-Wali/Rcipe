@@ -21,7 +21,6 @@ public class FileUtil {
 	public static  Map<String,String> upload(HttpServletRequest request,String path,String nickname) throws IOException {
 		Map<String,String> map=new HashMap<String, String>();
 		if (!(request instanceof MultipartHttpServletRequest)) {
-			System.err.println("파일이 넘어 오지 않았음");
 			map.put("massage", "형식에 맞지않습니다.");
 			return map;
 		}
@@ -37,18 +36,21 @@ public class FileUtil {
 						String str=nickname+"/"+System.currentTimeMillis()+"."+imgExt;
 						file.transferTo(new File(path+"/"+str));
 						map.put("changeImg",str);
+						map.put("succese", "T");
 						System.err.println("File upload success! ");
 					} catch (Exception ie) {
 						System.err.println("File writing error! ");
+						map.put("succese", "F");
 					} 
 				} else {
 					System.err.println("File type error!  FileType:" + imgExt);
 					map.put("massage", "해당 파일은 지원하지않습니다.");
+					map.put("succese", "F");
 					return map;
 				}
 			}
 		}
-		map.put("massage","사진이 업로드 됬습니다.");
+		map.put("massage","사진이 업로드 되었습니다.");
 		return map;
 	}
 	
