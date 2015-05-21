@@ -24,10 +24,19 @@ public class Board {
 	private Integer boardCategory;
 	private Date boardDate;
 	private Integer boardCount;
+	private String boardImgPath;
 	private List commentList;
 	
 	public Board() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public String getBoardImgPath() {
+		return boardImgPath;
+	}
+
+	public void setBoardImgPath(String boardImgPath) {
+		this.boardImgPath = boardImgPath;
 	}
 
 	public Integer getBoardNo() {
