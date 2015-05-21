@@ -90,7 +90,7 @@ row_seq between '1' and '10'; -->
 		INSERT
 		INTO
 		Boards(board_no, nickname, board_title, board_cont, board_cat,  board_date, board_cnt)
-		VALUES(seq_board_no.NEXTVAL,
+		VALUES(seq_boards_no.CURRVAL,
 		#{nickname},
 		#{boardTitle},
 		#{boardContent},
@@ -99,7 +99,7 @@ row_seq between '1' and '10'; -->
 		#{boardCount})
 	</insert>
 
-    <select id="findBoard" parameterType="int" resultMap="boardSelectMap">
+    <select id="getBoard" parameterType="int" resultMap="boardSelectMap">
         <include refid="getJoinQuery" />
          AND b.board_no = #{value}
          ORDER BY p.prod_no
