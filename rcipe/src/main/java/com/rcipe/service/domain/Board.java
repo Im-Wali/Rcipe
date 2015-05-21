@@ -25,7 +25,6 @@ public class Board {
 	private Date boardDate;
 	private Integer boardCount;
 	private List commentList;
-	private List boardImage;
 	
 	public Board() {
 		// TODO Auto-generated constructor stub
@@ -94,14 +93,6 @@ public class Board {
 	public void setCommentList(List commentList) {
 		this.commentList = commentList;
 	}
-	
-	public List getBoardImage() {
-		return boardImage;
-	}
-
-	public void setBoardImage(List boardImage) {
-		this.boardImage = boardImage;
-	}
 
 	@Override
 	public String toString() {
@@ -109,7 +100,7 @@ public class Board {
 				+ ", boardTitle=" + boardTitle + ", boardContent="
 				+ boardContent + ", boardCategory=" + boardCategory
 				+ ", boardDate=" + boardDate +", boardCount=" +boardCount
-				+ ", commentList=" + commentList +", boardImage=" +boardImage 
+				+ ", commentList=" + commentList  
 				+", toString()="+ super.toString() + "]";
 	}
 
