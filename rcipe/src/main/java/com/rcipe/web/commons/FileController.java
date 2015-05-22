@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.rcipe.commons.FileUtil;
 import com.rcipe.service.commons.FileService;
 import com.rcipe.service.domain.User;
-import com.sun.org.apache.bcel.internal.generic.RETURN;
 
 /*
  * 파일 업로드Test class 일단 file upload위치는 C:\\fileUploadTest폴더 밑으로 했고 일단 확장자가 JPG만 할수 있게 해놨다.
