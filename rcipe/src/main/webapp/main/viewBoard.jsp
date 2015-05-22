@@ -64,18 +64,18 @@ h4 {
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
 			<form action="#" method="POST">
+				<div align="right">
+					<span style="float: left"> <label for="title"
+						style="color: black; font-size: medium;">${board.nickname } / 조회수 :
+							(${board.boardCount })</label></span><span> <label for="title"
+						style="color: black; font-size: medium;">작성일 : 2015-05-04
+							15:17:35 </label>
+					</span>
+				</div>
 				<div class="form-login " style="margin-bottom: 2%;" align="right">
 					<h2 align="center" style="margin-bottm: 1%; color: red;">게시판글
 						보기</h2>
 					<div style="margin-top: 1%">
-						<div align="right">
-							<span style="float: left"> <label for="title"
-								style="color: black; font-size: medium;">아이디 / 조회수 :
-									(count)</label></span><span> <label for="title"
-								style="color: black; font-size: medium;">작성일 :
-									2015-05-04 15:17:35 </label>
-							</span>
-						</div>
 						<div class="btn-group" style="margin: 1%;">
 							<span>
 								<button type="button" class="btn btn-warning"
@@ -85,19 +85,20 @@ h4 {
 							</span>
 						</div>
 						<div class="form-login "
-							style="margin: 1%; background-color: white;" align="left">여기에는
-							제목</div>
+							style="margin: 1%; background-color: white;" align="left">${board.boardTitle }</div>
 						<!-- Single button -->
 						<div align="left">
 							<label for="title" style="color: black; font-size: medium;">게시판
 								내용</label>
 							<div class="form-login "
 								style="margin: 1%; background-color: white;">
-								<span>aaaaaa</span>
+								${board.boardContent }
 							</div>
 							<div align="right" style="margin: 1%">
-								<button type="button" class="btn btn-warning " id="list_view">
-									목록보기</button>
+								<a href="boardList.jsp" style="color:white"><button type="button" class="btn btn-warning " id="list_view">
+								목록보기</button></a>
+									<a href="../app/board/viewModifyBoard" style="color:white"><button type="button" class="btn btn-warning " id="list_view">
+								수정하기</button></a>
 							</div>
 						</div>
 					</div>
