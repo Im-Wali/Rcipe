@@ -133,10 +133,4 @@
 		) countTable
 	</select>
 
-	<select id="getBoardImgPath" parameterType="Integer" resultType="String">
-		select board_img_path 
-		from baords
-		where board_no = #{value}
-	</select>
-
 </mapper>
