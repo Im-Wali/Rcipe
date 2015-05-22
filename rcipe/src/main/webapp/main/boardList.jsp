@@ -84,29 +84,18 @@
 </style>
 </head>
 <script>
+
 $(document).ready(function() {
 	funcTab(category);
 });
 function funcTab(category) {
 	alert('category : '+category);
-	
 	$.get("getBoardList?searchCategory="+category,function(data){
 		
-    });
-	
-	$.ajax({
-        url:'getBoardList',
-        type : "get",
-        dataType:'json',
-        success:function(data){
-            var str = '';
-            for(var name in data){
-                str += '<li>'+data[name]+'</li>';
-            }
-            $('#timezones').html('<ul>'+str+'</ul>');
-        }
-    })
-	
+		 $( "#ref" ).html("<tr><td class='col-xs-2'>${ board.boardNo }</td><td class='col-xs-6'><a href='/getBoard'>${board.boardTitle}</a></td><td class='col-xs-2'>${board.nickname}</td><td class='col-xs-2'>${board.boardDate}</td></tr>" );
+		
+   });
+
 	}
 </script>
 <body>
@@ -116,7 +105,8 @@ function funcTab(category) {
 			<div class="panel with-nav-tabs panel-success">
 				<div class="panel-heading">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#" onClick="funcTab(0);" data-toggle="tab">레시피</a></li>
+						<li class="active"><a href="#" onClick="funcTab(0);"
+							data-toggle="tab">레시피</a></li>
 						<li><a href="#" onClick="funcTab(1);" data-toggle="tab">추천맛집</a></li>
 						<li><a href="#" onClick="funcTab(2);" data-toggle="tab">고민상담</a></li>
 						<li><a href="#" onClick="funcTab(3);" data-toggle="tab">기타</a></li>
@@ -149,80 +139,18 @@ function funcTab(category) {
 										<th class="col-xs-2">올린날짜</th>
 									</tr>
 								</thead>
-								<tbody>
-								
-	<c:set var="i" value="0" />
-  <c:forEach var="board" items="${list}">
-    <c:set var="i" value="${ i+1 }" />
-    <tr>
-      <td class="col-xs-2">${ board.boardNo }</td>
-      <td class="col-xs-6"><a href="/getBoard">${board.boardTitle}</a></td>
-      <td class="col-xs-2">${board.nickname}</td>
-      <td class="col-xs-2">${board.boardDate}</td>   
-    </tr>
-  </c:forEach>
-								
-								
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
-									<tr>
-										<td class="col-xs-2">1</td>
-										<td class="col-xs-6">제목1111</td>
-										<td class="col-xs-2">user01</td>
-										<td class="col-xs-2">2015-05-18</td>
-									</tr>
+								<tbody id="ref">
+
+									<c:set var="i" value="0" />
+									<c:forEach var="board" items="${list}">
+										<c:set var="i" value="${ i+1 }" />
+										<tr>
+											<td class="col-xs-2">${ board.boardNo }</td>
+											<td class="col-xs-6"><a href="/getBoard">${board.boardTitle}</a></td>
+											<td class="col-xs-2">${board.nickname}</td>
+											<td class="col-xs-2">${board.boardDate}</td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
