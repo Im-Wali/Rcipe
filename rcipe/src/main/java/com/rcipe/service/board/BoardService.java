@@ -17,7 +17,5 @@ import com.rcipe.service.domain.Board;
 		
 		public Map<String, Object> getBoardList(Search search) throws Exception;
 		
-		public Map<String, Object> getBoardImgList(int boardNo) throws Exception;
-		
 		
 }
