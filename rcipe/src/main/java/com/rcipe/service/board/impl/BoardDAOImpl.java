@@ -54,11 +54,6 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<String> getBoardImgList(int boardNo) throws Exception {
-		return sqlSession.selectList("BoardMapper.getBoardImgList", boardNo);
-	}
-
-	@Override
 	public int getTotalCount(Search search) throws Exception {
 		return sqlSession.selectOne("BoardMapper.getTotalCount", search);
 	}
