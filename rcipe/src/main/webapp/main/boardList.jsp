@@ -23,94 +23,175 @@
 	border-color: #d2d2d2;
 	border-width: 5px;
 	box-shadow: 0 1px 0 #cfcfcf;
-	
-	.table-fixed thead {
-  width: 97%;
-}
-.table-fixed tbody {
-  height: 230px;
-  overflow-y: auto;
-  width: 100%;
-}
-.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
-  display: block;
-}
-.table-fixed tbody td, .table-fixed thead > tr> th {
-  float: left;
-  border-bottom-width: 0;
 }
 
+.panel.with-nav-tabs .panel-heading {
+	padding: 5px 5px 0 5px;
+}
+
+.panel.with-nav-tabs .nav-tabs {
+	border-bottom: none;
+}
+
+.panel.with-nav-tabs .nav-justified {
+	margin-bottom: -1px;
+}
+
+.with-nav-tabs.panel-success .nav-tabs>li>a, .with-nav-tabs.panel-success .nav-tabs>li>a:hover,
+	.with-nav-tabs.panel-success .nav-tabs>li>a:focus {
+	color: #3c763d;
+}
+
+.with-nav-tabs.panel-success .nav-tabs>.open>a, .with-nav-tabs.panel-success .nav-tabs>.open>a:hover,
+	.with-nav-tabs.panel-success .nav-tabs>.open>a:focus, .with-nav-tabs.panel-success .nav-tabs>li>a:hover,
+	.with-nav-tabs.panel-success .nav-tabs>li>a:focus {
+	color: #3c763d;
+	background-color: #d6e9c6;
+	border-color: transparent;
+}
+
+.with-nav-tabs.panel-success .nav-tabs>li.active>a, .with-nav-tabs.panel-success .nav-tabs>li.active>a:hover,
+	.with-nav-tabs.panel-success .nav-tabs>li.active>a:focus {
+	color: #3c763d;
+	background-color: #fff;
+	border-color: #d6e9c6;
+	border-bottom-color: transparent;
+}
+
+.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu {
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+}
+
+.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>li>a {
+	color: #3c763d;
+}
+
+.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>li>a:hover,
+	.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>li>a:focus
+	{
+	background-color: #d6e9c6;
+}
+
+.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>.active>a,
+	.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>.active>a:hover,
+	.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>.active>a:focus
+	{
+	color: #fff;
+	background-color: #3c763d;
+}
 </style>
 </head>
 <body>
 	<jsp:include page="menuBar.jsp"></jsp:include>
 	<div class="container">
-  <div class="row">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <label>
-                              게시판
-          </label>
-          <form class="navbar-form navbar-left" role="search" style="float: right;">
-            <button type="button" class="btn btn-warning" style="color: black; margin:2px; float: right;"
-          onclick="open('insertBoard.jsp','_self', '','')">글쓰기</button>
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-        </div>
-        <table class="table table-fixed">
-          <thead>
-            <tr>
-              <th class="col-xs-2">#</th><th class="col-xs-6">제목</th><th class="col-xs-2">작성자</th><th class="col-xs-2">올린날짜</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            <tr>
-               <th class="col-xs-2">1</th><th class="col-xs-6">제목1111</th><th class="col-xs-2">user01</th><th class="col-xs-2">2015-05-18</th>
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
-				
-		<div class="col-md-2 "></div>
-  </div>
-</div>
+		<div class="col-md-12">
+			<div class="panel with-nav-tabs panel-success">
+				<div class="panel-heading">
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#recipe" data-toggle="tab">레시피</a></li>
+						<li><a href="#recommend" data-toggle="tab">추천맛집</a></li>
+						<li><a href="#counsel" data-toggle="tab">고민상담</a></li>
+						<li><a href="#others" data-toggle="tab">기타</a></li>
+						<li class="dropdown" style="float: right;"><a href="#"
+							data-toggle="dropdown">10개 <span class="caret"></span>
+						</a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#twenty" data-toggle="tab">20개</a></li>
+								<li><a href="#fifty" data-toggle="tab">50개</a></li>
+							</ul></li>
+						<li style="float: right;"><form
+								class="navbar-form navbar-left" role="search">
+								<div class="form-group">
+									<input type="text" class="form-control" placeholder="Search">
+								</div>
+								<button type="submit" class="btn btn-default">찾기</button>
+								<button type="button" class="btn btn-default">글쓰기</button>
+							</form></li>
+					</ul>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						<div class="tab-pane fade in active">
+							<table class="table table-fixed">
+								<thead>
+									<tr>
+										<th class="col-xs-2">#</th>
+										<th class="col-xs-6">제목</th>
+										<th class="col-xs-2">작성자</th>
+										<th class="col-xs-2">올린날짜</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2">1</td>
+										<td class="col-xs-6">제목1111</td>
+										<td class="col-xs-2">user01</td>
+										<td class="col-xs-2">2015-05-18</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
 </body>
 </html>
 
