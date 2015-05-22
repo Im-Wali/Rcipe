@@ -31,7 +31,6 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public void insertBoard(Board board) throws Exception {
-		System.out.println("게시물 생성오더~.^");
 		boardDAO.insertBoard(board);
 	}
 
