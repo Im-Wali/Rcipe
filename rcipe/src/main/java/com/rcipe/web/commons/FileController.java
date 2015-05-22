@@ -43,18 +43,24 @@ public class FileController {
 		// 여기에 회원 별로 관리할수 있는 부분
 //		User user=(User)session.getAttribute("user");
 		User user=new User("user01","user01@naver.com","1111","!!!!");
+		//게시판 하나에 하나의 폴더를갖는다.
+		String boardPath=(String)session.getAttribute("boardImgPath");
+		if(boardPath==null){
+			boardPath=""+System.currentTimeMillis();
+			session.setAttribute("boardImgPath", boardPath);
+		}
 		String projectPath="http://"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+"/rcipe/images/";
 		// File("c:\\fileUploadTest\\user"+user.getNickname"+"\\profile");
 		PrintWriter printWriter = null;
         response.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-		File newFile=new File(ctx.getRealPath("/images")+"/"+user.getNickname());
+		File newFile=new File(ctx.getRealPath("/images")+"/"+user.getNickname()+"/"+boardPath);
 		if(!newFile.isDirectory()){
 			newFile.mkdirs();
 		}
 		  Map<String,String> map=null;
 		try{
-			map=FileUtil.upload(request,ctx.getRealPath("/images"),user.getNickname());
+			map=FileUtil.upload(request,ctx.getRealPath("/images"),user.getNickname()+"/"+boardPath);
 			 printWriter = response.getWriter();
 			String str=projectPath+map.get("changeImg");
 			System.out.println(str);
