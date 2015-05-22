@@ -20,6 +20,5 @@ import com.rcipe.service.domain.Board;
 		public List<String> getBoardImgList(int boardNo) throws Exception;
 		
 		public int getTotalCount(Search search) throws Exception;
-		
 
 }
