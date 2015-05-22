@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <!-- id searchBoard에 전체검색,제목,작성자 0,1,2식으로 저장-->
 <html>
@@ -82,6 +83,32 @@
 }
 </style>
 </head>
+<script>
+$(document).ready(function() {
+	funcTab(category);
+});
+function funcTab(category) {
+	alert('category : '+category);
+	
+	$.get("getBoardList?searchCategory="+category,function(data){
+		
+    });
+	
+	$.ajax({
+        url:'getBoardList',
+        type : "get",
+        dataType:'json',
+        success:function(data){
+            var str = '';
+            for(var name in data){
+                str += '<li>'+data[name]+'</li>';
+            }
+            $('#timezones').html('<ul>'+str+'</ul>');
+        }
+    })
+	
+	}
+</script>
 <body>
 	<jsp:include page="menuBar.jsp"></jsp:include>
 	<div class="container">
@@ -89,10 +116,10 @@
 			<div class="panel with-nav-tabs panel-success">
 				<div class="panel-heading">
 					<ul class="nav nav-tabs">
-						<li class="active"><a href="#recipe" data-toggle="tab">레시피</a></li>
-						<li><a href="#recommend" data-toggle="tab">추천맛집</a></li>
-						<li><a href="#counsel" data-toggle="tab">고민상담</a></li>
-						<li><a href="#others" data-toggle="tab">기타</a></li>
+						<li class="active"><a href="#" onClick="funcTab(0);" data-toggle="tab">레시피</a></li>
+						<li><a href="#" onClick="funcTab(1);" data-toggle="tab">추천맛집</a></li>
+						<li><a href="#" onClick="funcTab(2);" data-toggle="tab">고민상담</a></li>
+						<li><a href="#" onClick="funcTab(3);" data-toggle="tab">기타</a></li>
 						<li class="dropdown" style="float: right;"><a href="#"
 							data-toggle="dropdown">10개 <span class="caret"></span>
 						</a>
@@ -110,7 +137,7 @@
 							</form></li>
 					</ul>
 				</div>
-				<div class="panel-body">
+				<div class="panel-body" id="conte">
 					<div class="tab-content">
 						<div class="tab-pane fade in active">
 							<table class="table table-fixed">
@@ -123,6 +150,19 @@
 									</tr>
 								</thead>
 								<tbody>
+								
+	<c:set var="i" value="0" />
+  <c:forEach var="board" items="${list}">
+    <c:set var="i" value="${ i+1 }" />
+    <tr>
+      <td class="col-xs-2">${ board.boardNo }</td>
+      <td class="col-xs-6"><a href="/getBoard">${board.boardTitle}</a></td>
+      <td class="col-xs-2">${board.nickname}</td>
+      <td class="col-xs-2">${board.boardDate}</td>   
+    </tr>
+  </c:forEach>
+								
+								
 									<tr>
 										<td class="col-xs-2">1</td>
 										<td class="col-xs-6">제목1111</td>
