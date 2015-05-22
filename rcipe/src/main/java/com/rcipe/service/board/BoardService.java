@@ -2,6 +2,7 @@ package com.rcipe.service.board;
 
 import java.util.Map;
 
+import com.rcipe.commons.Search;
 import com.rcipe.service.domain.Board;
 
 	public interface BoardService {
@@ -17,5 +18,6 @@ import com.rcipe.service.domain.Board;
 		public Map<String, Object> getBoardList(Search search) throws Exception;
 		
 		public Map<String, Object> getBoardImgList(int boardNo) throws Exception;
+		
 		
 }

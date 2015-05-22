@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.rcipe.commons.Search;
 import com.rcipe.service.board.BoardDAO;
 import com.rcipe.service.domain.Board;
 
@@ -61,5 +62,7 @@ public class BoardDAOImpl implements BoardDAO {
 	public int getTotalCount(Search search) throws Exception {
 		return sqlSession.selectOne("BoardMapper.getTotalCount", search);
 	}
+
+	
 
 }

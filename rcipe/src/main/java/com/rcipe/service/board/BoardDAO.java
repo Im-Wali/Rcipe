@@ -2,6 +2,7 @@ package com.rcipe.service.board;
 
 import java.util.List;
 
+import com.rcipe.commons.Search;
 import com.rcipe.service.domain.Board;
 
 	public interface BoardDAO {
@@ -19,5 +20,6 @@ import com.rcipe.service.domain.Board;
 		public List<String> getBoardImgList(int boardNo) throws Exception;
 		
 		public int getTotalCount(Search search) throws Exception;
+		
 
 }

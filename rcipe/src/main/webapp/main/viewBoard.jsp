@@ -59,7 +59,7 @@ h4 {
 </script>
 </HEAD>
 <body>
-	<div><jsp:include page="menuBar.jsp"></jsp:include></div>
+	<div><jsp:include page="../main/menuBar.jsp"></jsp:include></div>
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
@@ -110,7 +110,7 @@ h4 {
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="form-login " style="margin-bottom: 2%;">
-				<jsp:include page="comment.jsp"></jsp:include>
+				<jsp:include page="../main/comment.jsp"></jsp:include>
 			</div>
 		</div>
 		<div class="col-md-2"></div>

@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.rcipe.commons.Search;
 import com.rcipe.service.board.BoardDAO;
 import com.rcipe.service.board.BoardService;
+import com.rcipe.service.comment.CommentService;
 import com.rcipe.service.domain.Board;
 
 @Service("boardServiceImpl")
@@ -18,6 +20,10 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	@Qualifier("boardDAOImpl")
 	private BoardDAO boardDAO;
+	
+/*	@Autowired
+	@Qualifier("commentServiceImpl")
+	private CommentService commentService;*/
 
 	public BoardServiceImpl() {
 		System.out.println("BoardServiceImpl default Constructor~!!");
@@ -65,5 +71,7 @@ public class BoardServiceImpl implements BoardService{
 		
 		return map;
 	}
+
+	
 
 }
