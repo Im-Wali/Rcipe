@@ -30,6 +30,23 @@ public class Board {
 	public Board() {
 		// TODO Auto-generated constructor stub
 	}
+	
+
+	public Board(Integer boardNo, String nickname, String boardTitle,
+			String boardContent, Integer boardCategory, Date boardDate,
+			Integer boardCount, String boardImgPath, List commentList) {
+		super();
+		this.boardNo = boardNo;
+		this.nickname = nickname;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardCategory = boardCategory;
+		this.boardDate = boardDate;
+		this.boardCount = boardCount;
+		this.boardImgPath = boardImgPath;
+		this.commentList = commentList;
+	}
+
 
 	public String getBoardImgPath() {
 		return boardImgPath;
