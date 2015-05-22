@@ -61,16 +61,5 @@ public class BoardServiceImpl implements BoardService{
 		return map;
 	}
 
-	@Override
-	public Map<String, Object> getBoardImgList(int boardNo) throws Exception {
-		List<String> list = boardDAO.getBoardImgList(boardNo);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("list", list);
-		
-		return map;
-	}
-
-	
 
 }
