@@ -14,6 +14,7 @@
 		<result property="boardCategory" column="board_cat" jdbcType="INTEGER" />
 		<result property="boardDate" column="board_date" jdbcType="DATE" />
 		<result property="boardCount" column="board_cnt" jdbcType="INTEGER" />
+		<result property="boardImgPath" column="board_img_path" jdbcType="VARCHAR" />
 	</resultMap>
 
 
@@ -31,20 +32,28 @@
 
 
 	<sql id="searchBoard">
-		SELECT
-    b.board_no, b.board_title, b.board_cont, b.board_cat,
-    b.board_date , b.board_cnt,
-    b.nickname bnick,
-    u.nickname unick
-    from
-    boards b, users u
-    WHERE b.nickname = u.nickname
-		AND b.board_cat = #{searchCategory}
+		<include refid="getJoinQuery" />
+
+		<if test="#{nickname}!=null">
+			AND b.nickname = #{nickname}
+		</if>
+
+		<if test="searchCondition != null">
+			<where>
+				<if test="searchCondition 
+			== 0 and searchKeyword !='' "> rcp_no like '%${searchKeyword}%' </if>
+				<if test="searchCondition == 1 and searchKeyword !='' "> nickname in #{searchKeyword}
+				</if>
+				<if test="searchCondition == 3 and searchKeyword !='' "> rcp_title
+					like '%${searchKeyword}%' </if>
+			</where>
+		</if>
+
 		ORDER BY b.board_no
 	</sql>
 
 
-	<select id="getBoardList" parameterType="search"
+	<select id="getBoardList" parameterType="java.util.Map"
 		resultMap="boardSelectMap">
 		SELECT
 		inner.*
@@ -55,9 +64,9 @@
 		<include refid="searchBoard" />
 		)
 		inner_table WHERE
-		ROWNUM &lt; = 3 ) inner
+		ROWNUM &lt; = #{search.endRowNum} ) inner
 		WHERE
-		row_seq BETWEEN 1 AND 3
+		row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum}
 	</select>
 
 	<!-- ##쿼리 예제## select inner.* from( select inner_table.*, rownum as row_seq 
@@ -73,14 +82,15 @@
 		INSERT
 		INTO
 		Boards(board_no, nickname, board_title, board_cont, board_cat,
-		board_date, board_cnt)
+		board_date, board_cnt,board_img_path) 
 		VALUES(seq_boards_no.nextval,
 		#{nickname},
 		#{boardTitle},
 		#{boardContent},
 		#{boardCategory},
 		SYSDATE,
-		#{boardCount})
+		0,
+		#{boardImgPath:VARCHAR})
 	</insert>
 
 	<select id="getBoard" parameterType="int" resultMap="boardSelectMap">
@@ -90,12 +100,11 @@
 	</select>
 
 	<update id="updateBoard" parameterType="board">
-		UPDATE board
+		UPDATE boards
 		<set>
 			board_title = #{boardTitle},
 			board_cont = #{boardContent},
-			board_cat = #{boardCategory},
-			board_date = SYSDATE
+			board_cat = #{boardCategory}
 		</set>
 		WHERE board_no = #{boardNo}
 	</update>
@@ -116,14 +125,13 @@
 	<select id="getTotalCount" parameterType="search" resultType="int">
 		SELECT COUNT(*)
 		FROM( SELECT *
-		FROM boards WHERE board_cat = #{searchCategory}
+		FROM boards
+		<!-- <if test="searchCondition != null"> <where> <if test="searchCondition 
+			== 0 and searchKeyword !='' "> rcp_no like '%${searchKeyword}%' </if> <if 
+			test="searchCondition ==W 1 and searchKeyword !='' "> nickname in #{searchKeyword} 
+			</if> <if test="searchCondition == 3 and searchKeyword !='' "> rcp_title 
+			like '%${searchKeyword}%' </if> </where> </if> -->
 		) countTable
-	</select>
-
-	<select id="getBoardImgPath" parameterType="Integer" resultType="String">
-		select board_img_path 
-		from baords
-		where board_no = #{value}
 	</select>
 
 </mapper>
