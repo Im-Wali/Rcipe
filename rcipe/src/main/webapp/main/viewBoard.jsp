@@ -51,9 +51,20 @@ h4 {
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(window).load(function() {
-			//!!!!!!!!!!!!!!!!!!!!!바꿔야함
-			document.getElementById("select_category").innerHTML = "(카테고리)";
+		$(window).load(function(){
+			var n =${board.boardCategory};
+			alert(n);
+			var str;
+			if (n == 1) {
+				str = "레시피";
+			} else if (n == 2) {
+				str = "추천맛집";
+			} else if (n == 3) {
+				str = "고민상담";
+			} else {
+				str = "기타";
+			}
+			$('#select_category').html(str);
 		});
 	});
 </script>
@@ -63,13 +74,12 @@ h4 {
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="#" method="POST">
 				<div align="right">
+				<input type="hidden" id="boardNo" vlaue="${board.boardNo }" >
 					<span style="float: left"> <label for="title"
-						style="color: black; font-size: medium;">${board.nickname } / 조회수 :
+						style="color: black; font-size: medium;">작성자 : ${board.nickname } / 조회수 :
 							(${board.boardCount })</label></span><span> <label for="title"
-						style="color: black; font-size: medium;">작성일 : 2015-05-04
-							15:17:35 </label>
+						style="color: black; font-size: medium;">작성일 :${board.boardDate } </label>
 					</span>
 				</div>
 				<div class="form-login " style="margin-bottom: 2%;" align="right">
@@ -84,26 +94,29 @@ h4 {
 								</button>
 							</span>
 						</div>
+						<div align="left">
+						<label for="title" style="color: black; font-size: medium;">제목</label>
+						</div>
 						<div class="form-login "
 							style="margin: 1%; background-color: white;" align="left">${board.boardTitle }</div>
 						<!-- Single button -->
 						<div align="left">
-							<label for="title" style="color: black; font-size: medium;">게시판
-								내용</label>
+							<label for="title" style="color: black; font-size: medium;">내용</label>
 							<div class="form-login "
 								style="margin: 1%; background-color: white;">
 								${board.boardContent }
 							</div>
+						</div>
 							<div align="right" style="margin: 1%">
-								<a href="boardList.jsp" style="color:white"><button type="button" class="btn btn-warning " id="list_view">
+							<a href="#"	>
+							<button type='submit' class="btn btn-warning ">
 								목록보기</button></a>
-									<a href="../app/board/viewModifyBoard" style="color:white"><button type="button" class="btn btn-warning " id="list_view">
+							<a href="board/viewModifyBoard?boardNo=${board.boardNo}">
+							<button type="button" class="btn btn-warning " >
 								수정하기</button></a>
 							</div>
-						</div>
 					</div>
 				</div>
-			</form>
 		</div>
 		<div class="col-md-2 "></div>
 	</div>
