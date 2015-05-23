@@ -58,6 +58,9 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectOne("BoardMapper.getTotalCount", search);
 	}
 
-	
+	@Override
+	public void updateBoardCount(Integer boardNo) throws Exception {
+		 sqlSession.update("BoardMapper.updateBoardCount", boardNo);
+	}
 
 }
