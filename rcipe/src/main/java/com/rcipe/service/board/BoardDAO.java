@@ -19,5 +19,7 @@ import com.rcipe.service.domain.Board;
 		
 		public int getTotalCount(Search search) throws Exception;
 		
+		public void updateBoardCount(Integer boardNo)throws Exception;
+		
 
 }
