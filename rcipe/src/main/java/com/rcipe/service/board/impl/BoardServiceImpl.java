@@ -36,6 +36,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public Board getBoard(int boardNo) throws Exception {
+		boardDAO.updateBoardCount(boardNo);
 		return boardDAO.getBoard(boardNo);
 	}
 
