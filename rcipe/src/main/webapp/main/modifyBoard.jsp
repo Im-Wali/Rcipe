@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <HEAD>
-<%
+<%-- <%
 	Board board = new Board(
 			10021,
 			"user01",
@@ -19,7 +19,7 @@
 					+ "어<br />" + "어<br />" + "어<br />" + "어<br />"
 					+ "어<br />" + "에", 1, new Date(2015, 03, 29), 30,
 			"", null);
-%>
+%> --%>
 <title>Recipe</title>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -47,22 +47,21 @@
 		document.getElementById("boardCategory").value = value2;
 	};
 	$('document').ready(function() {
-		var n =
-<%=board.getBoardCategory()%>
-	;
-		var str;
-		if (n == 1) {
-			str = "레시피";
-		} else if (n == 2) {
-			str = "추천맛집";
-		} else if (n == 3) {
-			str = "고민상담";
-		} else {
-			str = "기타";
-		}
-		$('#select_category').html(str);
-		$('#boardCategory').val(n);
-
+		$(window).load(function(){
+			var n =${board.boardCategory};
+			var str;
+			if (n == 1) {
+				str = "레시피";
+			} else if (n == 2) {
+				str = "추천맛집";
+			} else if (n == 3) {
+				str = "고민상담";
+			} else {
+				str = "기타";
+			}
+			$('#select_category').html(str);
+			$('#boardCategory').val(n);
+		});
 		$('#boardSubmit').click(function(event) {
 			if ($('#boardTitle').val() == '') {
 				alert("제목을 입력하세요");
@@ -88,14 +87,14 @@
 		<div class="col-md-8 ">
 			<form action="../app/board/modifyBoard" method="POST">
 				<div align="right">
-					<label style="font-size:1.2em;margin-right:1%;">등록된 날짜:<%=board.getBoardDate().getYear()%>/
+					<label style="font-size:1.2em;margin-right:1%;">등록된 날짜:<%-- <%=board.getBoardDate().getYear()%>/
 					<%=board.getBoardDate().getMonth()%>/
 					<%=board.getBoardDate().getDate()%>/
 					<%=board.getBoardDate().getHours()%>:
 					<%=board.getBoardDate().getMinutes()%>:
-					<%=board.getBoardDate().getSeconds()%></label>
+					<%=board.getBoardDate().getSeconds()%> --%>${board.boardDate }</label>
 				</div>
-				<input type="hidden" name="boardNo" id="boardNo" value="<%=board.getBoardNo() %>">
+				<input type="hidden" name="boardNo" id="boardNo" value="${ board.boardNo}">
 				<div class="form-login " style="margin-bottom: 2%;">
 					<h3 align="center" style="margin-bottm: 1%;">게시판글 수정</h3>
 					<div style="margin-top: 1%">
@@ -103,7 +102,7 @@
 							style="color: red; font-size: x-large; margin: 1%">*제목</label><input
 							type="text" class="form-control" id="boardTitle"
 							name="boardTitle" placeholder="제목을 입려하세요"
-							value="<%=board.getBoardTitle()%>">
+							value="${board.boardTitle}">
 						<!-- Single button -->
 						<div align="right">
 							<div style="margin-top: 1%;" align="left">
@@ -129,7 +128,7 @@
 							</div>
 						</div>
 						<div>
-							<textarea name="boardContent" id="editor1" class="ckeditor"> <%=board.getBoardContent()%></textarea>
+							<textarea name="boardContent" id="editor1" class="ckeditor"> ${board.boardContent}</textarea>
 						</div>
 						<div align="right" style="margin-top: 1%">
 							<span><button type="submit" class="btn btn-warning"
