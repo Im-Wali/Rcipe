@@ -2,8 +2,7 @@ package com.rcipe.web.board;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,9 @@ public class BoardController {
 	@Autowired
 	@Qualifier("boardServiceImpl")
 	BoardService boardService;
+	
+	@Autowired
+	ServletContext cx;
 	public BoardController() {
 		System.out.println("BoardController Start()....");
 	}
@@ -54,8 +56,8 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/viewModifyBoard", method = RequestMethod.GET)
-	public  String  viewModifyBoard(Model model,@RequestParam("boardNo") String boardNo,HttpSession session)throws Exception{
-		Board board=boardService.getBoard(Integer.parseInt(boardNo));
+	public  String  viewModifyBoard(Model model,@RequestParam("boardNo") int boardNo,HttpSession session)throws Exception{
+		Board board=boardService.getBoard(boardNo);
 		session.setAttribute("boardImgPath",board.getBoardImgPath());
 		model.addAttribute("board",board);
 		return "forward:/main/modifyBoard.jsp";
@@ -70,8 +72,8 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/viewBoard", method = RequestMethod.GET)
-	public  String  viewBoard(Model model,@RequestParam("boardNo") String boardNo)throws Exception{
-		model.addAttribute("board",boardService.getBoard(Integer.parseInt(boardNo)));
+	public  String  viewBoard(Model model,@RequestParam("boardNo") int boardNo)throws Exception{
+		model.addAttribute("board",boardService.getBoard(boardNo));
 		return "forward:/main/viewBoard.jsp";
 	}
 	
@@ -97,5 +99,10 @@ public class BoardController {
 		
 		return modelAndView;
 	}
-
+	@RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)
+	public String deleteBoard(@RequestParam("boardNo") int boardNo,@RequestParam("boardImgPath") String boardImgPath)throws Exception{
+		System.out.println(cx.getRealPath("/images")+boardImgPath);
+		boardService.deleteBoard(boardNo,cx.getRealPath("/images")+boardImgPath);
+		return "redirect:/main/boardList.jsp";
+	}
 }

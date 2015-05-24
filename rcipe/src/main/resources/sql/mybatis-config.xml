@@ -15,6 +15,7 @@
 		<typeAlias alias="user" type="com.rcipe.service.domain.User" />
 		<typeAlias alias="search" type="com.rcipe.commons.Search"/>
 		<typeAlias alias="board" type="com.rcipe.service.domain.Board"/>
+		<typeAlias alias="comment" type="com.rcipe.service.domain.Comment"/>
 	</typeAliases>
 
 	<!-- SQL Definition :: file include -->

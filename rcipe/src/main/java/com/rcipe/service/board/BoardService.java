@@ -13,7 +13,7 @@ import com.rcipe.service.domain.Board;
 		
 		public void updateBoard(Board board) throws Exception;
 		
-		public int deleteBoard(int boardNo) throws Exception;
+		public int deleteBoard(int boardNo,String boardImgPath) throws Exception;
 		
 		public Map<String, Object> getBoardList(Search search) throws Exception;
 		

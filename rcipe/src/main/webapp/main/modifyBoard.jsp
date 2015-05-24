@@ -85,7 +85,7 @@
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="../app/board/modifyBoard" method="POST">
+			<form action="modifyBoard" method="POST">
 				<div align="right">
 					<label style="font-size:1.2em;margin-right:1%;">등록된 날짜:<%-- <%=board.getBoardDate().getYear()%>/
 					<%=board.getBoardDate().getMonth()%>/

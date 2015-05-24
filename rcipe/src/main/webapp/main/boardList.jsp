@@ -99,7 +99,7 @@ function funcTab(category) {
 	}
 </script>
 <body>
-	<jsp:include page="menuBar.jsp"></jsp:include>
+	<jsp:include page="../main/menuBar.jsp"></jsp:include>
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel with-nav-tabs panel-success">

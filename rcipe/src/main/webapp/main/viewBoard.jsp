@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <HEAD>
@@ -51,8 +52,13 @@ h4 {
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(window).load(function(){
-			var n =${board.boardCategory};
+		$(window).load(function() {
+			var n = $
+			{
+				board.boardCategory
+			}
+			;
+			alert(${baord.baordCategory});
 			alert(n);
 			var str;
 			if (n == 1) {
@@ -74,49 +80,53 @@ h4 {
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-				<div align="right">
-				<input type="hidden" id="boardNo" vlaue="${board.boardNo }" >
-					<span style="float: left"> <label for="title"
-						style="color: black; font-size: medium;">작성자 : ${board.nickname } / 조회수 :
-							(${board.boardCount })</label></span><span> <label for="title"
-						style="color: black; font-size: medium;">작성일 :${board.boardDate } </label>
-					</span>
-				</div>
-				<div class="form-login " style="margin-bottom: 2%;" align="right">
-					<h2 align="center" style="margin-bottm: 1%; color: red;">게시판글
-						보기</h2>
-					<div style="margin-top: 1%">
-						<div class="btn-group" style="margin: 1%;">
-							<span>
-								<button type="button" class="btn btn-warning"
-									id="select_category" style="margin: 1%;">
-									<span class="caret"></span>
-								</button>
-							</span>
-						</div>
-						<div align="left">
+			<div align="right">
+				<input type="hidden" id="boardNo" vlaue="${board.boardNo }">
+				<span style="float: left"> <label for="title"
+					style="color: black; font-size: medium;">작성자 :
+						${board.nickname } / 조회수 : (${board.boardCount })</label></span><span> <label
+					for="title" style="color: black; font-size: medium;">작성일
+						:${board.boardDate } </label>
+				</span>
+			</div>
+			<div class="form-login " style="margin-bottom: 2%;" align="right">
+				<h2 align="center" style="margin-bottm: 1%; color: red;">게시판글
+					보기</h2>
+				<div style="margin-top: 1%">
+					<div class="btn-group" style="margin: 1%;">
+						<span>
+							<button type="button" class="btn btn-warning"
+								id="select_category" style="margin: 1%;">
+								<span class="caret"></span>
+							</button>
+						</span>
+					</div>
+					<div align="left">
 						<label for="title" style="color: black; font-size: medium;">제목</label>
-						</div>
+					</div>
+					<div class="form-login "
+						style="margin: 1%; background-color: white;" align="left">${board.boardTitle }</div>
+					<!-- Single button -->
+					<div align="left">
+						<label for="title" style="color: black; font-size: medium;">내용</label>
 						<div class="form-login "
-							style="margin: 1%; background-color: white;" align="left">${board.boardTitle }</div>
-						<!-- Single button -->
-						<div align="left">
-							<label for="title" style="color: black; font-size: medium;">내용</label>
-							<div class="form-login "
-								style="margin: 1%; background-color: white;">
-								${board.boardContent }
-							</div>
-						</div>
-							<div align="right" style="margin: 1%">
-							<a href="#"	>
-							<button type='submit' class="btn btn-warning ">
-								목록보기</button></a>
-							<a href="board/viewModifyBoard?boardNo=${board.boardNo}">
-							<button type="button" class="btn btn-warning " >
-								수정하기</button></a>
-							</div>
+							style="margin: 1%; background-color: white;">
+							${board.boardContent }</div>
+					</div>
+					<div align="right" style="margin: 1%">
+						<a href="#">
+							<button type='button' class="btn btn-warning ">목록보기</button>
+						</a> 
+						<c:if test="${board.nickname eq user.nickname }">
+						<a href="viewModifyBoard?boardNo=${board.boardNo}">
+							<button type="button" class="btn btn-warning ">수정하기</button>
+						</a> <a href="deleteBoard?boardNo=${board.boardNo}&boardImgPath=/${board.nickname}/${board.boardImgPath}">
+							<button type="button" class="btn btn-warning">게시글 삭제</button>
+						</a>
+						</c:if>
 					</div>
 				</div>
+			</div>
 		</div>
 		<div class="col-md-2 "></div>
 	</div>

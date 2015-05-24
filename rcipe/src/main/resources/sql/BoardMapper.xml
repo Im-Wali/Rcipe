@@ -94,9 +94,12 @@
 	</insert>
 
 	<select id="getBoard" parameterType="int" resultMap="boardSelectMap">
-		<include refid="getJoinQuery" />
-		AND b.board_no = #{value}
-		ORDER BY p.prod_no
+		SELECT
+		board_no, nickname,board_title, board_cont, board_cat,
+		board_date , board_cnt, board_img_path
+		FROM boards
+		WHERE board_no = #{value}
+		ORDER BY board_no
 	</select>
 
 	<update id="updateBoard" parameterType="board">
@@ -108,18 +111,18 @@
 		</set>
 		WHERE board_no = #{boardNo}
 	</update>
+	
+	<update id="updateBoardCount" parameterType="String">
+		UPDATE boards
+		<set>
+			BOARD_CNT=BOARD_CNT+1
+		</set>
+		WHERE board_no = #{value}
+	</update>
 
 	<delete id="deleteBoard" parameterType="int">
-		DELETE FROM (
-		select *
-		from users u, boards b, baords_img bimg, boards_cmt bcmt, comments
-		cmts
-		where b.nickname = u.nickname and b.board_no = bimg.board_no
-		and
-		b.board_no = bcmt.board_no and bcmt.cmt_no = cmts.cmt_no )
-
-		WHERE
-		board_no = #{value}
+		DELETE FROM boards 
+		WHERE board_no=${value}
 	</delete>
 
 	<select id="getTotalCount" parameterType="search" resultType="int">

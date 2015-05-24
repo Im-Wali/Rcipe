@@ -6,87 +6,88 @@
 
 <mapper namespace="BoardMapper">
 
-	<resultMap type="com.model2.mvc.service.domain.Board" id="boardSelectMap">
-		<result property="boardNo" column="board_no" jdbcType="INTEGER" />
-		<result property="writer.userId" column="user_id" jdbcType="VARCHAR" />
-		<result property="boardTitle" column="board_title" jdbcType="VARCHAR" />
-		<result property="boardContent" column="board_content"
-			jdbcType="VARCHAR" />
+	<resultMap type="comment" id="commentMap">
+		<result property="commentNo" column="CMT_NO" jdbcType="INTEGER" />
+		<result property="commentReNo" column="CMT_NO2" jdbcType="INTEGER" />
+		<result property="nickname" column="NICKNAME" jdbcType="VARCHAR" />
+		<result property="commentContent" column="CMT_CONT" jdbcType="VARCHAR" />
+		<result property="commentDate" column="CMT_DATE" jdbcType="DATE" />
+		<result property="userImg" column="USER_IMG" jdbcType="VARCHAR" />
+		<result property="contentNo" column="CONTENT_NO" jdbcType="INTEGER" />
 	</resultMap>
 
-	<insert id="insertBoard" parameterType="com.model2.mvc.service.domain.Board">
-		INSERT
+	<insert id="insertBoardComment" parameterType="">
+		INSERT ALL
 		INTO
-		Board(board_no, user_id, board_title, board_content)
-		VALUES(seq_board_board_no.NEXTVAL, #{writer.userId}, #{boardTitle},
-		#{boardContent})
+		comments
+		VALUES(seq_cmt_no.NEXTVAL,NICKNAME, CMT_NO2,
+		CMT_CONT,CMT_DATE)
+		INTO boards_cmt VALUES(seq_cmt_no.currVal,board_no)
+		SELECT #{nickname} AS NICKNAME , #{commentReNo:VARCHAR} AS CMT_NO2,
+		#{commentContent} AS CMT_CONT ,SYSDATE AS
+		CMT_DATE,#{contentNo} AS
+		board_no
+		FROM DUAL;
 	</insert>
 
-	<select id="getBoard" parameterType="int" resultMap="boardSelectMap">
+	<select id="getBoardCommentList" parameterType="int" resultMap="commentMap">
 		SELECT
-		user_id, board_title, board_content, board_no
-		FROM board
-		WHERE board_no = #{value}
+		c.CMT_NO ,c.CMT_NO2,c.NICKNAME,c.CMT_CONT,c.CMT_DATE,u.USER_IMG
+		FROM comments c,baords_cmt bc,users u
+		WHERE bc.board_no=#{value} AND
+		bc.cmt_no=c.cmt_no
+		AND u.nickname LIKE c.nickname
 	</select>
 
-	<update id="updateBoard" parameterType="com.model2.mvc.service.domain.Board">
-		UPDATE board
+	<update id="updateBoardComment" parameterType="comment">
+		UPDATE comments
 		<set>
-			board_title = #{boardTitle},
-			board_content = #{boardContent},
+			CMT_CONT = #{commentContent}
 		</set>
-		WHERE board_no = #{boardNo}
+		WHERE cmt_no = #{commentNo}
 	</update>
 
-	<delete id="removeBoard" parameterType="int">
+
+
+	<delete id="removeComment" parameterType="int">
 		DELETE
-		FROM board
-		WHERE
-		board_no = #{value}
+		FROM comments
+		WHERE cmt_no2=#{value} OR cmt_no=#{value}
 	</delete>
 
-	<select id="getUserList1" parameterType="com.model2.mvc.common.Search"
-		resultMap="boardSelectMap">
-		<include refid="sql" />
+	<delete id="removeBoardsCmt" parameterType="int">
+		DELETE
+		FROM boards_cmt
+		WHERE cmt_no=#{value}
+	</delete>
+
+	<select id="getBoardsCmtCmtNo" parameterType="int">
+		SELECT cmt_no
+		FROM
+		boards_cmt
+		WHERE board_no=#{value}
 	</select>
 
-	<select id="getTotalCount" parameterType="com.model2.mvc.common.Search"
-		resultType="int">
-		SELECT COUNT(*) FROM
-		(<include refid="sql" />)
-		countTable
-	</select>
+	<delete id="removeBoardsCmtList" parameterType="int">
+		DELETE
+		FROM
+		boards_cmt
+		WHERE borad_no=#{value}
+	</delete>
 
-	<select id="getBoardList" parameterType="com.model2.mvc.common.Search"
-		resultMap="boardSelectMap">
-		SELECT * FROM ( SELECT inner_table.* , ROWNUM AS row_seq FROM (
-		<include refid="sql" />
-		) inner_table WHERE ROWNUM <![CDATA[<]]>=#{currentPage}*#{pageSize}
-		)
-		WHERE row_seq BETWEEN (#{currentPage}-1)*#{pageSize}+1 AND
-		#{currentPage}*#{pageSize}
+	<delete id="removeBoardCommentList" parameterType="list">
+		DELETE
+		FROM
+		comments
+		WHERE
+		cmt_no IN
+		<if test="list.size != 0">
+			<foreach item="item"  collection="list" open="("
+				separator="," close=")">
+				#{item}
+			</foreach>
+		</if>
+	</delete>
 
-	</select>
-
-	<sql id="sql">
-		SELECT
-		board_no, user_id, board_title, board_content
-		FROM board
-		<where>
-			<choose>
-				<when test="searchCondition != null">
-					<if test="searchCondition == 0 and searchKeyword !='' ">
-						user_id IN
-						#{searchKeyword}
-					</if>
-					<if test="searchCondition == 1 and searchKeyword !='' ">
-						user_name IN
-						#{searchKeyword}
-					</if>
-				</when>
-			</choose>
-		</where>
-		ORDER BY board_no DESC
-	</sql>
 
 </mapper>

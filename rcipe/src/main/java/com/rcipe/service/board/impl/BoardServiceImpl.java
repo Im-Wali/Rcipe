@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import com.rcipe.commons.FileUtil;
 import com.rcipe.commons.Search;
 import com.rcipe.service.board.BoardDAO;
 import com.rcipe.service.board.BoardService;
@@ -46,7 +47,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int deleteBoard(int boardNo) throws Exception {
+	public int deleteBoard(int boardNo,String boardImgPath) throws Exception {
+		FileUtil.deleteFile(boardImgPath);
+		//commentServcie.deleteBoardCommont(baordNo);
 		return boardDAO.deleteBoard(boardNo);
 	}
 
