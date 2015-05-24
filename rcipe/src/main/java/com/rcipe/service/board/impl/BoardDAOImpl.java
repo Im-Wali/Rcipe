@@ -18,11 +18,6 @@ public class BoardDAOImpl implements BoardDAO {
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
 	
-	public void setSqlSession(SqlSession sqlSession){
-		System.out.println("$$"+getClass()+".getSqlSession() call~!");
-		this.sqlSession = sqlSession;
-	}
-	
 	public BoardDAOImpl() {
 		System.out.println("##"+getClass()+"default Constructor call~!!");
 	}
