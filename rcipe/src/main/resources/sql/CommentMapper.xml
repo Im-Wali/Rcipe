@@ -4,7 +4,7 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="BoardMapper">
+<mapper namespace="commentMapper">
 
 	<resultMap type="comment" id="commentMap">
 		<result property="commentNo" column="CMT_NO" jdbcType="INTEGER" />
@@ -16,7 +16,7 @@
 		<result property="contentNo" column="CONTENT_NO" jdbcType="INTEGER" />
 	</resultMap>
 
-	<insert id="insertBoardComment" parameterType="">
+	<insert id="insertBoardCmt" parameterType="comment">
 		INSERT ALL
 		INTO
 		comments
@@ -30,7 +30,7 @@
 		FROM DUAL;
 	</insert>
 
-	<select id="getBoardCommentList" parameterType="int" resultMap="commentMap">
+	<select id="getBoardCmtList" parameterType="int" resultMap="commentMap">
 		SELECT
 		c.CMT_NO ,c.CMT_NO2,c.NICKNAME,c.CMT_CONT,c.CMT_DATE,u.USER_IMG
 		FROM comments c,baords_cmt bc,users u
@@ -39,7 +39,7 @@
 		AND u.nickname LIKE c.nickname
 	</select>
 
-	<update id="updateBoardComment" parameterType="comment">
+	<update id="updateBoardCmt" parameterType="comment">
 		UPDATE comments
 		<set>
 			CMT_CONT = #{commentContent}
@@ -49,13 +49,13 @@
 
 
 
-	<delete id="removeComment" parameterType="int">
+	<delete id="deleteComment" parameterType="int">
 		DELETE
 		FROM comments
 		WHERE cmt_no2=#{value} OR cmt_no=#{value}
 	</delete>
 
-	<delete id="removeBoardsCmt" parameterType="int">
+	<delete id="deleteBoardsCmt" parameterType="int">
 		DELETE
 		FROM boards_cmt
 		WHERE cmt_no=#{value}
@@ -68,14 +68,14 @@
 		WHERE board_no=#{value}
 	</select>
 
-	<delete id="removeBoardsCmtList" parameterType="int">
+	<delete id="deleteBoardsCmtList" parameterType="int">
 		DELETE
 		FROM
 		boards_cmt
 		WHERE borad_no=#{value}
 	</delete>
 
-	<delete id="removeBoardCommentList" parameterType="list">
+	<delete id="deleteCommentList" parameterType="list">
 		DELETE
 		FROM
 		comments
