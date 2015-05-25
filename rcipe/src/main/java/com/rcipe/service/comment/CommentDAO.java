@@ -1,9 +1,19 @@
 package com.rcipe.service.comment;
 
-public class CommentDAO {
+import java.util.List;
 
-	public CommentDAO() {
-		// TODO Auto-generated constructor stub
-	}
+import com.rcipe.service.domain.Comment;
+
+public interface CommentDAO {
+	
+	public int insertBoardCmt(Comment comment)throws Exception;
+	
+	public List<Comment> getBoardCmtList(int boardNo)throws Exception;
+	
+	public int updateBoardCmt(Comment comment)throws Exception;
+	
+	public int deleteBoardCmt(int commentNo)throws Exception;
+	
+	public int deleteBoardCmtList(int boardNo)throws Exception;
 
 }

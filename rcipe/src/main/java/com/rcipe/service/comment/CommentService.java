@@ -1,9 +1,18 @@
 package com.rcipe.service.comment;
 
-public class CommentService {
+import java.util.List;
 
-	public CommentService() {
-		// TODO Auto-generated constructor stub
-	}
+import com.rcipe.service.domain.Comment;
+
+public interface CommentService {
+		public int insertBoardCmt(Comment comment)throws Exception;
+		
+		public  List<Comment> getBoardCmtList(int boardNo)throws Exception;
+		
+		public int updateBoardCmt(Comment comment)throws Exception;
+		
+		public int deleteBoardsCmt(int commentNo)throws Exception;
+		
+		public int deleteBoardCmtList(int boardNo)throws Exception;
 
 }
