@@ -24,20 +24,37 @@ public class CommentDAOImpl implements CommentDAO {
 	public int insertBoardCmt(Comment comment) throws Exception {
 		return sqlSession.insert("commentMapper.inserBoardCmt",comment);
 	}
+	
+	@Override
+	public int insertReply(Comment comment) throws Exception {
+		sqlSession.update("commentMapper.updateReplyCnt",comment);
+		return sqlSession.insert("commentMapper.insertReply",comment);
+	}
 
 	@Override
 	public List<Comment> getBoardCmtList(int boardNo) throws Exception {
 		return sqlSession.selectList("commentMapper.getBoardCmtList",boardNo);
 	}
+	
+	@Override
+	public List<Comment> getCommentReplyList(int commenRetNo) throws Exception {
+		return sqlSession.selectList("commentMapper.getCommentReplyList",commenRetNo);
+	}
 
 	@Override
-	public int updateBoardCmt(Comment comment) throws Exception {
-		return sqlSession.update("commentMapper.updateBoardCmt",comment);
+	public int updateComment(Comment comment) throws Exception {
+		return sqlSession.update("commentMapper.updateComment",comment);
+	}
+	
+	@Override
+	public int deleteReply(int commentReNo) throws Exception {
+		return sqlSession.delete("commentMapper.deleteReply",commentReNo);
 	}
 
 	@Override
 	public int deleteBoardCmt(int commentNo) throws Exception {
 		sqlSession.delete("commentMapper.deleteBoardCmt",commentNo);
+		sqlSession.delete("commentMapper.deleteReply",commentNo);
 		return sqlSession.delete("commentMapper.deleteComment",commentNo);
 	}
 
@@ -45,6 +62,7 @@ public class CommentDAOImpl implements CommentDAO {
 	public int deleteBoardCmtList(int boardNo) throws Exception {
 		List<String> list =sqlSession.selectList("commentMapper.getBoardsCmtCmtNo",boardNo);
 		sqlSession.delete("commentMapper.deleteBoardCmtList",boardNo);
+		sqlSession.delete("commentMapper.deleteReplyList",list);
 		return sqlSession.delete("commentMapper.deleteCommentList",list);
 	}
 

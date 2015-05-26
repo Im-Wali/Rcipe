@@ -22,9 +22,9 @@ public class BoardServiceImpl implements BoardService{
 	@Qualifier("boardDAOImpl")
 	private BoardDAO boardDAO;
 	
-/*	@Autowired
+	@Autowired
 	@Qualifier("commentServiceImpl")
-	private CommentService commentService;*/
+	private CommentService commentServcie;
 
 	public BoardServiceImpl() {
 		System.out.println("BoardServiceImpl default Constructor~!!");
@@ -38,7 +38,9 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public Board getBoard(int boardNo) throws Exception {
 		boardDAO.updateBoardCount(boardNo);
-		return boardDAO.getBoard(boardNo);
+		Board board=boardDAO.getBoard(boardNo);
+		board.setCommentList(commentServcie.getBoardCmtList(boardNo));
+		return board;
 	}
 
 	@Override
@@ -49,7 +51,7 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int deleteBoard(int boardNo,String boardImgPath) throws Exception {
 		FileUtil.deleteFile(boardImgPath);
-		//commentServcie.deleteBoardCommont(baordNo);
+		commentServcie.deleteBoardCmtList(boardNo);
 		return boardDAO.deleteBoard(boardNo);
 	}
 

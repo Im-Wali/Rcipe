@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.rcipe.service.comment.CommentDAO;
 import com.rcipe.service.comment.CommentService;
 import com.rcipe.service.domain.Comment;
 
+@Service("commentServiceImpl")
 public class CommentServiceImpl  implements CommentService{
 
 	@Autowired
@@ -23,15 +25,31 @@ public class CommentServiceImpl  implements CommentService{
 	public int insertBoardCmt(Comment comment) throws Exception {
 		return commentDAO.insertBoardCmt(comment);
 	}
+	
+	@Override
+	public int insertReply(Comment comment) throws Exception {
+		return commentDAO.insertReply(comment);
+	}
 
 	@Override
 	public List<Comment> getBoardCmtList(int boardNo) throws Exception {
 		return commentDAO.getBoardCmtList(boardNo);
 	}
+	
 
 	@Override
-	public int updateBoardCmt(Comment comment) throws Exception {
-		return commentDAO.updateBoardCmt(comment);
+	public List<Comment> getCommentReplyList(int commenRetNo) throws Exception {
+		return commentDAO.getCommentReplyList(commenRetNo);
+	}
+
+	@Override
+	public int updateComment(Comment comment) throws Exception {
+		return commentDAO.updateComment(comment);
+	}
+	
+	@Override
+	public int deleteReply(int commentReNo) throws Exception {
+		return commentDAO.deleteReply(commentReNo);
 	}
 
 	@Override
