@@ -51,7 +51,7 @@ public class FileController {
 		System.out.println("\t\t\t\t\t\t"+ctx.getRealPath("/images")+"/"+user.getNickname());
 		Map< String, String> map=FileUtil.upload(request,ctx.getRealPath("/images"),user.getNickname());
 		fileService.deleteProfile(user.getNickname(),ctx.getRealPath("/images")) ;
-		user.setUserImage(projectPath+map.get("changeImg"));
+		user.setUserImage(map.get("changeImg"));
 		fileService.updateProfile(user);
 		//업로드 된 파일 위치를 출력
 		String str=URLEncoder.encode(map+"", "UTF-8");
