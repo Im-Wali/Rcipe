@@ -32,28 +32,19 @@
 
 
 	<sql id="searchBoard">
-		<include refid="getJoinQuery" />
-
-		<if test="#{nickname}!=null">
-			AND b.nickname = #{nickname}
-		</if>
-
-		<if test="searchCondition != null">
-			<where>
-				<if test="searchCondition 
-			== 0 and searchKeyword !='' "> rcp_no like '%${searchKeyword}%' </if>
-				<if test="searchCondition == 1 and searchKeyword !='' "> nickname in #{searchKeyword}
-				</if>
-				<if test="searchCondition == 3 and searchKeyword !='' "> rcp_title
-					like '%${searchKeyword}%' </if>
-			</where>
-		</if>
-
+		SELECT
+    b.board_no, b.board_title, b.board_cont, b.board_cat,
+    b.board_date , b.board_cnt,
+    b.nickname
+    from
+    boards b, users u
+    WHERE b.nickname = u.nickname
+		AND b.board_cat = #{searchCategory}
 		ORDER BY b.board_no
 	</sql>
 
 
-	<select id="getBoardList" parameterType="java.util.Map"
+	<select id="getBoardList" parameterType="search"
 		resultMap="boardSelectMap">
 		SELECT
 		inner.*
@@ -64,9 +55,9 @@
 		<include refid="searchBoard" />
 		)
 		inner_table WHERE
-		ROWNUM &lt; = #{search.endRowNum} ) inner
+		ROWNUM &lt; = 3 ) inner
 		WHERE
-		row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum}
+		row_seq BETWEEN 1 AND 3
 	</select>
 
 	<!-- ##쿼리 예제## select inner.* from( select inner_table.*, rownum as row_seq 
