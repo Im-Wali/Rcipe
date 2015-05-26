@@ -45,13 +45,13 @@ $("cocument")
 								str=str.replace( /\+/g, " ");
 								var str2=str.split("massage")[1].substring("1").split(",")[0];
 								alert(str2);
-								var str3=str.split("changeImg")[1].substring("1").split("}")[0];
+								var str3=str.split("changeImg")[1].substring("1").split(",")[0];
 								$("#fileUpload").attr("src","../images/"+str3);
 							}
 						};
 						// var p=$('#pictureLcation').val();
 						// xhr.open("POST","../app/"+p);
-						xhr.open("POST", "../app/file/uploadProfile");
+						xhr.open("POST", "../app/file/profileUpload");
 						var fd = new FormData();
 						fd.append("file", file);
 						xhr.send(fd);

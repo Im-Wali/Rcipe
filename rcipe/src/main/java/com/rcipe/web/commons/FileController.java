@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rcipe.commons.FileUtil;
@@ -35,7 +36,36 @@ public class FileController {
 	@Autowired
 	private ServletContext ctx;
 	
-	@RequestMapping("uploadBoard")
+	@RequestMapping(value = "/profileUpload", method = RequestMethod.POST)
+	public @ResponseBody String  uploadUser(HttpServletRequest request,
+			HttpSession session) throws Exception {
+		String projectPath="http:/"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+"/rcipe/images/";
+		// 여기에 회원 별로 관리할수 있는 부분
+//		User user=(User)session.getAttribute("user");
+		User user=new User("user01","user01@naver.com","1111","!!!!");
+		// File("c:\\fileUploadTest\\user"+user.getNickname"+"\\profile");
+		File newFile=new File(ctx.getRealPath("/images")+"/"+user.getNickname());
+		if(!newFile.isDirectory()){
+			newFile.mkdirs();
+		}
+		System.out.println("\t\t\t\t\t\t"+ctx.getRealPath("/images")+"/"+user.getNickname());
+		Map< String, String> map=FileUtil.upload(request,ctx.getRealPath("/images"),user.getNickname());
+		fileService.deleteProfile(user.getNickname(),ctx.getRealPath("/images")) ;
+		user.setUserImage(projectPath+map.get("changeImg"));
+		fileService.updateProfile(user);
+		//업로드 된 파일 위치를 출력
+		String str=URLEncoder.encode(map+"", "UTF-8");
+		return str;
+	}
+
+	@RequestMapping("deleteProfile")
+	public @ResponseBody String deleteUser(HttpSession session)throws Exception {
+//		User user=(User)session.getAttribute("user");
+		User user=new User("user01","user01@naver.com","1111","!!!!");
+		return URLEncoder.encode((fileService.deleteProfile(user.getNickname(),ctx.getRealPath("/images")) == true ?  "성공적으로 삭제했습니다":"삭제에 실패했습니다."),"UTF-8");
+	}
+	
+	@RequestMapping(value = "/uploadBoard", method = RequestMethod.POST)
 	public  void  uploadBoard(HttpServletRequest request,
 			HttpSession session,HttpServletResponse response) throws Exception {
 		String sFunc = request.getParameter("CKEditorFuncNum");
@@ -63,7 +93,7 @@ public class FileController {
 			 printWriter = response.getWriter();
 			String str=projectPath+map.get("changeImg");
 			System.out.println(str);
-			if("T".equals(map.get("succese"))){
+			if("T".equals(map.get("success"))){
 			printWriter.println( "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" + sFunc + ",' "+str+ "', '완료');</script>");
 			}else{
 				printWriter.println( "<script type='text/javascript'>window.parent.CKEDITOR.tools.callFunction(" + sFunc + ",' ', '실패');</script>");
@@ -77,34 +107,5 @@ public class FileController {
 			}
 		}
 		return;
-	}
-
-	@RequestMapping("uploadProfile")
-	public @ResponseBody String  uploadUser(HttpServletRequest request,
-			HttpSession session) throws Exception {
-		String projectPath="http:/"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+"/rcipe/images/";
-		// 여기에 회원 별로 관리할수 있는 부분
-//		User user=(User)session.getAttribute("user");
-		User user=new User("user01","user01@naver.com","1111","!!!!");
-		// File("c:\\fileUploadTest\\user"+user.getNickname"+"\\profile");
-		File newFile=new File(ctx.getRealPath("/images")+"/"+user.getNickname());
-		if(!newFile.isDirectory()){
-			newFile.mkdirs();
-		}
-		System.out.println("\t\t\t\t\t\t"+ctx.getRealPath("/images")+"/"+user.getNickname());
-		Map< String, String> map=FileUtil.upload(request,ctx.getRealPath("/images"),user.getNickname());
-		fileService.deleteProfile(user.getNickname(),ctx.getRealPath("/images")) ;
-		user.setUserImage(projectPath+map.get("changeImg"));
-		fileService.updateProfile(user);
-		//업로드 된 파일 위치를 출력
-		String str=URLEncoder.encode(map+"", "UTF-8");
-		return str;
-	}
-
-	@RequestMapping("deleteProfile")
-	public @ResponseBody String deleteUser(HttpSession session)throws Exception {
-//		User user=(User)session.getAttribute("user");
-		User user=new User("user01","user01@naver.com","1111","!!!!");
-		return URLEncoder.encode((fileService.deleteProfile(user.getNickname(),ctx.getRealPath("/images")) == true ?  "성공적으로 삭제했습니다":"삭제에 실패했습니다."),"UTF-8");
 	}
 }
