@@ -21,6 +21,7 @@ public class Comment {
 	private Date commentDate;
 	private String userImg;
 	private Integer contentNo;
+	private Integer replyCnt;
 	
 
 	public Comment() {
@@ -28,6 +29,16 @@ public class Comment {
 	}
 	
 	
+	public Integer getReplyCnt() {
+		return replyCnt;
+	}
+
+
+	public void setReplyCnt(Integer replyCnt) {
+		this.replyCnt = replyCnt;
+	}
+
+
 	public Integer getCommentNo() {
 		return commentNo;
 	}
