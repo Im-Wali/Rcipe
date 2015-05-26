@@ -18,6 +18,11 @@ public class BoardDAOImpl implements BoardDAO {
 	@Qualifier("sqlSessionTemplate")
 	private SqlSession sqlSession;
 	
+	public void setSqlSession(SqlSession sqlSession){
+		System.out.println("$$"+getClass()+".getSqlSession() call~!");
+		this.sqlSession = sqlSession;
+	}
+	
 	public BoardDAOImpl() {
 		System.out.println("##"+getClass()+"default Constructor call~!!");
 	}
@@ -57,5 +62,5 @@ public class BoardDAOImpl implements BoardDAO {
 	public void updateBoardCount(Integer boardNo) throws Exception {
 		 sqlSession.update("BoardMapper.updateBoardCount", boardNo);
 	}
-
+	
 }
