@@ -162,7 +162,7 @@ var flag = 'N';
                       .append(
                           "<tr><td class='col-xs-2'>"
                               + list[i].boardNo
-                              + "</td><td class='col-xs-6'><a href='/getBoard'>"
+                              + "</td><td class='col-xs-6'><a href='viewBoard?boardNo="+list[i].boardNo+"'>"
                               + list[i].boardTitle
                               + "</a></td><td class='col-xs-2'>"
                               + list[i].nickname
@@ -225,7 +225,7 @@ var flag = 'N';
                     <c:set var="i" value="${ i+1 }" />
                     <tr>
                       <td class="col-xs-2">${ board.boardNo }</td>
-                      <td class="col-xs-6"><a href="/getBoard">${board.boardTitle}</a></td>
+                      <td class="col-xs-6"><a href="viewBoard?boardNo=${ board.boardNo }">${board.boardTitle}</a></td>
                       <td class="col-xs-2">${board.nickname}</td>
                       <td class="col-xs-2">${board.boardDate}</td>
                     </tr>
