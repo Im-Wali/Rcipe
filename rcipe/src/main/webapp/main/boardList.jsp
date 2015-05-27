@@ -106,17 +106,54 @@
 </style>
 </head>
 <script>
-  function funcTab(category) {
-    var e = document.getElementById("selectList");
-    var selectListNum = e.options[e.selectedIndex].value;
-    alert('category : ' + category+' selectListNum'+selectListNum);
+$("document").ready(function(){
+	
+	  $('li > a').click(function() {
+	      $('li').removeClass();
+	      $(this).parent().addClass('active');
+	  });
+	  
+	  $('#selectList').change(function(){
+		  var e = document.getElementById("selectList");
+		  selectListNum = e.options[e.selectedIndex].value;
+		  flag = 'Y';
+		  // alert('selectListNum : '+selectListNum+' currentCategory : '+currentCategory);
+		  funcTab(currentCategory);
+	  });
+	  
+});
+
+var currentCategory;
+var selectListNum;
+var flag = 'N';
+
+  window.funcFlag = function(f){
+	  flag = f;
+  }
+
+   window.funcTab = function (category) {
+	   
+	  currentCategory = category;
+	  
+	  if(typeof selectListNum === 'undefined'){
+		  selectListNum = 10;
+	  }
+	  if(flag === 'N'){
+		 // alert("flag = N");
+		  selectListNum = 10;
+		  $('select').find('option:first').attr('selected', 'selected'); 
+	  }else{
+		  //alert("flag = Y ");
+	  }
+    var params = 'searchCategory=' + category + '&pageSize=' + selectListNum;
+   // alert('category : ' + category+' selectListNum : '+selectListNum+' params : '+params+' currentCategory : '+currentCategory+' flag : '+flag);
     
     $.ajax(
             "getBoardList",
             {
               method : 'get',
               dataType : 'json',
-              data : 'searchCategory=' + category,
+              data : params,
               success : function(result) {
                 var list = result.list;
                 $("#ref").empty();
@@ -136,6 +173,7 @@
                 }
               }
             });
+    flag = 'N';
   }
 </script>
 <body>
@@ -145,11 +183,11 @@
       <div class="panel with-nav-tabs panel-success">
         <div class="panel-heading">
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#" onClick="funcTab(0);"
+            <li class="active"><a href="#" onClick="funcTab(0);" id="0"
               data-toggle="tab">레시피</a></li>
-            <li><a href="#" onClick="funcTab(1);" data-toggle="tab">추천맛집</a></li>
-            <li><a href="#" onClick="funcTab(2);" data-toggle="tab">고민상담</a></li>
-            <li><a href="#" onClick="funcTab(3);" data-toggle="tab">기타</a></li>
+            <li><a href="#" onClick="funcTab(1);" data-toggle="tab" id="1">추천맛집</a></li>
+            <li><a href="#" onClick="funcTab(2);" data-toggle="tab" id="2">고민상담</a></li>
+            <li><a href="#" onClick="funcTab(3);" data-toggle="tab" id="3">기타</a></li>
             <li style="float: right; width: 500px;"><form
                 class="navbar-form navbar-left" role="search">
                 <div class="form-group">
@@ -158,9 +196,9 @@
                 <button type="submit" class="btn btn-default">찾기</button>
                 <button type="button" class="btn btn-default">글쓰기</button>
               </form>
-                <div id="selectList" class="select-style" style="margin-top:8px;">
+                <div class="select-style" style="margin-top:8px;">
                   <select id="selectList">
-                    <option value="10">10</option>
+                    <option value="10" selected="selected">10</option>
                     <option value="20">20</option>
                     <option value="50">50</option>
                   </select>
