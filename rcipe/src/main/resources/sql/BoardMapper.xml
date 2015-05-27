@@ -120,6 +120,7 @@
 		SELECT COUNT(*)
 		FROM( SELECT *
 		FROM boards
+		WHERE board_cat = #{searchCategory}
 		<!-- <if test="searchCondition != null"> <where> <if test="searchCondition 
 			== 0 and searchKeyword !='' "> rcp_no like '%${searchKeyword}%' </if> <if 
 			test="searchCondition ==W 1 and searchKeyword !='' "> nickname in #{searchKeyword} 
