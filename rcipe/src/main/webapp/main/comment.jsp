@@ -23,13 +23,18 @@
 												var list = result.list;
 												listBoardCmt('#commentList',
 														list);
-												$('.removeComment').click();
 											}
 										});
 									}
 								});
 						$('#commentSubmit').click(
 								function(event) {
+									var s=$('#commentContent').val();
+									if(s==''){
+										alert("내용을 입력하세요");
+										event.preventDefault();
+										return;
+									}else{
 									alert("댓글을 작성했습니다.");
 									$.ajax("../comment/insertBoardCmt", {
 										method : 'POST',
@@ -44,6 +49,7 @@
 											listBoardCmt('#commentList', list);
 										}
 									});
+									}
 								});
 						function listBoardCmt(id, list) {
 							var str = "";
@@ -91,23 +97,8 @@
 										+ "<div id='comment"+i+"ReplyList'>"
 										+ "<div></div>"
 										+ "<div id='commen"+i+"Reply0'></div>"
-										+ "</div>"
-										+"<script>$('document').ready(function(){$('#removeComment').bind('click',function(event) {"
-										+ "	event.preventDefault(); "
-										+ "var f = confirm('해당 댓글을 삭제하시겠습니까');"
-										+ "if (f) {"
-										+ "	$.ajax('../comment/deleteBoardCmt', {"
-										+ "method : 'POST',"
-										+ "	dataType : 'json',"
-										+ "data : 'commentNo=' + this.title + '&boardNo=' + $('#boardNo').val(),"
-										+ "	success : function(result) {"
-										+ "	alert('해당 댓글을 삭제했습니다.');"
-										+ "	var list = result.list;"
-										+ "	listBoardCmt('#commentList', list);"
-										+ "}"
-										+ "});"
-										+ "}"
-										+ "});)}</"+ "script>";
+										+ "</div>";
+										
 							}
 							$(id).html(str);
 						}
@@ -128,6 +119,77 @@
 						}
 						; */
 					});
+			/* function removeComment(no) {
+				var f = confirm('해당 댓글을 삭제하시겠습니까');
+				if (f) {
+					$.ajax("../comment/deleteBoardCmt", {
+						method : 'POST',
+						dataType : 'json',
+						data : 'commentNo=' + no
+								+ '&boardNo='
+								+ $('#boardNo').val(),
+						success : function(result) {
+							alert("해당 댓글을 삭제했습니다.");
+							var list = result.list;
+							listBoardCmt("commentList",
+									list);
+						}
+					});
+				}
+			}; */
+			
+			/* function listBoardCmt(id, list) {
+				var str = "";
+				for ( var i in list) {
+					str += "<div id='comment"+i+"'><div class='row'>"
+							+ "<div class='col-md-1'>"
+							+ "<div>"
+							+ "<img  class='img-circle' src='../../images/"
+							+ list[i].userImg
+							+ "' width='70px'"
+							+ "height='70px' style='margin-top: 1%'>"
+							+ "</div>"
+							+ "</div>"
+							+ "<div class='col-md-11'>"
+							+ "<div>"
+							+ "<div class='row'>"
+							+ "<div class='col-md-7' align='left'>"
+							+ "<div style='margin-left:2%; margin-right: 2%;'>"
+							+ list[i].nickname
+							+ "/"
+							+ list[i].commentDate
+							+ "</div>"
+							+ "</div>"
+							+ "<div class='col-md-5'>"
+							+ "<div align='right'>"
+							+ "<a style='margin-left: 2%; color: black'>수정</a> <a "
+							+ "style='margin-left: 2%; color: black' id='removeComment' title='"
+							+ list[i].commentNo
+							+ "'>삭제</a>"
+							+ "</div>"
+							+ "</div>"
+							+ "</div>"
+							+ "</div>"
+							+ "<div style='margin-left: 2%; margin-right: 2%; margin-top: 1%'>"
+							+ list[i].commentContent
+							+ "</div>"
+							+ "</div>"
+							+ "<div align='right' style='margin-right: 2%;'>"
+							+ "<a style='color: black'>답글("
+							+ list[i].replyCnt
+							+ ")개 보기</a>"
+							+ "</div>"
+							+ "</div>"
+							+ "<hr /></div>"
+							+ "<div id='comment"+i+"ReplyList'>"
+							+ "<div></div>"
+							+ "<div id='commen"+i+"Reply0'></div>"
+							+ "</div>";
+							
+				}
+				document.getElementById(id).innerHTML(str));
+			}
+			; */
 </script>
 <div align="center">
 	<h4>댓글</h4>
@@ -180,9 +242,13 @@
 								</div>
 								<div class="col-md-5">
 									<div align="right">
-										<a style="margin-left: 2%; color: black">수정</a> <a
+									<%-- <c:if test="${user.nickname eq comment.nickname}"> --%>
+										<a style="margin-left: 2%; color: black">수정</a>  <a
 											style="margin-left: 2%; color: black" id="removeComment"
 											title="${comment.commentNo}">삭제</a>
+											<%-- <a
+											style="margin-left: 2%; color: black" onclick="removeComment('${comment.commentNo}')">삭제</a> --%>
+											<%-- </c:if> --%>
 									</div>
 								</div>
 							</div>

@@ -60,7 +60,7 @@
 	</select>
 
 	<!-- 공통적으로 사용할 getReply리스트 -->
-	<select id="getCommentReplyList" parameterType="int">
+	<select id="getCommentReplyList" parameterType="int" resultMap="commentMap">
 		SELECT
 		c.CMT_NO
 		,c.CMT_NO2,c.NICKNAME,c.CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD HH:MI:SS') CMT_DATE,u.USER_IMG
