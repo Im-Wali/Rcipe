@@ -130,7 +130,7 @@
 						style="background-color: #FF9933; border: #FF9933; color: black">즐겨찾기</a></li>
 				</div>
 				<div align="center">
-					<li><a href="../app/board/getBoardList?searchCategory=0" class="btn btn-primary"
+					<li><a href="../app/board/getBoardListFirst?searchCategory=0" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
 				</div>
 				<div align="center">
