@@ -47,8 +47,9 @@ class EncryptExample {
  public static String encryptStr(String planText){
 
   // 암호화 도와주는 녀석에게 평문을 byte로 올립니다.
-
+	 
   md.update(planText.getBytes()); 
+  
 
   
 
@@ -56,7 +57,7 @@ class EncryptExample {
 
   byte byteData[] = md.digest();
 
- 
+
 
   // byte를 string으로 바꾸는 작업을 합니다.
 
@@ -108,7 +109,7 @@ public class User {
 	public User(String email, String password) {
 		super();
 		this.email = email;
-		this.password = password;
+		setPassword(password);
 	}
 
 	public String getFlag() {
