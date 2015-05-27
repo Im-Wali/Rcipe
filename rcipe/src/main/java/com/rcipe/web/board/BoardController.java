@@ -1,8 +1,6 @@
 package com.rcipe.web.board;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -21,7 +19,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -111,9 +108,8 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/getBoardList", method = RequestMethod.GET)
-	public ResponseEntity<String>  getBoardList( @ModelAttribute("search") Search search, ModelMap model) throws Exception {
+	public ResponseEntity<String>  getBoardList( @ModelAttribute("search") Search search, ModelMap model,@RequestParam("pageSize") int pageSize) throws Exception {
 		System.out.println("getBoardList start");
-		pageSize = 10;
 		if(search.getCurrentPage() ==0 ){
 			search.setCurrentPage(1);
 		}
