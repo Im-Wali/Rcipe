@@ -1,5 +1,8 @@
 package com.rcipe.web.board;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -8,14 +11,21 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.rcipe.commons.Page;
 import com.rcipe.commons.Search;
 import com.rcipe.service.board.BoardService;
@@ -77,8 +87,8 @@ public class BoardController {
 		return "forward:/main/viewBoard.jsp";
 	}
 	
-	@RequestMapping(value = "/getBoardList", method = RequestMethod.GET)
-	public ModelAndView  getBoardList( @ModelAttribute("search") Search search) throws Exception {
+	@RequestMapping(value = "/getBoardListFirst", method = RequestMethod.GET)
+	public ModelAndView  getBoardListFirst( @ModelAttribute("search") Search search) throws Exception {
 		System.out.println("getBoardList start");
 		
 		if(search.getCurrentPage() ==0 ){
@@ -98,6 +108,45 @@ public class BoardController {
 		modelAndView.addObject("list", map.get("list"));
 		
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/getBoardList", method = RequestMethod.GET)
+	public ResponseEntity<String>  getBoardList( @ModelAttribute("search") Search search, ModelMap model) throws Exception {
+		System.out.println("getBoardList start");
+		pageSize = 10;
+		if(search.getCurrentPage() ==0 ){
+			search.setCurrentPage(1);
+		}
+		search.setPageSize(pageSize);
+		
+		// Business logic ����
+		Map<String , Object> map=boardService.getBoardList(search);
+		
+		System.out.println("map : "+map);
+		System.out.println("map.get(list) : "+map.get("list"));
+		System.out.println("Search : "+search);
+		
+		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+		
+		Map<String,Object> result = new HashMap<String,Object>();
+		
+		result.put("list", map.get("list"));
+		result.put("resultPage", resultPage);
+		result.put("search", search);
+		result.put("flag", "Y");
+		Gson gson = new GsonBuilder().serializeNulls().create();
+		String jsonString = gson.toJson(result);
+		
+		// list.add();
+//		
+//		
+//		model.put("search", search);
+//		model.put("list", map.get("list"));
+//		
+		System.out.println("jsonString : "+jsonString);
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Content-Type", "text/plain;charset=UTF-8");
+		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
 	}
 	@RequestMapping(value = "/deleteBoard", method = RequestMethod.GET)
 	public String deleteBoard(@RequestParam("boardNo") int boardNo,@RequestParam("boardImgPath") String boardImgPath)throws Exception{
