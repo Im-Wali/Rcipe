@@ -66,6 +66,7 @@ public class FileUtil {
 		File file = new File(filePath);
 		String[] list = file.list();
 		if(list==null){
+			System.out.println(file.getAbsolutePath());
 			return file.delete();
 		}
 		System.out.println(list);

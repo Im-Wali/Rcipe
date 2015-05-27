@@ -22,12 +22,12 @@ public class CommentServiceImpl  implements CommentService{
 	}
 
 	@Override
-	public int insertBoardCmt(Comment comment) throws Exception {
+	public Comment insertBoardCmt(Comment comment) throws Exception {
 		return commentDAO.insertBoardCmt(comment);
 	}
 	
 	@Override
-	public int insertReply(Comment comment) throws Exception {
+	public Comment insertReply(Comment comment) throws Exception {
 		return commentDAO.insertReply(comment);
 	}
 
@@ -48,12 +48,12 @@ public class CommentServiceImpl  implements CommentService{
 	}
 	
 	@Override
-	public int deleteReply(int commentReNo) throws Exception {
-		return commentDAO.deleteReply(commentReNo);
+	public int deleteReply(int commentNo,int commentReNo) throws Exception {
+		return commentDAO.deleteReply(commentNo,commentReNo);
 	}
 
 	@Override
-	public int deleteBoardsCmt(int commentNo) throws Exception {
+	public int deleteBoardCmt(int commentNo) throws Exception {
 		return commentDAO.deleteBoardCmt(commentNo);
 	}
 

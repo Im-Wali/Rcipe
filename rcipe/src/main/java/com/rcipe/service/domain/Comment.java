@@ -18,7 +18,7 @@ public class Comment {
 	private Integer commentReNo;
 	private String nickname;
 	private String commentContent;
-	private Date commentDate;
+	private String commentDate;
 	private String userImg;
 	private Integer contentNo;
 	private Integer replyCnt;
@@ -29,19 +29,11 @@ public class Comment {
 	}
 	
 	
-	public Integer getReplyCnt() {
-		return replyCnt;
-	}
-
-
-	public void setReplyCnt(Integer replyCnt) {
-		this.replyCnt = replyCnt;
-	}
-
 
 	public Integer getCommentNo() {
 		return commentNo;
 	}
+
 
 
 	public Integer getCommentReNo() {
@@ -49,9 +41,11 @@ public class Comment {
 	}
 
 
+
 	public String getNickname() {
 		return nickname;
 	}
+
 
 
 	public String getCommentContent() {
@@ -59,9 +53,11 @@ public class Comment {
 	}
 
 
-	public Date getCommentDate() {
+
+	public String getCommentDate() {
 		return commentDate;
 	}
+
 
 
 	public String getUserImg() {
@@ -69,9 +65,17 @@ public class Comment {
 	}
 
 
+
 	public Integer getContentNo() {
 		return contentNo;
 	}
+
+
+
+	public Integer getReplyCnt() {
+		return replyCnt;
+	}
+
 
 
 	public void setCommentNo(Integer commentNo) {
@@ -79,9 +83,11 @@ public class Comment {
 	}
 
 
+
 	public void setCommentReNo(Integer commentReNo) {
 		this.commentReNo = commentReNo;
 	}
+
 
 
 	public void setNickname(String nickname) {
@@ -89,14 +95,17 @@ public class Comment {
 	}
 
 
+
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;
 	}
 
 
-	public void setCommentDate(Date commentDate) {
+
+	public void setCommentDate(String commentDate) {
 		this.commentDate = commentDate;
 	}
+
 
 
 	public void setUserImg(String userImg) {
@@ -104,16 +113,24 @@ public class Comment {
 	}
 
 
+
 	public void setContentNo(Integer contentNo) {
 		this.contentNo = contentNo;
 	}
+
+
+
+	public void setReplyCnt(Integer replyCnt) {
+		this.replyCnt = replyCnt;
+	}
+
 
 
 	@Override
 	public String toString() {
 		return "Comment [commentNo=" + commentNo + ", commentReNo="
 				+ commentReNo + ", nickname=" + nickname + ", commentContent="
-				+ commentContent + ", commentDate=" + commentDate
+				+ commentContent + ", commentDate=" + commentDate+"contentNo="+contentNo
 				+ ", toString()=" + super.toString() + "]";
 	}
 

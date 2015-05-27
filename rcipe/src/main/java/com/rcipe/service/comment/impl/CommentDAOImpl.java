@@ -21,14 +21,19 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 
 	@Override
-	public int insertBoardCmt(Comment comment) throws Exception {
-		return sqlSession.insert("commentMapper.inserBoardCmt",comment);
+	public Comment insertBoardCmt(Comment comment) throws Exception {
+//		int t=sqlSession.selectOne("commentMapper.selectCmtNo");
+//		comment.setCommentNo(t);
+		sqlSession.insert("commentMapper.insertBoardCmt",comment);
+		System.out.println(comment.getCommentNo());
+		return comment ;
 	}
 	
 	@Override
-	public int insertReply(Comment comment) throws Exception {
-		sqlSession.update("commentMapper.updateReplyCnt",comment);
-		return sqlSession.insert("commentMapper.insertReply",comment);
+	public Comment insertReply(Comment comment) throws Exception {
+		sqlSession.update("commentMapper.updateAddReplyCnt",comment);
+		sqlSession.insert("commentMapper.insertReply",comment);
+		return comment;
 	}
 
 	@Override
@@ -47,8 +52,9 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 	
 	@Override
-	public int deleteReply(int commentReNo) throws Exception {
-		return sqlSession.delete("commentMapper.deleteReply",commentReNo);
+	public int deleteReply(int commentNo,int commentReNo) throws Exception {
+		sqlSession.update("commentMapper.updateRemoveReplyCnt",commentReNo);
+		return sqlSession.delete("commentMapper.deleteReply",commentNo);
 	}
 
 	@Override
