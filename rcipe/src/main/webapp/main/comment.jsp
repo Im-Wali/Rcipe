@@ -124,6 +124,11 @@
 <div align="center">
 	<h4>댓글</h4>
 </div>
+<form action="#" method="post">
+<div class="row">
+	<div class="col-md-1">
+		<img alt="" class="img-circle" src="../img/001.jpg" width="70px"
+			height="70px" style="margin-top: 1%">
 <a style="margin-left: 2%; color: black"
 	onclick="javascript:removeComment();">삭제</a>
 <div id="commentContainer">
@@ -197,7 +202,11 @@
 		</c:forEach>
 	</div>
 </div>
-
+<div class="form-group" align="right">
+	<button type="submit" class="btn btn-warning" style="margin-top: 1%">댓글작성</button>
+</div>
+</form>
+<hr/>
 <div class="row">
 	<div class="col-md-1">
 		<div>
