@@ -306,8 +306,7 @@
 			height="70px" style="margin-top: 1%">
 	</div>
 	<div class="col-md-10">
-		<%-- <input type="hidden" id="contentNo" value="${board.boardNo }"> --%>
-		<input type="hidden" id="contentNo" value="10089">
+		<input type="hidden" id="contentNo" value="${board.boardNo }">
 		<textarea class="form-control" id="commentContent"
 			name="commentContent"
 			style="margin-left: 2%; margin-rghit: 2%; width: 98%; height: 80px"
