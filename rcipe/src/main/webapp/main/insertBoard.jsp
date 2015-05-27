@@ -70,19 +70,44 @@
 						<div class="btn-group"
 							style="margin-top: -7%;">
 							<input type="hidden" id="boardCategory" name="boardCategory" value="">
-								<button type="button" class="btn btn-warning dropdown-toggle "
+								<!-- <button type="button" class="btn btn-warning dropdown-toggle "
 									data-toggle="dropdown">
 									<span id="select_category">카테고리</span> <span class="caret">
 									</span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li><a onclick="javascript:selectCategory('레시피','1')">레시피</a></li>
-									<li><a onclick="javascript:selectCategory('추천맛집','2')">추천맛집</a></li>
-									<li><a id="search_contents_nickname"
-										onclick="javascript:selectCategory('고민상담','3')">고민상담</a></li>
-									<li><a id="search_contents_nickname"
-										onclick="javascript:selectCategory('기타','4')">기타</a></li>
-								</ul>
+								</button> -->
+<!-- 								<ul class="dropdown-menu" role="menu"> -->
+									<span><a id="search_contents_" onclick="javascript:selectCategory('레시피','1')">
+									<!-- <img src="../img/category/recipe.png" class="img-circle" role="button"
+                                    style="width: 50px; height: 50px; margin-top: 1%"
+                                    aria-haspopup="true" aria-expanded="false" id=""> -->
+                                    <button type="button" class="btn btn-warning">
+                                    <span id="select_category">레시피</span></button>
+                                    </a></span>
+									
+									<span><a id="" onclick="javascript:selectCategory('추천맛집','2')">
+                                    <!-- <img src="../img/category/recommend.jpg" class="img-circle" role="button"
+                                    style="width: 50px; height: 50px; margin-top: 1%"
+                                    aria-haspopup="true" aria-expanded="false" id=""> -->
+                                    <button type="button" class="btn btn-warning">
+                                    <span id="select_category">추천맛집</span></button>
+                                    </a></span>
+									
+									<span><a id="search_contents_nickname" onclick="javascript:selectCategory('고민상담','3')">
+                                    <!-- <img src="../img/category/help.png" class="img-circle" role="button"
+                                    style="width: 50px; height: 50px; margin-top: 1%"
+                                    aria-haspopup="true" aria-expanded="false" id=""_> -->
+                                    <button type="button" class="btn btn-warning">
+                                    <span id="select_category">고민상담</span></button>
+                                    </a></span>
+									
+									<span><a id="search_contents_nickname" 	onclick="javascript:selectCategory('기타','4')">
+                                    <!-- <img src="../img/category/etc.png" class="img-circle" role="button"
+                                    style="width: 50px; height: 50px; margin-top: 1%"
+                                    aria-haspopup="true" aria-expanded="false" id=""> -->
+                                    <button type="button" class="btn btn-warning">
+                                    <span id="select_category">기타</span></button>
+                                    </a></span>
+<!-- 								</ul> -->
 						</div>
 						</div>
 						<div>
