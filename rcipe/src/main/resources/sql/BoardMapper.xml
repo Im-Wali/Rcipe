@@ -34,7 +34,7 @@
 	<sql id="searchBoard">
 		SELECT
     b.board_no, b.board_title, b.board_cont, b.board_cat,
-    b.board_date , b.board_cnt,
+    to_char(b.board_date,'YYYY/MM/DD') board_date , b.board_cnt,
     b.nickname
     from
     boards b, users u
