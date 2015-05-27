@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
-	window.viewReplyList = function(value) {
+window.viewReplyList = function(value) {
 		alert('ㅇㅇ value : ' + value);
 		$('#' + value + 'ReplyList')
 				.html(
@@ -68,26 +68,58 @@
 													.split(",")[0];
 											var commentBody = this.title
 													.split(",")[2];
+											var replyCnt = this.title
+													.split(",")[3];
+											$("#" + replyCnt).html('');
+											var content=$("#"+contentId).html();
 											if (f) {
 												s += "<textarea class='form-control' id='updateCommentContent'"
 														+ "name='updateCommentContent'"
 														+ "style='margin-left: 2%; margin-rghit: 2%; width: 98%; height: 80px'"
-														+ "value='"
-														+ $(contentId).val()
-														+ "'></textarea>"
-
+														+ "></textarea>"
 														+ "<div class='form-group' align='right'>"
-														+ "<button  class='btn btn-warning updateSubmit'"
-														+ "style='margin-top: 1%;'>댓글수정</button>"
+														+ "<button  class='btn btn-warning' id='updateSubmit'"
+														+ "style='margin-top: 1%;margin-right:1%'>댓글수정</button>"
+														+ "<button class='btn btn-warning' id='updateReset' style='margin-top:1%;'>취소</button>"
 														+ "</div>"
 														+ "<input type='hidden' id='updateCommentNo' value='"+contentNo+"'>";
 											}
-											alert($(commentBody).html());
-											$(commentBody).html(s);
+											$("#" + commentBody).html(s);
+											document.getElementById("updateCommentContent").value=content;
 										});
-						$('.commentSubmit').click(
+						$(document.body)
+						.on(
+								'click',
+								'#updateSubmit',
 								function(event) {
-									var s = $('.commentContent').val();
+									event.preventDefault();
+									var s=$('#updateCommentContent').val();
+									if(s==''){
+										alert("답글을 작성해주세요");
+										return;
+									} else {
+										alert("답글을 작성했습니다.");
+										$.ajax("../comment/updateComment", {
+											method : 'POST',
+											dataType : 'json',
+											data : 'commentContent='
+													+ $('#updateCommentContent')
+															.val() + '&'
+													+ 'commentNo='
+													+ $('#updateCommentNo').val()
+													+"&contentNo="+$('#contentNo').val(),
+											success : function(result) {
+												var list = result.list;
+												listBoardCmt('#commentList',
+														list);
+											}
+										});
+									}
+									
+								});
+						$('#commentSubmit').click(
+								function(event) {
+									var s = $('#commentContent').val();
 									if (s == '') {
 										alert("내용을 입력하세요");
 										event.preventDefault();
@@ -98,12 +130,12 @@
 											method : 'POST',
 											dataType : 'json',
 											data : 'commentContent='
-													+ $('.commentContent')
+													+ $('#commentContent')
 															.val() + '&'
 													+ 'contentNo='
 													+ $('#contentNo').val(),
 											success : function(result) {
-												$('.commentContent').val('');
+												$('#commentContent').val('');
 												var list = result.list;
 												listBoardCmt('#commentList',
 														list);
@@ -123,7 +155,7 @@
 										+ "height='70px' style='margin-top: 1%''>"
 										+ "</div>"
 										+ "</div>"
-										+ "<div class='col-md-11'>"
+										+ "<div class='col-md-11' id='commentBody"+i+"''>"
 										+ "<div>"
 										+ "<div class='row'>"
 										+ "<div class='col-md-7' align='left'>"
@@ -135,7 +167,8 @@
 										+ "</div>"
 										+ "<div class='col-md-5'>"
 										+ "<div align='right'>"
-										+ "<a style='margin-left: 2%; color: black'>수정</a> <a "
+										+ "<a style='margin-left: 2%; color: black'class='updateComment'"
+										+"title='"+list[i].commentNo+",commentContent"+i+",commentBody"+i+",replyCnt"+i+"'>수정</a> <a "
 										+ "style='margin-left: 2%; color: black' class='removeComment' title='"
 										+ list[i].commentNo
 										+ "'>삭제</a>"
@@ -143,20 +176,20 @@
 										+ "</div>"
 										+ "</div>"
 										+ "</div>"
-										+ "<div style='margin-left: 2%; margin-right: 2%; margin-top: 1%'>"
+										+ "<div style='margin-left: 2%; margin-right: 2%; margin-top: 1%' id='commentContent"+i+"'>"
 										+ list[i].commentContent
 										+ "</div>"
 										+ "</div>"
 										+ "<div align='right' style='margin-right: 2%;'>"
-										+ "<button type='button' onclick='viewReplyList(this.value)'style='color: black;' value='"
-										+ list[i].commentNo
-										+ "'>답글("
+										+ "<a style='color: black'  id='replyCnt"+i+"' >답글("
 										+ list[i].replyCnt
-										+ ")개 보기</button>"
+										+ ")개 보기</a>"
 										+ "</div>"
 										+ "</div>"
 										+ "<hr /></div>"
-										+ "<div id='${comment.commentNo}ReplyList'></div>"
+										+ "<div id='comment"+i+"ReplyList'>"
+										+ "<div></div>"
+										+ "<div id='commen"+i+"Reply0'></div>"
 										+ "</div>";
 							}
 							$(id).html(str);
@@ -181,8 +214,6 @@
 <div align="center">
 	<h4>댓글</h4>
 </div>
-<a style="margin-left: 2%; color: black"
-	onclick="javascript:removeComment();">삭제</a>
 <div id="commentContainer">
 	<from action="#" method="post">
 	<div class="row">
@@ -193,14 +224,14 @@
 		<div class="col-md-11">
 			<input type="hidden" id="contentNo" value="${board.boardNo}">
 			<!-- <input type="hidden" id="contentNo" value="10089"> -->
-			<textarea class="form-control commentContent"
+			<textarea class="form-control" id="commentContent"
 				name="commentContent"
 				style="margin-left: 2%; margin-rghit: 2%; width: 98%; height: 80px"
-				placeholder="댓글을 작성해주세요"></textarea>
+				placeholder="댓글을 작성해주세요" ></textarea>
 
 			<div class="form-group" align="right">
-				<button type="submit" class="btn btn-warning commentSubmit"
-					style="margin-top: 1%;" >댓글작성</button>
+				<button type="submit" class="btn btn-warning"
+					style="margin-top: 1%;" id="commentSubmit">댓글작성</button>
 			</div>
 		</div>
 	</div>
@@ -226,13 +257,13 @@
 							<div class="row">
 								<div class="col-md-7" align="left">
 									<div style="margin-left: 2%; margin-right: 2%;"
-										id="commentContent${i}">${comment.nickname }/${comment.commentDate}</div>
+										>${comment.nickname }/${comment.commentDate}</div>
 								</div>
 								<div class="col-md-5">
 									<div align="right">
 										<%-- <c:if test="${user.nickname eq comment.nickname}"> --%>
 										<a style="margin-left: 2%; color: black" class="updateComment"
-											title="${comment.commentNo },commentContent${i},#commentBody${i}">수정</a>
+											title="${comment.commentNo },commentContent${i},commentBody${i},replyCnt${i}">수정</a>
 										<a style="margin-left: 2%; color: black" class="removeComment"
 											title="${comment.commentNo}">삭제</a>
 										<%-- <a
@@ -242,17 +273,16 @@
 								</div>
 							</div>
 						</div>
-						<div style="margin-left: 2%; margin-right: 2%; margin-top: 1%">${comment.commentContent }</div>
+						<div style="margin-left: 2%; margin-right: 2%; margin-top: 1%" id="commentContent${i}">${comment.commentContent }</div>
 					</div>
 					<div align="right" style="margin-right: 2%;">
-						<button type="button" onclick="viewReplyList(this.value)"
-							style="color: black;" value="${comment.commentNo}">답글(${comment.replyCnt})개
-							보기</button>
+						<a style="color: black" id="replyCnt${i }" >답글(${comment.replyCnt})개
+							보기</a>
 					</div>
 				</div>
 			</div>
 			<hr />
-			<div id="${comment.commentNo}ReplyList">
+			<div id="comment${i}ReplyList">
 				<!-- 여기에 답글 입력부분을 보여준다. -->
 			</div>
 		</c:forEach>
