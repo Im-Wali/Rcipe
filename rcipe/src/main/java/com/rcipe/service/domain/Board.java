@@ -22,7 +22,7 @@ public class Board {
 	private String boardTitle;
 	private String boardContent;
 	private Integer boardCategory;
-	private Date boardDate;
+	private String boardDate;
 	private Integer boardCount;
 	private String boardImgPath;
 	private List commentList;
@@ -33,7 +33,7 @@ public class Board {
 	
 
 	public Board(Integer boardNo, String nickname, String boardTitle,
-			String boardContent, Integer boardCategory, Date boardDate,
+			String boardContent, Integer boardCategory, String boardDate,
 			Integer boardCount, String boardImgPath, List commentList) {
 		super();
 		this.boardNo = boardNo;
@@ -96,11 +96,11 @@ public class Board {
 		this.boardCategory = boardCategory;
 	}
 
-	public Date getBoardDate() {
+	public String getBoardDate() {
 		return boardDate;
 	}
 
-	public void setBoardDate(Date boardDate) {
+	public void setBoardDate(String boardDate) {
 		this.boardDate = boardDate;
 	}
 	
