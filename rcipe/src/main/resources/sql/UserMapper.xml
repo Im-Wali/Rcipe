@@ -28,7 +28,7 @@
 		VALUES( 
 		#{nickname}, 
 		#{email}, 
-		#{password}, 
+		CryptString.encrypt(#{password},'key'), 
 		null, 
 		SYSDATE, 
 		'N'
