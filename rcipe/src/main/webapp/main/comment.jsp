@@ -2,25 +2,27 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
-window.viewReplyList = function(value) {
-    alert('ㅇㅇ value : ' + value);
-    $('#' + value + 'ReplyList').html("<from action='#' method='post'><div class='row'>"
-            + "<div class='col-md-1' align='center'>"
-            + " <span class='glyphicon glyphicon-arrow-right'"
-            + " style='margin-top: 2%; font-size: 1.5em; margin-left: 2%'></span></div>"
-            + " <div class='col-md-1'>"
-            + " <img alt='' class='img-circle' src='../img/001.jpg' width='70px'"
-            + " height='70px' style='margin-top: 1%'></div>"
-            + "   <div class='col-md-10'>"
-            + "<input type='hidden' id='contentNo' value=${board.boardNo }'>"
-            + "<textarea class='form-control' id='commentContent'"
-            + "name='commentContent'"
-            + "style='margin-left: 2%; margin-rghit: 2%; width: 98%; height:80px'"
-            + "placeholder='답글을 작성해주세요'></textarea>"
-            + "<div class='form-group' align='right'>"
-            + "<button type='submit' class='btn btn-warning' style='margin-top: 1%'"
-            + "id='commentSubmit'>댓글작성</button></div></div></div></from><hr />");
-  }
+	window.viewReplyList = function(value) {
+		alert('ㅇㅇ value : ' + value);
+		$('#' + value + 'ReplyList')
+				.html(
+						"<from action='#' method='post'><div class='row'>"
+								+ "<div class='col-md-1' align='center'>"
+								+ " <span class='glyphicon glyphicon-arrow-right'"
+								+ " style='margin-top: 2%; font-size: 1.5em; margin-left: 2%'></span></div>"
+								+ " <div class='col-md-1'>"
+								+ " <img alt='' class='img-circle' src='../img/001.jpg' width='70px'"
+								+ " height='70px' style='margin-top: 1%'></div>"
+								+ " <div class='col-md-10'>"
+								+ "<input type='hidden' id='contentNo' value='${board.boardNo}'>"
+								+ "<textarea class='form-control commentContent'"
+								+ "name='commentContent'"
+								+ "style='margin-left: 2%; margin-rghit: 2%; width: 98%; height:80px'"
+								+ "placeholder='답글을 작성해주세요'></textarea>"
+								+ "<div class='form-group' align='right'>"
+								+ "<button type='submit' class='btn btn-warning commentSubmit' style='margin-top: 1%'"
+								+ ">댓글작성</button></div></div></div></from><hr />");
+	}
 	$(document)
 			.ready(
 					function() {
@@ -65,7 +67,7 @@ window.viewReplyList = function(value) {
 											var contentNo = this.title
 													.split(",")[0];
 											var commentBody = this.title
-											.split(",")[2];
+													.split(",")[2];
 											if (f) {
 												s += "<textarea class='form-control' id='updateCommentContent'"
 														+ "name='updateCommentContent'"
@@ -80,12 +82,12 @@ window.viewReplyList = function(value) {
 														+ "</div>"
 														+ "<input type='hidden' id='updateCommentNo' value='"+contentNo+"'>";
 											}
- 												alert($(commentBody).html());
- 												$(commentBody).html(s);
+											alert($(commentBody).html());
+											$(commentBody).html(s);
 										});
-						$('#commentSubmit').click(
+						$('.commentSubmit').click(
 								function(event) {
-									var s = $('#commentContent').val();
+									var s = $('.commentContent').val();
 									if (s == '') {
 										alert("내용을 입력하세요");
 										event.preventDefault();
@@ -96,12 +98,12 @@ window.viewReplyList = function(value) {
 											method : 'POST',
 											dataType : 'json',
 											data : 'commentContent='
-													+ $('#commentContent')
+													+ $('.commentContent')
 															.val() + '&'
 													+ 'contentNo='
 													+ $('#contentNo').val(),
 											success : function(result) {
-												$('#commentContent').val('');
+												$('.commentContent').val('');
 												var list = result.list;
 												listBoardCmt('#commentList',
 														list);
@@ -147,14 +149,14 @@ window.viewReplyList = function(value) {
 										+ "</div>"
 										+ "<div align='right' style='margin-right: 2%;'>"
 										+ "<button type='button' onclick='viewReplyList(this.value)'style='color: black;' value='"
-					          + list[i].commentNo
-					          + "'>답글("
-					          + list[i].replyCnt
-					          + ")개 보기</button>"
+										+ list[i].commentNo
+										+ "'>답글("
+										+ list[i].replyCnt
+										+ ")개 보기</button>"
 										+ "</div>"
 										+ "</div>"
 										+ "<hr /></div>"
-										+"<div id='${comment.commentNo}ReplyList'></div>"
+										+ "<div id='${comment.commentNo}ReplyList'></div>"
 										+ "</div>";
 							}
 							$(id).html(str);
@@ -191,14 +193,14 @@ window.viewReplyList = function(value) {
 		<div class="col-md-11">
 			<input type="hidden" id="contentNo" value="${board.boardNo}">
 			<!-- <input type="hidden" id="contentNo" value="10089"> -->
-			<textarea class="form-control" id="commentContent"
+			<textarea class="form-control commentContent"
 				name="commentContent"
 				style="margin-left: 2%; margin-rghit: 2%; width: 98%; height: 80px"
 				placeholder="댓글을 작성해주세요"></textarea>
 
 			<div class="form-group" align="right">
-				<button type="submit" class="btn btn-warning"
-					style="margin-top: 1%;" id="commentSubmit">댓글작성</button>
+				<button type="submit" class="btn btn-warning commentSubmit"
+					style="margin-top: 1%;" >댓글작성</button>
 			</div>
 		</div>
 	</div>
@@ -230,8 +232,8 @@ window.viewReplyList = function(value) {
 									<div align="right">
 										<%-- <c:if test="${user.nickname eq comment.nickname}"> --%>
 										<a style="margin-left: 2%; color: black" class="updateComment"
-											title="${comment.commentNo },commentContent${i},#commentBody${i}">수정</a> <a
-											style="margin-left: 2%; color: black" class="removeComment"
+											title="${comment.commentNo },commentContent${i},#commentBody${i}">수정</a>
+										<a style="margin-left: 2%; color: black" class="removeComment"
 											title="${comment.commentNo}">삭제</a>
 										<%-- <a
 											style="margin-left: 2%; color: black" onclick="removeComment('${comment.commentNo}')">삭제</a> --%>
@@ -244,7 +246,8 @@ window.viewReplyList = function(value) {
 					</div>
 					<div align="right" style="margin-right: 2%;">
 						<button type="button" onclick="viewReplyList(this.value)"
-              style="color: black;" value="${comment.commentNo}">답글(${comment.replyCnt})개  보기</button>
+							style="color: black;" value="${comment.commentNo}">답글(${comment.replyCnt})개
+							보기</button>
 					</div>
 				</div>
 			</div>
