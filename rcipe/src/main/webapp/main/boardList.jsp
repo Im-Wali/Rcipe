@@ -166,9 +166,9 @@ var flag = 'N';
                               + list[i].boardTitle
                               + "</a></td><td class='col-xs-2'>"
                               + list[i].nickname
-                              + "</td><td class='col-xs-2'>"
+                              + "</td><td class='col-xs-1'>"
                               + list[i].boardDate
-                              + "</td></tr>");
+                              + "</td><td class='col-xs-1'>"+list[i].boardCount+"</tr>");
 
                 }
               }
@@ -215,7 +215,8 @@ var flag = 'N';
                     <th class="col-xs-2">#</th>
                     <th class="col-xs-6">제목</th>
                     <th class="col-xs-2">작성자</th>
-                    <th class="col-xs-2">올린날짜</th>
+                    <th class="col-xs-1">올린날짜</th>
+                    <th class="col-xs-1">조회수</th>
                   </tr>
                 </thead>
                 <tbody id="ref">
@@ -227,7 +228,8 @@ var flag = 'N';
                       <td class="col-xs-2">${ board.boardNo }</td>
                       <td class="col-xs-6"><a href="viewBoard?boardNo=${ board.boardNo }">${board.boardTitle}</a></td>
                       <td class="col-xs-2">${board.nickname}</td>
-                      <td class="col-xs-2">${board.boardDate}</td>
+                      <td class="col-xs-1">${board.boardDate}</td>
+                      <td class="col-xs-1">${board.boardCount}</td>
                     </tr>
                   </c:forEach>
 
