@@ -2,6 +2,27 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
+window.viewReplyList = function(value) {
+    alert('ㅇㅇ value : ' + value);
+    $('#' + value + 'ReplyList').html("<div class='row'>"
+            + "<div class='col-md-1' align='center'>"
+            + " <span class='glyphicon glyphicon-arrow-right'"
+            + " style='margin-top: 2%; font-size: 1.5em; margin-left: 2%'></span></div>"
+            + " <div class='col-md-1'>"
+            + " <img alt='' class='img-circle' src='../img/001.jpg' width='70px'"
+            + " height='70px' style='margin-top: 1%'></div>"
+            + "   <div class='col-md-10'>"
+            + "<input type='hidden' id='contentNo' value=${board.boardNo }'>"
+            + "<textarea class='form-control' id='commentContent'"
+            + "name='commentContent'"
+            + "style='margin-left: 2%; margin-rghit: 2%; width: 98%; height:80px'"
+            + "placeholder='답글을 작성해주세요'></textarea>"
+            + "</div>"
+            + "</div>"
+            + "<div class='form-group' align='right'>"
+            + "<button type='submit' class='btn btn-warning' style='margin-top: 1%'"
+            + "id='commentSubmit'>댓글작성</button></div>");
+  }
 	$(document)
 			.ready(
 					function() {
@@ -127,9 +148,11 @@
 										+ "</div>"
 										+ "</div>"
 										+ "<div align='right' style='margin-right: 2%;'>"
-										+ "<a style='color: black'>답글("
-										+ list[i].replyCnt
-										+ ")개 보기</a>"
+										+ "<button type='button' onclick='viewReplyList(this.value)'style='color: black;' value='"
+					          + list[i].commentNo
+					          + "'>답글("
+					          + list[i].replyCnt
+					          + ")개 보기</button>"
 										+ "</div>"
 										+ "</div>"
 										+ "<hr /></div>"
@@ -224,12 +247,13 @@
 						<div style="margin-left: 2%; margin-right: 2%; margin-top: 1%">${comment.commentContent }</div>
 					</div>
 					<div align="right" style="margin-right: 2%;">
-						<a style="color: black">답글(${comment.replyCnt})개 보기</a>
+						<button type="button" onclick="viewReplyList(this.value)"
+              style="color: black;" value="${comment.commentNo}">답글(${comment.replyCnt})개  보기</button>
 					</div>
 				</div>
 			</div>
 			<hr />
-			<div id="comment${i}ReplyList">
+			<div id="${comment.commentNo}ReplyList">
 				<!-- 여기에 답글 입력부분을 보여준다. -->
 			</div>
 		</c:forEach>
