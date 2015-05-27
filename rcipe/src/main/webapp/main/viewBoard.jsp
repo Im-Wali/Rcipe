@@ -11,6 +11,12 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet"
+	href="../../css/bootstrap.min.css">
+<script
+	src="../../js/jquery-1.11.3.min.js"></script>
+<script
+	src="../../js/bootstrap.min.js"></script> -->
 <style type="text/css">
 body {
 	background-color: #fff;
@@ -52,13 +58,7 @@ h4 {
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(window).load(function() {
-			var n = $
-			{
-				board.boardCategory
-			}
-			;
-			alert(${baord.baordCategory});
+			/* var n = $('#category').val();
 			alert(n);
 			var str;
 			if (n == 1) {
@@ -70,8 +70,7 @@ h4 {
 			} else {
 				str = "기타";
 			}
-			$('#select_category').html(str);
-		});
+			$('#select_category').html(str); */
 	});
 </script>
 </HEAD>
@@ -81,7 +80,8 @@ h4 {
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
 			<div align="right">
-				<input type="hidden" id="boardNo" vlaue="${board.boardNo }">
+				<input type="hidden" id="boardNo" value="${board.boardNo }">
+				<input type="hidden" id="category" value="${board.boardCategory }"> 
 				<span style="float: left"> <label for="title"
 					style="color: black; font-size: medium;">작성자 :
 						${board.nickname } / 조회수 : (${board.boardCount })</label></span><span> <label
