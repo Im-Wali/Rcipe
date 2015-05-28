@@ -17,8 +17,6 @@
 		<result property="boardImgPath" column="board_img_path" jdbcType="VARCHAR" />
 	</resultMap>
 
-
-
 	<sql id="getJoinQuery">
 		SELECT
 		b.board_no, b.board_title, b.board_cont, b.board_cat,
@@ -29,7 +27,6 @@
 		boards b, users u
 		WHERE b.nickname = u.nickname
 	</sql>
-
 
 	<sql id="searchBoard">
 		SELECT
@@ -42,7 +39,6 @@
 		AND b.board_cat = #{searchCategory}
 		ORDER BY b.board_no
 	</sql>
-
 
 	<select id="getBoardList" parameterType="search"
 		resultMap="boardSelectMap">
@@ -58,17 +54,8 @@
 		ROWNUM &lt; = 3 ) inner
 		WHERE
 		row_seq BETWEEN 1 AND 3
-	</select>
-
-	<!-- ##쿼리 예제## select inner.* from( select inner_table.*, rownum as row_seq 
-		from ( SELECT b.board_no, b.board_title, b.board_cont, b.board_cat, b.board_date 
-		, b.board_cnt, b.nickname bnick, u.nickname unick from boards b, users u 
-		WHERE b.nickname = u.nickname AND b.nickname = 'user01' ORDER BY b.board_no 
-		) inner_table where rownum <= '10' ) inner where row_seq between '1' and 
-		'10'; -->
-
-
-
+	</select> 
+	
 	<insert id="insertBoard" parameterType="board">
 		INSERT
 		INTO
@@ -116,17 +103,55 @@
 		WHERE board_no=${value}
 	</delete>
 
+<!--
+	<select id="getBoardList" parameterType="search">
+		SELECT
+		out_table.
+		<include refid="searchBoard" />
+		,board_no, nickname, board_title, board_date
+		 FROM
+		 (SELECT inner_table.
+		 <include refid="searchBoard" />
+		 ,ROWNUM AS
+		  row_seq FROM
+		  (SELECT 
+		  <include refid="searchBoard" />
+		  FROM boards
+		  <where>
+		  <choose>
+		  <when test="searchCondition==0 and searchKeyword != ''">
+		  rcp_no like #{searchKeyword}
+		  </when>
+		  <when test="searchCondition==1 and searchKeyword != ''">
+		  nickname in #{searchKeyword}
+		  </when>
+		  <when test="searchCondition==2 and searchKeyword != ''">
+		  rcp_title like #{searchKeyword}
+		  </when>
+		  </choose>
+		  </where>
+		  ORDER BY board_no)
+		  inner_table WHERE ROWNUM &lt;=#{currentPage}*#{pageSize} )boards
+		  ,boards_image_table
+		  WHERE boards.board_no = boards_image_table.board_no(+)
+		  AND
+		  row_seq BETWEEN (#{currentPage}-1)*#{pageSize}+1 AND
+		  #{currentPage}*#{pageSize}
+	</select> -->
+
 	<select id="getTotalCount" parameterType="search" resultType="int">
 		SELECT COUNT(*)
 		FROM( SELECT *
 		FROM boards
+		 <if test="searchCondition != null"> 
+		 <where> 
+		 <if test="searchCondition == 0 and searchKeyword !='' "> rcp_no like '%${searchKeyword}%' </if> 
+		 <if test="searchCondition == 1 and searchKeyword !='' "> nickname in #{searchKeyword} </if> 
+		 <if test="searchCondition == 2 and searchKeyword !='' "> rcp_title like '%${searchKeyword}%' </if> 
+		 </where> 
+		 </if>
 		WHERE board_cat = #{searchCategory}
-		<!-- <if test="searchCondition != null"> <where> <if test="searchCondition 
-			== 0 and searchKeyword !='' "> rcp_no like '%${searchKeyword}%' </if> <if 
-			test="searchCondition ==W 1 and searchKeyword !='' "> nickname in #{searchKeyword} 
-			</if> <if test="searchCondition == 3 and searchKeyword !='' "> rcp_title 
-			like '%${searchKeyword}%' </if> </where> </if> -->
 		) countTable
 	</select>
-
+	
 </mapper>
