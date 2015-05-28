@@ -46,16 +46,19 @@
 			}
 			checkUnload = false;
 		});
-	})
     var checkUnload = true;
-    $(window).on("beforeunload", function(){
+   $(window).unload("beforeunload", function(){
         if(checkUnload){
-        	var f = confirm('"이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.');
+        	 var f = confirm('이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.');
         	if(f){
-        		
-        	}
+        		$.post("../app/file/deleteBoarFile",function(data) {
+        			alert("AAA");
+				}); 
+        	} 
         }
     });
+	})
+    
 </script>
 </script>
 </HEAD>
@@ -64,7 +67,7 @@
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="../app/board/inserBoard" method="POST">
+			<form action="inserBoard" method="POST">
 				<div class="form-login " style="margin-bottom: 2%;">
 					<h3 align="center" style="margin-bottm: 1%;">게시판글 등록</h3>
 					<div style="margin-top: 1%">
@@ -73,65 +76,67 @@
 							type="text" class="form-control" id="boardTitle"
 							name="boardTitle" placeholder="제목을 입려하세요">
 						<!-- Single button -->
-						<div align="right" style="margin-top:1%">
-						<span ><button type="button" class="btn btn-warning" >
-                                    <span id="select_category" >카테고리</span></button></span>
+						<div align="right" style="margin-top: 1%">
+							<span><button type="button" class="btn btn-warning">
+									<span id="select_category">카테고리</span>
+								</button></span>
 						</div>
 						<div align="right">
-						<div style="margin-top: 1%;"align="left">
-							<label style="color: red; font-size: x-large;">*게시판글
-								내용입력</label>
-						</div>
-						<div class="btn-group"
-							style="margin-top: -7%;" align="right">
-							<input type="hidden" id="boardCategory" name="boardCategory" value="">
+							<div style="margin-top: 1%;" align="left">
+								<label style="color: red; font-size: x-large;">*게시판글
+									내용입력</label>
+							</div>
+							<div class="btn-group" style="margin-top: -7%;" align="right">
+								<input type="hidden" id="boardCategory" name="boardCategory"
+									value="">
 								<!-- <button type="button" class="btn btn-warning dropdown-toggle "
 									data-toggle="dropdown">
 									<span id="select_category">카테고리</span> <span class="caret">
 									</span>
 								</button> -->
-<!-- 								<ul class="dropdown-menu" role="menu"> -->
-									<span ><a id="search_contents_" onclick="javascript:selectCategory('레시피','1')">
-									<!-- <img src="../img/category/recipe.png" class="img-circle" role="button"
+								<!-- 								<ul class="dropdown-menu" role="menu"> -->
+								<span><a id="search_contents_"
+									onclick="javascript:selectCategory('레시피','1')"> <!-- <img src="../img/category/recipe.png" class="img-circle" role="button"
                                     style="width: 50px; height: 50px; margin-top: 1%"
                                     aria-haspopup="true" aria-expanded="false" id=""> -->
-                                    <button type="button" class="btn btn-info" >
-                                    <span>레시피</span></button>
-                                    </a></span>
-									
-									<span><a id="" onclick="javascript:selectCategory('추천맛집','2')">
-                                    <!-- <img src="../img/category/recommend.jpg" class="img-circle" role="button"
+										<button type="button" class="btn btn-info">
+											<span>레시피</span>
+										</button>
+								</a></span> <span><a id=""
+									onclick="javascript:selectCategory('추천맛집','2')"> <!-- <img src="../img/category/recommend.jpg" class="img-circle" role="button"
                                     style="width: 50px; height: 50px; margin-top: 1%"
                                     aria-haspopup="true" aria-expanded="false" id=""> -->
-                                    <button type="button" class="btn btn-info">
-                                    <span>추천맛집</span></button>
-                                    </a></span>
-									
-									<span><a id="search_contents_nickname" onclick="javascript:selectCategory('고민상담','3')">
-                                    <!-- <img src="../img/category/help.png" class="img-circle" role="button"
+										<button type="button" class="btn btn-info">
+											<span>추천맛집</span>
+										</button>
+								</a></span> <span><a id="search_contents_nickname"
+									onclick="javascript:selectCategory('고민상담','3')"> <!-- <img src="../img/category/help.png" class="img-circle" role="button"
                                     style="width: 50px; height: 50px; margin-top: 1%"
                                     aria-haspopup="true" aria-expanded="false" id=""_> -->
-                                     <button type="button" class="btn btn-info">
-                                    <span >고민상담</span></button>
-                                    </a></span>
-									
-									<span><a id="search_contents_nickname" 	onclick="javascript:selectCategory('기타','4')">
-                                    <!-- <img src="../img/category/etc.png" class="img-circle" role="button"
+										<button type="button" class="btn btn-info">
+											<span>고민상담</span>
+										</button>
+								</a></span> <span><a id="search_contents_nickname"
+									onclick="javascript:selectCategory('기타','4')"> <!-- <img src="../img/category/etc.png" class="img-circle" role="button"
                                     style="width: 50px; height: 50px; margin-top: 1%"
                                     aria-haspopup="true" aria-expanded="false" id=""> -->
-                                    <button type="button" class="btn btn-info">
-                                    <span>기타</span></button>
-                                    </a></span>
-<!-- 								</ul> -->
-						</div>
-						<div align="right" style="margin-top:-1%"> <span><label style="color: red;">*카테고리를 선택하세요.</label></span></div>
+										<button type="button" class="btn btn-info">
+											<span>기타</span>
+										</button>
+								</a></span>
+								<!-- 								</ul> -->
+							</div>
+							<div align="right" style="margin-top: -1%">
+								<span><label style="color: red;">*카테고리를 선택하세요.</label></span>
+							</div>
 						</div>
 						<div>
 							<textarea name="boardContent" id="editor1" class="ckeditor"> </textarea>
 						</div>
 						<div align="right" style="margin-top: 1%">
-							<span><button type="submit" class="btn btn-warning" id="boardSubmit">등록</button></span>
-							<span><button type="reset" class="btn btn-warning">취소</button></span>
+							<span><button type="submit" class="btn btn-warning"
+									id="boardSubmit">등록</button></span> <span><button type="reset"
+									class="btn btn-warning">취소</button></span>
 						</div>
 					</div>
 				</div>
