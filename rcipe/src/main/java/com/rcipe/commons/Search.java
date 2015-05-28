@@ -6,6 +6,7 @@ public class Search {
 	///Field
 	private int curruntPage;
 	private String searchCategory;
+	private String searchCondition;
 	private String searchKeyword;
 	private int pageSize;
 	
@@ -14,11 +15,12 @@ public class Search {
 	}
 	
 	public Search(int curruntPage, String searchCategory, String searchKeyword,
-			int pageSize) {
+			String searchCondition, int pageSize) {
 		super();
 		this.curruntPage = curruntPage;
 		this.searchCategory = searchCategory;
 		this.searchKeyword = searchKeyword;
+		this.searchCondition = searchCondition;
 		this.pageSize = pageSize;
 	}
 
@@ -43,6 +45,16 @@ public class Search {
 	public void setSearchCategory(String searchCategory) {
 		this.searchCategory = searchCategory;
 	}
+	
+	
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
@@ -54,6 +66,7 @@ public class Search {
 	public String toString() {
 		return "Search [curruntPage=" + curruntPage + ", searchCategory="
 				+ searchCategory + ", searchKeyword=" + searchKeyword
+				+ searchCondition + ", searchCondition="
 				+ ", pageSize=" + pageSize + "]";
 	}
 }
