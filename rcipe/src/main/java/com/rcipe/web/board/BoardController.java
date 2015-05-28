@@ -60,7 +60,10 @@ public class BoardController {
 		session.removeAttribute("boardImgPath");
 		return "forward:/main/boardList.jsp";
 	}
-	
+	@RequestMapping(value = "/getInsertBoard", method = RequestMethod.GET)
+	public  String  getInsertBoard()throws Exception{
+		return "/main/insertBoard";
+	}
 	@RequestMapping(value = "/viewModifyBoard", method = RequestMethod.GET)
 	public  String  viewModifyBoard(Model model,@RequestParam("boardNo") int boardNo,HttpSession session)throws Exception{
 		Board board=boardService.getBoard(boardNo);

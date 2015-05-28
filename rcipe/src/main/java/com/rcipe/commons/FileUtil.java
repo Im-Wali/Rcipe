@@ -66,10 +66,8 @@ public class FileUtil {
 		File file = new File(filePath);
 		String[] list = file.list();
 		if(list==null){
-			System.out.println(file.getAbsolutePath());
 			return file.delete();
 		}
-		System.out.println(list);
 		if (list.length != 0) { // 하위 폴더에 내용이 있을경우
 			for (int i = 0; i < list.length; i++) { // 내용들을 일일히 체크
 				File delFile = new File(file + File.separator + list[i]);// 디렉토리\\화일(혹은디렉토리)

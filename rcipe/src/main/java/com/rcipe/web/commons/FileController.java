@@ -105,4 +105,11 @@ public class FileController {
 		}
 		return;
 	}
+	@RequestMapping("deleteBoarFile")
+	public @ResponseBody String deleteBoarFile(HttpSession session)throws Exception {
+		String boardPath=(String)session.getAttribute("boardImgPath");
+		String nickname=((User)session.getAttribute("user")).getNickname();
+		File newFile=new File(ctx.getRealPath("/images")+"/"+nickname+"/"+boardPath);
+		return ""+FileUtil.deleteFile(newFile.getAbsolutePath());
+	}
 }
