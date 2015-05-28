@@ -177,74 +177,71 @@ var flag = 'N';
   }
 </script>
 <body>
-	<jsp:include page="../main/menuBar.jsp"></jsp:include>
-	<div class="container">
-		<div class="col-md-12">
-			<div class="panel with-nav-tabs panel-success">
-				<div class="panel-heading">
-					<ul class="nav nav-tabs">
-						<li class="active"><a href="#" onClick="funcTab(0);"
-							data-toggle="tab">레시피</a></li>
-						<li><a href="#" onClick="funcTab(1);" data-toggle="tab">추천맛집</a></li>
-						<li><a href="#" onClick="funcTab(2);" data-toggle="tab">고민상담</a></li>
-						<li><a href="#" onClick="funcTab(3);" data-toggle="tab">기타</a></li>
-						<li class="dropdown" style="float: right;"><a href="#"
-							data-toggle="dropdown">10개 <span class="caret"></span>
-						</a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#twenty" data-toggle="tab">20개</a></li>
-								<li><a href="#fifty" data-toggle="tab">50개</a></li>
-							</ul></li>
-						<li style="float: right;"><form
-								class="navbar-form navbar-left" role="search">
-								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Search">
-								</div>
-								<button type="submit" class="btn btn-default">찾기</button>
-								<button type="button" class="btn btn-default">글쓰기</button>
-							</form>
-							</li>
-					</ul>
-				</div>
-				<div class="panel-body" id="conte">
-					<div class="tab-content">
-						<div class="tab-pane fade in active">
-							<table class="table table-fixed">
-								<thead>
-									<tr>
-										<th class="col-xs-2">#</th>
-										<th class="col-xs-6">제목</th>
-										<th class="col-xs-2">작성자</th>
-										<th class="col-xs-2">올린날짜</th>
-									</tr>
-								</thead>
-								<tbody id="ref">
-									<c:set var="i" value="0" />
-									<c:forEach var="board" items="${list}">
-										<c:set var="i" value="${ i+1 }" />
-										<tr>
-											<td class="col-xs-2">${ board.boardNo }</td>
-											<!--<td class="col-xs-2">10021</td> -->
-											<td class="col-xs-6"><a href="/getBoard">${board.boardTitle}</a></td> 
-											<!--<td class="col-xs-6"><a href="/getBoard">타이틀77</a></td> -->
-											<td class="col-xs-2">${board.nickname}</td>
-											<!--<td class="col-xs-2">user01</td> -->
-											<td class="col-xs-2">${board.boardDate}</td>
-											<!--<td class="col-xs-2">2015-05-27</td> -->
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-						</div>
-						<div align="center">
-							<jsp:include page="../main/pageNavigator.jsp"></jsp:include>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br />
+  <jsp:include page="menuBar.jsp"></jsp:include>
+  <div class="container">
+    <div class="col-md-12">
+      <div class="panel with-nav-tabs panel-success">
+        <div class="panel-heading">
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#" onClick="funcTab(0);" id="0"
+              data-toggle="tab">레시피</a></li>
+            <li><a href="#" onClick="funcTab(1);" data-toggle="tab" id="1">추천맛집</a></li>
+            <li><a href="#" onClick="funcTab(2);" data-toggle="tab" id="2">고민상담</a></li>
+            <li><a href="#" onClick="funcTab(3);" data-toggle="tab" id="3">기타</a></li>
+            <li style="float: right; width: 500px;"><form
+                class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">찾기</button>
+                <button type="button" class="btn btn-default">글쓰기</button>
+              </form>
+                <div class="select-style" style="margin-top:8px;">
+                  <select id="selectList">
+                    <option value="10" selected="selected">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                  </select>
+                </div>
+            </li>
+          </ul>
+        </div>
+        <div class="panel-body" id="conte">
+          <div class="tab-content">
+            <div class="tab-pane fade in active">
+              <table class="table table-fixed">
+                <thead>
+                  <tr>
+                    <th class="col-xs-2">#</th>
+                    <th class="col-xs-6">제목</th>
+                    <th class="col-xs-2">작성자</th>
+                    <th class="col-xs-1">올린날짜</th>
+                    <th class="col-xs-1">조회수</th>
+                  </tr>
+                </thead>
+                <tbody id="ref">
+
+                  <c:set var="i" value="0" />
+                  <c:forEach var="board" items="${list}">
+                    <c:set var="i" value="${ i+1 }" />
+                    <tr>
+                      <td class="col-xs-2">${ board.boardNo }</td>
+                      <td class="col-xs-6"><a href="viewBoard?boardNo=${ board.boardNo }">${board.boardTitle}</a></td>
+                      <td class="col-xs-2">${board.nickname}</td>
+                      <td class="col-xs-1">${board.boardDate}</td>
+                      <td class="col-xs-1">${board.boardCount}</td>
+                    </tr>
+                  </c:forEach>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br />
 </body>
 </html>
 
