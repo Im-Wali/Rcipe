@@ -368,7 +368,7 @@
 										+ "<div>"
 										+ "<div class='row'>"
 										+ "<div class='col-md-7' align='left'>"
-										+ "<div style='margin-left:2%; margin-right: 2%'>"
+										+ "<div style='margin-left:2%; margin-right: 2%;font-family: monospace;'>"
 										+ list[i].nickname
 										+ "/"
 										+ list[i].commentDate
@@ -377,7 +377,7 @@
 										if(list[i].nickname ==$('#userNickname').val()){
 											str+= "<div class='col-md-5'>"
 										+ "<div align='right'>"
-										+ "<a style='margin-left: 2%; color: black'class='updateReply'"
+										+ "<a style='margin-left: 2%; color: blue;cursor:pointer'class='updateReply'"
 										+ "title='"
 										+ list[i].commentNo
 										+ ",replyContent"
@@ -385,7 +385,7 @@
 										+ ",replyBody"
 										+ i
 										+ "'>수정</a><a "
-										+ "style='margin-left: 2%; color: black' class='removeReply' title='"+list[i].commentNo+"'"
+										+ "style='margin-left: 2%; color: red;cursor:pointer' class='removeReply' title='"+list[i].commentNo+"'"
 										+ ">삭제</a>"
 										+ "</div>"
 										+ "</div>";
@@ -416,7 +416,7 @@
 										+ "<div>"
 										+ "<div class='row'>"
 										+ "<div class='col-md-7' align='left'>"
-										+ "<div style='margin-left:2%; margin-right: 2%;'>"
+										+ "<div style='margin-left:2%; margin-right: 2%;font-family: monospace;'>"
 										+ list[i].nickname
 										+ "/"
 										+ list[i].commentDate
@@ -425,7 +425,7 @@
 										if(list[i].nickname ==$('#userNickname').val()){
 										str+= "<div class='col-md-5'>"
 										+ "<div align='right'>"
-										+ "<a style='margin-left: 2%; color: black'class='updateComment'"
+										+ "<a style='margin-left: 2%; color: blue;cursor:pointer'class='updateComment'"
 										+ "title='"
 										+ list[i].commentNo
 										+ ",commentContent"
@@ -435,7 +435,7 @@
 										+ ",replyCnt"
 										+ i
 										+ "'>수정</a> <a "
-										+ "style='margin-left: 2%; color: black' class='removeComment' title='"
+										+ "style='margin-left: 2%; color: red;cursor:pointer' class='removeComment' title='"
 										+ list[i].commentNo
 										+ "'>삭제</a>"
 										+ "</div>"
@@ -450,7 +450,7 @@
 										+ "</div>"
 										+ "</div>"
 										+ "<div align='right' style='margin-right: 2%;'>"
-										+ "<a style='color: black'  class='replyList'"
+										+ "<a style='color: purple;cursor:pointer'  class='replyList'"
 										+"title='"+list[i].commentNo+","+list[i].replyCnt+",comment"+i+"ReplyList'>답글("
 										+ list[i].replyCnt
 										+ ")개 보기</a>"
@@ -514,14 +514,14 @@
 						<div>
 							<div class="row">
 								<div class="col-md-7" align="left">
-									<div style="margin-left: 2%; margin-right: 2%;">${comment.nickname }/${comment.commentDate}</div>
+									<div style="margin-left: 2%; margin-right: 2%;font-family: monospace;">${comment.nickname }/${comment.commentDate}</div>
 								</div>
 								<div class="col-md-5">
 									<div align="right">
 										 <c:if test="${user.nickname eq comment.nickname}">
-										<a style="margin-left: 2%; color: black" class="updateComment"
+										<a style="margin-left: 2%; color: blue;cursor:pointer" class="updateComment"
 											title="${comment.commentNo },commentContent${i},commentBody${i},replyCnt${i}">수정</a>
-										<a style="margin-left: 2%; color: black" class="removeComment"
+										<a style="margin-left: 2%; color: red;cursor:pointer" class="removeComment"
 											title="${comment.commentNo}">삭제</a>
 										<%-- <a
 											style="margin-left: 2%; color: black" onclick="removeComment('${comment.commentNo}')">삭제</a> --%>
@@ -530,11 +530,11 @@
 								</div>
 							</div>
 						</div>
-						<div style="margin-left: 2%; margin-right: 2%; margin-top: 1%"
+						<div style="margin-left: 2%; margin-right: 2%; margin-top: 1%;"
 							id="commentContent${i}">${comment.commentContent }</div>
 					</div>
 					<div align="right" style="margin-right: 2%;">
-						<a style="color: black" class="replyList"
+						<a style="color: purple;cursor:pointer" class="replyList  " 
 							title="${comment.commentNo},${comment.replyCnt},comment${i}ReplyList">답글(${comment.replyCnt})개
 							보기</a>
 					</div>
