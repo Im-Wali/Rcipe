@@ -65,6 +65,7 @@ public class CommentController {
 	public ResponseEntity<String> updateComment(@ModelAttribute("comment") Comment comment) throws Exception {
 		commentService.updateComment(comment);
 		Map<String,Object> map=new HashMap<String,Object>();
+		System.out.println(comment.getContentNo());
 		map.put("list", commentService.getBoardCmtList(comment.getContentNo()));
 		String jsonString = new Gson().toJson(map);
 		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
