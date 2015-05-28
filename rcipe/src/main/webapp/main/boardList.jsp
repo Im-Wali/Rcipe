@@ -120,7 +120,9 @@ $("document").ready(function(){
 		  // alert('selectListNum : '+selectListNum+' currentCategory : '+currentCategory);
 		  funcTab(currentCategory);
 	  });
-	  
+	  $('#getViewBoardButton').click(function(){
+		  $(location).attr('href',"../../main/insertBoard.jsp");
+	  });
 });
 
 var currentCategory;
@@ -194,7 +196,7 @@ var flag = 'N';
                   <input type="text" class="form-control" placeholder="Search">
                 </div>
                 <button type="submit" class="btn btn-default">찾기</button>
-                <button type="button" class="btn btn-default">글쓰기</button>
+                <button type="button" class="btn btn-default" id="getViewBoardButton">글쓰기</button>
               </form>
                 <div class="select-style" style="margin-top:8px;">
                   <select id="selectList">

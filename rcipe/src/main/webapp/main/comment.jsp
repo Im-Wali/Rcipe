@@ -306,7 +306,7 @@
 																					'#updateCommentContent')
 																					.val()
 																			+ '&'
-																			+ 'commentReNo='
+																			+ 'commentNo='
 																			+ $(
 																					'#updateCommentNo')
 																					.val()
@@ -374,7 +374,8 @@
 										+ list[i].commentDate
 										+ "</div>"
 										+ "</div>"
-										+ "<div class='col-md-5'>"
+										if(list[i].nickname ==$('#userNickname').val()){
+											str+= "<div class='col-md-5'>"
 										+ "<div align='right'>"
 										+ "<a style='margin-left: 2%; color: black'class='updateReply'"
 										+ "title='"
@@ -387,8 +388,9 @@
 										+ "style='margin-left: 2%; color: black' class='removeReply' title='"+list[i].commentNo+"'"
 										+ ">삭제</a>"
 										+ "</div>"
-										+ "</div>"
-										+ "</div>"
+										+ "</div>";
+										}
+										str += "</div>"
 										+ "</div>"
 										+ "<div style='margin-left: 2%; margin-right: 2%; margin-top: 1%' id='replyContent"+i+"'>"
 										+ list[i].commentContent
@@ -419,8 +421,9 @@
 										+ "/"
 										+ list[i].commentDate
 										+ "</div>"
-										+ "</div>"
-										+ "<div class='col-md-5'>"
+										+ "</div>";
+										if(list[i].nickname ==$('#userNickname').val()){
+										str+= "<div class='col-md-5'>"
 										+ "<div align='right'>"
 										+ "<a style='margin-left: 2%; color: black'class='updateComment'"
 										+ "title='"
@@ -436,8 +439,9 @@
 										+ list[i].commentNo
 										+ "'>삭제</a>"
 										+ "</div>"
-										+ "</div>"
-										+ "</div>"
+										+ "</div>";
+										}
+										str+= "</div>"
 										+ "</div>"
 										+ "<div style='margin-left: 2%; margin-right: 2%; margin-top: 1%' id='commentContent"
 										+ i
@@ -465,10 +469,10 @@
 </script>
 <div align="center">
 	<h4>댓글</h4>
-	${user.userImage }
 </div>
 <input type="hidden" id="contentNo" value="${board.boardNo}">
 <input type="hidden" id="userImg" value="${user.userImage}">
+<input type="hidden" id="userNickname" value="${user.nickname}">
 <div id="commentContainer">
 	<from action="#" method="post">
 	<div class="row">
@@ -514,14 +518,14 @@
 								</div>
 								<div class="col-md-5">
 									<div align="right">
-										<%-- <c:if test="${user.nickname eq comment.nickname}"> --%>
+										 <c:if test="${user.nickname eq comment.nickname}">
 										<a style="margin-left: 2%; color: black" class="updateComment"
 											title="${comment.commentNo },commentContent${i},commentBody${i},replyCnt${i}">수정</a>
 										<a style="margin-left: 2%; color: black" class="removeComment"
 											title="${comment.commentNo}">삭제</a>
 										<%-- <a
 											style="margin-left: 2%; color: black" onclick="removeComment('${comment.commentNo}')">삭제</a> --%>
-										<%-- </c:if> --%>
+										</c:if> 
 									</div>
 								</div>
 							</div>

@@ -44,8 +44,19 @@
 				event.preventDefault();
 				editor.focus();
 			}
+			checkUnload = false;
 		});
 	})
+    var checkUnload = true;
+    $(window).on("beforeunload", function(){
+        if(checkUnload){
+        	var f = confirm('"이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.');
+        	if(f){
+        		
+        	}
+        }
+    });
+</script>
 </script>
 </HEAD>
 <body>
@@ -62,13 +73,17 @@
 							type="text" class="form-control" id="boardTitle"
 							name="boardTitle" placeholder="제목을 입려하세요">
 						<!-- Single button -->
+						<div align="right" style="margin-top:1%">
+						<span ><button type="button" class="btn btn-warning" >
+                                    <span id="select_category" >카테고리</span></button></span>
+						</div>
 						<div align="right">
 						<div style="margin-top: 1%;"align="left">
 							<label style="color: red; font-size: x-large;">*게시판글
 								내용입력</label>
 						</div>
 						<div class="btn-group"
-							style="margin-top: -7%;">
+							style="margin-top: -7%;" align="right">
 							<input type="hidden" id="boardCategory" name="boardCategory" value="">
 								<!-- <button type="button" class="btn btn-warning dropdown-toggle "
 									data-toggle="dropdown">
@@ -76,39 +91,40 @@
 									</span>
 								</button> -->
 <!-- 								<ul class="dropdown-menu" role="menu"> -->
-									<span><a id="search_contents_" onclick="javascript:selectCategory('레시피','1')">
+									<span ><a id="search_contents_" onclick="javascript:selectCategory('레시피','1')">
 									<!-- <img src="../img/category/recipe.png" class="img-circle" role="button"
                                     style="width: 50px; height: 50px; margin-top: 1%"
                                     aria-haspopup="true" aria-expanded="false" id=""> -->
-                                    <button type="button" class="btn btn-warning">
-                                    <span id="select_category">레시피</span></button>
+                                    <button type="button" class="btn btn-info" >
+                                    <span>레시피</span></button>
                                     </a></span>
 									
 									<span><a id="" onclick="javascript:selectCategory('추천맛집','2')">
                                     <!-- <img src="../img/category/recommend.jpg" class="img-circle" role="button"
                                     style="width: 50px; height: 50px; margin-top: 1%"
                                     aria-haspopup="true" aria-expanded="false" id=""> -->
-                                    <button type="button" class="btn btn-warning">
-                                    <span id="select_category">추천맛집</span></button>
+                                    <button type="button" class="btn btn-info">
+                                    <span>추천맛집</span></button>
                                     </a></span>
 									
 									<span><a id="search_contents_nickname" onclick="javascript:selectCategory('고민상담','3')">
                                     <!-- <img src="../img/category/help.png" class="img-circle" role="button"
                                     style="width: 50px; height: 50px; margin-top: 1%"
                                     aria-haspopup="true" aria-expanded="false" id=""_> -->
-                                    <button type="button" class="btn btn-warning">
-                                    <span id="select_category">고민상담</span></button>
+                                     <button type="button" class="btn btn-info">
+                                    <span >고민상담</span></button>
                                     </a></span>
 									
 									<span><a id="search_contents_nickname" 	onclick="javascript:selectCategory('기타','4')">
                                     <!-- <img src="../img/category/etc.png" class="img-circle" role="button"
                                     style="width: 50px; height: 50px; margin-top: 1%"
                                     aria-haspopup="true" aria-expanded="false" id=""> -->
-                                    <button type="button" class="btn btn-warning">
-                                    <span id="select_category">기타</span></button>
+                                    <button type="button" class="btn btn-info">
+                                    <span>기타</span></button>
                                     </a></span>
 <!-- 								</ul> -->
 						</div>
+						<div align="right" style="margin-top:-1%"> <span><label style="color: red;">*카테고리를 선택하세요.</label></span></div>
 						</div>
 						<div>
 							<textarea name="boardContent" id="editor1" class="ckeditor"> </textarea>
