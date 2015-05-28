@@ -11,7 +11,7 @@
 <nav id="filp" class="navbar navbar-inverse "
 	style="border: none; width: 100%; height: 30%; padding: 10px; text-align: center; background-color: #FF9933;">
 	<span style="float: left; padding-left: 10px; margin-top: 1%"><a
-		href="testBar23.jsp" style="font-size: 2em; color: black">Rcipe</a></span>
+		href="../../main/mainPage.jsp" style="font-size: 2em; color: black">Rcipe</a></span>
 	<div class="dropdown">
 		<div id="dLabel" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"
