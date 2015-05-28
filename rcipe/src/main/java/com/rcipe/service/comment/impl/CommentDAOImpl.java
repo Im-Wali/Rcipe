@@ -60,7 +60,7 @@ public class CommentDAOImpl implements CommentDAO {
 	@Override
 	public int deleteBoardCmt(int commentNo) throws Exception {
 		sqlSession.delete("commentMapper.deleteBoardCmt",commentNo);
-		sqlSession.delete("commentMapper.deleteReply",commentNo);
+		sqlSession.delete("commentMapper.deleteReply2",commentNo);
 		return sqlSession.delete("commentMapper.deleteComment",commentNo);
 	}
 

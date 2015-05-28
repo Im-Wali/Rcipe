@@ -41,9 +41,8 @@ public class FileController {
 			HttpSession session) throws Exception {
 		String projectPath="http:/"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+"/rcipe/images/";
 		// 여기에 회원 별로 관리할수 있는 부분
-//		User user=(User)session.getAttribute("user");
-		User user=new User("user01","user01@naver.com","1111","!!!!");
-		// File("c:\\fileUploadTest\\user"+user.getNickname"+"\\profile");
+		User user=(User)session.getAttribute("user");
+//		 File("c:\\fileUploadTest\\user"+user.getNickname"+"\\profile");
 		File newFile=new File(ctx.getRealPath("/images")+"/"+user.getNickname());
 		if(!newFile.isDirectory()){
 			newFile.mkdirs();
@@ -60,8 +59,7 @@ public class FileController {
 
 	@RequestMapping("deleteProfile")
 	public @ResponseBody String deleteUser(HttpSession session)throws Exception {
-//		User user=(User)session.getAttribute("user");
-		User user=new User("user01","user01@naver.com","1111","!!!!");
+		User user=(User)session.getAttribute("user");
 		return URLEncoder.encode((fileService.deleteProfile(user.getNickname(),ctx.getRealPath("/images")) == true ?  "성공적으로 삭제했습니다":"삭제에 실패했습니다."),"UTF-8");
 	}
 	
@@ -70,8 +68,7 @@ public class FileController {
 			HttpSession session,HttpServletResponse response) throws Exception {
 		String sFunc = request.getParameter("CKEditorFuncNum");
 		// 여기에 회원 별로 관리할수 있는 부분
-//		User user=(User)session.getAttribute("user");
-		User user=new User("user01","user01@naver.com","1111","!!!!");
+		User user=(User)session.getAttribute("user");
 		//게시판 하나에 하나의 폴더를갖는다.
 		String boardPath=(String)session.getAttribute("boardImgPath");
 		if(boardPath==null){

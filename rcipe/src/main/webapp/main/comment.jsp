@@ -465,14 +465,15 @@
 </script>
 <div align="center">
 	<h4>댓글</h4>
+	${user.userImage }
 </div>
 <input type="hidden" id="contentNo" value="${board.boardNo}">
-<input type="hidden" id="userImg" value="${user.userImg}">
+<input type="hidden" id="userImg" value="${user.userImage}">
 <div id="commentContainer">
 	<from action="#" method="post">
 	<div class="row">
 		<div class="col-md-1">
-			<img alt="" class="img-circle" src="../../img/001.jpg" width="70px"
+			<img alt="" class="img-circle" src="../../images/${user.userImage}" width="70px"
 				height="70px" style="margin-top: 1%">
 		</div>
 		<div class="col-md-11">
@@ -543,7 +544,7 @@
 	</div>
 </div>
 
-<div class="row">
+<%-- <div class="row">
 	<div class="col-md-1">
 		<div>
 			<img alt="" class="img-circle" src="../img/001.jpg" width="70px"
@@ -622,3 +623,4 @@
 </div>
 <hr />
 
+ --%>

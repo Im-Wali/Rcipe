@@ -107,6 +107,13 @@
 		DELETE
 		FROM comments
 		WHERE
+		cmt_no=#{value}
+	</delete>
+	
+	<delete id="deleteReply2" parameterType="int">
+		DELETE
+		FROM comments
+		WHERE
 		cmt_no2=#{value}
 	</delete>
 
