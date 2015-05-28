@@ -41,8 +41,7 @@ public class CommentController {
 	
 	@RequestMapping(value = "/insertBoardCmt", method = RequestMethod.POST)
 	public ResponseEntity<String> insertBoardCmt(@ModelAttribute("comment") Comment comment,HttpSession session) throws Exception {
-//		User user=(User) session.getAttribute("user");
-		User user=new User("user01","user01@naver.com","1111","!!!!");
+		User user=(User) session.getAttribute("user");
 		comment.setNickname(user.getNickname());
 		commentService.insertBoardCmt(comment);
 		//다시 보여주기 위해 리스트을 가져온다
@@ -54,6 +53,8 @@ public class CommentController {
 	
 	@RequestMapping(value = "/inserReply", method = RequestMethod.POST)
 	public ResponseEntity<String> inserReply(@ModelAttribute("comment") Comment comment,HttpSession session) throws Exception {
+		User user=(User) session.getAttribute("user");
+		comment.setNickname(user.getNickname());
 		commentService.insertReply(comment);
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("list", commentService.getCommentReplyList(comment.getCommentReNo()));
@@ -65,8 +66,16 @@ public class CommentController {
 	public ResponseEntity<String> updateComment(@ModelAttribute("comment") Comment comment) throws Exception {
 		commentService.updateComment(comment);
 		Map<String,Object> map=new HashMap<String,Object>();
-		System.out.println(comment.getContentNo());
 		map.put("list", commentService.getBoardCmtList(comment.getContentNo()));
+		String jsonString = new Gson().toJson(map);
+		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/updateReply", method = RequestMethod.POST)
+	public ResponseEntity<String> updateReply(@ModelAttribute("comment") Comment comment) throws Exception {
+		commentService.updateComment(comment);
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("list", commentService.getCommentReplyList(comment.getCommentReNo()));
 		String jsonString = new Gson().toJson(map);
 		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
 	}
@@ -80,12 +89,21 @@ public class CommentController {
 		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
 	}
 	
-//	@RequestMapping(value = "/deleteBoardCmtList", method = RequestMethod.POST)
-//	public  ResponseEntity<String>deleteBoardCmtList(@RequestParam("boardNo") Integer boardNo) throws Exception {
-//		 commentService.deleteBoardCmtList(boardNo);
-//		 String jsonString = new Gson().toJson(commentService.getBoardCmtList(boardNo));
-//		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
-//	}
+	@RequestMapping(value = "/getReplyList", method = RequestMethod.POST)
+	public  ResponseEntity<String>getReplyList(@RequestParam("commentReNo") Integer commentReNo) throws Exception {
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("list", commentService.getCommentReplyList(commentReNo));
+		String jsonString = new Gson().toJson(map);
+		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/getBoardCmt", method = RequestMethod.POST)
+	public  ResponseEntity<String> getBoardCmt(@RequestParam("contentNo") Integer contentNo) throws Exception {
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("list", commentService.getBoardCmtList(contentNo));
+		String jsonString = new Gson().toJson(map);
+		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
+	}
 	
 	@RequestMapping(value = "/deleteReply", method = RequestMethod.POST)
 	public  ResponseEntity<String> deleteReply(@RequestParam("commentNo") Integer commentNo,@RequestParam("commentReNo") Integer commentReNo ) throws Exception {

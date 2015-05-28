@@ -53,8 +53,7 @@ public class BoardController {
 	@RequestMapping(value = "/inserBoard", method = RequestMethod.POST)
 	public  String  inserBoard(Model model,@ModelAttribute("board") Board board,
 			HttpSession session) throws Exception {
-		User user=new User("user01","user01@naver.com","1111","!!!!");
-//		User user=(User)session.getAttribute("user");
+		User user=(User)session.getAttribute("user");
 		board.setBoardImgPath((String)session.getAttribute("boardImgPath"));
 		board.setNickname(user.getNickname());
 		boardService.insertBoard(board);

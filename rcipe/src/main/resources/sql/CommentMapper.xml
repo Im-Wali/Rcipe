@@ -42,16 +42,18 @@
 	<insert id="insertReply">
 		INSERT INTO comments(CMT_NO,NICKNAME, CMT_NO2,
 		CMT_CONT,CMT_DATE)
-		VALUES(seq_cmt_no.NEXTVAL,#{nickname},#{commentReNo},#{commentContent},SYSDATE);
+		VALUES(seq_cmt_no.NEXTVAL,#{nickname},#{commentReNo},#{commentContent},SYSDATE)
 	</insert>
 
 	<!-- boardCmt리스트 가져온다. -->
 	<select id="getBoardCmtList" parameterType="int" resultMap="commentMap">
 		SELECT
 		c.CMT_NO CMT_NO,c.NICKNAME NICKNAME,c.CMT_CONT
-		CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD HH:MI:SS') CMT_DATE,u.USER_IMG USER_IMG,c.CMT_NO2 CMT_NO2,
+		CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD HH:MI:SS') CMT_DATE,u.USER_IMG
+		USER_IMG,c.CMT_NO2 CMT_NO2,
 		c.REPLY_CNT REPLY_CNT
-		FROM comments c,boards_cmt d,users u
+		FROM comments
+		c,boards_cmt d,users u
 		WHERE
 		d.board_no=#{value} AND
 		d.cmt_no=c.cmt_no
@@ -63,13 +65,16 @@
 	<select id="getCommentReplyList" parameterType="int" resultMap="commentMap">
 		SELECT
 		c.CMT_NO
-		,c.CMT_NO2,c.NICKNAME,c.CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD HH:MI:SS') CMT_DATE,u.USER_IMG
+		,c.CMT_NO2,c.NICKNAME,c.CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD
+		HH:MI:SS') CMT_DATE,u.USER_IMG
 		FROM comments
 		c,users u
-		WHERE c.cmt_no2=#{value}
+		WHERE
+		c.cmt_no2=#{value}
 		AND u.nickname LIKE c.nickname
 		ORDER
-		BY c.CMT_DATE DESC
+		BY c.CMT_DATE
+		DESC
 	</select>
 
 	<!-- 댓글 수정은 전부 공통으로 사용한다. -->
@@ -88,7 +93,7 @@
 		</set>
 		WHERE cmt_no = #{commentReNo}
 	</update>
-	
+
 	<update id="updateRemoveReplyCnt" parameterType="int">
 		UPDATE comments
 		<set>
@@ -102,7 +107,7 @@
 		DELETE
 		FROM comments
 		WHERE
-		cmt_no=#{value}
+		cmt_no2=#{value}
 	</delete>
 
 	<delete id="deleteComment" parameterType="int">
@@ -125,13 +130,15 @@
 		DELETE
 		FROM
 		comments
-		<if test="list.size != 0">
-			cmt_no2 IN
-			<foreach item="item" collection="list" open="(" separator=","
-				close=")">
-				#{item}
-			</foreach>
-		</if>
+		<where>
+			<if test="list.size != 0">
+				cmt_no2 IN
+				<foreach item="item" collection="list" open="(" separator=","
+					close=")">
+					#{item}
+				</foreach>
+			</if>
+		</where>
 	</delete>
 
 	<!-- 공통적으로 사용할 commentlist삭제 -->
