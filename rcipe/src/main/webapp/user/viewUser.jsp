@@ -80,7 +80,7 @@ $("document").ready(function() {
 </script>
 </HEAD>
 <body>
-	<jsp:include page="menuBar.jsp"></jsp:include>
+	<jsp:include page="../main/menuBar.jsp"></jsp:include>
 	<div style="margin-bottom: 2%; margin-top: 2%" align="center">
 		<h2 style="font-weight: bold;">회원정보 보기</h2>
 	</div>

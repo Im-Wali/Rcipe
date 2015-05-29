@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 		<div id="fb-root" style="background-color:green;"></div>
@@ -40,8 +40,7 @@
 															.ui({
 																method : 'feed',
 																name : 'This is the content of the "name" field.',
-																link : ' http://www.naver.com/',	// �대�遺�� �����url濡������
-																picture : 'sample.jpg',		// �대�遺�� ������대�吏�url
+																link : ' http://www.naver.com/',	
 																caption : 'This is the content of the "caption" field.',
 																description : 'This is the content of the "description" field, below the caption.',
 																message : 'This is text in the message box a user can add to or replace.'

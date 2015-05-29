@@ -52,7 +52,7 @@ h4 {
 </HEAD>
 
 <BODY>
-	<div><jsp:include page="menuBar.jsp"></jsp:include></div>
+	<div><jsp:include page="../main/menuBar.jsp"></jsp:include></div>
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
@@ -107,7 +107,7 @@ h4 {
 						</div>
 					</div>
 				</div>
-				<jsp:include page="insertDetailImg.jsp"></jsp:include>
+				<jsp:include page="../recipe/insertDetailImg.jsp"></jsp:include>
 			</form>
 		</div>
 		<div class="col-md-2"></div>

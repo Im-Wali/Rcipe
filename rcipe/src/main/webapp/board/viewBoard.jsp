@@ -149,7 +149,7 @@ h4 {
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="form-login " style="margin-bottom: 2%;">
-				<jsp:include page="../main/comment.jsp"></jsp:include>
+				<jsp:include page="../comment/comment.jsp"></jsp:include>
 			</div>
 		</div>
 		<div class="col-md-2"></div>

@@ -80,7 +80,7 @@ stylize any heading tags withing white-panel below
 </head>
 <body
 	style="background-color: #fff color: #383838; padding: 0; margin: 0; font-family: Verdana, Arial, sans-serif; font-weight: 400; font-style: normal; line-height: 131%; position: relative; cursor: default">
-	<div><jsp:include page="menuBar.jsp"></jsp:include></div>
+	<div><jsp:include page="../main/menuBar.jsp"></jsp:include></div>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
@@ -92,7 +92,7 @@ stylize any heading tags withing white-panel below
 						</div>
 						<div class="text-center center-block"
 							style="margin-left: 70%; " >
-						<jsp:include page="facebook.jsp"></jsp:include>
+						<jsp:include page="../sns/facebook.jsp"></jsp:include>
 						<img id="share_button" src="../img/twitter.png">
 						<img id="share_button" src="../img/mail.png">
 						<img id="share_button" src="../img/printer.png" height="60" width="60">
@@ -227,7 +227,7 @@ stylize any heading tags withing white-panel below
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<div class="form-login " style="margin-bottom: 2%;">
-				<jsp:include page="blog.jsp"></jsp:include>
+				<jsp:include page="../blog/blog.jsp"></jsp:include>
 			</div>
 		</div>
 		<div class="col-md-1"></div>
@@ -236,7 +236,7 @@ stylize any heading tags withing white-panel below
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<div class="form-login " style="margin-bottom: 2%;">
-				<jsp:include page="comment.jsp"></jsp:include>
+				<jsp:include page="../comment/comment.jsp"></jsp:include>
 			</div>
 		</div>
 		<div class="col-md-1"></div>

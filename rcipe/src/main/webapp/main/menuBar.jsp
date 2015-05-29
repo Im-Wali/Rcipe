@@ -6,12 +6,12 @@
 	
 </script>
 <!-- login.jsp :로그인 모달을 가지고 있는 jsp파일 -->
-<jsp:include page="login.jsp"></jsp:include>
-<jsp:include page="join.jsp"></jsp:include>
+<jsp:include page="../user/login.jsp"></jsp:include>
+<jsp:include page="../user/join.jsp"></jsp:include>
 <nav id="filp" class="navbar navbar-inverse "
 	style="border: none; width: 100%; height: 30%; padding: 10px; text-align: center; background-color: #FF9933;">
 	<span style="float: left; padding-left: 10px; margin-top: 1%"><a
-		href="../../main/mainPage.jsp" style="font-size: 2em; color: black">Rcipe</a></span>
+		href="../main/mainPage.jsp" style="font-size: 2em; color: black">Rcipe</a></span>
 	<div class="dropdown">
 		<div id="dLabel" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"
@@ -90,7 +90,7 @@
 		</ul>
 	</div>
 	<div align="right" style="padding-right: 10px; margin-top: 1%">
-		<form action="searchResult04.jsp" method="POST">
+		<form action="../app/main/searchResult.jsp" method="POST">
 			<span class="row"> <span class="col-sm-5 col-sm-offset-2"
 				style="display: inline-block; text-align: center; margin-top: 1%;">
 					<span id="imaginary_container"> <span
@@ -122,11 +122,11 @@
 					data-target="#joinModal" data-whatever="Join" data-backdrop="false"
 					style="background-color: #FF9933; border: #FF9933; color: black">회원가입</a></li>
 				<div align="center">
-					<li><a href="inserPage.jsp" class="btn btn-primary"
+					<li><a href="../recipe/inserRecipe.jsp" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">레시피등록</a></li>
 				</div>
 				<div align="center">
-					<li><a href="favorite.jsp" class="btn btn-primary"
+					<li><a href="../favorite/favorite.jsp" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">즐겨찾기</a></li>
 				</div>
 				<div align="center">
@@ -134,7 +134,7 @@
 						style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
 				</div>
 				<div align="center">
-					<li><a href="viewUser.jsp" class="btn btn-primary"
+					<li><a href="../user/viewUser.jsp" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">내정보보기</a></li>
 				</div>
 			</ul>

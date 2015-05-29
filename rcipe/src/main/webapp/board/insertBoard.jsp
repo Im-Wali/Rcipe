@@ -67,14 +67,14 @@
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="inserBoard" method="POST">
+			<form action="insertBoard" method="POST">
 				<div class="form-login " style="margin-bottom: 2%;">
 					<h3 align="center" style="margin-bottm: 1%;">게시판글 등록</h3>
 					<div style="margin-top: 1%">
 						<label for="title"
 							style="color: red; font-size: x-large; margin: 1%">*제목</label><input
 							type="text" class="form-control" id="boardTitle"
-							name="boardTitle" placeholder="제목을 입려하세요">
+							name="boardTitle" placeholder="제목을 입력하세요">
 						<!-- Single button -->
 						<div align="right" style="margin-top: 1%">
 							<span><button type="button" class="btn btn-warning">

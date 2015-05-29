@@ -31,42 +31,42 @@
 										</div>
 										<div class="item active">
 											<a
-												href="recipe11.jsp"
+												href="../../recipe/recipe.jsp"
 												target="_parent"> <img class="slide-image"
 												src="../img/test1.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
 													<a
-														href="recipe11.jsp"
+														href="../../recipe/recipe.jsp"
 														target="_parent">cupcakes1</a>
 												</h3>
 											</div>
 										</div>
 										<div class="item">
 											<a
-												href="recipe11.jsp"
+												href="../../recipe/recipe.jsp"
 												target="_parent"> <img class="slide-image"
 												src="../img/test2.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
 													<a
-														href="recipe11.jsp"
+														href="../../recipe/recipe.jsp"
 														target="_parent">cupcakes2</a>
 												</h3>
 											</div>
 										</div>
 										<div class="item">
 											<a
-												href="recipe11.jsp"
+												href="../../recipe/recipe.jsp"
 												target="_parent"> <img class="slide-image"
 												src="../img/test3.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
 													<a
-														href="recipe11.jsp"
+														href="../../recipe/recipe.jsp"
 														target="_parent">cupcakes3</a>
 												</h3>
 											</div>

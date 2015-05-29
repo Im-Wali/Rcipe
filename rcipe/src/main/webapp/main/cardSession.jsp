@@ -13,7 +13,8 @@
 							style="position: absolute; top: 25%; left: 22%; margin: 0 auto; z-index: 1;">
 							<div class="caption">
 								<h4>
-									<a href="recipe11.jsp"><font size="5" color="black"><strong>음식이름1</strong></font></a>
+									<a href="../../recipe/recipe.jsp">
+									<font size="5" color="black"><strong>음식이름1</strong></font></a>
 								</h4>
 								<p>부연설명입니다.</p>
 							</div>
@@ -28,7 +29,7 @@
 
 							</div>
 						</div>
-						<a href="recipe11.jsp"><img src="../img/images.jpg"
+						<a href="../../recipe/recipe.jsp"><img src="../img/images.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" /></a>
 					</div>
 				</div>
@@ -67,7 +68,8 @@
 							style="position: absolute; top: 25%; left: 22%; margin: 0 auto; z-index: 1;">
 							<div class="caption">
 								<h4>
-									<a href="#"><font size="5" color="black"><strong>음식이름1</strong></font></a>
+									<a href="#"><font size="5" color="black">
+									<strong>음식이름1</strong></font></a>
 								</h4>
 								<p>부연설명입니다.</p>
 							</div>

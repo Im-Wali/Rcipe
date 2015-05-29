@@ -57,7 +57,7 @@
 </style>
 </head>
 <body>
-	<div><jsp:include page="menuBar.jsp"></jsp:include></div>
+	<div><jsp:include page="../main/menuBar.jsp"></jsp:include></div>
 	<div class="container">
 		<div align="center" style="margin-top:2%;margin-bottom:4%">
 			<h1>즐겨찾기목록</h1>
@@ -210,7 +210,41 @@
 									class="img-rounded img-responsive" /></a>
 							</div>
 							<div class="col-xs-9 col-md-9 section-box">
-								<a href="recipe11.jsp" style="color: black"><h2>닭가슴살
+								<a href="../recipe/recipe.jsp" style="color: black"><h2>닭가슴살
+										샌드위치</h2></a>
+
+								<div align="right">
+									레시피 설명? 요리설명?
+									<button type="button" class="btn btn-warning">즐겨찾기 삭제</button>
+									<button type="button" class="btn btn-warning">수정</button>
+								</div>
+								<hr />
+								<div class="row rating-desc">
+									<div class="col-md-12">
+										<span class="glyphicon glyphicon-heart"></span><span
+											class="glyphicon glyphicon-heart"> </span><span
+											class="glyphicon glyphicon-heart"></span><span
+											class="glyphicon glyphicon-heart"> </span><span
+											class="glyphicon glyphicon-heart"></span>(36)<span
+											class="separator">|</span> <span
+											class="glyphicon glyphicon-comment"></span>(100 Comments)
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="well well-sm">
+						<div class="row">
+							<div class="col-xs-3 col-md-3 text-center">
+								<a href="../recipe/recipe.jsp"><img src="../img/images.jpg"
+									alt="bootsnipp"
+									style="width: 114px; height: 114px; position: absolute;"
+									class="img-rounded img-responsive" /></a>
+							</div>
+							<div class="col-xs-9 col-md-9 section-box">
+								<a href="../recipe/recipe.jsp" style="color: black"><h2>닭가슴살
 										샌드위치</h2></a>
 
 								<div align="right">
@@ -244,7 +278,7 @@
 									class="img-rounded img-responsive" /></a>
 							</div>
 							<div class="col-xs-9 col-md-9 section-box">
-								<a href="recipe11.jsp" style="color: black"><h2>닭가슴살
+								<a href="../recipe/recipe.jsp" style="color: black"><h2>닭가슴살
 										샌드위치</h2></a>
 
 								<div align="right">
@@ -272,47 +306,13 @@
 					<div class="well well-sm">
 						<div class="row">
 							<div class="col-xs-3 col-md-3 text-center">
-								<a href="recipe11.jsp"><img src="../img/images.jpg"
+								<a href="../recipe/recipe.jsp"><img src="../img/images.jpg"
 									alt="bootsnipp"
 									style="width: 114px; height: 114px; position: absolute;"
 									class="img-rounded img-responsive" /></a>
 							</div>
 							<div class="col-xs-9 col-md-9 section-box">
-								<a href="recipe11.jsp" style="color: black"><h2>닭가슴살
-										샌드위치</h2></a>
-
-								<div align="right">
-									레시피 설명? 요리설명?
-									<button type="button" class="btn btn-warning">즐겨찾기 삭제</button>
-									<button type="button" class="btn btn-warning">수정</button>
-								</div>
-								<hr />
-								<div class="row rating-desc">
-									<div class="col-md-12">
-										<span class="glyphicon glyphicon-heart"></span><span
-											class="glyphicon glyphicon-heart"> </span><span
-											class="glyphicon glyphicon-heart"></span><span
-											class="glyphicon glyphicon-heart"> </span><span
-											class="glyphicon glyphicon-heart"></span>(36)<span
-											class="separator">|</span> <span
-											class="glyphicon glyphicon-comment"></span>(100 Comments)
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="well well-sm">
-						<div class="row">
-							<div class="col-xs-3 col-md-3 text-center">
-								<a href="recipe11.jsp"><img src="../img/images.jpg"
-									alt="bootsnipp"
-									style="width: 114px; height: 114px; position: absolute;"
-									class="img-rounded img-responsive" /></a>
-							</div>
-							<div class="col-xs-9 col-md-9 section-box">
-								<a href="recipe11.jsp" style="color: black"><h2>닭가슴살
+								<a href="../recipe/recipe.jsp" style="color: black"><h2>닭가슴살
 										샌드위치</h2></a>
 								<div align="right">
 									레시피 설명? 요리설명?
