@@ -50,10 +50,9 @@
 		(
 		<include refid="searchBoard" />
 		)
-		inner_table WHERE
-		ROWNUM &lt; = 3 ) inner
-		WHERE
-		row_seq BETWEEN 1 AND 3
+		inner_table
+		WHERE ROWNUM &lt;= #{endRowNum} ) inner
+    WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum}
 	</select> 
 	
 	<insert id="insertBoard" parameterType="board">
@@ -103,54 +102,18 @@
 		WHERE board_no=${value}
 	</delete>
 
-<!--
-	<select id="getBoardList" parameterType="search">
-		SELECT
-		out_table.
-		<include refid="searchBoard" />
-		,board_no, nickname, board_title, board_date
-		 FROM
-		 (SELECT inner_table.
-		 <include refid="searchBoard" />
-		 ,ROWNUM AS
-		  row_seq FROM
-		  (SELECT 
-		  <include refid="searchBoard" />
-		  FROM boards
-		  <where>
-		  <choose>
-		  <when test="searchCondition==0 and searchKeyword != ''">
-		  rcp_no like #{searchKeyword}
-		  </when>
-		  <when test="searchCondition==1 and searchKeyword != ''">
-		  nickname in #{searchKeyword}
-		  </when>
-		  <when test="searchCondition==2 and searchKeyword != ''">
-		  rcp_title like #{searchKeyword}
-		  </when>
-		  </choose>
-		  </where>
-		  ORDER BY board_no)
-		  inner_table WHERE ROWNUM &lt;=#{currentPage}*#{pageSize} )boards
-		  ,boards_image_table
-		  WHERE boards.board_no = boards_image_table.board_no(+)
-		  AND
-		  row_seq BETWEEN (#{currentPage}-1)*#{pageSize}+1 AND
-		  #{currentPage}*#{pageSize}
-	</select> -->
-
 	<select id="getTotalCount" parameterType="search" resultType="int">
 		SELECT COUNT(*)
-		FROM( SELECT *
+		FROM ( SELECT *
 		FROM boards
-		 <if test="searchCondition != null"> 
+		 <if test="searchKeyword != null"> 
 		 <where> 
-		 <if test="searchCondition == 0 and searchKeyword !='' "> rcp_no like '%${searchKeyword}%' </if> 
-		 <if test="searchCondition == 1 and searchKeyword !='' "> nickname in #{searchKeyword} </if> 
-		 <if test="searchCondition == 2 and searchKeyword !='' "> rcp_title like '%${searchKeyword}%' </if> 
+		 <if test="searchCategory == 0 and searchKeyword !='' "> board_no like '%${searchKeyword}%' AND</if> 
+		 <if test="searchCategory == 1 and searchKeyword !='' "> nickname in #{searchKeyword} AND</if> 
+		 <if test="searchCategory == 2 and searchKeyword !='' "> board_title like '%${searchKeyword}%' AND</if> 
+		board_cat = #{searchCategory}
 		 </where> 
 		 </if>
-		WHERE board_cat = #{searchCategory}
 		) countTable
 	</select>
 	
