@@ -6,21 +6,19 @@ public class Search {
 	///Field
 	private int curruntPage;
 	private String searchCategory;
-	private String searchCondition;
 	private String searchKeyword;
 	private int pageSize;
-	
+	private int endRowNum;
+	private int startRowNum;
 	///Constructor
 	public Search() {
 	}
 	
-	public Search(int curruntPage, String searchCategory, String searchKeyword,
-			String searchCondition, int pageSize) {
+	public Search(int curruntPage, String searchCategory, String searchKeyword, int pageSize) {
 		super();
 		this.curruntPage = curruntPage;
 		this.searchCategory = searchCategory;
 		this.searchKeyword = searchKeyword;
-		this.searchCondition = searchCondition;
 		this.pageSize = pageSize;
 	}
 
@@ -46,14 +44,6 @@ public class Search {
 		this.searchCategory = searchCategory;
 	}
 	
-	
-	public String getSearchCondition() {
-		return searchCondition;
-	}
-
-	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition;
-	}
 
 	public String getSearchKeyword() {
 		return searchKeyword;
@@ -61,12 +51,22 @@ public class Search {
 	public void setSearchKeyword(String searchKeyword) {
 		this.searchKeyword = searchKeyword;
 	}
+	
+	public int getEndRowNum() {
+		return getCurrentPage()*getPageSize();
+	}
+	
+	public int getStartRowNum() {
+		return (getCurrentPage()-1)*getPageSize()+1;
+	}
 
 	@Override
 	public String toString() {
 		return "Search [curruntPage=" + curruntPage + ", searchCategory="
 				+ searchCategory + ", searchKeyword=" + searchKeyword
-				+ searchCondition + ", searchCondition="
-				+ ", pageSize=" + pageSize + "]";
+				+ ", pageSize=" + pageSize + ", endRowNum=" + endRowNum
+				+ ", startRowNum=" + startRowNum + "]";
 	}
+
+	
 }
