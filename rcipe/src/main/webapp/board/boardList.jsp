@@ -238,6 +238,8 @@ var flag = 'N';
                 </tbody>
               </table>
             </div>
+          </div><div align="center">
+          <jsp:include page="../commons/pageNavigator.jsp"></jsp:include>
           </div>
         </div>
       </div>
