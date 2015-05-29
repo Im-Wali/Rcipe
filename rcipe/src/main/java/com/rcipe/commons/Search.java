@@ -14,7 +14,7 @@ public class Search {
 	public Search() {
 	}
 	
-	public Search(int curruntPage, String searchCategory, String searchKeyword, int pageSize) {
+	public Search(int currentPage, String searchCategory, String searchKeyword, int pageSize) {
 		super();
 		this.currentPage = currentPage;
 		this.searchCategory = searchCategory;
