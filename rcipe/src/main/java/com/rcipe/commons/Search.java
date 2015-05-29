@@ -4,7 +4,7 @@ package com.rcipe.commons;
 public class Search {
 	
 	///Field
-	private int curruntPage;
+	private int currentPage;
 	private String searchCategory;
 	private String searchKeyword;
 	private int pageSize;
@@ -16,7 +16,7 @@ public class Search {
 	
 	public Search(int curruntPage, String searchCategory, String searchKeyword, int pageSize) {
 		super();
-		this.curruntPage = curruntPage;
+		this.currentPage = currentPage;
 		this.searchCategory = searchCategory;
 		this.searchKeyword = searchKeyword;
 		this.pageSize = pageSize;
@@ -31,10 +31,10 @@ public class Search {
 	}
 	
 	public int getCurrentPage() {
-		return curruntPage;
+		return currentPage;
 	}
-	public void setCurrentPage(int curruntPage) {
-		this.curruntPage = curruntPage;
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
 	}
 
 	public String getSearchCategory() {
@@ -62,7 +62,7 @@ public class Search {
 
 	@Override
 	public String toString() {
-		return "Search [curruntPage=" + curruntPage + ", searchCategory="
+		return "Search [currentPage=" + currentPage + ", searchCategory="
 				+ searchCategory + ", searchKeyword=" + searchKeyword
 				+ ", pageSize=" + pageSize + ", endRowNum=" + endRowNum
 				+ ", startRowNum=" + startRowNum + "]";
