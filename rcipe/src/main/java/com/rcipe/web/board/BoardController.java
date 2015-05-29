@@ -50,7 +50,7 @@ public class BoardController {
 	int pageSize;
 	
 	
-	@RequestMapping(value = "/inserBoard", method = RequestMethod.POST)
+	@RequestMapping(value = "/insertBoard", method = RequestMethod.POST)
 	public  String  inserBoard(Model model,@ModelAttribute("board") Board board,
 			HttpSession session) throws Exception {
 		User user=(User)session.getAttribute("user");
@@ -58,18 +58,18 @@ public class BoardController {
 		board.setNickname(user.getNickname());
 		boardService.insertBoard(board);
 		session.removeAttribute("boardImgPath");
-		return "forward:/main/boardList.jsp";
+		return "forward:/board/boardList.jsp";
 	}
 	@RequestMapping(value = "/getInsertBoard", method = RequestMethod.GET)
 	public  String  getInsertBoard()throws Exception{
-		return "/main/insertBoard";
+		return "/board/insertBoard";
 	}
 	@RequestMapping(value = "/viewModifyBoard", method = RequestMethod.GET)
 	public  String  viewModifyBoard(Model model,@RequestParam("boardNo") int boardNo,HttpSession session)throws Exception{
 		Board board=boardService.getBoard(boardNo);
 		session.setAttribute("boardImgPath",board.getBoardImgPath());
 		model.addAttribute("board",board);
-		return "forward:/main/modifyBoard.jsp";
+		return "forward:/board/modifyBoard.jsp";
 	}
 	
 	@RequestMapping(value = "/modifyBoard", method = RequestMethod.POST)
@@ -77,13 +77,13 @@ public class BoardController {
 		boardService.updateBoard(board);
 		session.removeAttribute("boardImgPath");
 		model.addAttribute("board",boardService.getBoard(board.getBoardNo()));
-		return "forward:/main/viewBoard.jsp";
+		return "forward:/board/viewBoard.jsp";
 	}
 	
 	@RequestMapping(value = "/viewBoard", method = RequestMethod.GET)
 	public  String  viewBoard(Model model,@RequestParam("boardNo") int boardNo)throws Exception{
 		model.addAttribute("board",boardService.getBoard(boardNo));
-		return "forward:/main/viewBoard.jsp";
+		return "forward:/board/viewBoard.jsp";
 	}
 	
 	@RequestMapping(value = "/getBoardListFirst", method = RequestMethod.GET)
@@ -101,7 +101,7 @@ public class BoardController {
 		Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
 		
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("forward:../../main/boardList.jsp");
+		modelAndView.setViewName("forward:../../board/boardList.jsp");
 		modelAndView.addObject("resultPage",resultPage);
 		modelAndView.addObject("search", search);
 		modelAndView.addObject("list", map.get("list"));
@@ -150,6 +150,6 @@ public class BoardController {
 	public String deleteBoard(@RequestParam("boardNo") int boardNo,@RequestParam("boardImgPath") String boardImgPath)throws Exception{
 		System.out.println(cx.getRealPath("/images")+boardImgPath);
 		boardService.deleteBoard(boardNo,cx.getRealPath("/images")+boardImgPath);
-		return "redirect:/main/boardList.jsp";
+		return "redirect:/board/boardList.jsp";
 	}
 }
