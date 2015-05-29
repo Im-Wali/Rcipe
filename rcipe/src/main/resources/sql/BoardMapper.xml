@@ -106,14 +106,14 @@
 		SELECT COUNT(*)
 		FROM ( SELECT *
 		FROM boards
-		 <if test="searchKeyword != null"> 
 		 <where> 
+		 <if test="searchKeyword != null"> 
 		 <if test="searchCategory == 0 and searchKeyword !='' "> board_no like '%${searchKeyword}%' AND</if> 
 		 <if test="searchCategory == 1 and searchKeyword !='' "> nickname in #{searchKeyword} AND</if> 
 		 <if test="searchCategory == 2 and searchKeyword !='' "> board_title like '%${searchKeyword}%' AND</if> 
-		board_cat = #{searchCategory}
-		 </where> 
 		 </if>
+		 board_cat = #{searchCategory}
+		 </where> 
 		) countTable
 	</select>
 	
