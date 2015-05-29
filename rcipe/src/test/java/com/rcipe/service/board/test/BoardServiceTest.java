@@ -6,8 +6,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.rcipe.commons.Search;
 import com.rcipe.service.board.BoardService;
-import com.rcipe.service.domain.Board;
-
 
 public class BoardServiceTest {
 
