@@ -28,7 +28,7 @@ public class BoardServiceTest {
 						);
 		BoardService boardService = (BoardService) context.getBean("boardServiceImpl");
 		//Board board=new Board(1,"user01","title77","contents",0,7777);
-		Search search = new Search(1,"1","", "", 1);
+		Search search = new Search(1,"1","", 1);
 		
 		System.out.println("getBoardList Test :"+boardService.getBoardList(search));
 	}
