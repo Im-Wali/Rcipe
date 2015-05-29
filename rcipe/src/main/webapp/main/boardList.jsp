@@ -123,15 +123,27 @@ $("document").ready(function(){
 	  $('#getViewBoardButton').click(function(){
 		  $(location).attr('href',"../../main/insertBoard.jsp");
 	  });
+	  
+	  
 });
 
 var currentCategory;
 var selectListNum;
+var currentPageNum;
 var flag = 'N';
 
   window.funcFlag = function(f){
 	  flag = f;
   }
+  
+	  function fncGetList(currentPage) {
+		    document.getElementById("currentPage").value = currentPage;
+		    currentPageNum=currentPage;
+		    alert('currentPage : '+document.getElementById("currentPage").value+' currentPageNum : '+currentPageNum);
+		    funcTab(currentCategory);
+		    
+		}
+	  
 
    window.funcTab = function (category) {
 	   
@@ -147,7 +159,13 @@ var flag = 'N';
 	  }else{
 		  //alert("flag = Y ");
 	  }
+	  
+	  if(typeof currentPageNum==='undefined'){
+		  
     var params = 'searchCategory=' + category + '&pageSize=' + selectListNum;
+	  }else{
+    var params = 'searchCategory=' + category + '&pageSize=' + selectListNum+'&currentPage='+currentPageNum;
+	  }
    // alert('category : ' + category+' selectListNum : '+selectListNum+' params : '+params+' currentCategory : '+currentCategory+' flag : '+flag);
     
     $.ajax(
@@ -238,6 +256,10 @@ var flag = 'N';
                 </tbody>
               </table>
             </div>
+            <div class="pagingfooter" style="margin-left: 45%;">
+              <input type="hidden" id="currentPage" name="currentPage" value="1"/>
+              <jsp:include page="../common/navigationPage.jsp"/>
+            </div>  
           </div>
         </div>
       </div>
