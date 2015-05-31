@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.rcipe.commons.FileUtil;
@@ -35,6 +36,42 @@ public class FileController {
 	
 	@Autowired
 	private ServletContext ctx;
+	
+	@RequestMapping(value = "/recipePictureUpload", method = RequestMethod.POST)
+	public @ResponseBody String  recipePictureUpload(HttpServletRequest request,HttpSession session) throws Exception {
+		String projectPath="http:/"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+"/rcipe/images/";
+		User user=(User)session.getAttribute("user");	
+		String recipeImagPath=(String)session.getAttribute("recipeImagPath");
+		if(recipeImagPath==null){
+			recipeImagPath=""+System.currentTimeMillis();
+			session.setAttribute("recipeImagPath", recipeImagPath);
+		}
+//		 File("c:\\fileUploadTest\\user"+user.getNickname"+"\\profile");
+		File newFile=new File(ctx.getRealPath("/images")+"/"+user.getNickname()+"/"+recipeImagPath);
+		if(!newFile.isDirectory()){
+			newFile.mkdirs();
+		}
+		System.out.println(newFile.getAbsolutePath());
+		Map< String, String> map=FileUtil.upload(request,ctx.getRealPath("/images"),user.getNickname()+"/"+recipeImagPath);
+		//업로드 된 파일 위치를 출력
+		String str=URLEncoder.encode(map+"", "UTF-8");
+		return str;
+	}
+	
+	@RequestMapping("deleteRecipeFile")
+	public @ResponseBody String deleteRecipeFile(HttpSession session)throws Exception {
+		String recipeImagPath=(String)session.getAttribute("recipeImagPath");
+		String nickname=((User)session.getAttribute("user")).getNickname();
+		session.removeAttribute("recipeImagPath");
+		File newFile=new File(ctx.getRealPath("/images")+"/"+nickname+"/"+recipeImagPath);
+		return ""+FileUtil.deleteFile(newFile.getAbsolutePath());
+	}
+	
+	@RequestMapping(value = "/deletePicture", method = RequestMethod.POST)
+	public @ResponseBody String deletePicture(@RequestParam("path") String pass)throws Exception {
+		File newFile=new File(ctx.getRealPath("/images")+"/"+pass);
+		return ""+FileUtil.deleteFile(newFile.getAbsolutePath());
+	}
 	
 	@RequestMapping(value = "/profileUpload", method = RequestMethod.POST)
 	public @ResponseBody String  uploadUser(HttpServletRequest request,
@@ -109,6 +146,7 @@ public class FileController {
 	public @ResponseBody String deleteBoarFile(HttpSession session)throws Exception {
 		String boardPath=(String)session.getAttribute("boardImgPath");
 		String nickname=((User)session.getAttribute("user")).getNickname();
+		session.removeAttribute("boardImgPath");
 		File newFile=new File(ctx.getRealPath("/images")+"/"+nickname+"/"+boardPath);
 		return ""+FileUtil.deleteFile(newFile.getAbsolutePath());
 	}
