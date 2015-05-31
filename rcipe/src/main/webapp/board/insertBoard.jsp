@@ -25,40 +25,40 @@
 }
 </style>
 <script type="text/javascript">
-		function selectCategory(value,value2) {
-			document.getElementById("select_category").innerHTML = value;
-			document.getElementById("boardCategory").value = value2;
-		};
+	function selectCategory(value, value2) {
+		document.getElementById("select_category").innerHTML = value;
+		document.getElementById("boardCategory").value = value2;
+	};
 	$('document').ready(function() {
-		$('#boardSubmit').click(function(event){
-			if($('#boardTitle').val()==''){
+		$('#boardSubmit').click(function(event) {
+			if ($('#boardTitle').val() == '') {
 				alert("제목을 입력하세요");
 				event.preventDefault();
 				$('#boardTitle').focus();
-			}else if($('#boardCategory').val()==''){
+			} else if ($('#boardCategory').val() == '') {
 				alert("카테고리를 선택해주세요.");
 				event.preventDefault();
 				$('#boardCategory').focus();
-			}else if(editor.getData()==''){
+			} else if (editor.getData() == '') {
 				alert("내용을 입력하세요")
 				event.preventDefault();
 				editor.focus();
 			}
 			checkUnload = false;
 		});
-    var checkUnload = true;
-   $(window).unload("beforeunload", function(){
-        if(checkUnload){
-        	 var f = confirm('이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.');
-        	if(f){
-        		$.post("../app/file/deleteBoarFile",function(data) {
-        			alert("AAA");
-				}); 
-        	} 
-        }
-    });
+		var checkUnload = true;
+		$(window).on("beforeunload", function() {
+			if (checkUnload) {return "페이지를 벗어나면 작성된 내용은 삭제됩니다.";
+			}
+		});
+		$(window).unload(function() {
+			if (checkUnload) {
+				$.post("../file/deleteBoarFile", function(data) {
+					alert("AAA");
+				});
+			}
+		});
 	})
-    
 </script>
 </script>
 </HEAD>
@@ -67,14 +67,14 @@
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="insertBoard" method="POST">
+			<form action="inserBoard" method="POST">
 				<div class="form-login " style="margin-bottom: 2%;">
 					<h3 align="center" style="margin-bottm: 1%;">게시판글 등록</h3>
 					<div style="margin-top: 1%">
 						<label for="title"
 							style="color: red; font-size: x-large; margin: 1%">*제목</label><input
 							type="text" class="form-control" id="boardTitle"
-							name="boardTitle" placeholder="제목을 입력하세요">
+							name="boardTitle" placeholder="제목을 입려하세요">
 						<!-- Single button -->
 						<div align="right" style="margin-top: 1%">
 							<span><button type="button" class="btn btn-warning">
@@ -146,7 +146,7 @@
 	</div>
 	<script>
 		CKEDITOR.replace('editor1', {
-			'filebrowserUploadUrl' : '../app/file/uploadBoard',
+			'filebrowserUploadUrl' : '../file/uploadBoard',
 			enterMode : '2',
 			shiftEnterMode : '3',
 			width : '100%',
@@ -172,15 +172,25 @@
 					[ 'Styles', 'Format', 'Font', 'FontSize' ],
 					[ 'TextColor', 'BGColor' ], ]
 		});
-		 var editor;
-		    CKEDITOR.on( 'instanceReady', function( ev ) {
-		        editor = ev.editor;
-		        document.getElementById( 'readOnlyOn' ).style.display = '';
-		        editor.on( 'readOnly', function() {
-		            document.getElementById( 'readOnlyOn' ).style.display = this.readOnly ? 'none' : '';
-		            document.getElementById( 'readOnlyOff' ).style.display = this.readOnly ? '' : 'none';
-		        });
-		    });
+		var editor;
+		CKEDITOR
+				.on(
+						'instanceReady',
+						function(ev) {
+							editor = ev.editor;
+							document.getElementById('readOnlyOn').style.display = '';
+							editor
+									.on(
+											'readOnly',
+											function() {
+												document
+														.getElementById('readOnlyOn').style.display = this.readOnly ? 'none'
+														: '';
+												document
+														.getElementById('readOnlyOff').style.display = this.readOnly ? ''
+														: 'none';
+											});
+						});
 	</script>
 </body>
 </HEAD>

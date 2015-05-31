@@ -80,6 +80,7 @@ $("document").ready(function() {
 </script>
 </HEAD>
 <body>
+<input type="hidden" value="profileUpload" id="fileUploadUrl">
 	<jsp:include page="../main/menuBar.jsp"></jsp:include>
 	<div style="margin-bottom: 2%; margin-top: 2%" align="center">
 		<h2 style="font-weight: bold;">회원정보 보기</h2>
@@ -95,7 +96,7 @@ $("document").ready(function() {
 						<div style="margin-top: 3%">
 							<div style="font-size: 2em; margin-top: 1%; margin-left: 2%;margin-bottom:1%;" align="center">프로필사진</div>
 							<div align="center">
-								<img src="../img/001.jpg" class="img-circle" role="button"
+								<img src="../img/001.jpg" class="img-circle fileUpload" role="button"
 									style="width: 150px; height: 150px; margin-top: 1%"
 									aria-haspopup="true" aria-expanded="false" id="fileUpload">
 							</div>
