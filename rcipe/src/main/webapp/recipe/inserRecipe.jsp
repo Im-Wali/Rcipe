@@ -159,7 +159,6 @@ body {
 								function(event) {
 									var id=$(this).attr("alt");
 									fileUploadId=id;
-									alert(fileUploadId);
 								});
 						function setDnDhandler(obj) {
 							obj.addEventListener("dragover", function(event) {
@@ -236,7 +235,6 @@ body {
 						  	}
 						  }); 
 						});
-
 					});
 </script>
 </HEAD>
