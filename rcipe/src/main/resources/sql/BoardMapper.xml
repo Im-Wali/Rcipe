@@ -35,8 +35,15 @@
     b.nickname
     from
     boards b, users u
-    WHERE b.nickname = u.nickname
-		AND b.board_cat = #{searchCategory}
+    <where> 
+        b.nickname = u.nickname AND
+     <if test="searchKeyword != null">
+        board_title like '%${searchKeyword}%' AND 
+        nickname like '%${searchKeyword}%' AND
+     </if>
+        b.board_cat = #{searchCategory}
+     </where> 
+    
 		ORDER BY b.board_no
 	</sql>
 
@@ -107,10 +114,9 @@
 		FROM ( SELECT *
 		FROM boards
 		 <where> 
-		 <if test="searchKeyword != null"> 
-		 <if test="searchCategory == 0 and searchKeyword !='' "> board_no like '%${searchKeyword}%' AND</if> 
-		 <if test="searchCategory == 1 and searchKeyword !='' "> nickname in #{searchKeyword} AND</if> 
-		 <if test="searchCategory == 2 and searchKeyword !='' "> board_title like '%${searchKeyword}%' AND</if> 
+		 <if test="searchKeyword != null">
+		    board_title like '%${searchKeyword}%' AND
+		    nickname like '%${searchKeyword}%' AND 
 		 </if>
 		 board_cat = #{searchCategory}
 		 </where> 
