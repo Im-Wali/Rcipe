@@ -159,6 +159,7 @@ body {
 								function(event) {
 									var id=$(this).attr("alt");
 									fileUploadId=id;
+									alert("fileUplaodId=="+fileUploadId);
 								});
 						function setDnDhandler(obj) {
 							obj.addEventListener("dragover", function(event) {
@@ -235,6 +236,7 @@ body {
 						  	}
 						  }); 
 						});
+
 					});
 </script>
 </HEAD>
@@ -275,7 +277,7 @@ body {
 							<div style="margin-top: 1%">
 								<input type="file" class="filestyle recipeButtonUpload" 
 									data-buttonName="btn-warning" data-input="false"
-									data-buttonText="메인 사진 등록" alt="recipeButtonUpload">
+									data-buttonText="메인 사진 등록" alt="mainPicture">
 							</div>
 							<div style="margin: 1%">
 								<label style="color: red; font-size: x-large;">*재료 입력</label> 예)
