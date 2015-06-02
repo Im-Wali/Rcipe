@@ -1,6 +1,7 @@
 package com.rcipe.service.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Recipe {
 	
@@ -14,7 +15,7 @@ public class Recipe {
 		recommend		Integer
 		hit				Integer
 		ingredients		String
-		recipeDate		Date
+		recipeDate		String
 		star			Integer
 		starHit			Integer
 	 */
@@ -28,9 +29,10 @@ public class Recipe {
 	private Integer recommend;
 	private Integer hit;
 	private String ingredients;
-	private Date recipeDate;
+	private String recipeDate;
 	private Integer star;
 	private Integer starHit;
+	private List<RecipeDetail> recipeDetail;
 	
 	public Recipe() {
 		// TODO Auto-generated constructor stub
@@ -40,96 +42,104 @@ public class Recipe {
 		return recipeNo;
 	}
 
-	public void setRecipeNo(Integer recipeNo) {
-		this.recipeNo = recipeNo;
-	}
-
 	public String getNickname() {
 		return nickname;
-	}
-
-	public void setNicname(String nicname) {
-		this.nickname = nicname;
 	}
 
 	public String getRecipeTitle() {
 		return recipeTitle;
 	}
 
-	public void setRecipeTitle(String recipeTitle) {
-		this.recipeTitle = recipeTitle;
-	}
-
 	public String getTitleImage() {
 		return titleImage;
-	}
-
-	public void setTitleImage(String titleImage) {
-		this.titleImage = titleImage;
 	}
 
 	public String getRecipeContents() {
 		return recipeContents;
 	}
 
-	public void setRecipeContents(String recipeContents) {
-		this.recipeContents = recipeContents;
-	}
-
 	public String getTip() {
 		return tip;
-	}
-
-	public void setTip(String tip) {
-		this.tip = tip;
 	}
 
 	public Integer getRecommend() {
 		return recommend;
 	}
 
-	public void setRecommend(Integer recommend) {
-		this.recommend = recommend;
-	}
-
 	public Integer getHit() {
 		return hit;
-	}
-
-	public void setHit(Integer hit) {
-		this.hit = hit;
 	}
 
 	public String getIngredients() {
 		return ingredients;
 	}
 
-	public void setIngredients(String ingredients) {
-		this.ingredients = ingredients;
-	}
-
-	public Date getRecipeDate() {
+	public String getRecipeDate() {
 		return recipeDate;
-	}
-
-	public void setRecipeDate(Date recipeDate) {
-		this.recipeDate = recipeDate;
 	}
 
 	public Integer getStar() {
 		return star;
 	}
 
-	public void setStar(Integer star) {
-		this.star = star;
-	}
-
 	public Integer getStarHit() {
 		return starHit;
 	}
 
+	public List<RecipeDetail> getRecipeDetail() {
+		return recipeDetail;
+	}
+
+	public void setRecipeNo(Integer recipeNo) {
+		this.recipeNo = recipeNo;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public void setRecipeTitle(String recipeTitle) {
+		this.recipeTitle = recipeTitle;
+	}
+
+	public void setTitleImage(String titleImage) {
+		this.titleImage = titleImage;
+	}
+
+	public void setRecipeContents(String recipeContents) {
+		this.recipeContents = recipeContents;
+	}
+
+	public void setTip(String tip) {
+		this.tip = tip;
+	}
+
+	public void setRecommend(Integer recommend) {
+		this.recommend = recommend;
+	}
+
+	public void setHit(Integer hit) {
+		this.hit = hit;
+	}
+
+	public void setIngredients(String ingredients) {
+		this.ingredients = ingredients;
+	}
+
+	public void setRecipeDate(String recipeDate) {
+		this.recipeDate = recipeDate;
+	}
+
+	public void setStar(Integer star) {
+		this.star = star;
+	}
+
 	public void setStarHit(Integer starHit) {
 		this.starHit = starHit;
+	}
+
+	public void setRecipeDetail(List<RecipeDetail> recipeDetail) {
+		this.recipeDetail = recipeDetail;
 	}
 
 	@Override
@@ -139,7 +149,7 @@ public class Recipe {
 				+ ", recipeContents=" + recipeContents + ", tip=" + tip
 				+ ", recommend=" + recommend + ", hit=" + hit
 				+ ", ingredients=" + ingredients + ", recipeDate=" + recipeDate
-				+ ", star=" + star + ", starHit=" + starHit + ", toString()="
+				+ ", star=" + star + ", starHit=" + starHit + "recipeDetail="+recipeDetail+", toString()="
 				+ super.toString() + "]";
 	}
 
