@@ -12,7 +12,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap-filestyle.js"></script>
 
-<style type="text/css">
+<style type="http://127.0.0.1:8080/rcipe/text/css">
 body {
 	background-color: #fff;
 	-webkit-font-smoothing: antialiased;
@@ -270,7 +270,7 @@ body {
 							<input type="hidden" id="imagemainPicture" value="">
 							<div class="media-left">
 								<img class="media-object img-rounded fileUpload"
-									src="../img/images3.jpg" alt="..." id="mainPicture" >
+									src="http://127.0.0.1:8080/rcipe/img/images3.jpg" alt="..." id="mainPicture" >
 							</div>
 							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
 								사진을 위의 공간에 드래그 하세요</div>
@@ -315,7 +315,7 @@ body {
 								<input type="hidden" id="imagedetailPicture1" value="">
 								<a href="#"> <img
 									class="media-object img-rounded fileUpload"
-									src="../img/images3.jpg" alt="..." id="detailPicture1">
+									src="http://127.0.0.1:8080/rcipe/img/images3.jpg" alt="..." id="detailPicture1">
 								</a>
 							</div>
 							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할

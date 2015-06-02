@@ -1,24 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <div class="form-login " style="margin-bottom: 2%;">
-	<!-- ¿©±â¼­ CLOSE¹öÆ°À» ´©·ç¸é ÇØ´ç ¼³¸í from »ç¶óÁü -->
+	<!-- ì—¬ê¸°ì„œ CLOSEë²„íŠ¼ì„ ëˆ„ë£¨ë©´ í•´ë‹¹ ì„¤ëª… from ì‚¬ë¼ì§ -->
 	<button type="button" class="close" data-dismiss="modal"
 		aria-label="Close">
 		<span>&times;</span>
 	</button>
-	<h3 align="center" style="margin-bottm: 1%">»ó¼¼ ·¹½ÃÇÇ ÀÛ¼º</h3>
+	<h3 align="center" style="margin-bottm: 1%">ìƒì„¸ ë ˆì‹œí”¼ ìž‘ì„±</h3>
 	<div style="margin-top: 1%">
 		<div class="media">
 			<div class="media-left">
 				<a href="#"> <img class="media-object img-rounded"
-					src="../img/images3.jpg" alt="...">
+					src="http://127.0.0.1:8080/rcipe/img/images3.jpg" alt="...">
 				</a>
 			</div>
 			<div style="margin: 1%">
-				<label style="font-size: x-large; margin: 1%">»çÁø¿¡ ´ëÇÑ ¼³¸í</label>
+				<label style="font-size: x-large; margin: 1%">ì‚¬ì§„ì— ëŒ€í•œ ì„¤ëª…</label>
 			</div>
 			<div>
-				<textarea class="form-control" rows="5" placeholder="»çÁø¿¡ ´ëÇÑ ¼³¸íÀ» Àû¾îÁÖ¼¼¿ä"></textarea>
+				<textarea class="form-control" rows="5" placeholder="ì‚¬ì§„ì— ëŒ€í•œ ì„¤ëª…ì„ ì ì–´ì£¼ì„¸ìš”"></textarea>
 			</div>
 		</div>
 	</div>
