@@ -36,6 +36,11 @@ public class CommentServiceImpl  implements CommentService{
 		return commentDAO.getBoardCmtList(boardNo);
 	}
 	
+	@Override
+	public List<Comment> getRecipeCmtList(int rcp_no) throws Exception {
+		// TODO Auto-generated method stub
+		return commentDAO.getRecipeCmtList(rcp_no);
+	}
 
 	@Override
 	public List<Comment> getCommentReplyList(int commenRetNo) throws Exception {
@@ -56,10 +61,22 @@ public class CommentServiceImpl  implements CommentService{
 	public int deleteBoardCmt(int commentNo) throws Exception {
 		return commentDAO.deleteBoardCmt(commentNo);
 	}
+	
+	@Override
+	public int deleteRecipeCmt(int commentNo) throws Exception {
+		return commentDAO.deleteRecipeCmt(commentNo);
+	}
 
 	@Override
 	public int deleteBoardCmtList(int boardNo) throws Exception {
 		return commentDAO.deleteBoardCmtList(boardNo);
 	}
+	
+	@Override
+	public int deleteRecipeCmtList(int rcp_no) throws Exception {
+		return commentDAO.deleteRecipeCmtList(rcp_no);
+	}
+
+	
 
 }

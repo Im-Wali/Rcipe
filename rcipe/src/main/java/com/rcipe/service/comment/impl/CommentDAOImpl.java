@@ -42,6 +42,12 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 	
 	@Override
+	public List<Comment> getRecipeCmtList(int rcp_no) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("commentMapper.getRecipeCmtList",rcp_no);
+	}
+	
+	@Override
 	public List<Comment> getCommentReplyList(int commenRetNo) throws Exception {
 		return sqlSession.selectList("commentMapper.getCommentReplyList",commenRetNo);
 	}
@@ -63,7 +69,14 @@ public class CommentDAOImpl implements CommentDAO {
 		sqlSession.delete("commentMapper.deleteReply2",commentNo);
 		return sqlSession.delete("commentMapper.deleteComment",commentNo);
 	}
-
+	
+	@Override
+	public int deleteRecipeCmt(int commentNo) throws Exception {
+		sqlSession.delete("commentMapper.deleteRecipeCmt",commentNo);
+		sqlSession.delete("commentMapper.deleteReply2",commentNo);
+		return sqlSession.delete("commentMapper.deleteComment",commentNo);
+	}
+	
 	@Override
 	public int deleteBoardCmtList(int boardNo) throws Exception {
 		List<String> list =sqlSession.selectList("commentMapper.getBoardsCmtCmtNo",boardNo);
@@ -71,5 +84,15 @@ public class CommentDAOImpl implements CommentDAO {
 		sqlSession.delete("commentMapper.deleteReplyList",list);
 		return sqlSession.delete("commentMapper.deleteCommentList",list);
 	}
+
+	@Override
+	public int deleteRecipeCmtList(int rcp_no) throws Exception {
+		List<String> list =sqlSession.selectList("commentMapper.getRecipesCmtCmtNo",rcp_no);
+		sqlSession.delete("commentMapper.deleteRecipesCmtList",rcp_no);
+		sqlSession.delete("commentMapper.deleteReplyList",list);
+		return sqlSession.delete("commentMapper.deleteCommentList",list);
+	}
+
+	
 
 }
