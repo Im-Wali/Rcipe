@@ -62,7 +62,7 @@ h4 {
 		$(window).load(function() {
 			//!!!!!!!!!!!!!!!!!!!!!바꿔야함	
 			function add_content() {
-				location.href("../../board/insertBoard");
+				location.href("insertBoard.jsp");
 			}
 			document.getElementById("select_category").innerHTML = "카테고리";
 			
@@ -71,9 +71,9 @@ h4 {
 				board.boardCategory
 			}
 			;
-			alert(${board.boardCategory});
+			alert(${baord.baordCategory});
 
-			/* var n = $('#category').val();
+			var n = $('#category').val();
 			alert(n);
 			var str;
 			if (n == 1) {
@@ -85,7 +85,7 @@ h4 {
 			} else {
 				str = "기타";
 			}
-			$('#select_category').html(str); */
+			$('#select_category').html(str); 
 	});
 </script>
 </HEAD>
