@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../js/bootstrap-filestyle.js">
 	
 </script>
-<style type="http://127.0.0.1:8080/rcipe/text/css">
+<style type="text/css">
 .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;
@@ -35,7 +35,7 @@ $("document").ready(function() {
 			data = decodeURIComponent(data);
 			data = data.replace(/\+/g, " ");
 			alert(data);
-			$("#fileUpload").attr("src", "http://127.0.0.1:8080/rcipe/img/test3.jpg");
+			$("#fileUpload").attr("src", "../img/test3.jpg");
 		});
 	});
 	//파일 버튼에서 아이콘을 빼주는 script
@@ -96,7 +96,7 @@ $("document").ready(function() {
 						<div style="margin-top: 3%">
 							<div style="font-size: 2em; margin-top: 1%; margin-left: 2%;margin-bottom:1%;" align="center">프로필사진</div>
 							<div align="center">
-								<img src="http://127.0.0.1:8080/rcipe/img/001.jpg" class="img-circle fileUpload" role="button"
+								<img src="../img/001.jpg" class="img-circle fileUpload" role="button"
 									style="width: 150px; height: 150px; margin-top: 1%"
 									aria-haspopup="true" aria-expanded="false" id="fileUpload">
 							</div>
@@ -104,10 +104,9 @@ $("document").ready(function() {
 								<span style="color: red; font: bold;">*바꿀 프로필 사진을 사진위로
 									드래그 하면 자동으로 프로필 사진이 변경됩니다.</span>
 							</div>
-								<div style="margin-top: 1%" align="center"> 
-								<button type="button" class="btn btn-warning "
-										id="delete_profil" >
-										프로필 수정</button>
+								<div style="margin-top: 1%" align="center"> <input type="file" class="filestyle" id="buttonProfileUpload"
+									data-buttonName="btn-warning" data-input="false"
+									data-buttonText="프로필 수정">
 								</div > <div style="margin-top:1%" align="center">
 									<button type="button" class="btn btn-warning "
 										id="delete_profil" >
