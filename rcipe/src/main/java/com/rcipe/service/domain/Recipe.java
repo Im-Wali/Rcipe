@@ -1,7 +1,5 @@
 package com.rcipe.service.domain;
 
-import java.util.Date;
-import java.util.List;
 
 public class Recipe {
 	
@@ -15,7 +13,7 @@ public class Recipe {
 		recommend		Integer
 		hit				Integer
 		ingredients		String
-		recipeDate		String
+		recipeDate		Date
 		star			Integer
 		starHit			Integer
 	 */
@@ -32,8 +30,28 @@ public class Recipe {
 	private String recipeDate;
 	private Integer star;
 	private Integer starHit;
-	private List<RecipeDetail> recipeDetail;
 	
+	
+	
+	public Recipe(Integer recipeNo, String nickname, String recipeTitle,
+			String titleImage, String recipeContents, String tip,
+			Integer recommend, Integer hit, String ingredients,
+			String recipeDate, Integer star, Integer starHit) {
+		super();
+		this.recipeNo = recipeNo;
+		this.nickname = nickname;
+		this.recipeTitle = recipeTitle;
+		this.titleImage = titleImage;
+		this.recipeContents = recipeContents;
+		this.tip = tip;
+		this.recommend = recommend;
+		this.hit = hit;
+		this.ingredients = ingredients;
+		this.recipeDate = recipeDate;
+		this.star = star;
+		this.starHit = starHit;
+	}
+
 	public Recipe() {
 		// TODO Auto-generated constructor stub
 	}
@@ -42,104 +60,96 @@ public class Recipe {
 		return recipeNo;
 	}
 
+	public void setRecipeNo(Integer recipeNo) {
+		this.recipeNo = recipeNo;
+	}
+
 	public String getNickname() {
 		return nickname;
+	}
+
+	public void setNicname(String nicname) {
+		this.nickname = nicname;
 	}
 
 	public String getRecipeTitle() {
 		return recipeTitle;
 	}
 
-	public String getTitleImage() {
-		return titleImage;
-	}
-
-	public String getRecipeContents() {
-		return recipeContents;
-	}
-
-	public String getTip() {
-		return tip;
-	}
-
-	public Integer getRecommend() {
-		return recommend;
-	}
-
-	public Integer getHit() {
-		return hit;
-	}
-
-	public String getIngredients() {
-		return ingredients;
-	}
-
-	public String getRecipeDate() {
-		return recipeDate;
-	}
-
-	public Integer getStar() {
-		return star;
-	}
-
-	public Integer getStarHit() {
-		return starHit;
-	}
-
-	public List<RecipeDetail> getRecipeDetail() {
-		return recipeDetail;
-	}
-
-	public void setRecipeNo(Integer recipeNo) {
-		this.recipeNo = recipeNo;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
 	public void setRecipeTitle(String recipeTitle) {
 		this.recipeTitle = recipeTitle;
+	}
+
+	public String getTitleImage() {
+		return titleImage;
 	}
 
 	public void setTitleImage(String titleImage) {
 		this.titleImage = titleImage;
 	}
 
+	public String getRecipeContents() {
+		return recipeContents;
+	}
+
 	public void setRecipeContents(String recipeContents) {
 		this.recipeContents = recipeContents;
+	}
+
+	public String getTip() {
+		return tip;
 	}
 
 	public void setTip(String tip) {
 		this.tip = tip;
 	}
 
+	public Integer getRecommend() {
+		return recommend;
+	}
+
 	public void setRecommend(Integer recommend) {
 		this.recommend = recommend;
+	}
+
+	public Integer getHit() {
+		return hit;
 	}
 
 	public void setHit(Integer hit) {
 		this.hit = hit;
 	}
 
+	public String getIngredients() {
+		return ingredients;
+	}
+
 	public void setIngredients(String ingredients) {
 		this.ingredients = ingredients;
+	}
+
+	public String getRecipeDate() {
+		return recipeDate;
 	}
 
 	public void setRecipeDate(String recipeDate) {
 		this.recipeDate = recipeDate;
 	}
 
+	public Integer getStar() {
+		return star;
+	}
+
 	public void setStar(Integer star) {
 		this.star = star;
 	}
 
-	public void setStarHit(Integer starHit) {
-		this.starHit = starHit;
+	public Integer getStarHit() {
+		return starHit;
 	}
 
-	public void setRecipeDetail(List<RecipeDetail> recipeDetail) {
-		this.recipeDetail = recipeDetail;
+	public void setStarHit(Integer starHit) {
+		this.starHit = starHit;
 	}
 
 	@Override
@@ -149,7 +159,7 @@ public class Recipe {
 				+ ", recipeContents=" + recipeContents + ", tip=" + tip
 				+ ", recommend=" + recommend + ", hit=" + hit
 				+ ", ingredients=" + ingredients + ", recipeDate=" + recipeDate
-				+ ", star=" + star + ", starHit=" + starHit + "recipeDetail="+recipeDetail+", toString()="
+				+ ", star=" + star + ", starHit=" + starHit + ", toString()="
 				+ super.toString() + "]";
 	}
 
