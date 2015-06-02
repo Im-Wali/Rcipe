@@ -45,9 +45,9 @@ body {
 						var checkUnload=true;
 						
 						//처음 두개의 img태그에 event등록
-						var dropzone1 = document.getElementById('mainPicture');
+						var dropzone1 = document.getElementById('titleImage');
 						setDnDhandler(dropzone1);
-						var dropzone2 = document.getElementById('detailPicture1');
+						var dropzone2 = document.getElementById('detailImage1');
 						setDnDhandler(dropzone2);
 						
 						$(window).on("beforeunload", function() {
@@ -69,6 +69,8 @@ body {
 										function(event) {
 											detailNumber++;
 											detailCount++;
+											$("#detailCount").val(detailCount);
+											$("#detailNumber").val(detailNumber);
 											alert("detailNumber="+detailNumber);
 											alert("detailCount="+detailCount);
 											$("#detailLastDiv")
@@ -84,31 +86,37 @@ body {
 																	+ "<div style='margin-top: 1%'>"
 																	+ "<div class='media'>"
 																	+ "<div class='media-left'>"
-																	+ "<input type='hidden' id='imagedetailPicture"+detailNumber+"' value=''>"
-																	+ "<a href='#'> <img"
+																	+ "<input type='hidden' id='imagedetailImage"+detailNumber+"' name='detailImage"+detailNumber+"' value=''>"
+																	+ "<img"
 							+" class='media-object img-rounded fileUpload'"
-							+"src='../img/images3.jpg'  id='detailPicture"+detailNumber+"'>"
-																	+ "</a>"
+							+"src='../img/images3.jpg'  id='detailImage"+detailNumber+"' >"
 																	+ "</div>"
 																	+ "<div style='color: red; margin-right: 1%; margin-top: 1%'>*등록할"
 																	+ "사진을 위의 공간에 드래그 하세요</div>"
 																	+ "<div style='margin-top: 1%'>"
 																	+ "<input type='file' class='filestyle recipeButtonUpload'"
-							+"data-buttonName='btn-warning' data-input='false'"
-							+"data-buttonText='사진 등록' alt='detailPicture"+detailNumber+"'>"
+							+"data-buttonName='btn-warning' data-input='false'  id='recipeButtobUpload"+detailNumber+"'"
+							+"data-buttonText='사진 등록' alt='detailImage"+detailNumber+"'>"
 																	+ "</div>"
 																	+ "<div style='margin: 1%'>"
 																	+ "<label style='font-size: x-large; margin: 1%'>사진에 대한 설명</label>"
 																	+ "</div>"
 																	+ "<div>"
 																	+ "<textarea class='form-control' rows='5'"
-							+"placeholder='사진에 대한 설명을 적어주세요' ></textarea>"
+							+"placeholder='사진에 대한 설명을 적어주세요' name='detailContents"+detailNumber+"' ></textarea>"
 																	+ "</div>"
 																	+ "</div>"
 																	+ "</div>"
 																	+ "	</div>");
+											
+											$(":file").filestyle();
+											$(":file").filestyle('input', false);
+											$(":file").filestyle('icon', false);
+											$(":file").filestyle('buttonText', '사진 등록');
+											$(":file").filestyle('buttonName', 'btn-warning');
+										/* 	$(":file").addClass('filestyle');  */
 											//event등록
-											setDnDhandler(document.getElementById('detailPicture'+detailNumber));
+											setDnDhandler(document.getElementById('detailImage'+detailNumber));
 										});
 						$(document.body).on('click', '.close', function(event) {
 							//해당 상세레시피의 사진을 지운다.
@@ -119,6 +127,7 @@ body {
 							}
 							$("#" + $(this).val()).remove();
 							detailCount--;
+							$("#detailCount").val(detailCount);
 						});
 						
 						function fileHandler(str){
@@ -128,6 +137,7 @@ body {
 							var str3=str.split("changeImg")[1].substring("1").split(",")[0];
 							$("#"+fileUploadId).attr("src","../images/"+str3);
 							var t=$("#image"+fileUploadId).val();
+							alert(fileUploadId);
 							if(t.length>1){
 								//해당 "recipe"+id 의 아이디로 hidden태그가 있다면 거기에 있는 파일 삭제 ajax를 사용한다.
 								   $.ajax("../app/file/deletePicture",{
@@ -136,7 +146,6 @@ body {
 												+t,
 										success : function(
 												result) {
-											alert(result);
 										}
 									});
 								
@@ -159,7 +168,6 @@ body {
 								function(event) {
 									var id=$(this).attr("alt");
 									fileUploadId=id;
-									alert("fileUplaodId=="+fileUploadId);
 								});
 						function setDnDhandler(obj) {
 							obj.addEventListener("dragover", function(event) {
@@ -209,7 +217,9 @@ body {
 						//$(":file").filestyle('clear');이부분을 실행시에 또호출되기때문에
 						var isFile=false;
 						//프로필 수정 버튼에서 파일을 선택하면 실행한다. 파일을 업로드하는 AJAX
-						$('.recipeButtonUpload').change('onload',function() {
+						
+						 $(document.body).on('change',
+								'.recipeButtonUpload',function(){ 
 							if(isFile){
 								return;
 							}
@@ -243,31 +253,34 @@ body {
 
 <BODY>
 	<div><jsp:include page="../main/menuBar.jsp"></jsp:include></div>
+	<div><jsp:include page="ingredient.jsp"></jsp:include></div>
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
+			<form role="form" action="../app/recipe/inserRecipe"  method="post">
+			<input type="hidden" id="detailCount" name="detailCount" value="1">
+			<input type="hidden" id="detailNumber" name="detailNumber" value="1">
 			<div align="right">
 				<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
 					입력하세요!</span> <input type="button" class="btn btn-warning  btn-lg"
 					value="추가 사진 등록" style="margin-right: 1%; margin-bottom: 1%"
-					id="addDetail"> <input type="submit"
+					id="addDetail"> <input type="submit" id="recipeSubmit"
 					class="btn btn-warning btn-lg" value="레시피 등록"
 					style="margin-right: 1%; margin-bottom: 1%">
 			</div>
-			<form role="form">
 				<div class="form-login " style="margin-bottom: 2%;">
-					<h3 align="center" style="margin-bottm: 1%">레시피 등록</h3>
+					<h3 align="center" style="margin-bottm: 1%">레시피 등록</h3> 
 					<div style="margin-top: 1%">
 						<label for="title"
 							style="color: red; font-size: x-large; margin: 1%">*제목</label><input
-							type="email" class="form-control" id="email"
+							type="text" class="form-control" id="recipeTitle" name="recipeTitle"
 							placeholder="제목을 입려하세요">
 					</div>
 					<div style="margin-top: 1%">
 						<label for="mainImage"
 							style="color: red; font-size: x-large; margin: 1%">*메인 사진</label><br />
 						<div class="media">
-							<input type="hidden" id="imagemainPicture" value="">
+							<input type="hidden" id="imagetitleImage" name="titleImage"  value="">
 							<div class="media-left">
 								<img class="media-object img-rounded fileUpload"
 									src="http://127.0.0.1:8080/rcipe/img/images3.jpg" alt="..." id="mainPicture" >
@@ -277,27 +290,29 @@ body {
 							<div style="margin-top: 1%">
 								<input type="file" class="filestyle recipeButtonUpload" 
 									data-buttonName="btn-warning" data-input="false"
-									data-buttonText="메인 사진 등록" alt="mainPicture">
+									data-buttonText="메인 사진 등록" alt="titleImage">
 							</div>
 							<div style="margin: 1%">
 								<label style="color: red; font-size: x-large;">*재료 입력</label> 예)
 								당근(1개),시금치(100g),빵(조금)
+								<a href="#" class="btn btn-warning" data-toggle="modal"
+					data-target="#ingredient" data-whatever="ingredient" data-backdrop="false">재료검색</a>
 							</div>
 							<div>
-								<textarea class="form-control" rows="3" placeholder="재료를 입력하세요"></textarea>
+								<textarea class="form-control" rows="3" placeholder="재료를 입력하세요" name="ingredients"></textarea>
 							</div>
 							<div style="margin: 1%">
 								<label style="color: red; font-size: x-large;">*간단한 설명</label>
 							</div>
 							<div>
 								<textarea class="form-control" rows="10"
-									placeholder="간단한 설명을 적어주세요"></textarea>
+									placeholder="간단한 설명을 적어주세요" name="recipeContents"></textarea>
 							</div>
 							<div style="margin: 1%">
 								<label style="color: red; font-size: x-large;">*Tip</label>
 							</div>
 							<div>
-								<textarea class="form-control" rows="3" placeholder="Tip을 적어주세요"></textarea>
+								<textarea class="form-control" rows="3" placeholder="Tip을 적어주세요" name="tip"></textarea>
 							</div>
 						</div>
 					</div>
@@ -312,8 +327,8 @@ body {
 					<div style="margin-top: 1%">
 						<div class="media">
 							<div class="media-left">
-								<input type="hidden" id="imagedetailPicture1" value="">
-								<a href="#"> <img
+								<input type="hidden" id="imagedetailImage1"  name="detailImage1" 	 value="" >
+								 <img
 									class="media-object img-rounded fileUpload"
 									src="http://127.0.0.1:8080/rcipe/img/images3.jpg" alt="..." id="detailPicture1">
 								</a>
@@ -323,14 +338,14 @@ body {
 							<div style="margin-top: 1%">
 								<input type="file" class="filestyle recipeButtonUpload"
 									data-buttonName="btn-warning" data-input="false"
-									data-buttonText="사진 등록" alt="detailPicture1">
+									data-buttonText="사진 등록" alt="detailImage1">
 							</div>
 							<div style="margin: 1%">
 								<label style="font-size: x-large; margin: 1%">사진에 대한 설명</label>
 							</div>
 							<div>
 								<textarea class="form-control" rows="5"
-									placeholder="사진에 대한 설명을 적어주세요"></textarea>
+									placeholder="사진에 대한 설명을 적어주세요" name="detailContents1"></textarea>
 							</div>
 						</div>
 					</div>
