@@ -28,7 +28,7 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
-<style type="text/css">
+<style type="http://127.0.0.1:8080/rcipe/text/css">
 .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;
@@ -85,7 +85,7 @@
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="modifyBoard" method="POST">
+			<form action="http://127.0.0.1:8080/rcipe/app/board/modifyBoard" method="POST">
 				<div align="right">
 					<label style="font-size:1.2em;margin-right:1%;">등록된 날짜:<%-- <%=board.getBoardDate().getYear()%>/
 					<%=board.getBoardDate().getMonth()%>/
@@ -101,7 +101,7 @@
 						<label for="title"
 							style="color: red; font-size: x-large; margin: 1%">*제목</label><input
 							type="text" class="form-control" id="boardTitle"
-							name="boardTitle" placeholder="제목을 입려하세요"
+							name="boardTitle" placeholder="제목을 입력하세요"
 							value="${board.boardTitle}">
 						<!-- Single button -->
 						<div align="right">

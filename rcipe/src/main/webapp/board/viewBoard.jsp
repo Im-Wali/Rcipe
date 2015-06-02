@@ -18,7 +18,7 @@
 	src="../../js/jquery-1.11.3.min.js"></script>
 <script
 	src="../../js/bootstrap.min.js"></script> -->
-<style type="text/css">
+<style type="http://127.0.0.1:8080/rcipe/text/css">
 body {
 	background-color: #fff;
 	-webkit-font-smoothing: antialiased;
@@ -62,7 +62,7 @@ h4 {
 		$(window).load(function() {
 			//!!!!!!!!!!!!!!!!!!!!!바꿔야함	
 			function add_content() {
-				location.href("insertBoard.jsp");
+				location.href("../../board/insertBoard");
 			}
 			document.getElementById("select_category").innerHTML = "카테고리";
 			
@@ -71,7 +71,7 @@ h4 {
 				board.boardCategory
 			}
 			;
-			alert(${baord.baordCategory});
+			alert(${board.boardCategory});
 
 			/* var n = $('#category').val();
 			alert(n);
