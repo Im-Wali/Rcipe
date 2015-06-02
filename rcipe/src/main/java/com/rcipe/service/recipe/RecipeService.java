@@ -1,9 +1,14 @@
 package com.rcipe.service.recipe;
 
-public class RecipeService {
+import com.rcipe.service.domain.Recipe;
 
-	public RecipeService() {
-		// TODO Auto-generated constructor stub
-	}
 
+public interface RecipeService {
+
+	public boolean deleteRecipe(int rcp_no) throws Exception;
+
+	public Recipe getRecipe(int rcp_no) throws Exception;
+
+	public boolean deleteRcpIng(int rcp_no) throws Exception;
+	
 }

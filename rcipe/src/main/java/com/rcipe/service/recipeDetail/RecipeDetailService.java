@@ -1,9 +1,13 @@
 package com.rcipe.service.recipeDetail;
 
-public class RecipeDetailService {
+import java.util.List;
 
-	public RecipeDetailService() {
-		// TODO Auto-generated constructor stub
-	}
+import com.rcipe.service.domain.RecipeDetail;
+
+public interface RecipeDetailService {
+
+	public List<RecipeDetail> getRecipeDetail(int rcp_no) throws Exception;
+	
+	public int deleteRecipeDetail(int rcp_no) throws Exception;
 
 }
