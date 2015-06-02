@@ -25,7 +25,7 @@
 			}());
 		</script>
 
-		<img id="share_button" src="../img/facebook.png">
+		<img id="share_button" src="http://127.0.0.1:8080/rcipe/img/facebook.png">
 
 		<script type="text/javascript">
 			$(document)
