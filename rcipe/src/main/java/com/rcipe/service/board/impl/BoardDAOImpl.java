@@ -23,6 +23,11 @@ public class BoardDAOImpl implements BoardDAO {
 		this.sqlSession = sqlSession;
 	}
 	
+	public SqlSession getSqlSession() {
+		return sqlSession;
+	}
+	
+	
 	public BoardDAOImpl() {
 		System.out.println("##"+getClass()+"default Constructor call~!!");
 	}
