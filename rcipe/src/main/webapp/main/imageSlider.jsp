@@ -33,7 +33,7 @@
 											<a
 												href="../../recipe/recipe.jsp"
 												target="_parent"> <img class="slide-image"
-												src="../img/test1.jpg" alt="">
+												src="http://127.0.0.1:8080/rcipe/img/test1.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
@@ -47,7 +47,7 @@
 											<a
 												href="../../recipe/recipe.jsp"
 												target="_parent"> <img class="slide-image"
-												src="../img/test2.jpg" alt="">
+												src="http://127.0.0.1:8080/rcipe/img/test2.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
@@ -61,7 +61,7 @@
 											<a
 												href="../../recipe/recipe.jsp"
 												target="_parent"> <img class="slide-image"
-												src="../img/test3.jpg" alt="">
+												src="http://127.0.0.1:8080/rcipe/img/test3.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
