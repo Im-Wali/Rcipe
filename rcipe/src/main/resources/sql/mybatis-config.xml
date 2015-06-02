@@ -16,6 +16,8 @@
 		<typeAlias alias="search" type="com.rcipe.commons.Search"/>
 		<typeAlias alias="board" type="com.rcipe.service.domain.Board"/>
 		<typeAlias alias="comment" type="com.rcipe.service.domain.Comment"/>
+		<typeAlias alias="recipe" type="com.rcipe.service.domain.Recipe"/>
+		<typeAlias alias="recipeDetail" type="com.rcipe.service.domain.RecipeDetail"/>
 	</typeAliases>
 
 	<!-- SQL Definition :: file include -->
@@ -23,6 +25,8 @@
 		<mapper resource="sql/UserMapper.xml" />
 		<mapper resource="sql/BoardMapper.xml" />
 		<mapper resource="sql/CommentMapper.xml" />
+	  <mapper resource="sql/RecipeMapper.xml" />
+	  <mapper resource="sql/RecipeDetailMapper.xml" />
 	</mappers>
 
 </configuration>
