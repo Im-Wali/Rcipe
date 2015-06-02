@@ -28,13 +28,13 @@ public class UserController {
 	public UserController() {
 		System.out.println(this.getClass());
 	}
-
+	
 	@RequestMapping(value = "joinUser", method = RequestMethod.POST)
 	public ModelAndView joinUser(@ModelAttribute("user") User user)
 			throws Exception {
 		System.out.println(user);
 		userService.insertUser(user);
-		return new ModelAndView("redirect:/main/mainPage.jsp");
+		return new ModelAndView("forward:../../main/mainPage.jsp");
 	}
 
 	@RequestMapping(value = "checkedEmail", method = RequestMethod.GET)
@@ -83,12 +83,15 @@ public class UserController {
 		session.setAttribute("user", dbUser);
 		System.out.println("loginUser :" + dbUser);
 
-		return "redirect:/main/mainPage.jsp";
+		return "forward:../../main/mainPage.jsp";
+	}
+	
+	@RequestMapping(value = "viewUser", method = RequestMethod.GET)
+	public  String  viewUser()throws Exception{
+		System.out.println("AAAAAAAAAAaa");
+		return "forward:../../user/viewUser.jsp";
 	}
 
-	// public @ResponseBody void updatePassword( Model model , HttpSession
-	// session, @RequestParam("newPassword") String newPassword) throws
-	// Exception{
 	@RequestMapping(value = "updatePassword", method = RequestMethod.GET)
 	public @ResponseBody void updatePassword(@ModelAttribute("user") User user,
 			Model model, HttpSession session,
