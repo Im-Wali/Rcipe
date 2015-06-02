@@ -12,7 +12,7 @@
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<style type="text/css">
+<style type="http://127.0.0.1:8080/rcipe/text/css">
 .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;

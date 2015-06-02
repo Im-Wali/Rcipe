@@ -11,7 +11,7 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
-<style type="text/css">
+<style type="http://127.0.0.1:8080/rcipe/text/css">
 .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;
@@ -67,14 +67,14 @@
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="inserBoard" method="POST">
+			<form action="../app/board/boardList" method="POST">
 				<div class="form-login " style="margin-bottom: 2%;">
 					<h3 align="center" style="margin-bottm: 1%;">게시판글 등록</h3>
 					<div style="margin-top: 1%">
 						<label for="title"
 							style="color: red; font-size: x-large; margin: 1%">*제목</label><input
 							type="text" class="form-control" id="boardTitle"
-							name="boardTitle" placeholder="제목을 입려하세요">
+							name="boardTitle" placeholder="제목을 입력하세요">
 						<!-- Single button -->
 						<div align="right" style="margin-top: 1%">
 							<span><button type="button" class="btn btn-warning">
@@ -146,7 +146,7 @@
 	</div>
 	<script>
 		CKEDITOR.replace('editor1', {
-			'filebrowserUploadUrl' : '../file/uploadBoard',
+			'filebrowserUploadUrl' : '../app/file/uploadBoard',
 			enterMode : '2',
 			shiftEnterMode : '3',
 			width : '100%',
