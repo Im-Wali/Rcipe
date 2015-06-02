@@ -17,7 +17,7 @@
 <script type="text/javascript" src="../js/recipe01.js"></script>
 
 <TITLE>Recipe</TITLE>
-<style type="http://127.0.0.1:8080/rcipe/text/css">
+<style type="text/css">
 .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;
@@ -93,13 +93,13 @@ stylize any heading tags withing white-panel below
 						<div class="text-center center-block"
 							style="margin-left: 70%; " >
 						<jsp:include page="../sns/facebook.jsp"></jsp:include>
-						<img id="share_button" src="http://127.0.0.1:8080/rcipe/img/twitter.png">
-						<img id="share_button" src="http://127.0.0.1:8080/rcipe/img/mail.png">
-						<img id="share_button" src="http://127.0.0.1:8080/rcipe/img/printer.png" height="60" width="60">
+						<img id="share_button" src="../img/twitter.png">
+						<img id="share_button" src="../img/mail.png">
+						<img id="share_button" src="../img/printer.png" height="60" width="60">
 						</div>
 					</div>
 					<div align="center" style="margin-top: 2%">
-						<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/start.JPG">
+						<img class="img-thumbnail" src="../img/s/start.JPG">
 					</div>
 
 					<div class="row lead"
@@ -175,45 +175,45 @@ stylize any heading tags withing white-panel below
 							<div>
 								<div>
 									<div class="sBlog" style="margin: 1%">
-										<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/o1.JPG" />
+										<img class="img-thumbnail" src="../img/s/o1.JPG" />
 										<h4 class="brand" style="margin: 1%">1.닭가슴살은 손가락 길이 만큼
 											자르고 우유로 10분간 재어 누린네를 제거해요.</h4>
 									</div>
 									<div class="sBlog" style="margin: 1%">
-										<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/o2.JPG" />
+										<img class="img-thumbnail" src="../img/s/o2.JPG" />
 										<h4 class="brand" style="margin: 1%">2.우유를 버리고 헹군 뒤
 											치킨튀김가루로 밑간을 해줬어요.</h4>
 									</div>
 									<div class="sBlog" style="margin: 1%">
-										<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/o3.JPG" />
+										<img class="img-thumbnail" src="../img/s/o3.JPG" />
 										<h4 class="brand" style="margin: 1%">3.밑가한 닭가슴살을 계란 > 빵가루
 											순으로 튀김옷을 입혀줍니다. 빵가루는 꾹꾹 눌러가며 잘 입혀주세요.</h4>
 									</div>
 									<div class="sBlog" style="margin: 1%">
-										<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/o4.JPG" />
+										<img class="img-thumbnail" src="../img/s/o4.JPG" />
 										<h4 class="brand" style="margin: 1%">4.식빵은 사면의 모서리를 잘라
 											밀대로 꾹꾹 밀어 납작하게 만듭니다.</h4>
 									</div>
 									<div class="sBlog" style="margin: 1%">
-										<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/o5.JPG" />
+										<img class="img-thumbnail" src="../img/s/o5.JPG" />
 										<h4 class="brand" style="margin: 1%">5.달군 팬에 기름을 둘러 약한
 											불에서 치킨을 앞뒤로 노릇하게 구워내줍니다.</h4>
 									</div>
 									<div class="sBlog" style="margin: 1%">
-										<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/o6.JPG" />
+										<img class="img-thumbnail" src="../img/s/o6.JPG" />
 										<h4 class="brand" style="margin: 1%">6.윗면에 소스를 발라주고, 상추,
 											치즈, 치킨, 고추피클, 순으로 올린 뒤 돌돌 말아주세요.</h4>
 									</div>
 									<div class="sBlog" style="margin: 1%">
-										<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/o7.JPG" />
+										<img class="img-thumbnail" src="../img/s/o7.JPG" />
 									</div>
 									<div class="sBlog" style="margin: 1%">
-										<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/o8.JPG" />
+										<img class="img-thumbnail" src="../img/s/o8.JPG" />
 										<h4 class="brand" style="margin: 1%">7.랩으로 꽁꽁 싸서 10분 이상
 											두어 동그랗게 되도록 해줍니다. 10분 후 랩을 벗겨 먹기 좋게 썰어주면 완성.</h4>
 									</div>
 									<div class="sBlog" style="margin: 1%">
-										<img class="img-thumbnail" src="http://127.0.0.1:8080/rcipe/img/s/main.JPG" />
+										<img class="img-thumbnail" src="../img/s/main.JPG" />
 									</div>
 								</div>
 							</div>
