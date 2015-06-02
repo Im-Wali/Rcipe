@@ -8,12 +8,21 @@ public class RecipeDetail {
 		detailContents	String
 	 */
 	
+	private Integer recipeNo;
 	private Integer recipeOrder;
 	private String detailImage;
 	private String detailContents;
 	
 	public RecipeDetail() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getRecipeNo() {
+		return recipeNo;
+	}
+
+	public void setRecipeNo(Integer recipeNo) {
+		this.recipeNo = recipeNo;
 	}
 
 	public Integer getRecipeOrder() {
@@ -42,11 +51,9 @@ public class RecipeDetail {
 
 	@Override
 	public String toString() {
-		return "RecipeDetail [recipeOrder=" + recipeOrder + ", detailImage="
-				+ detailImage + ", detailContents=" + detailContents
-				+ ", toString()=" + super.toString() + "]";
+		return "RecipeDetail [recipeNo=" + recipeNo + ", recipeOrder="
+				+ recipeOrder + ", detailImage=" + detailImage
+				+ ", detailContents=" + detailContents + "]";
 	}
-
-	
 	
 }
