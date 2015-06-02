@@ -58,18 +58,18 @@ public class BoardController {
 		board.setNickname(user.getNickname());
 		boardService.insertBoard(board);
 		session.removeAttribute("boardImgPath");
-		return "forward:/board/boardList.jsp";
+		return "forward:../../board/boardList.jsp";
 	}
 	@RequestMapping(value = "/getInsertBoard", method = RequestMethod.GET)
 	public  String  getInsertBoard()throws Exception{
-		return "/board/insertBoard";
+		return "forward:http://127.0.0.1:8080/rcipe/board/boardList.jsp";
 	}
 	@RequestMapping(value = "/viewModifyBoard", method = RequestMethod.GET)
 	public  String  viewModifyBoard(Model model,@RequestParam("boardNo") int boardNo,HttpSession session)throws Exception{
 		Board board=boardService.getBoard(boardNo);
 		session.setAttribute("boardImgPath",board.getBoardImgPath());
 		model.addAttribute("board",board);
-		return "forward:/board/modifyBoard.jsp";
+		return "forward:../../board/modifyBoard.jsp";
 	}
 	
 	@RequestMapping(value = "/modifyBoard", method = RequestMethod.POST)
@@ -77,13 +77,13 @@ public class BoardController {
 		boardService.updateBoard(board);
 		session.removeAttribute("boardImgPath");
 		model.addAttribute("board",boardService.getBoard(board.getBoardNo()));
-		return "forward:/board/viewBoard.jsp";
+		return "forward:http://127.0.0.1:8080/rcipe/board/viewBoard.jsp";
 	}
 	
 	@RequestMapping(value = "/viewBoard", method = RequestMethod.GET)
 	public  String  viewBoard(Model model,@RequestParam("boardNo") int boardNo)throws Exception{
 		model.addAttribute("board",boardService.getBoard(boardNo));
-		return "forward:/board/viewBoard.jsp";
+		return "forward:http://127.0.0.1:8080/rcipe/board/viewBoard.jsp";
 	}
 	
 	@RequestMapping(value = "/getBoardListFirst", method = RequestMethod.GET)
@@ -150,6 +150,6 @@ public class BoardController {
 	public String deleteBoard(@RequestParam("boardNo") int boardNo,@RequestParam("boardImgPath") String boardImgPath)throws Exception{
 		System.out.println(cx.getRealPath("/images")+boardImgPath);
 		boardService.deleteBoard(boardNo,cx.getRealPath("/images")+boardImgPath);
-		return "redirect:/board/boardList.jsp";
+		return "forward:http://127.0.0.1:8080/rcipe/board/boardList.jsp";
 	}
 }
