@@ -29,7 +29,7 @@
 
 							</div>
 						</div>
-						<a href="../../recipe/recipe.jsp"><img src="../img/images.jpg"
+						<a href="../../recipe/recipe.jsp"><img src="http://127.0.0.1:8080/rcipe/img/images.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" /></a>
 					</div>
 				</div>
@@ -56,7 +56,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images2.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images2.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -84,7 +84,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images3.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images3.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -111,7 +111,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images4.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images4.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -138,7 +138,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images5.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images5.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -165,7 +165,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images6.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images6.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -192,7 +192,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images7.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images7.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -219,7 +219,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images8.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images8.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -246,7 +246,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images9.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images9.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -273,7 +273,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images10.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images10.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -300,7 +300,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -327,7 +327,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -354,7 +354,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -381,7 +381,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -408,7 +408,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -435,7 +435,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
@@ -462,7 +462,7 @@
 
 							</div>
 						</div>
-						<img src="../img/images.jpg"
+						<img src="http://127.0.0.1:8080/rcipe/img/images.jpg"
 							style="position: relative; z-index: 0; width: 200px; height: 270px" />
 					</div>
 				</div>
