@@ -1,6 +1,5 @@
 package com.rcipe.service.domain;
 
-import java.util.Date;
 
 public class Comment {
 

@@ -77,13 +77,16 @@ public class BoardController {
 		boardService.updateBoard(board);
 		session.removeAttribute("boardImgPath");
 		model.addAttribute("board",boardService.getBoard(board.getBoardNo()));
-		return "forward:http://127.0.0.1:8080/rcipe/board/viewBoard.jsp";
+		return "forward:viewBoard.jsp";
 	}
 	
 	@RequestMapping(value = "/viewBoard", method = RequestMethod.GET)
 	public  String  viewBoard(Model model,@RequestParam("boardNo") int boardNo)throws Exception{
 		model.addAttribute("board",boardService.getBoard(boardNo));
-		return "forward:http://127.0.0.1:8080/rcipe/board/viewBoard.jsp";
+		User user = new User();
+		user.setNickname("user01");
+		model.addAttribute("user",user);
+		return "forward:/board/viewBoard.jsp";
 	}
 	
 	@RequestMapping(value = "/getBoardListFirst", method = RequestMethod.GET)
@@ -150,6 +153,6 @@ public class BoardController {
 	public String deleteBoard(@RequestParam("boardNo") int boardNo,@RequestParam("boardImgPath") String boardImgPath)throws Exception{
 		System.out.println(cx.getRealPath("/images")+boardImgPath);
 		boardService.deleteBoard(boardNo,cx.getRealPath("/images")+boardImgPath);
-		return "forward:http://127.0.0.1:8080/rcipe/board/boardList.jsp";
+		return "forward:getBoardListFirst?searchCategory=0";
 	}
 }

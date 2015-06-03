@@ -162,5 +162,4 @@ public class Recipe {
 				+ ", star=" + star + ", starHit=" + starHit + ", toString()="
 				+ super.toString() + "]";
 	}
-
 }

@@ -1,10 +1,14 @@
 package com.rcipe.service.recipe.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import com.rcipe.commons.Search;
+import com.rcipe.service.domain.Board;
 import com.rcipe.service.domain.Recipe;
 import com.rcipe.service.recipe.RecipeDAO;
 
@@ -44,6 +48,18 @@ public class RecipeDAOImpl implements RecipeDAO {
 	public int deleteRcpIng(int rcp_no) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.update("RecipeMapper.deleteRcpIng", rcp_no);
+	}
+
+	@Override
+	public List<Board> getRecipeList(Search search) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("RecipeMapper.getRecipeList", search);
+	}
+
+	@Override
+	public int getTotalCount(Search search) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("RecipeMapper.getTotalCount", search);
 	}
 
 	

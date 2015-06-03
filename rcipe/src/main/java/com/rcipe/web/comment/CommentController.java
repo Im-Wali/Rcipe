@@ -42,7 +42,7 @@ public class CommentController {
 	@RequestMapping(value = "/insertBoardCmt", method = RequestMethod.POST)
 	public ResponseEntity<String> insertBoardCmt(@ModelAttribute("comment") Comment comment,HttpSession session) throws Exception {
 		User user=(User) session.getAttribute("user");
-		comment.setNickname(user.getNickname());
+		comment.setNickname("user01");//user.getNickname());
 		commentService.insertBoardCmt(comment);
 		//다시 보여주기 위해 리스트을 가져온다
 		Map<String,Object> map=new HashMap<String,Object>();
@@ -54,7 +54,7 @@ public class CommentController {
 	@RequestMapping(value = "/inserReply", method = RequestMethod.POST)
 	public ResponseEntity<String> inserReply(@ModelAttribute("comment") Comment comment,HttpSession session) throws Exception {
 		User user=(User) session.getAttribute("user");
-		comment.setNickname(user.getNickname());
+		comment.setNickname("user01");
 		commentService.insertReply(comment);
 		Map<String,Object> map=new HashMap<String,Object>();
 		map.put("list", commentService.getCommentReplyList(comment.getCommentReNo()));
