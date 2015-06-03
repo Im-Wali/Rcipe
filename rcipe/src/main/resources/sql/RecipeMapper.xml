@@ -39,5 +39,34 @@
     DELETE FROM rcp_ing
     WHERE rcp_no=${value}
   </delete>
+  
+  <select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
+    SELECT
+    rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip, rcp_rec_cnt,
+    rcp_cnt, ingredients, rcp_date, star_tot_cnt, star_cnt
+    FROM recipes
+    <where> 
+     <if test="searchKeyword != null">
+     <if test="searchKeyword != '' ">
+        rcp_title like '%${searchKeyword}%' AND 
+        nickname like '%${searchKeyword}%' AND
+     </if></if>
+     </where> 
+  </select>
+  
+  <select id="getTotalCount" parameterType="search" resultType="int">
+    SELECT COUNT(*)
+    FROM ( SELECT *
+    FROM recipes
+     <where> 
+     <if test="searchKeyword != null">
+         <if test="searchKeyword != '' ">
+        rcp_title like '%${searchKeyword}%' AND
+        nickname like '%${searchKeyword}%' AND
+        </if> 
+     </if>
+     </where> 
+    ) countTable
+  </select>
 
 </mapper>

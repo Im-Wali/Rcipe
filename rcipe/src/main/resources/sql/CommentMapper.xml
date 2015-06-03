@@ -13,8 +13,13 @@
 		<result property="commentContent" column="CMT_CONT" jdbcType="VARCHAR" />
 		<result property="commentDate" column="CMT_DATE" jdbcType="DATE" />
 		<result property="userImg" column="USER_IMG" jdbcType="VARCHAR" />
-		<result property="replyCnt" column="REPLY_CNT" jdbcType="INTEGER" />
+		<result property="replyCnt" column="REPLY_CNT" jdbcType="INTEGER" />		
 	</resultMap>
+	
+	<resultMap id="boardCmtList" type="java.util.HashMap">
+    <id property="cmtNo" column="cmt_no"/>
+</resultMap>
+	
 
 	<!-- boardCmt insert -->
 	<insert id="insertBoardCmt" parameterType="comment">
@@ -157,11 +162,9 @@
 		FROM
 		comments
 		<where>
-			<if test="list.size != 0">
-				cmt_no2 IN
-				<foreach item="item" collection="list" open="(" separator=","
-					close=")">
-					#{item}
+			<if test="list != ''">
+				<foreach item="item" collection="list" separator="AND">
+					cmt_no2 IN #{item.cmtNo}
 				</foreach>
 			</if>
 		</where>
@@ -172,18 +175,17 @@
 		DELETE
 		FROM
 		comments
-		WHERE
-		<if test="list.size != 0">
-			cmt_no IN
-			<foreach item="item" collection="list" open="(" separator=","
-				close=")">
-				#{item}
-			</foreach>
-		</if>
+		<where>
+      <if test="list != ''">
+        <foreach item="item" collection="list" separator="AND">
+          cmt_no = #{item.cmtNo}
+        </foreach>
+      </if>
+    </where>
 	</delete>
 
 	<!-- comments삭제을 위한 select문 -->
-	<select id="getBoardsCmtCmtNo" parameterType="int">
+	<select id="getBoardsCmtCmtNo" parameterType="int" resultMap="boardCmtList">
 		SELECT cmt_no
 		FROM
 		boards_cmt
@@ -191,7 +193,7 @@
 	</select>
 
 	<!-- boardsCmtlist삭제 -->
-	<delete id="deleteboardsCmtList" parameterType="int">
+	<delete id="deleteBoardCmtList" parameterType="int">
 		DELETE
 		FROM
 		boards_cmt
@@ -213,7 +215,5 @@
 		recipes_cmt
 		WHERE rcp_no=#{value}
 	</delete>
-
-
 
 </mapper>

@@ -38,8 +38,8 @@
     <where> 
         b.nickname = u.nickname AND
      <if test="searchKeyword != null">
-        board_title like '%${searchKeyword}%' AND 
-        nickname like '%${searchKeyword}%' AND
+        b.board_title like '%${searchKeyword}%' AND 
+        b.nickname like '%${searchKeyword}%' AND
      </if>
         b.board_cat = #{searchCategory}
      </where> 
