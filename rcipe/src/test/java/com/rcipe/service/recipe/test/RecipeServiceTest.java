@@ -3,6 +3,7 @@ package com.rcipe.service.recipe.test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.rcipe.commons.Search;
 import com.rcipe.service.comment.CommentService;
 import com.rcipe.service.domain.Comment;
 import com.rcipe.service.domain.Recipe;
@@ -29,6 +30,7 @@ public class RecipeServiceTest {
 		CommentService commentService = (CommentService) context.getBean("commentServiceImpl");
 		RecipeDetailService recipeDetailService = (RecipeDetailService) context
 				.getBean("recipeDetailServiceImpl");
+		Search search = new Search(1,"1","", 1);
 		Comment comment = new Comment();
 		comment.setCommentNo(10080);
 		
@@ -42,11 +44,15 @@ public class RecipeServiceTest {
 		*/
 		
 		// deleteRecipe 과정
-		System.out.println("delete Test 실행");
+		//System.out.println("delete Test 실행");
 		// System.out.println("deleteRecipeCmtList Test 실행 : "+commentService.deleteRecipeCmtList(recipe.getRecipeNo()));
 		// System.out.println("deleteRecipeDetail Test 실행 : "+recipeDetailService.deleteRecipeDetail(recipe.getRecipeNo()));
 		//	System.out.println("deleteRcpIng Test 실행 : "+recipeService.deleteRcpIng(recipe.getRecipeNo()));
-		 System.out.println(recipeService.deleteRecipe(recipe.getRecipeNo()));
+		// System.out.println(recipeService.deleteRecipe(recipe.getRecipeNo()));
+		
+		// getRecipeList
+		System.out.println("getRecipeList Test 실행 : "+recipeService.getRecipeList(search));
+		
 
 	}
 
