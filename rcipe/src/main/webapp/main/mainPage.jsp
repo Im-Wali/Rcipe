@@ -10,7 +10,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="../js/jquery.lazyload.js"></script>
 <style type="http://127.0.0.1:8080/rcipe/text/css">
+
 .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;

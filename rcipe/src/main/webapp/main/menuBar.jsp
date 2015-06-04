@@ -2,8 +2,13 @@
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="http://127.0.0.1:8080/rcipe/css/style.css" type="text/css" />
 <link rel="stylesheet" href="http://127.0.0.1:8080/rcipe/css/menuBar01.css" type="text/css" />
-<script src="../js/menuBar01.js">
-	
+<script src="../js/menuBar01.js"></script>
+<script type="text/javascript">
+function search() {
+	var searchKeyword = document.getElementById("searchKeyword").value;
+	alert(searchKeyword);
+	location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='+searchKeyword;
+  }
 </script>
 <!-- login.jsp :로그인 모달을 가지고 있는 jsp파일 -->
 <jsp:include page="../user/login.jsp"></jsp:include>
@@ -11,7 +16,7 @@
 <nav id="filp" class="navbar navbar-inverse "
 	style="border: none; width: 100%; height: 30%; padding: 10px; text-align: center; background-color: #FF9933;">
 	<span style="float: left; padding-left: 10px; margin-top: 1%"><a
-		href="http://127.0.0.1:8080/rcipe/main/mainPage.jsp" style="font-size: 2em; color: black">Rcipe</a></span>
+		href="getRecipeList" style="font-size: 2em; color: black">Rcipe</a></span>
 	<div class="dropdown">
 		<div id="dLabel" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"
@@ -90,14 +95,14 @@
 		</ul>
 	</div>
 	<div align="right" style="padding-right: 10px; margin-top: 1%">
-		<form action="http://127.0.0.1:8080/rcipe/app/main/searchResult.jsp" method="POST">
+		<form name="SearchForm" action="" method="POST">
 			<span class="row"> <span class="col-sm-5 col-sm-offset-2"
 				style="display: inline-block; text-align: center; margin-top: 1%;">
 					<span id="imaginary_container"> <span
 						class="input-group stylish-input-group"> <input type="text"
-							class="form-control" placeholder="Search" id="inputsearch">
+							class="form-control" placeholder="Search" id="searchKeyword">
 							<span class="input-group-addon">
-								<button type="submit">
+								<button type="button" onclick="javascript:search();">
 									<span class="glyphicon glyphicon-search"></span>
 								</button>
 						</span>
