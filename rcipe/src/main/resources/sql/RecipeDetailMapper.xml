@@ -7,6 +7,7 @@
 <mapper namespace="RecipeDetailMapper">
 
 	<resultMap type="com.rcipe.service.domain.RecipeDetail" id="RecipeDetailSelectMap">
+		<result property="recipeDetailNo" column="DET_NO" jdbcType="INTEGER"/>
 		<result property="recipeNo" column="rcp_no" jdbcType="INTEGER" />
 		<result property="recipeOrder" column="det_rcp_ord" jdbcType="INTEGER" />
 		<result property="detailImage" column="det_img_path" jdbcType="VARCHAR" />
@@ -17,7 +18,7 @@
 	<select id="getRecipeDetail" parameterType="int"
 		resultMap="RecipeDetailSelectMap">
 		SELECT
-		rcp_no, det_rcp_ord, det_img_path, det_cont
+		recipeDetailNo,rcp_no, det_rcp_ord, det_img_path, det_cont
 		FROM
 		detail_rcp
 		WHERE rcp_no = #{value}
