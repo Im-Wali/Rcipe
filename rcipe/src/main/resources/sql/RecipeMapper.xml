@@ -48,8 +48,8 @@
     <where> 
      <if test="searchKeyword != null">
      <if test="searchKeyword != '' ">
-        rcp_title like '%${searchKeyword}%' AND 
-        nickname like '%${searchKeyword}%' AND
+        rcp_title like '%${searchKeyword}%' OR 
+        nickname like '%${searchKeyword}%'
      </if></if>
      </where> 
   </select>
@@ -61,8 +61,8 @@
      <where> 
      <if test="searchKeyword != null">
          <if test="searchKeyword != '' ">
-        rcp_title like '%${searchKeyword}%' AND
-        nickname like '%${searchKeyword}%' AND
+        rcp_title like '%${searchKeyword}%' OR
+        nickname like '%${searchKeyword}%'
         </if> 
      </if>
      </where> 
