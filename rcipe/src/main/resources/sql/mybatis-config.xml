@@ -18,6 +18,7 @@
 		<typeAlias alias="comment" type="com.rcipe.service.domain.Comment"/>
 		<typeAlias alias="recipe" type="com.rcipe.service.domain.Recipe"/>
 		<typeAlias alias="recipeDetail" type="com.rcipe.service.domain.RecipeDetail"/>
+		<typeAlias alias="ingredient" type="com.rcipe.service.domain.Ingredient"/>
 	</typeAliases>
 
 	<!-- SQL Definition :: file include -->
