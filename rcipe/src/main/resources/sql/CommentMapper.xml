@@ -13,13 +13,13 @@
 		<result property="commentContent" column="CMT_CONT" jdbcType="VARCHAR" />
 		<result property="commentDate" column="CMT_DATE" jdbcType="DATE" />
 		<result property="userImg" column="USER_IMG" jdbcType="VARCHAR" />
-		<result property="replyCnt" column="REPLY_CNT" jdbcType="INTEGER" />		
+		<result property="replyCnt" column="REPLY_CNT" jdbcType="INTEGER" />
 	</resultMap>
-	
+
 	<resultMap id="boardCmtList" type="java.util.HashMap">
-    <id property="cmtNo" column="cmt_no"/>
-</resultMap>
-	
+		<id property="cmtNo" column="cmt_no" />
+	</resultMap>
+
 
 	<!-- boardCmt insert -->
 	<insert id="insertBoardCmt" parameterType="comment">
@@ -63,7 +63,7 @@
 		AND u.nickname LIKE c.nickname
 		ORDER BY c.CMT_DATE DESC
 	</select>
-	
+
 	<!-- recipeCmt리스트 가져온다. -->
 	<select id="getRecipeCmtList" parameterType="int" resultMap="commentMap">
 		SELECT
@@ -71,11 +71,13 @@
 		CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD HH:MI:SS') CMT_DATE,u.USER_IMG
 		USER_IMG,c.CMT_NO2 CMT_NO2,
 		c.REPLY_CNT REPLY_CNT
-		FROM comments c,recipes_cmt r,users u
+		FROM comments
+		c,recipes_cmt r,users u
 		WHERE
 		r.rcp_no=#{value} AND
 		r.cmt_no=c.cmt_no
-		AND u.nickname LIKE c.nickname
+		AND
+		u.nickname LIKE c.nickname
 		ORDER BY c.CMT_DATE DESC
 	</select>
 
@@ -127,7 +129,7 @@
 		WHERE
 		cmt_no=#{value}
 	</delete>
-	
+
 	<delete id="deleteReply2" parameterType="int">
 		DELETE
 		FROM comments
@@ -146,10 +148,11 @@
 		FROM boards_cmt
 		WHERE cmt_no=#{value}
 	</delete>
-	
+
 	<delete id="deleteRecipeCmt" parameterType="int">
 		DELETE
-		FROM recipes_cmt
+		FROM
+		recipes_cmt
 		WHERE cmt_no=#{value}
 	</delete>
 	<!-- 하나 지우는 경우 end -->
@@ -157,31 +160,33 @@
 	<!-- boards_cmt,reply을 삭제할때 이들이 FK를 지정하고 있기 때문에 FK를 가지고있는 컬럼을 미리삭제해야한다. 
 		그래서 미리 PK을 LIST로 가지고 와서 FK를 가지고있는 컬럼을 삭제하고 PK를 가지고있는 컬럼을 삭제한다. -->
 	<!-- 공통적으로 사용할 replyList 삭제 -->
-	<delete id="deleteReplyList" parameterType="list">
+	<delete id="deleteReplyList" parameterType="java.util.List">
+			<if test="list.size() != 0 ">
 		DELETE
 		FROM
 		comments
 		<where>
-			<if test="list != ''">
-				<foreach item="item" collection="list" separator="AND">
-					cmt_no2 IN #{item.cmtNo}
+					cmt_no2 IN
+				<foreach item="item" collection="list" open="(" close=")" separator=",">
+					#{item.cmtNo}
 				</foreach>
-			</if>
 		</where>
+			</if>
 	</delete>
 
 	<!-- 공통적으로 사용할 commentlist삭제 -->
-	<delete id="deleteCommentList" parameterType="list">
-		DELETE
-		FROM
-		comments
-		<where>
-      <if test="list != ''">
-        <foreach item="item" collection="list" separator="AND">
-          cmt_no = #{item.cmtNo}
-        </foreach>
-      </if>
-    </where>
+	<delete id="deleteCommentList" parameterType="java.util.List">
+		<if test="list.size() != 0">
+			DELETE
+			FROM
+			comments
+			<where>
+					cmt_no IN 
+				<foreach item="item" collection="list" open="(" close=")" separator=",">
+				    #{item.cmtNo}
+				</foreach>
+			</where>
+		</if>
 	</delete>
 
 	<!-- comments삭제을 위한 select문 -->
@@ -199,7 +204,7 @@
 		boards_cmt
 		WHERE board_no=#{value}
 	</delete>
-	
+
 	<!-- comments삭제을 위한 select문 -->
 	<select id="getRecipesCmtCmtNo" parameterType="int" resultType="int">
 		SELECT cmt_no
