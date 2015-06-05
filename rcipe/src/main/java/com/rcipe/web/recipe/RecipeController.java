@@ -21,12 +21,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.rcipe.service.domain.Ingredient;
+import com.rcipe.commons.Search;
 import com.rcipe.service.domain.Recipe;
 import com.rcipe.service.domain.RecipeDetail;
-import com.rcipe.service.domain.User;
 import com.rcipe.service.recipe.RecipeService;
 
 @Controller
@@ -84,7 +84,6 @@ public class RecipeController {
 			System.out.println(n + "detailContents="
 					+ content);
 		}
-		System.out.println("4");
 		for(int i=0;i<list.size();i++){
 			System.out.println("list== "+i+"="+list.get(i));
 		}
@@ -107,5 +106,27 @@ public class RecipeController {
 	@RequestMapping(value = "/insertIngredient", method = RequestMethod.POST)
 	public @ResponseBody String insertIngredient(@RequestParam("ingredientName") String ingredientName) throws Exception {
 		return ""+recipeService.insertIngredient(ingredientName);
+	}
+	
+	@RequestMapping(value = "/getRecipeList")
+	public ModelAndView getRecipeList(@ModelAttribute("search") Search search) throws Exception {
+		
+		System.out.println("getRecipeList start");
+		
+		Map<String , Object> map=recipeService.getRecipeList(search);
+		
+		System.out.println("totalCount : "+map.get("totalCount")+" list : "+map.get("list"));
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		if(search.getSearchKeyword()==null || search.getSearchKeyword()=="" ){
+			modelAndView.setViewName("forward:../../main/mainPage.jsp");
+		}else{
+			modelAndView.setViewName("forward:../../main/searchResult.jsp");
+		}
+		modelAndView.addObject("list", map.get("list"));
+		System.out.println(modelAndView);
+		return modelAndView;
+		
 	}
 }
