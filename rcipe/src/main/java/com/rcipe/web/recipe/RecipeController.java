@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.rcipe.commons.Search;
 import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
 import com.rcipe.service.domain.RecipeDetail;
