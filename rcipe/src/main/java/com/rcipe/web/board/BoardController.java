@@ -58,11 +58,11 @@ public class BoardController {
 		board.setNickname(user.getNickname());
 		boardService.insertBoard(board);
 		session.removeAttribute("boardImgPath");
-		return "board/boardList";
+		return "redirect:/app/board/getBoardListFirst?searchCategory=0";
 	}
 	@RequestMapping(value = "/getInsertBoard", method = RequestMethod.GET)
 	public  String  getInsertBoard()throws Exception{
-		return "board/boardList.jsp";
+		return "board/insertBoard";
 	}
 	@RequestMapping(value = "/viewModifyBoard", method = RequestMethod.GET)
 	public  String  viewModifyBoard(Model model,@RequestParam("boardNo") int boardNo,HttpSession session)throws Exception{
@@ -77,7 +77,7 @@ public class BoardController {
 		boardService.updateBoard(board);
 		session.removeAttribute("boardImgPath");
 		model.addAttribute("board",boardService.getBoard(board.getBoardNo()));
-		return "viewBoard.jsp";
+		return "viewBoard";
 	}
 	
 	@RequestMapping(value = "/viewBoard", method = RequestMethod.GET)
