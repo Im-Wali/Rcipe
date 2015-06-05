@@ -11,10 +11,10 @@
 <link
 	href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
 	rel="stylesheet">
-<link href="../css/recipe01.css" rel="stylesheet">
+<link href="${pageContext.servletContext.contextPath}/css/recipe01.css" rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script type="text/javascript" src="../js/recipe01.js"></script>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/recipe01.js"></script>
 
 <TITLE>Recipe</TITLE>
 <style type="text/css">

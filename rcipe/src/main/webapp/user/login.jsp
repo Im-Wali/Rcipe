@@ -14,7 +14,7 @@ $("document").ready(function(){
        	document.loginForm.password.focus();
        	return false;
     }else if(errorMessage == null) {
-    	$.post("../app/user/chechkedloginUser",{id:$('#email').val(),password:$('#password').val()},function(data,str){
+    	$.post("../user/chechkedloginUser",{id:$('#email').val(),password:$('#password').val()},function(data,str){
 			   if(data==="false"){
 				   	alert("비밀번호또는 아이디(이메일)이 일치하지 않습니다.");
 			       	document.loginForm.password.focus();
@@ -34,13 +34,10 @@ $("document").ready(function(){
 	
 });
 </script>
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <jsp:include page="losePassword.jsp"></jsp:include>
-<form method="post" action="../app/user/userLogin" name="loginForm" id="loginForm">
+<form method="post" action="${pageContext.servletContext.contextPath }/app/user/userLogin" name="loginForm" id="loginForm">
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModal" aria-hidden="true">
 		<div class="modal-dialog" style="background-color: #FF9933">

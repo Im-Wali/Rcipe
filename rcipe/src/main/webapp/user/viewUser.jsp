@@ -10,8 +10,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/fileUpload.js"></script>
-<script type="text/javascript" src="../js/bootstrap-filestyle.js">
+<script type="text/javascript" src="${pageContext.servletContext.contextPath }/js/fileUpload.js"></script>
+<script type="text/javascript" src="${pageContext.servletContext.contextPath }/js/bootstrap-filestyle.js">
 	
 </script>
 <style type="text/css">
@@ -31,7 +31,7 @@
 <script type="text/javascript">
 $("document").ready(function() {
 	$("#delete_profil").click(function() {
-		$.get('../app/file/deleteProfile', function(data) {
+		$.get('../file/deleteProfile', function(data) {
 			data = decodeURIComponent(data);
 			data = data.replace(/\+/g, " ");
 			alert(data);
@@ -55,7 +55,7 @@ $("document").ready(function() {
 			formData.append('file', file);
         });
 	  $.ajax({
-	    url: '../app/file/profileUpload',
+	    url: '../file/profileUpload',
 	    data: formData,
 	    processData: false,
 	    contentType: false,
@@ -81,7 +81,7 @@ $("document").ready(function() {
 </HEAD>
 <body>
 <input type="hidden" value="profileUpload" id="fileUploadUrl">
-	<jsp:include page="../main/menuBar.jsp"></jsp:include>
+	<jsp:include page="/main/menuBar.jsp"></jsp:include>
 	<div style="margin-bottom: 2%; margin-top: 2%" align="center">
 		<h2 style="font-weight: bold;">회원정보 보기</h2>
 	</div>

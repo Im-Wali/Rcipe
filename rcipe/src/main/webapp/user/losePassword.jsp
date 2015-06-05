@@ -49,7 +49,7 @@
 											} else {
 												alert("임시 비밀번호가 발송되었습니다. 로그인해주세요.");
 												$.get(
-														"../app/email/send?email="
+														"../email/send?email="
 																+ loseEmail
 																+ "&type=lose",
 														function(data) {

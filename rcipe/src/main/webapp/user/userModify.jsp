@@ -72,7 +72,7 @@
 									var p = $('#updatePassword2').val();
 									// if($('#passwordCheck').val()==='비밀번호 확인 완료')
 									$.get(
-											"../app/user/updatePassword?newPassword="
+											"../user/updatePassword?newPassword="
 													+ p, function(data) {
 
 											});

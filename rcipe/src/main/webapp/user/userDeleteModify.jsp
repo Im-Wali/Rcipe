@@ -32,7 +32,7 @@
 	           });
 	            
 	          $("#deleteUserOK").click(function() {
-	              $.get('../app/user/deleteUser?nickname=user01', function(data) {
+	              $.get('../app/deleteUser?nickname=user01', function(data) {
 	                  });
 	                  alert('회원탈퇴했습니다.');
 	           });

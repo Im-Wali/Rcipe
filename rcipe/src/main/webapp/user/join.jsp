@@ -19,7 +19,7 @@ $("document").ready(function(){
 		   }else{
 			   //AJAX사용
 			   var str;
-			   $.get("../app/user/checkedEmail?email="+p,function(data){
+			   $.get("../user/checkedEmail?email="+p,function(data){
 				   if(data==="true"){
 				 	  	str= "<span style='color:blue;'>사용가능한 이메일입니다.</span>";
 				 	  	$('#isEmail').val("true");
@@ -83,7 +83,7 @@ $("document").ready(function(){
 		if(chk4.test(p)||(chk1.test(p)&&(chk2.test(p)||chk3.test(p)))){
 			//AJAX
 			 var str;
-			   $.get("../app/user/checkedNickname?joinNickname="+p,function(data){
+			   $.get("../user/checkedNickname?joinNickname="+p,function(data){
 				   if(data==="true"){
 				 	  	str= "<span style='color:blue;'>사용가능한 닉네임입니다.</span>";
 				 	  	$('#isNickname').val('true');
@@ -189,7 +189,7 @@ $("document").ready(function(){
 <input type='hidden' id='isEmail' value='false'>
 <!-- 인증번호를 저자하는 부분-->
 <input type='hidden' id='randomNumber' value='false'>
-<form method="post" action="../app/user/joinUser"  id="joinUser" name="joinUser">
+<form method="post" action="${pageContext.servletContext.contextPath }/app/user/joinUser"  id="joinUser" name="joinUser">
 	<div class="modal fade" id="joinModal" tabindex="-1" role="dialog"
 		aria-labelledby="joinModal" aria-hidden="true">
 		<div class="modal-dialog" style="background-color: #FF9933">

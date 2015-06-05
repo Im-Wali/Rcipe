@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="http://127.0.0.1:8080/rcipe/css/style.css" type="text/css" />
-<link rel="stylesheet" href="http://127.0.0.1:8080/rcipe/css/menuBar01.css" type="text/css" />
-<script src="../js/menuBar01.js">
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/style.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/menuBar01.css" type="text/css" />
+<script src="${pageContext.servletContext.contextPath }/js/menuBar01.js">
 	
 </script>
 <!-- login.jsp :로그인 모달을 가지고 있는 jsp파일 -->
-<jsp:include page="../user/login.jsp"></jsp:include>
-<jsp:include page="../user/join.jsp"></jsp:include>
+<jsp:include page="/user/login.jsp"></jsp:include>
+<jsp:include page="/user/join.jsp"></jsp:include>
 <nav id="filp" class="navbar navbar-inverse "
 	style="border: none; width: 100%; height: 30%; padding: 10px; text-align: center; background-color: #FF9933;">
 	<span style="float: left; padding-left: 10px; margin-top: 1%"><a
-		href="http://127.0.0.1:8080/rcipe/main/mainPage.jsp" style="font-size: 2em; color: black">Rcipe</a></span>
+		href="${pageContext.servletContext.contextPath }/main/mainPage.jsp" style="font-size: 2em; color: black">Rcipe</a></span>
 	<div class="dropdown">
 		<div id="dLabel" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"
@@ -107,7 +107,7 @@
 			</span>
 		</form>
 		<span class="dropdown dropdown-toggle"> <img
-			src="http://127.0.0.1:8080/rcipe/img/001.jpg" class="img-circle" role="button"
+			src="${pageContext.servletContext.contextPath }/img/001.jpg" class="img-circle" role="button"
 			style="width: 80px; height: 80px; margin-right: 1%; margin-top: -2%"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<ul class="dropdown-menu dropdown-menu-right "
@@ -122,19 +122,19 @@
 					data-target="#joinModal" data-whatever="Join" data-backdrop="false"
 					style="background-color: #FF9933; border: #FF9933; color: black">회원가입</a></li>
 				<div align="center">
-					<li><a href="http://127.0.0.1:8080/rcipe/app/recipe/inserRecipe" class="btn btn-primary"
+					<li><a href="${pageContext.servletContext.contextPath }/app/recipe/inserRecipe" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">레시피등록</a></li>
 				</div>
 				<div align="center">
-					<li><a href="http://127.0.0.1:8080/rcipe/app/favorite/favorite" class="btn btn-primary"
+					<li><a href="${pageContext.servletContext.contextPath }/app/favorite/favorite" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">즐겨찾기</a></li>
 				</div>
 				<div align="center">
-					<li><a href="http://127.0.0.1:8080/rcipe/app/board/getBoardListFirst?searchCategory=0" class="btn btn-primary"
+					<li><a href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
 				</div>
 				<div align="center">
-					<li><a href="http://127.0.0.1:8080/rcipe/app/user/viewUser" class="btn btn-primary"
+					<li><a href="${pageContext.servletContext.contextPath }/app/user/viewUser" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">내정보보기</a></li>
 				</div>
 			</ul>
