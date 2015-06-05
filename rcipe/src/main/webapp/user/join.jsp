@@ -112,7 +112,7 @@ $("document").ready(function(){
 			$('#checkSendNumber').attr('disabled',false); 
 			$('#checkSendNumber').css('background-color','#FFFFFF');
 			 $('#randomNumber').val('');
-			 $.get("../app/email/send?email="+joinEmail+"&type=join",function(data){
+			 $.get("../email/send?email="+joinEmail+"&type=join",function(data){
 				 $('#randomNumber').val(data);
 			 });
 			$("#sendCheckEmailNumber").html('인증번호 재발송');

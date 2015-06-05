@@ -37,6 +37,7 @@ $("document").ready(function(){
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <jsp:include page="losePassword.jsp"></jsp:include>
+
 <form method="post" action="${pageContext.servletContext.contextPath }/app/user/userLogin" name="loginForm" id="loginForm">
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModal" aria-hidden="true">
