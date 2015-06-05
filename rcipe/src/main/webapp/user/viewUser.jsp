@@ -67,7 +67,7 @@ $("document").ready(function() {
 			alert(str2);
 			var str3=str.split("changeImg")[1].substring("1").split(",")[0];
 			alert(str3);
-			$("#fileUpload").attr("src","../images/"+str3);
+			$("#fileUpload").attr("src","../../images/"+str3);
 			$(":file").filestyle('clear');
 			isFile=false;
 	  	},
