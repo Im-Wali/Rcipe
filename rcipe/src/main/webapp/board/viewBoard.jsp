@@ -58,10 +58,6 @@ h4 {
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-			//!!!!!!!!!!!!!!!!!!!!!바꿔야함	
-			/* function add_content() {
-				location.href("insertBoard.jsp");
-			} */
 			$('#select_category').html("카테고리");
 			var n = $('#category').val();
 			var str;
