@@ -7,60 +7,59 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import com.rcipe.commons.Search;
-import com.rcipe.service.domain.Board;
+import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
+import com.rcipe.service.domain.RecipeDetail;
 import com.rcipe.service.recipe.RecipeDAO;
 
-
 @Repository("recipeDAOImpl")
-public class RecipeDAOImpl implements RecipeDAO {
+public  class RecipeDAOImpl  implements RecipeDAO{
 
-	@Autowired
+	 @Autowired
 	 @Qualifier("sqlSessionTemplate")
 	 private  SqlSession sqlSession;
 	
 	public RecipeDAOImpl() {
-		System.out.println("RecipeDAOImpl default Constractor......");
+		System.out.println(getClass()+"start....");
 	}
-	
-	public RecipeDAOImpl(SqlSession sqlSession) {
-		 this.sqlSession=sqlSession;
-			System.out.println("RecipeDAOImpl sqlSession Constractor......");
+
+	@Override
+	public List<Ingredient> getIngredientList(String keyword) throws Exception {
+		return sqlSession.selectList("RecipeMapper.getIngredientList",keyword);
+	}
+
+	@Override
+	public boolean insertIngredient(String ingredientName) throws Exception {
+		String str=sqlSession.selectOne("RecipeMapper.getIngredient",ingredientName);
+		if(str!=null){
+			return false;
 		}
-	 public SqlSession getSqlSession() {
-			return sqlSession;
+		return sqlSession.insert("RecipeMapper.insertIngredient",ingredientName)==1 ? true:false;
+	}
+
+	@Override
+	public Recipe insertRecipe(Recipe recipe) throws Exception {
+		sqlSession.insert("RecipeMapper.insertRecipe", recipe);
+		return recipe;
+	}
+
+	@Override
+	public boolean insertRcpIng(List<Ingredient> list) throws Exception {
+		for(int i=0;i<list.size();i++){
+			if(sqlSession.insert("RecipeMapper.insertRcpIng", list.get(i))!=1){
+				return false;
+			}
 		}
-
-	@Override
-	public int deleteRecipe(int rcp_no) throws Exception {
-		return sqlSession.update("RecipeMapper.deleteRecipe", rcp_no);
-		
+		return 	true;
 	}
 
 	@Override
-	public Recipe getRecipe(int rcp_no) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("RecipeMapper.getRecipe", rcp_no);
+	public boolean insertRecipeDetail(List<RecipeDetail> list) throws Exception {
+		for(int i=0;i<list.size();i++){
+			if(sqlSession.insert("RecipeDetailMapper.insertRecipeDetail",list.get(i))!=1){
+				return false;
+			}
+		}
+		return 	true;
 	}
-
-	@Override
-	public int deleteRcpIng(int rcp_no) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.update("RecipeMapper.deleteRcpIng", rcp_no);
-	}
-
-	@Override
-	public List<Board> getRecipeList(Search search) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("RecipeMapper.getRecipeList", search);
-	}
-
-	@Override
-	public int getTotalCount(Search search) throws Exception {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne("RecipeMapper.getTotalCount", search);
-	}
-
-	
 }

@@ -7,25 +7,35 @@
 <mapper namespace="RecipeDetailMapper">
 
 	<resultMap type="com.rcipe.service.domain.RecipeDetail" id="RecipeDetailSelectMap">
-		<result property="recipeDetailNo" column="DET_NO" jdbcType="INTEGER"/>
+		<result property="recipeDetailNo" column="DET_NO" jdbcType="INTEGER" />
 		<result property="recipeNo" column="rcp_no" jdbcType="INTEGER" />
 		<result property="recipeOrder" column="det_rcp_ord" jdbcType="INTEGER" />
 		<result property="detailImage" column="det_img_path" jdbcType="VARCHAR" />
 		<result property="detailContents" column="det_cont" jdbcType="CLOB" />
 	</resultMap>
 
+	<insert id="insertRecipeDetail" parameterType="recipeDetail">
+			INSERT  
+			INTO DETAIL_RCP(RCP_NO,DET_NO,DET_RCP_ORD,DET_IMG_PATH,DET_CONT)
+			values
+			(#{recipeNo},SEQ_DETAIL_RCP_NO.nextval
+			,#{recipeOrder},#{detailImage}
+			,#{detailContents:CLOB})
+	</insert>
 
 	<select id="getRecipeDetail" parameterType="int"
 		resultMap="RecipeDetailSelectMap">
 		SELECT
-		recipeDetailNo,rcp_no, det_rcp_ord, det_img_path, det_cont
+		recipeDetailNo,rcp_no, det_rcp_ord, det_img_path,
+		det_cont
 		FROM
 		detail_rcp
 		WHERE rcp_no = #{value}
 	</select>
 
 	<delete id="deleteRecipeDetail" parameterType="int">
-		DELETE FROM detail_rcp
+		DELETE FROM
+		detail_rcp
 		WHERE rcp_no=${value}
 	</delete>
 

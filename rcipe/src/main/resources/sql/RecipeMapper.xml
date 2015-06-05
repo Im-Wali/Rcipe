@@ -20,53 +20,104 @@
 		<result property="star" column="star_tot_cnt" jdbcType="INTEGER" />
 		<result property="starHit" column="star_cnt" jdbcType="INTEGER" />
 	</resultMap>
+	<resultMap type="ingredient" id="ingredientSelectMap">
+		<result property="recipeNo" column="RCP_NO" jdbcType="INTEGER" />
+		<result property="ingredientNo" column="INGREDIENT_NO"
+			jdbcType="INTEGER" />
+		<result property="ingredientName" column="INGREDIENT_NAME"
+			jdbcType="VARCHAR" />
+	</resultMap>
 
-	
+	<select id="getIngredientList" parameterType="String"
+		resultMap="ingredientSelectMap">
+		SELECT INGREDIENT_NO,INGREDIENT_NAME
+		FROM INGREDIENTS
+		WHERE
+		INGREDIENT_NAME LIKE '%${value}%'
+	</select>
+
+	<select id="getIngredient" parameterType="String" resultType="String">
+		SELECT INGREDIENT_NAME
+		FROM INGREDIENTS
+		WHERE INGREDIENT_NAME LIKE
+		#{value}
+	</select>
+
+	<insert id="insertIngredient" parameterType="list">
+		INSERT INTO
+		INGREDIENTS(INGREDIENT_NO,INGREDIENT_NAME)
+		values(SEQ_INGREDIENT_NO.nextval,#{value})
+	</insert>
+
+	<insert id="insertRecipe" parameterType="recipe">
+		<selectKey resultType="int" keyProperty="recipeNo" order="BEFORE">
+			select SEQ_RECIPES_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO RECIPES(RCP_NO,NICKNAME
+		,RCP_TITLE,RCP_IMG_PATH,RCP_CONT
+		,RCP_TIP,RCP_REC_CNT,RCP_CNT
+		,INGREDIENTS,RCP_DATE,STAR_TOT_CNT,STAR_CNT)
+		
+		values(#{recipeNo},#{nickname},
+		#{recipeTitle},#{titleImage}
+		,#{recipeContents},#{tip},0,0
+		,#{ingredients},SYSDATE,0,0)
+	</insert>
+
+	<insert id="insertRcpIng" parameterType="ingredient">
+			INSERT INTO 
+			RCP_ING( INGREDIENT_NO , RCP_NO ) 
+			values
+			( #{ingredientNo} , #{recipeNo} )
+	</insert>
+
 	<select id="getRecipe" parameterType="int" resultMap="RecipeSelectMap">
 		SELECT
-		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip, rcp_rec_cnt,
+		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip,
+		rcp_rec_cnt,
 		rcp_cnt, ingredients, rcp_date, star_tot_cnt, star_cnt
 		FROM recipes
 		WHERE rcp_no = #{value}
 	</select>
-	
+
 	<delete id="deleteRecipe" parameterType="int">
-    DELETE FROM recipes
-    WHERE rcp_no=${value}
-  </delete>
-  
+		DELETE FROM recipes
+		WHERE rcp_no=${value}
+	</delete>
+
 	<delete id="deleteRcpIng" parameterType="int">
-    DELETE FROM rcp_ing
-    WHERE rcp_no=${value}
-  </delete>
-  
-  <select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
-    SELECT
-    rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip, rcp_rec_cnt,
-    rcp_cnt, ingredients, rcp_date, star_tot_cnt, star_cnt
-    FROM recipes
-    <where> 
-     <if test="searchKeyword != null">
-     <if test="searchKeyword != '' ">
-        rcp_title like '%${searchKeyword}%' OR 
-        nickname like '%${searchKeyword}%'
-     </if></if>
-     </where> 
-  </select>
-  
-  <select id="getTotalCount" parameterType="search" resultType="int">
-    SELECT COUNT(*)
-    FROM ( SELECT *
-    FROM recipes
-     <where> 
-     <if test="searchKeyword != null">
-         <if test="searchKeyword != '' ">
-        rcp_title like '%${searchKeyword}%' OR
-        nickname like '%${searchKeyword}%'
-        </if> 
-     </if>
-     </where> 
-    ) countTable
-  </select>
+		DELETE FROM rcp_ing
+		WHERE rcp_no=${value}
+	</delete>
+
+	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
+		SELECT
+		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip, rcp_rec_cnt,
+		rcp_cnt, ingredients, rcp_date, star_tot_cnt, star_cnt
+		FROM recipes
+		<where>
+			<if test="searchKeyword != null">
+				<if test="searchKeyword != '' ">
+					rcp_title like '%${searchKeyword}%' AND
+					nickname like '%${searchKeyword}%' AND
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<select id="getTotalCount" parameterType="search" resultType="int">
+		SELECT COUNT(*)
+		FROM ( SELECT *
+		FROM recipes
+		<where>
+			<if test="searchKeyword != null">
+				<if test="searchKeyword != '' ">
+					rcp_title like '%${searchKeyword}%' AND
+					nickname like '%${searchKeyword}%' AND
+				</if>
+			</if>
+		</where>
+		) countTable
+	</select>
 
 </mapper>
