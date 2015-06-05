@@ -34,7 +34,7 @@ public class UserController {
 			throws Exception {
 		System.out.println(user);
 		userService.insertUser(user);
-		return new ModelAndView("forward:../../main/mainPage.jsp");
+		return new ModelAndView("main/mainPage");
 	}
 
 	@RequestMapping(value = "checkedEmail", method = RequestMethod.GET)
@@ -89,7 +89,7 @@ public class UserController {
 	@RequestMapping(value = "viewUser", method = RequestMethod.GET)
 	public  String  viewUser()throws Exception{
 		System.out.println("AAAAAAAAAAaa");
-		return "forward:../../user/viewUser.jsp";
+		return "user/viewUser.jsp";
 	}
 
 	@RequestMapping(value = "updatePassword", method = RequestMethod.GET)
