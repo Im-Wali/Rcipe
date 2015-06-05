@@ -51,7 +51,7 @@ $("cocument")
 						};
 						// var p=$('#pictureLcation').val();
 						// xhr.open("POST","../app/"+p);
-						xhr.open("POST", "../app/file/profileUpload");
+						xhr.open("POST", "../file/profileUpload");
 						var fd = new FormData();
 						fd.append("file", file);
 						xhr.send(fd);
