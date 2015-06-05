@@ -12,7 +12,9 @@
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<style type="http://127.0.0.1:8080/rcipe/text/css">
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<style type="text/css">
 .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;
@@ -125,7 +127,7 @@
 		});
 
 		$('#getViewBoardButton').click(function() {
-			$(location).attr('href', "../../main/insertBoard.jsp");
+			$(location).attr('href', "getInsertBoard");
 		});
 
 		$('#searchButton').click(function() {
@@ -246,7 +248,7 @@
 	<input type="hidden" id="currentPage" name="currentPage" value="1" />
 	<input type="hidden" id="currentCategory" name="currentCategory"
 		value="0" />
-	<jsp:include page="../main/menuBar.jsp"></jsp:include>
+	<jsp:include page="/main/menuBar.jsp"></jsp:include>
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel with-nav-tabs panel-success">

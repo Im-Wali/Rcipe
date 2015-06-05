@@ -18,7 +18,7 @@
 	src="../../js/jquery-1.11.3.min.js"></script>
 <script
 	src="../../js/bootstrap.min.js"></script> -->
-<style type="http://127.0.0.1:8080/rcipe/text/css">
+<style type="text/css">
 body {
 	background-color: #fff;
 	-webkit-font-smoothing: antialiased;
@@ -90,7 +90,7 @@ h4 {
 </script>
 </HEAD>
 <body>
-	<div><jsp:include page="../main/menuBar.jsp"></jsp:include></div>
+	<div><jsp:include page="/main/menuBar.jsp"></jsp:include></div>
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
@@ -149,7 +149,7 @@ h4 {
 		<div class="col-md-2"></div>
 		<div class="col-md-8">
 			<div class="form-login " style="margin-bottom: 2%;">
-				<jsp:include page="../comment/comment.jsp"></jsp:include>
+				<jsp:include page="/comment/comment.jsp"></jsp:include>
 			</div>
 		</div>
 		<div class="col-md-2"></div>

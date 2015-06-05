@@ -11,7 +11,7 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
-<style type="http://127.0.0.1:8080/rcipe/text/css">
+<style type="text/css">
 .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;
@@ -63,11 +63,11 @@
 </script>
 </HEAD>
 <body>
-	<jsp:include page="../main/menuBar.jsp"></jsp:include>
+	<jsp:include page="/main/menuBar.jsp"></jsp:include>
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="../app/board/boardList" method="POST">
+			<form action="${pageContext.servletContext.contextPath }/app/board/insertBoard" method="POST">
 				<div class="form-login " style="margin-bottom: 2%;">
 					<h3 align="center" style="margin-bottm: 1%;">게시판글 등록</h3>
 					<div style="margin-top: 1%">
@@ -146,7 +146,7 @@
 	</div>
 	<script>
 		CKEDITOR.replace('editor1', {
-			'filebrowserUploadUrl' : '../app/file/uploadBoard',
+			'filebrowserUploadUrl' : '../file/uploadBoard',
 			enterMode : '2',
 			shiftEnterMode : '3',
 			width : '100%',
