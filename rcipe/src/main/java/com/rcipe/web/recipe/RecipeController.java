@@ -24,9 +24,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
-import com.rcipe.commons.Search;
+import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
 import com.rcipe.service.domain.RecipeDetail;
+import com.rcipe.service.domain.User;
 import com.rcipe.service.recipe.RecipeService;
 
 @Controller
@@ -39,6 +40,11 @@ public class RecipeController {
 
 	public RecipeController() {
 		System.out.println(getClass() + "start......");
+	}
+	@RequestMapping(value = "/viewInsertRecipe", method = RequestMethod.GET)
+	public String viewInsertRecipe()throws Exception{
+		System.out.println("start viewInsertRecipe");
+		return "insertRecipe";
 	}
 
 	@RequestMapping(value = "/insertRecipe", method = RequestMethod.POST)
@@ -58,18 +64,15 @@ public class RecipeController {
 		int count=0;
 		List<RecipeDetail> list=new ArrayList<RecipeDetail>();
 		List<Ingredient> ingredientList=new ArrayList<Ingredient>();
-		System.out.println("1");
 		String ingre[]=ingredientIds.trim().split("/");
 		System.out.println(ingre);
 		for(int  k=1; k<ingre.length ; k++){
 			System.out.println(ingre[k]);
 			ingredientList.add(new Ingredient(Integer.parseInt(ingre[k]),recipeNo));
 		}
-		System.out.println("2");
 		for(int j=0;j<ingredientList.size();j++){
 			System.out.println("IngredientIds "+j+"="+ingredientList.get(j));
 		}
-		System.out.println("3");
 		for (int n = 1; n <= detailNumber; n++) {
 			String image=request.getParameter("detailImage" + n);
 			String content=request.getParameter("detailContents" + n);
@@ -87,10 +90,9 @@ public class RecipeController {
 		for(int i=0;i<list.size();i++){
 			System.out.println("list== "+i+"="+list.get(i));
 		}
-		System.out.println("5");
 		recipeService.insertRecipeDetail(list);
 		recipeService.insertRcpIng(ingredientList);
-		return "recipe/inserRecipe";
+		return "recipe/insertRecipe";
 	}
 
 	@RequestMapping(value = "/getIngredientList", method = RequestMethod.POST)
@@ -107,7 +109,7 @@ public class RecipeController {
 	public @ResponseBody String insertIngredient(@RequestParam("ingredientName") String ingredientName) throws Exception {
 		return ""+recipeService.insertIngredient(ingredientName);
 	}
-	
+
 	@RequestMapping(value = "/getRecipeList")
 	public ModelAndView getRecipeList(@ModelAttribute("search") Search search) throws Exception {
 		
