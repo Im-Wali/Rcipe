@@ -3,6 +3,13 @@
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/style.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/menuBar01.css" type="text/css" />
 <script src="${pageContext.servletContext.contextPath }/js/menuBar01.js">
+</script>
+<script type="text/javascript">
+function search() {
+	var searchKeyword = document.getElementById("searchKeyword").value;
+	alert(searchKeyword);
+	location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='+searchKeyword;
+  }
 	
 </script>
 <!-- login.jsp :로그인 모달을 가지고 있는 jsp파일 -->
@@ -90,14 +97,14 @@
 		</ul>
 	</div>
 	<div align="right" style="padding-right: 10px; margin-top: 1%">
-		<form action="${pageContext.servletContext.contextPath }/main/searchResult.jsp" method="POST">
+		<form name="SearchForm" action="" method="POST">
 			<span class="row"> <span class="col-sm-5 col-sm-offset-2"
 				style="display: inline-block; text-align: center; margin-top: 1%;">
 					<span id="imaginary_container"> <span
 						class="input-group stylish-input-group"> <input type="text"
-							class="form-control" placeholder="Search" id="inputsearch">
+							class="form-control" placeholder="Search" id="searchKeyword">
 							<span class="input-group-addon">
-								<button type="submit">
+								<button type="button" onclick="javascript:search();">
 									<span class="glyphicon glyphicon-search"></span>
 								</button>
 						</span>
