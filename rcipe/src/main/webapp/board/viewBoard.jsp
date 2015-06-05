@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -59,22 +58,12 @@ h4 {
 </style>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(window).load(function() {
 			//!!!!!!!!!!!!!!!!!!!!!바꿔야함	
-			function add_content() {
+			/* function add_content() {
 				location.href("insertBoard.jsp");
-			}
-			document.getElementById("select_category").innerHTML = "카테고리";
-			
-			var n = $
-			{
-				board.boardCategory
-			}
-			;
-			alert(${baord.baordCategory});
-
+			} */
+			$('#select_category').html("카테고리");
 			var n = $('#category').val();
-			alert(n);
 			var str;
 			if (n == 1) {
 				str = "레시피";
@@ -96,7 +85,7 @@ h4 {
 		<div class="col-md-8 ">
 			<div align="right">
 				<input type="hidden" id="boardNo" value="${board.boardNo }">
-				<input type="hidden" id="category" value="${board.boardCategory }"> 
+				<input type="hidden" id="category" value="${board.boardCategory }">
 				<span style="float: left"> <label for="title"
 					style="color: black; font-size: medium;">작성자 :
 						${board.nickname } / 조회수 : (${board.boardCount })</label></span><span> <label
@@ -131,13 +120,15 @@ h4 {
 					<div align="right" style="margin: 1%">
 						<a href="#">
 							<button type='button' class="btn btn-warning ">목록보기</button>
-						</a> 
-						<c:if test="${board.nickname eq user.nickname }">
-						<a href="viewModifyBoard?boardNo=${board.boardNo}">
-							<button type="button" class="btn btn-warning ">수정하기</button>
-						</a> <a href="deleteBoard?boardNo=${board.boardNo}&boardImgPath=/${board.nickname}/${board.boardImgPath}">
-							<button type="button" class="btn btn-warning">게시글 삭제</button>
 						</a>
+						<c:if test="${board.nickname eq user.nickname }">
+							<a href="viewModifyBoard?boardNo=${board.boardNo}">
+								<button type="button" class="btn btn-warning ">수정하기</button>
+							</a>
+							<a
+								href="deleteBoard?boardNo=${board.boardNo}&boardImgPath=/${board.nickname}/${board.boardImgPath}">
+								<button type="button" class="btn btn-warning">게시글 삭제</button>
+							</a>
 						</c:if>
 					</div>
 				</div>
