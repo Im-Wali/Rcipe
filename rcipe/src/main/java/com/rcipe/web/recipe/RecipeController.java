@@ -45,7 +45,7 @@ public class RecipeController {
 	@RequestMapping(value = "/viewInsertRecipe", method = RequestMethod.GET)
 	public String viewInsertRecipe()throws Exception{
 		System.out.println("start viewInsertRecipe");
-		return "insertRecipe";
+		return "recipe/insertRecipe";
 	}
 
 	@RequestMapping(value = "/insertRecipe", method = RequestMethod.POST)
@@ -93,7 +93,7 @@ public class RecipeController {
 		}
 		recipeService.insertRecipeDetail(list);
 		recipeService.insertRcpIng(ingredientList);
-		return "recipe/insertRecipe";
+		return "insertRecipe";
 	}
 
 	@RequestMapping(value = "/getIngredientList", method = RequestMethod.POST)
