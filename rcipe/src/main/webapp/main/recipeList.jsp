@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style type="http://127.0.0.1:8080/rcipe/text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<style type="text/css">
 body {
 	margin: auto;
 	padding: auto;
@@ -22,23 +22,23 @@ body {
 </style>
 </head>
 <body>
-	<!-- cardMenu ì‹œìž‘ -->
+	<!-- cardMenu ½ÃÀÛ -->
 	<div class="cardMenu">
-		<!-- í•œ ì¤„  ì‹œìž‘ -->
+		<!-- ÇÑ ÁÙ  ½ÃÀÛ -->
 		<div class="row">
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -49,20 +49,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -73,20 +73,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -97,20 +97,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -121,26 +121,26 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 		</div>
-		<!-- í•œ ì¤„  ë -->
+		<!-- ÇÑ ÁÙ  ³¡ -->
 
 
-		<!-- í•œ ì¤„  ì‹œìž‘ -->
+		<!-- ÇÑ ÁÙ  ½ÃÀÛ -->
 		<div class="row">
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -151,20 +151,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -175,20 +175,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -199,20 +199,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -223,26 +223,26 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 		</div>
-		<!-- í•œ ì¤„  ë -->
+		<!-- ÇÑ ÁÙ  ³¡ -->
 
 
-		<!-- í•œ ì¤„  ì‹œìž‘ -->
+		<!-- ÇÑ ÁÙ  ½ÃÀÛ -->
 		<div class="row">
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -253,20 +253,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -277,20 +277,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -301,20 +301,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -325,26 +325,26 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 		</div>
-		<!-- í•œ ì¤„  ë -->
+		<!-- ÇÑ ÁÙ  ³¡ -->
 
 
-		<!-- í•œ ì¤„  ì‹œìž‘ -->
+		<!-- ÇÑ ÁÙ  ½ÃÀÛ -->
 		<div class="row">
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -355,20 +355,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -379,20 +379,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -403,20 +403,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -427,26 +427,26 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 		</div>
-		<!-- í•œ ì¤„  ë -->
+		<!-- ÇÑ ÁÙ  ³¡ -->
 
 
-		<!-- í•œ ì¤„  ì‹œìž‘ -->
+		<!-- ÇÑ ÁÙ  ½ÃÀÛ -->
 		<div class="row">
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -457,20 +457,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -481,20 +481,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -505,20 +505,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -529,26 +529,26 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 		</div>
-		<!-- í•œ ì¤„  ë -->
+		<!-- ÇÑ ÁÙ  ³¡ -->
 
 
-		<!-- í•œ ì¤„  ì‹œìž‘ -->
+		<!-- ÇÑ ÁÙ  ½ÃÀÛ -->
 		<div class="row">
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -559,20 +559,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -583,20 +583,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -607,20 +607,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -631,26 +631,26 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 		</div>
-		<!-- í•œ ì¤„  ë -->
+		<!-- ÇÑ ÁÙ  ³¡ -->
 
 
-		<!-- í•œ ì¤„  ì‹œìž‘ -->
+		<!-- ÇÑ ÁÙ  ½ÃÀÛ -->
 		<div class="row">
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -661,20 +661,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -685,20 +685,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -709,20 +709,20 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 
-			<!-- cardSection ì‹œìž‘ -->
+			<!-- cardSection ½ÃÀÛ -->
 			<div class="cardSection">
 				<div class="thumbnail">
 					<img src="http://placehold.it/200x150">
 					<div class="caption">
 						<h4>
-							<a href="#">ìŒì‹ ì´ë¦„</a>
+							<a href="#">À½½Ä ÀÌ¸§</a>
 						</h4>
-						<p>ë¶€ì—°ì„¤ëª…ìž…ë‹ˆë‹¤.</p>
+						<p>ºÎ¿¬¼³¸íÀÔ´Ï´Ù.</p>
 					</div>
 					<div class="ratings">
-						<p class="pull-right">ì¢‹ì•„ìš” 15</p>
+						<p class="pull-right">ÁÁ¾Æ¿ä 15</p>
 						<p>
 							<span class="glyphicon glyphicon-star"></span> <span
 								class="glyphicon glyphicon-star"></span> <span
@@ -733,11 +733,11 @@ body {
 					</div>
 				</div>
 			</div>
-			<!-- cardSerction ë -->
+			<!-- cardSerction ³¡ -->
 		</div>
-		<!-- í•œ ì¤„  ë -->
+		<!-- ÇÑ ÁÙ  ³¡ -->
 	</div>
-	<!-- cardMenu ë -->
+	<!-- cardMenu ³¡ -->
 
 
 
