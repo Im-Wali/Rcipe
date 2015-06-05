@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.rcipe.commons.ConvertKo;
 import com.rcipe.service.domain.User;
+import com.rcipe.service.recipe.RecipeService;
 import com.rcipe.service.user.UserService;
 
 @Controller
@@ -25,6 +26,11 @@ public class UserController {
 	@Qualifier("userServiceImpl")
 	private UserService userService;
 
+	@Autowired
+	@Qualifier("recipeServiceImpl")
+	RecipeService recipeService;
+
+	
 	public UserController() {
 		System.out.println(this.getClass());
 	}
@@ -34,7 +40,7 @@ public class UserController {
 			throws Exception {
 		System.out.println(user);
 		userService.insertUser(user);
-		return new ModelAndView("main/mainPage");
+		return new ModelAndView("app/recipe/getRecipeList");
 	}
 
 	@RequestMapping(value = "checkedEmail", method = RequestMethod.GET)
@@ -83,7 +89,7 @@ public class UserController {
 		session.setAttribute("user", dbUser);
 		System.out.println("loginUser :" + dbUser);
 
-		return "main/mainPage";
+		return "app/recipe/getRecipeList";
 	}
 	
 	@RequestMapping(value = "viewUser", method = RequestMethod.GET)
