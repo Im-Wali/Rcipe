@@ -1,224 +1,224 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!DOCTYPE mapper
-		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="commentMapper">
 
-	<resultMap type="comment" id="commentMap">
-		<result property="commentNo" column="CMT_NO" jdbcType="INTEGER" />
-		<result property="commentReNo" column="CMT_NO2" jdbcType="INTEGER" />
-		<result property="nickname" column="NICKNAME" jdbcType="VARCHAR" />
-		<result property="commentContent" column="CMT_CONT" jdbcType="VARCHAR" />
-		<result property="commentDate" column="CMT_DATE" jdbcType="DATE" />
-		<result property="userImg" column="USER_IMG" jdbcType="VARCHAR" />
-		<result property="replyCnt" column="REPLY_CNT" jdbcType="INTEGER" />
-	</resultMap>
+  <resultMap type="comment" id="commentMap">
+    <result property="commentNo" column="CMT_NO" jdbcType="INTEGER" />
+    <result property="commentReNo" column="CMT_NO2" jdbcType="INTEGER" />
+    <result property="nickname" column="NICKNAME" jdbcType="VARCHAR" />
+    <result property="commentContent" column="CMT_CONT" jdbcType="VARCHAR" />
+    <result property="commentDate" column="CMT_DATE" jdbcType="DATE" />
+    <result property="userImg" column="USER_IMG" jdbcType="VARCHAR" />
+    <result property="replyCnt" column="REPLY_CNT" jdbcType="INTEGER" />
+  </resultMap>
 
-	<resultMap id="boardCmtList" type="java.util.HashMap">
-		<id property="cmtNo" column="cmt_no" />
-	</resultMap>
+  <resultMap id="boardCmtList" type="java.util.HashMap">
+    <id property="cmtNo" column="cmt_no" />
+  </resultMap>
 
 
-	<!-- boardCmt insert -->
-	<insert id="insertBoardCmt" parameterType="comment">
-		<selectKey resultType="int" keyProperty="commentNo" order="BEFORE">
-			select seq_cmt_no.NEXTVAL FROM DUAL
-		</selectKey>
+  <!-- boardCmt insert -->
+  <insert id="insertBoardCmt" parameterType="comment">
+    <selectKey resultType="int" keyProperty="commentNo" order="BEFORE">
+      select seq_cmt_no.NEXTVAL FROM DUAL
+    </selectKey>
 
-		INSERT ALL
-		INTO
-		comments
-		VALUES(CMT_NO,NICKNAME, CMT_NO2,
-		CMT_CONT,CMT_DATE,REPLY_CNT)
-		INTO boards_cmt VALUES(CMT_NO,board_no)
-		SELECT #{commentNo} AS CMT_NO,#{nickname} AS NICKNAME , null AS
-		CMT_NO2,
-		#{commentContent} AS CMT_CONT ,SYSDATE AS
-		CMT_DATE,#{contentNo} AS
-		board_no,0 AS REPLY_CNT
-		FROM DUAL
-	</insert>
+    INSERT ALL
+    INTO
+    comments
+    VALUES(CMT_NO,NICKNAME, CMT_NO2,
+    CMT_CONT,CMT_DATE,REPLY_CNT)
+    INTO boards_cmt VALUES(CMT_NO,board_no)
+    SELECT #{commentNo} AS CMT_NO,#{nickname} AS NICKNAME , null AS
+    CMT_NO2,
+    #{commentContent} AS CMT_CONT ,SYSDATE AS
+    CMT_DATE,#{contentNo} AS
+    board_no,0 AS REPLY_CNT
+    FROM DUAL
+  </insert>
 
-	<!-- 공통적으로 사용할 replyinsert -->
-	<insert id="insertReply">
-		INSERT INTO comments(CMT_NO,NICKNAME, CMT_NO2,
-		CMT_CONT,CMT_DATE)
-		VALUES(seq_cmt_no.NEXTVAL,#{nickname},#{commentReNo},#{commentContent},SYSDATE)
-	</insert>
+  <!-- 공통적으로 사용할 replyinsert -->
+  <insert id="insertReply">
+    INSERT INTO comments(CMT_NO,NICKNAME, CMT_NO2,
+    CMT_CONT,CMT_DATE)
+    VALUES(seq_cmt_no.NEXTVAL,#{nickname},#{commentReNo},#{commentContent},SYSDATE)
+  </insert>
 
-	<!-- boardCmt리스트 가져온다. -->
-	<select id="getBoardCmtList" parameterType="int" resultMap="commentMap">
-		SELECT
-		c.CMT_NO CMT_NO,c.NICKNAME NICKNAME,c.CMT_CONT
-		CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD HH:MI:SS') CMT_DATE,u.USER_IMG
-		USER_IMG,c.CMT_NO2 CMT_NO2,
-		c.REPLY_CNT REPLY_CNT
-		FROM comments
-		c,boards_cmt d,users u
-		WHERE
-		d.board_no=#{value} AND
-		d.cmt_no=c.cmt_no
-		AND u.nickname LIKE c.nickname
-		ORDER BY c.CMT_DATE DESC
-	</select>
+  <!-- boardCmt리스트 가져온다. -->
+  <select id="getBoardCmtList" parameterType="int" resultMap="commentMap">
+    SELECT
+    c.CMT_NO CMT_NO,c.NICKNAME NICKNAME,c.CMT_CONT
+    CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD HH:MI:SS') CMT_DATE,u.USER_IMG
+    USER_IMG,c.CMT_NO2 CMT_NO2,
+    c.REPLY_CNT REPLY_CNT
+    FROM comments
+    c,boards_cmt d,users u
+    WHERE
+    d.board_no=#{value} AND
+    d.cmt_no=c.cmt_no
+    AND u.nickname LIKE c.nickname
+    ORDER BY c.CMT_DATE DESC
+  </select>
 
-	<!-- recipeCmt리스트 가져온다. -->
-	<select id="getRecipeCmtList" parameterType="int" resultMap="commentMap">
-		SELECT
-		c.CMT_NO CMT_NO,c.NICKNAME NICKNAME,c.CMT_CONT
-		CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD HH:MI:SS') CMT_DATE,u.USER_IMG
-		USER_IMG,c.CMT_NO2 CMT_NO2,
-		c.REPLY_CNT REPLY_CNT
-		FROM comments
-		c,recipes_cmt r,users u
-		WHERE
-		r.rcp_no=#{value} AND
-		r.cmt_no=c.cmt_no
-		AND
-		u.nickname LIKE c.nickname
-		ORDER BY c.CMT_DATE DESC
-	</select>
+  <!-- recipeCmt리스트 가져온다. -->
+  <select id="getRecipeCmtList" parameterType="int" resultMap="commentMap">
+    SELECT
+    c.CMT_NO CMT_NO,c.NICKNAME NICKNAME,c.CMT_CONT
+    CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD HH:MI:SS') CMT_DATE,u.USER_IMG
+    USER_IMG,c.CMT_NO2 CMT_NO2,
+    c.REPLY_CNT REPLY_CNT
+    FROM comments
+    c,recipes_cmt r,users u
+    WHERE
+    r.rcp_no=#{value} AND
+    r.cmt_no=c.cmt_no
+    AND
+    u.nickname LIKE c.nickname
+    ORDER BY c.CMT_DATE DESC
+  </select>
 
-	<!-- 공통적으로 사용할 getReply리스트 -->
-	<select id="getCommentReplyList" parameterType="int" resultMap="commentMap">
-		SELECT
-		c.CMT_NO
-		,c.CMT_NO2,c.NICKNAME,c.CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD
-		HH:MI:SS') CMT_DATE,u.USER_IMG
-		FROM comments
-		c,users u
-		WHERE
-		c.cmt_no2=#{value}
-		AND u.nickname LIKE c.nickname
-		ORDER
-		BY c.CMT_DATE
-		DESC
-	</select>
+  <!-- 공통적으로 사용할 getReply리스트 -->
+  <select id="getCommentReplyList" parameterType="int" resultMap="commentMap">
+    SELECT
+    c.CMT_NO
+    ,c.CMT_NO2,c.NICKNAME,c.CMT_CONT,TO_CHAR(c.CMT_DATE,'YYYY-MM-DD
+    HH:MI:SS') CMT_DATE,u.USER_IMG
+    FROM comments
+    c,users u
+    WHERE
+    c.cmt_no2=#{value}
+    AND u.nickname LIKE c.nickname
+    ORDER
+    BY c.CMT_DATE
+    DESC
+  </select>
 
-	<!-- 댓글 수정은 전부 공통으로 사용한다. -->
-	<update id="updateComment" parameterType="comment">
-		UPDATE comments
-		<set>
-			CMT_CONT = #{commentContent}
-		</set>
-		WHERE cmt_no = #{commentNo}
-	</update>
+  <!-- 댓글 수정은 전부 공통으로 사용한다. -->
+  <update id="updateComment" parameterType="comment">
+    UPDATE comments
+    <set>
+      CMT_CONT = #{commentContent}
+    </set>
+    WHERE cmt_no = #{commentNo}
+  </update>
 
-	<update id="updateAddReplyCnt" parameterType="comment">
-		UPDATE comments
-		<set>
-			reply_cnt = reply_cnt+1
-		</set>
-		WHERE cmt_no = #{commentReNo}
-	</update>
+  <update id="updateAddReplyCnt" parameterType="comment">
+    UPDATE comments
+    <set>
+      reply_cnt = reply_cnt+1
+    </set>
+    WHERE cmt_no = #{commentReNo}
+  </update>
 
-	<update id="updateRemoveReplyCnt" parameterType="int">
-		UPDATE comments
-		<set>
-			reply_cnt = reply_cnt-1
-		</set>
-		WHERE cmt_no = #{value}
-	</update>
+  <update id="updateRemoveReplyCnt" parameterType="int">
+    UPDATE comments
+    <set>
+      reply_cnt = reply_cnt-1
+    </set>
+    WHERE cmt_no = #{value}
+  </update>
 
-	<!-- 하나 지우는경우 start -->
-	<delete id="deleteReply" parameterType="int">
-		DELETE
-		FROM comments
-		WHERE
-		cmt_no=#{value}
-	</delete>
+  <!-- 하나 지우는경우 start -->
+  <delete id="deleteReply" parameterType="int">
+    DELETE
+    FROM comments
+    WHERE
+    cmt_no=#{value}
+  </delete>
 
-	<delete id="deleteReply2" parameterType="int">
-		DELETE
-		FROM comments
-		WHERE
-		cmt_no2=#{value}
-	</delete>
+  <delete id="deleteReply2" parameterType="int">
+    DELETE
+    FROM comments
+    WHERE
+    cmt_no2=#{value}
+  </delete>
 
-	<delete id="deleteComment" parameterType="int">
-		DELETE
-		FROM comments
-		WHERE cmt_no=#{value}
-	</delete>
+  <delete id="deleteComment" parameterType="int">
+    DELETE
+    FROM comments
+    WHERE cmt_no=#{value}
+  </delete>
 
-	<delete id="deleteBoardCmt" parameterType="int">
-		DELETE
-		FROM boards_cmt
-		WHERE cmt_no=#{value}
-	</delete>
+  <delete id="deleteBoardCmt" parameterType="int">
+    DELETE
+    FROM boards_cmt
+    WHERE cmt_no=#{value}
+  </delete>
 
-	<delete id="deleteRecipeCmt" parameterType="int">
-		DELETE
-		FROM
-		recipes_cmt
-		WHERE cmt_no=#{value}
-	</delete>
-	<!-- 하나 지우는 경우 end -->
+  <delete id="deleteRecipeCmt" parameterType="int">
+    DELETE
+    FROM
+    recipes_cmt
+    WHERE cmt_no=#{value}
+  </delete>
+  <!-- 하나 지우는 경우 end -->
 
-	<!-- boards_cmt,reply을 삭제할때 이들이 FK를 지정하고 있기 때문에 FK를 가지고있는 컬럼을 미리삭제해야한다. 
-		그래서 미리 PK을 LIST로 가지고 와서 FK를 가지고있는 컬럼을 삭제하고 PK를 가지고있는 컬럼을 삭제한다. -->
-	<!-- 공통적으로 사용할 replyList 삭제 -->
-	<delete id="deleteReplyList" parameterType="java.util.List">
-			<if test="list.size() != 0 ">
-		DELETE
-		FROM
-		comments
-		<where>
-					cmt_no2 IN
-				<foreach item="item" collection="list" open="(" close=")" separator=",">
-					#{item.cmtNo}
-				</foreach>
-		</where>
-			</if>
-	</delete>
+  <!-- boards_cmt,reply을 삭제할때 이들이 FK를 지정하고 있기 때문에 FK를 가지고있는 컬럼을 미리삭제해야한다. 
+    그래서 미리 PK을 LIST로 가지고 와서 FK를 가지고있는 컬럼을 삭제하고 PK를 가지고있는 컬럼을 삭제한다. -->
+  <!-- 공통적으로 사용할 replyList 삭제 -->
+  <delete id="deleteReplyList" parameterType="java.util.List">
+      <if test="list.size() != 0 ">
+    DELETE
+    FROM
+    comments
+    <where>
+          cmt_no2 IN
+        <foreach item="item" collection="list" open="(" close=")" separator=",">
+          #{item.cmtNo}
+        </foreach>
+    </where>
+      </if>
+  </delete>
 
-	<!-- 공통적으로 사용할 commentlist삭제 -->
-	<delete id="deleteCommentList" parameterType="java.util.List">
-		<if test="list.size() != 0">
-			DELETE
-			FROM
-			comments
-			<where>
-					cmt_no IN 
-				<foreach item="item" collection="list" open="(" close=")" separator=",">
-				    #{item.cmtNo}
-				</foreach>
-			</where>
-		</if>
-	</delete>
+  <!-- 공통적으로 사용할 commentlist삭제 -->
+  <delete id="deleteCommentList" parameterType="java.util.List">
+    <if test="list.size() != 0">
+      DELETE
+      FROM
+      comments
+      <where>
+          cmt_no IN 
+        <foreach item="item" collection="list" open="(" close=")" separator=",">
+            #{item.cmtNo}
+        </foreach>
+      </where>
+    </if>
+  </delete>
 
-	<!-- comments삭제을 위한 select문 -->
-	<select id="getBoardsCmtCmtNo" parameterType="int" resultMap="boardCmtList">
-		SELECT cmt_no
-		FROM
-		boards_cmt
-		WHERE board_no=#{value}
-	</select>
+  <!-- comments삭제을 위한 select문 -->
+  <select id="getBoardsCmtCmtNo" parameterType="int" resultMap="boardCmtList">
+    SELECT cmt_no
+    FROM
+    boards_cmt
+    WHERE board_no=#{value}
+  </select>
 
-	<!-- boardsCmtlist삭제 -->
-	<delete id="deleteBoardCmtList" parameterType="int">
-		DELETE
-		FROM
-		boards_cmt
-		WHERE board_no=#{value}
-	</delete>
+  <!-- boardsCmtlist삭제 -->
+  <delete id="deleteBoardCmtList" parameterType="int">
+    DELETE
+    FROM
+    boards_cmt
+    WHERE board_no=#{value}
+  </delete>
 
-	<!-- comments삭제을 위한 select문 -->
-	<select id="getRecipesCmtCmtNo" parameterType="int" resultType="int">
-		SELECT cmt_no
-		FROM
-		recipes_cmt
-		WHERE rcp_no=#{value}
-	</select>
+  <!-- comments삭제을 위한 select문 -->
+  <select id="getRecipesCmtCmtNo" parameterType="int" resultType="int">
+    SELECT cmt_no
+    FROM
+    recipes_cmt
+    WHERE rcp_no=#{value}
+  </select>
 
-	<!-- boardsCmtlist삭제 -->
-	<delete id="deleteRecipesCmtList" parameterType="int">
-		DELETE
-		FROM
-		recipes_cmt
-		WHERE rcp_no=#{value}
-	</delete>
+  <!-- boardsCmtlist삭제 -->
+  <delete id="deleteRecipesCmtList" parameterType="int">
+    DELETE
+    FROM
+    recipes_cmt
+    WHERE rcp_no=#{value}
+  </delete>
 
 </mapper>
