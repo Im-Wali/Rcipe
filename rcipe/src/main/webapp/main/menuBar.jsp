@@ -3,13 +3,6 @@
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/style.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/menuBar01.css" type="text/css" />
 <script src="${pageContext.servletContext.contextPath }/js/menuBar01.js">
-</script>
-<script type="text/javascript">
-function search() {
-	var searchKeyword = document.getElementById("searchKeyword").value;
-	alert(searchKeyword);
-	location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='+searchKeyword;
-  }
 	
 </script>
 <!-- login.jsp :로그인 모달을 가지고 있는 jsp파일 -->
@@ -97,14 +90,14 @@ function search() {
 		</ul>
 	</div>
 	<div align="right" style="padding-right: 10px; margin-top: 1%">
-		<form name="SearchForm" action="" method="POST">
+		<form action="${pageContext.servletContext.contextPath }/main/searchResult.jsp" method="POST">
 			<span class="row"> <span class="col-sm-5 col-sm-offset-2"
 				style="display: inline-block; text-align: center; margin-top: 1%;">
 					<span id="imaginary_container"> <span
 						class="input-group stylish-input-group"> <input type="text"
-							class="form-control" placeholder="Search" id="searchKeyword">
+							class="form-control" placeholder="Search" id="inputsearch">
 							<span class="input-group-addon">
-								<button type="button" onclick="javascript:search();">
+								<button type="submit">
 									<span class="glyphicon glyphicon-search"></span>
 								</button>
 						</span>
@@ -129,7 +122,7 @@ function search() {
 					data-target="#joinModal" data-whatever="Join" data-backdrop="false"
 					style="background-color: #FF9933; border: #FF9933; color: black">회원가입</a></li>
 				<div align="center">
-					<li><a href="${pageContext.servletContext.contextPath }/app/recipe/inserRecipe" class="btn btn-primary"
+					<li><a href="${pageContext.servletContext.contextPath }/app/recipe/viewInsertRecipe" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">레시피등록</a></li>
 				</div>
 				<div align="center">
