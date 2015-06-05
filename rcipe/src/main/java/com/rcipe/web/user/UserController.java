@@ -98,7 +98,7 @@ public class UserController {
 		return "user/viewUser";
 	}
 
-	@RequestMapping(value = "updatePassword", method = RequestMethod.GET)
+	@RequestMapping(value = "updatePassword", method = RequestMethod.POST)
 	public @ResponseBody void updatePassword(@ModelAttribute("user") User user,
 			Model model, HttpSession session,
 			@RequestParam("newPassword") String newPassword) throws Exception {
