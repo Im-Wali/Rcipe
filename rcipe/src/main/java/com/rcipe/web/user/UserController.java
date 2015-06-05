@@ -83,13 +83,13 @@ public class UserController {
 		session.setAttribute("user", dbUser);
 		System.out.println("loginUser :" + dbUser);
 
-		return "forward:../../main/mainPage.jsp";
+		return "main/mainPage";
 	}
 	
 	@RequestMapping(value = "viewUser", method = RequestMethod.GET)
 	public  String  viewUser()throws Exception{
 		System.out.println("AAAAAAAAAAaa");
-		return "user/viewUser.jsp";
+		return "user/viewUser";
 	}
 
 	@RequestMapping(value = "updatePassword", method = RequestMethod.GET)
