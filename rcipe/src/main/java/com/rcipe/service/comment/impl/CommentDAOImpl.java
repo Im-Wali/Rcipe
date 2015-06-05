@@ -25,10 +25,15 @@ public class CommentDAOImpl implements CommentDAO {
 //		int t=sqlSession.selectOne("commentMapper.selectCmtNo");
 //		comment.setCommentNo(t);
 		sqlSession.insert("commentMapper.insertBoardCmt",comment);
-		System.out.println(comment.getCommentNo());
 		return comment ;
 	}
 	
+	@Override
+	public Comment insertRecipeCmt(Comment comment) throws Exception {
+		sqlSession.insert("commentMapper.insertRecipeCmt",comment);
+		return comment;
+	}
+
 	@Override
 	public Comment insertReply(Comment comment) throws Exception {
 		sqlSession.update("commentMapper.updateAddReplyCnt",comment);

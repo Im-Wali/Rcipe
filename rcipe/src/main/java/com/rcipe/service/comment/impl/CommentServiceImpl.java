@@ -27,6 +27,11 @@ public class CommentServiceImpl  implements CommentService{
 	}
 	
 	@Override
+	public Comment insertRecipeCmt(Comment comment) throws Exception {
+		return commentDAO.insertRecipeCmt(comment);
+	}
+
+	@Override
 	public Comment insertReply(Comment comment) throws Exception {
 		return commentDAO.insertReply(comment);
 	}
@@ -38,7 +43,6 @@ public class CommentServiceImpl  implements CommentService{
 	
 	@Override
 	public List<Comment> getRecipeCmtList(int rcp_no) throws Exception {
-		// TODO Auto-generated method stub
 		return commentDAO.getRecipeCmtList(rcp_no);
 	}
 

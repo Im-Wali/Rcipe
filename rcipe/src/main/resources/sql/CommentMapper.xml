@@ -40,6 +40,25 @@
     board_no,0 AS REPLY_CNT
     FROM DUAL
   </insert>
+  
+  <insert id="insertRecipeCmt" parameterType="comment">
+    <selectKey resultType="int" keyProperty="commentNo" order="BEFORE">
+      select seq_cmt_no.NEXTVAL FROM DUAL
+    </selectKey>
+
+    INSERT ALL
+    INTO
+    comments
+    VALUES(CMT_NO,NICKNAME, CMT_NO2,
+    CMT_CONT,CMT_DATE,REPLY_CNT)
+    INTO recipes_cmt VALUES(CMT_NO,rcp_no)
+    SELECT #{commentNo} AS CMT_NO,#{nickname} AS NICKNAME , null AS
+    CMT_NO2,
+    #{commentContent} AS CMT_CONT ,SYSDATE AS
+    CMT_DATE,#{contentNo} AS
+    rcp_no,0 AS REPLY_CNT
+    FROM DUAL
+  </insert>
 
   <!-- 공통적으로 사용할 replyinsert -->
   <insert id="insertReply">
