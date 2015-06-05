@@ -25,8 +25,8 @@ public class RecipeServiceTest {
 		RecipeService recipeService = (RecipeService) context
 				.getBean("recipeServiceImpl");
 		User user = new User("user01", "user01@naver.com", "1111", "!!!!");
-		Recipe recipe = new Recipe(10000, user.getNickname(), "레시피 타이틀1",
-				"이미지경로1", "레시피 내용1", "레시피팁1", 1, 2, "당근,양파", "20150601", 4, 3);
+		Recipe recipe = new Recipe();
+		recipe.setRecipeNo(10000);
 		CommentService commentService = (CommentService) context.getBean("commentServiceImpl");
 		RecipeDetailService recipeDetailService = (RecipeDetailService) context
 				.getBean("recipeDetailServiceImpl");
