@@ -60,8 +60,6 @@
 					});
 </script>
 <input type='hidden' id='isEmail' value='false'>
-<form method="POST" action="#" name="losePasswordForm"
-	id="losePasswordForm">
 	<div class="modal fade" id="modifyLosePasswordModal" tabindex="-1"
 		role="dialog" aria-labelledby="modifyLosePasswordModal"
 		aria-hidden="true">
@@ -82,7 +80,7 @@
 							type="text" class="form-control" id="loseEmail" name="loseEmail">
 						<div id="loseEmailDiv"></div>
 						<div class="modal-footer" style="border-color: black">
-							<button type="submit" class="btn btn-primary"
+							<button  class="btn btn-primary"
 								id="sendCheckEmailTempPw"
 								style="background-color: #FFFFFF; border-color: #FFFFFF; color: black">임시비밀번호발송</button>
 							<!--          <input type="image" src="login.gif" alt="로그인" /> -->
@@ -92,4 +90,3 @@
 			</div>
 		</div>
 	</div>
-</form>
