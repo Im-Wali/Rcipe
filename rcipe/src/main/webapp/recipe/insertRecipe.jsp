@@ -321,11 +321,11 @@ body {
 				<input type="hidden" id="ingredientIds"name="ingredientIds" value="">
 				<div align="right">
 					<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
-						입력하세요!</span> <input type="button" class="btn btn-warning  btn-lg"
+						입력하세요!</span> <input type="button" class="btn   btn-lg"
 						value="추가 사진 등록" style="margin-right: 1%; margin-bottom: 1%"
 						id="addDetail"> <input type="submit" id="recipeSubmit"
-						class="btn btn-warning btn-lg" value="레시피 등록"
-						style="margin-right: 1%; margin-bottom: 1%">
+						class="btn  btn-lg" value="레시피 등록"
+						style="margin-right: 1%; margin-bottom: 1%;">
 				</div>
 				<div class="form-login " style="margin-bottom: 2%;">
 					<h3 align="center" style="margin-bottm: 1%">레시피 등록</h3>
@@ -414,6 +414,17 @@ body {
 				</div>
 				<!-- 해당 태그.before에 상세레시피 차레대로 나옴 -->
 				<div id="detailLastDiv"></div>
+				<div class="form-login " style="margin-bottom: 2%;" align="center">
+					<div>
+					<input type="button" class="btn   btn-lg"
+						value="추가 사진 등록" style="margin-right: 1%; margin-bottom: 1%;width: 100%;height:100%;background-color:#707070;color:white"
+						id="addDetail">
+					</div>
+					<div>
+						<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
+							입력하세요!</span>
+					</div>
+				</div>
 			</form>
 		</div>
 		<div class="col-md-2"></div>
