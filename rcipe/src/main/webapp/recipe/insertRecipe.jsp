@@ -58,7 +58,7 @@ body {
 						$(window).unload(
 								function() {
 									if (checkUnload) {
-										$.post("../app/file/deleteRecipeFile",
+										$.post("../file/deleteRecipeFile",
 												function(data) {
 													alert(data);
 												});
@@ -149,11 +149,11 @@ body {
 							var str3 = str.split("changeImg")[1].substring("1")
 									.split(",")[0];
 							$("#" + fileUploadId).attr("src",
-									"../images/" + str3);
+									"../../images/" + str3);
 							var t = $("#image" + fileUploadId).val();
 							if (t.length > 1) {
 								//해당 "recipe"+id 의 아이디로 hidden태그가 있다면 거기에 있는 파일 삭제 ajax를 사용한다.
-								$.ajax("../app/file/deletePicture", {
+								$.ajax("../file/deletePicture", {
 									method : 'POST',
 									data : 'path=' + t,
 									success : function(result) {
@@ -216,7 +216,7 @@ body {
 							};
 							// var p=$('#pictureLcation').val();
 							// xhr.open("POST","../app/"+p);
-							xhr.open("POST", "../app/file/recipePictureUpload");
+							xhr.open("POST", "../file/recipePictureUpload");
 							var fd = new FormData();
 							fd.append("file", file);
 							xhr.send(fd);
@@ -246,7 +246,7 @@ body {
 													});
 											$
 													.ajax({
-														url : '../app/file/recipePictureUpload',
+														url : '../file/recipePictureUpload',
 														data : formData,
 														processData : false,
 														contentType : false,

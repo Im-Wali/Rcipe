@@ -30,7 +30,7 @@
 									}
 									$("#searchIngredients").empty(); 
 									$.ajax({
-										url : '../app/recipe/getIngredientList',
+										url : 'getIngredientList',
 										type : 'POST',
 										dataType : 'json',
 										data : "keyword="+str,
@@ -47,8 +47,11 @@
 													tag+="<button class='btn btn-info addIngredient' value='"+list[i].ingredientNo+"'"
 													+"id='button_"+list[i].ingredientNo+"'>추가</button></div>";
 												}
-											$("#searchIngredients").html(tag)
 											}
+											if(tag==""){
+												alert("검색어를 포함하는 재료는 없습니다.");
+											}
+											$("#searchIngredients").html(tag)
 										},
 										error : function(data) {
 											alert("해당 검색결과가 존재하지 않습니다.");
@@ -150,7 +153,7 @@
 								return;
 							}else{
 								$.ajax({
-									url : '../app/recipe/insertIngredient',
+									url : 'insertIngredient',
 									type : 'POST',
 									data : "ingredientName="+str,
 									success : function(data) {
