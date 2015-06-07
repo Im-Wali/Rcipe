@@ -42,8 +42,8 @@ public class CommentServiceImpl  implements CommentService{
 	}
 	
 	@Override
-	public List<Comment> getRecipeCmtList(int rcp_no) throws Exception {
-		return commentDAO.getRecipeCmtList(rcp_no);
+	public List<Comment> getRecipeCmtList(int recipeNo) throws Exception {
+		return commentDAO.getRecipeCmtList(recipeNo);
 	}
 
 	@Override

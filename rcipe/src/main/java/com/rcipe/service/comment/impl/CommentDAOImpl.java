@@ -47,9 +47,9 @@ public class CommentDAOImpl implements CommentDAO {
 	}
 	
 	@Override
-	public List<Comment> getRecipeCmtList(int rcp_no) throws Exception {
+	public List<Comment> getRecipeCmtList(int recipeNo) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("commentMapper.getRecipeCmtList",rcp_no);
+		return sqlSession.selectList("commentMapper.getRecipeCmtList",recipeNo);
 	}
 	
 	@Override

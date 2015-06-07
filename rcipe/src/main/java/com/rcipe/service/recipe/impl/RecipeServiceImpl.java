@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.rcipe.commons.Search;
+import com.rcipe.service.comment.CommentService;
 import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
 import com.rcipe.service.domain.RecipeDetail;
@@ -21,6 +22,10 @@ public class RecipeServiceImpl  implements RecipeService{
 	@Autowired
 	@Qualifier("recipeDAOImpl")
 	private RecipeDAO recipeDAO;
+	
+	@Autowired
+	@Qualifier("commentServiceImpl")
+	private CommentService commentServcie;
 	
 	public RecipeServiceImpl() {
 		System.out.println(getClass()+"start......");
@@ -53,20 +58,22 @@ public class RecipeServiceImpl  implements RecipeService{
 	
 
 	@Override
-	public boolean deleteRecipe(int rcp_no) throws Exception {
-		return recipeDAO.deleteRecipe(rcp_no) == 1 ? true : false;
+	public boolean deleteRecipe(int recipeNo) throws Exception {
+		return recipeDAO.deleteRecipe(recipeNo) == 1 ? true : false;
 	}
 
 	@Override
-	public Recipe getRecipe(int rcp_no) throws Exception {
-		Recipe recipe=recipeDAO.getRecipe(rcp_no);
+	public Recipe getRecipe(int recipeNo) throws Exception {
+		Recipe recipe=recipeDAO.getRecipe(recipeNo);
+		recipeDAO.updateRecipeCount(recipeNo);
+		recipe.setCommentList(commentServcie.getRecipeCmtList(recipe.getRecipeNo()));
 		return recipe;
 	}
 
 	@Override
-	public boolean deleteRcpIng(int rcp_no) throws Exception {
+	public boolean deleteRcpIng(int recipeNo) throws Exception {
 		// TODO Auto-generated method stub
-		return recipeDAO.deleteRcpIng(rcp_no) == 1 ? false : true;
+		return recipeDAO.deleteRcpIng(recipeNo) == 1 ? false : true;
 	}
 
 	@Override

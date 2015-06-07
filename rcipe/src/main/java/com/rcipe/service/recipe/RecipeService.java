@@ -20,11 +20,11 @@ public interface RecipeService {
 	
 	public boolean insertRecipeDetail(List<RecipeDetail> list)throws Exception;
 	
-	public boolean deleteRecipe(int rcp_no) throws Exception;
+	public boolean deleteRecipe(int recipeNo) throws Exception;
 
-	public Recipe getRecipe(int rcp_no) throws Exception;
+	public Recipe getRecipe(int recipeNo) throws Exception;
 
-	public boolean deleteRcpIng(int rcp_no) throws Exception;
+	public boolean deleteRcpIng(int recipeNo) throws Exception;
 
 	public Map<String, Object> getRecipeList(Search search) throws Exception;
 

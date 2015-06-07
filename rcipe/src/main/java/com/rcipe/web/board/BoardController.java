@@ -83,9 +83,7 @@ public class BoardController {
 	@RequestMapping(value = "/viewBoard", method = RequestMethod.GET)
 	public  String  viewBoard(Model model,@RequestParam("boardNo") int boardNo)throws Exception{
 		model.addAttribute("board",boardService.getBoard(boardNo));
-		User user = new User();
-		user.setNickname("user01");
-		model.addAttribute("user",user);
+		model.addAttribute("content",1);
 		return "board/viewBoard";
 	}
 	

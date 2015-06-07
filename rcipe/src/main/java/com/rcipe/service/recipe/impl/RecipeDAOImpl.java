@@ -65,21 +65,21 @@ public  class RecipeDAOImpl  implements RecipeDAO{
 	}
 
 	@Override
-	public int deleteRecipe(int rcp_no) throws Exception {
-		return sqlSession.update("RecipeMapper.deleteRecipe", rcp_no);
+	public int deleteRecipe(int recipeNo) throws Exception {
+		return sqlSession.update("RecipeMapper.deleteRecipe", recipeNo);
 		
 	}
 
 	@Override
-	public Recipe getRecipe(int rcp_no) throws Exception {
+	public Recipe getRecipe(int recipeNo) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne("RecipeMapper.getRecipe", rcp_no);
+		return sqlSession.selectOne("RecipeMapper.getRecipe", recipeNo);
 	}
 
 	@Override
-	public int deleteRcpIng(int rcp_no) throws Exception {
+	public int deleteRcpIng(int recipeNo) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.update("RecipeMapper.deleteRcpIng", rcp_no);
+		return sqlSession.update("RecipeMapper.deleteRcpIng", recipeNo);
 	}
 
 	@Override
@@ -92,5 +92,10 @@ public  class RecipeDAOImpl  implements RecipeDAO{
 	public int getTotalCount(Search search) throws Exception {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne("RecipeMapper.getTotalCount", search);
+	}
+
+	@Override
+	public int updateRecipeCount(int recipeNo) throws Exception {
+		return sqlSession.update("RecipeMapper.updateRecipeCount",recipeNo);
 	}
 }

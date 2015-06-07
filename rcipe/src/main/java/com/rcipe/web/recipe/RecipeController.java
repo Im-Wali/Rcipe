@@ -42,14 +42,20 @@ public class RecipeController {
 	public RecipeController() {
 		System.out.println(getClass() + "start......");
 	}
+	@RequestMapping(value = "/viewRecipe", method = RequestMethod.GET)
+	public  String  viewRecipe(Model model,@RequestParam("recipeNo") int recipeNo)throws Exception{
+		model.addAttribute("recipe",recipeService.getRecipe(recipeNo));
+		model.addAttribute("content",0);
+		return "recipe/recipe";
+	}
+	
 	@RequestMapping(value = "/viewInsertRecipe", method = RequestMethod.GET)
 	public String viewInsertRecipe()throws Exception{
-		System.out.println("start viewInsertRecipe");
 		return "recipe/insertRecipe";
 	}
 
 	@RequestMapping(value = "/insertRecipe", method = RequestMethod.POST)
-	public String inserBoard(Model model, HttpServletRequest request,
+	public String insertRecipe(Model model, HttpServletRequest request,
 			Recipe recipe,
 			@RequestParam("detailCount") int detailCount,
 			@RequestParam("detailNumber") int detailNumber,
@@ -93,7 +99,7 @@ public class RecipeController {
 		}
 		recipeService.insertRecipeDetail(list);
 		recipeService.insertRcpIng(ingredientList);
-		return "insertRecipe";
+		return "redirect:viewRecipe?recipeNo="+recipeNo;
 	}
 
 	@RequestMapping(value = "/getIngredientList", method = RequestMethod.POST)

@@ -13,7 +13,7 @@ public interface CommentService {
 		
 		public  List<Comment> getBoardCmtList(int boardNo)throws Exception;
 		
-		public List<Comment> getRecipeCmtList(int rcp_no)throws Exception;
+		public List<Comment> getRecipeCmtList(int recipeNo)throws Exception;
 		
 		public List<Comment> getCommentReplyList(int commenRetNo) throws Exception ;
 		
