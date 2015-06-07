@@ -57,7 +57,7 @@
 		,RCP_TITLE,RCP_IMG_PATH,RCP_CONT
 		,RCP_TIP,RCP_REC_CNT,RCP_CNT
 		,INGREDIENTS,RCP_DATE,STAR_TOT_CNT,STAR_CNT)
-		
+
 		values(#{recipeNo},#{nickname},
 		#{recipeTitle},#{titleImage}
 		,#{recipeContents},#{tip},0,0
@@ -65,10 +65,10 @@
 	</insert>
 
 	<insert id="insertRcpIng" parameterType="ingredient">
-			INSERT INTO 
-			RCP_ING( INGREDIENT_NO , RCP_NO ) 
-			values
-			( #{ingredientNo} , #{recipeNo} )
+		INSERT INTO
+		RCP_ING( INGREDIENT_NO , RCP_NO )
+		values
+		( #{ingredientNo} , #{recipeNo} )
 	</insert>
 
 	<select id="getRecipe" parameterType="int" resultMap="RecipeSelectMap">
@@ -80,42 +80,48 @@
 		WHERE rcp_no = #{value}
 	</select>
 
-  <delete id="deleteRecipe" parameterType="int">
-    DELETE FROM recipes
-    WHERE rcp_no=${value}
-  </delete>
-  
-  <delete id="deleteRcpIng" parameterType="int">
-    DELETE FROM rcp_ing
-    WHERE rcp_no=${value}
-  </delete>
-  
-  <select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
-    SELECT
-    rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip, rcp_rec_cnt,
-    rcp_cnt, ingredients, rcp_date, star_tot_cnt, star_cnt
-    FROM recipes
-    <where> 
-     <if test="searchKeyword != null">
-     <if test="searchKeyword != '' ">
-        rcp_title like '%${searchKeyword}%' OR 
-        nickname like '%${searchKeyword}%'
-     </if></if>
-     </where> 
-  </select>
-  
-  <select id="getTotalCount" parameterType="search" resultType="int">
-    SELECT COUNT(*)
-    FROM ( SELECT *
-    FROM recipes
-     <where> 
-     <if test="searchKeyword != null">
-         <if test="searchKeyword != '' ">
-        rcp_title like '%${searchKeyword}%' OR
-        nickname like '%${searchKeyword}%'
-        </if> 
-     </if>
-     </where> 
-    ) countTable
-  </select>
+	<delete id="deleteRecipe" parameterType="int">
+		DELETE FROM recipes
+		WHERE rcp_no=${value}
+	</delete>
+
+	<delete id="deleteRcpIng" parameterType="int">
+		DELETE FROM rcp_ing
+		WHERE rcp_no=${value}
+	</delete>
+
+	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
+		SELECT
+		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip, rcp_rec_cnt,
+		rcp_cnt, ingredients, rcp_date, star_tot_cnt, star_cnt
+		FROM recipes
+		<where>
+			<if test="searchKeyword != null">
+				<if test="searchKeyword != '' ">
+					rcp_title like '%${searchKeyword}%' OR
+					nickname like '%${searchKeyword}%'
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<select id="getTotalCount" parameterType="search" resultType="int">
+		SELECT COUNT(*)
+		FROM ( SELECT *
+		FROM recipes
+		<where>
+			<if test="searchKeyword != null">
+				<if test="searchKeyword != '' ">
+					rcp_title like '%${searchKeyword}%' OR
+					nickname like '%${searchKeyword}%'
+				</if>
+			</if>
+		</where>
+		) countTable
+	</select>
+	<update id="updateRecipeCount" parameterType="int">
+		UPDATE recipes
+		set rcp_cnt=rcp_cnt+1
+		WHERE rcp_no=#{value}
+	</update>
 </mapper>
