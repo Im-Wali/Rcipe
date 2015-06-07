@@ -109,7 +109,7 @@ var __slice = [].slice;
 	    $('#count').html(value);
 	  });
 	  
-	  $('#stars-existing').on('starrr:change', function(e, value){
+	  /*$('#stars-existing').on('starrr:change', function(e, value){
 	    $('#count-existing').html(value);
-	  });
+	  });*/
 	});
