@@ -5,7 +5,7 @@ public class DetailRecipe {
 	/*
 	 * recipeOrder Integer detailImage String detailContents String
 	 */
-	private Integer reciepDetailNo;
+	private Integer detailRecipeNo;
 	private Integer recipeNo;
 	private Integer recipeOrder;
 	private String detailImage;
@@ -15,8 +15,8 @@ public class DetailRecipe {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DetailRecipe(Integer recipeNo, Integer recipeOrder,
-			String detailImage, String detailContents) {
+	public DetailRecipe( Integer recipeNo,
+			Integer recipeOrder, String detailImage, String detailContents) {
 		super();
 		this.recipeNo = recipeNo;
 		this.recipeOrder = recipeOrder;
@@ -24,8 +24,8 @@ public class DetailRecipe {
 		this.detailContents = detailContents;
 	}
 
-	public Integer getReciepDetailNo() {
-		return reciepDetailNo;
+	public Integer getDetailRecipeNo() {
+		return detailRecipeNo;
 	}
 
 	public Integer getRecipeNo() {
@@ -44,8 +44,8 @@ public class DetailRecipe {
 		return detailContents;
 	}
 
-	public void setReciepDetailNo(Integer reciepDetailNo) {
-		this.reciepDetailNo = reciepDetailNo;
+	public void setDetailRecipeNo(Integer detailRecipeNo) {
+		this.detailRecipeNo = detailRecipeNo;
 	}
 
 	public void setRecipeNo(Integer recipeNo) {
@@ -66,8 +66,9 @@ public class DetailRecipe {
 
 	@Override
 	public String toString() {
-		return "RecipeDetail [reciepDetailNo=" + reciepDetailNo + ", recipeNo="
+		return "DetailRecipe [detailRecipeNo=" + detailRecipeNo + ", recipeNo="
 				+ recipeNo + ", recipeOrder=" + recipeOrder + ", detailImage="
 				+ detailImage + ", detailContents=" + detailContents + "]";
 	}
+
 }
