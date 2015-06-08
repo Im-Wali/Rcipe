@@ -90,7 +90,7 @@ stylize any heading tags withing white-panel below
 			value="${recipe.recipeNo}">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
-			<div align="right" style="font-size:medium; ">${recipe.recipeDate}</div>
+			<div align="right" style="font-size: medium;">${recipe.recipeDate}</div>
 			<div class="form-login " style="margin-bottom: 2%;">
 				<div>
 					<div>
@@ -107,7 +107,7 @@ stylize any heading tags withing white-panel below
 						</div>
 					</div> --%>
 						<div align="center" style="margin-top: 2%">
-							<img class="img-thumbnail"
+							<img class="img-rounded"
 								src="${pageContext.servletContext.contextPath}/images/${recipe.titleImage}">
 						</div>
 
@@ -115,8 +115,8 @@ stylize any heading tags withing white-panel below
 							style="margin-top: 2%; margin-bottom: 0%; width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 100rem">
 							<div style="margin-top: 1%" align="right">
 								<span id="stars-existing" class="starrr"
-									data-rating='${recipe.star}' 
-									style="color: orange;"></span> 현재 평점 <span id="count-existing">${recipe.star}</span>
+									data-rating='${recipe.star}' style="color: orange;"></span> 현재
+								평점 <span id="count-existing">${recipe.star}</span>
 							</div>
 							<div style="margin-top: 1%" align="right">
 								<span id="stars" class="starrr" style="color: orange;"></span>
@@ -159,24 +159,28 @@ stylize any heading tags withing white-panel below
 						</div>
 					</div> -->
 					</div>
-					<div>
-						<div class="h2Left">
-							<h3>조리 방법</h3>
-						</div>
-						<c:set var="i" value="0" />
-						<c:forEach var="detail" items="${recipe.detailRecipe}">
-						<c:set var="i" value="${ i+1}" />
-							<div align="center">
-								<div class="sBlog" style="margin: 1%">
-									<img class="img-thumbnail"
-										src="${pageContext.servletContext.contextPath}/images/${detail.detailImage}" />
-									<h4 class="brand" style="margin: 1%">${i} . ${detail.detailContents}</h4>
-								</div>
-							</div>
-						</c:forEach>
-					</div>
+					<div></div>
 				</div>
 			</div>
+			<div class="form-login " align="center" style="margin-bottom: 2%;background-color:red">
+				<h2 >조리 방법</h2>
+			</div>
+			<c:set var="i" value="0" />
+			<c:forEach var="detail" items="${recipe.detailRecipe}">
+				<c:set var="i" value="${ i+1}" />
+				<div class="form-login " style="margin-bottom: 2%;">
+				<div class="badge" style="height:10%; width:10%">${ i}</div>
+				<div align="center" style="margin: 4%;">
+					<div class="sBlog" style="margin: 1%">
+						<img class="img-rounded"
+							src="${pageContext.servletContext.contextPath}/images/${detail.detailImage}" />
+						<h4 class="brand"
+							style="margin: 1%; font: bolder; font-size: 2em;">${i}.
+							${detail.detailContents}</h4>
+					</div>
+				</div>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 	<%-- <div class="row">
