@@ -10,10 +10,8 @@
 						var isReplyList = true;
 						var replyListId = '';
 						if ($("#content").val() == 1) {
-							alert("AAAA");
 							$("#contentNo").val($("#boardNo").val());
 						} else if ($("#content").val() == 0) {
-							alert($("#recipeNo").val());
 							$("#contentNo").val($("#recipeNo").val());
 						}
 						$(document.body)

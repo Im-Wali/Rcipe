@@ -51,7 +51,7 @@ public class RecipeController {
 	public  String  viewRecipe(Model model,@RequestParam("recipeNo") int recipeNo)throws Exception{
 		Recipe recipe=recipeService.getRecipe(recipeNo);
 		recipe.setDetailRecipe(detailRecipeService.getDetailRecipeList(recipe.getRecipeNo()));
-		model.addAttribute("recipe",recipeService.getRecipe(recipeNo));
+		model.addAttribute("recipe",recipe);
 		model.addAttribute("content",0);
 		System.out.println(recipe);
 		System.out.println(recipe.getDetailRecipe());

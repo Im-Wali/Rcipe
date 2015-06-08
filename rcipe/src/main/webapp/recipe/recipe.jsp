@@ -164,15 +164,16 @@ stylize any heading tags withing white-panel below
 							<h3>조리 방법</h3>
 						</div>
 						<c:set var="i" value="0" />
-						<c:forEach var="detail" items="${recipe.recipeDetail}">
-						</c:forEach>
-						<div align="center">
-							<div class="sBlog" style="margin: 1%">
-								<img class="img-thumbnail"
-									src="${pageContext.servletContext.contextPath}/images/${detail.detailImage}" />
-								<h4 class="brand" style="margin: 1%">${detail.recipeOrder }.${detail.detailContents}</h4>
+						<c:forEach var="detail" items="${recipe.detailRecipe}">
+						<c:set var="i" value="${ i+1}" />
+							<div align="center">
+								<div class="sBlog" style="margin: 1%">
+									<img class="img-thumbnail"
+										src="${pageContext.servletContext.contextPath}/images/${detail.detailImage}" />
+									<h4 class="brand" style="margin: 1%">${i} . ${detail.detailContents}</h4>
+								</div>
 							</div>
-						</div>
+						</c:forEach>
 					</div>
 				</div>
 			</div>
