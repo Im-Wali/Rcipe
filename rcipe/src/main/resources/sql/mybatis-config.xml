@@ -17,7 +17,7 @@
 		<typeAlias alias="board" type="com.rcipe.service.domain.Board"/>
 		<typeAlias alias="comment" type="com.rcipe.service.domain.Comment"/>
 		<typeAlias alias="recipe" type="com.rcipe.service.domain.Recipe"/>
-		<typeAlias alias="recipeDetail" type="com.rcipe.service.domain.RecipeDetail"/>
+		<typeAlias alias="detailRecipe" type="com.rcipe.service.domain.DetailRecipe"/>
 		<typeAlias alias="ingredient" type="com.rcipe.service.domain.Ingredient"/>
 	</typeAliases>
 
@@ -27,7 +27,7 @@
 		<mapper resource="sql/BoardMapper.xml" />
 		<mapper resource="sql/CommentMapper.xml" />
 	  <mapper resource="sql/RecipeMapper.xml" />
-	  <mapper resource="sql/RecipeDetailMapper.xml" />
+	  <mapper resource="sql/DetailRecipeMapper.xml" />
 	</mappers>
 
 </configuration>
