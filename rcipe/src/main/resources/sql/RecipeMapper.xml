@@ -108,8 +108,7 @@
 	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
 		SELECT
 		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip,
-		rcp_rec_cnt,
-		rcp_cnt, ingredients, rcp_date, star_tot_cnt, star_cnt
+		rcp_cnt, ingredients, rcp_date
 		FROM recipes
 		<where>
 			<if test="searchKeyword != null">
