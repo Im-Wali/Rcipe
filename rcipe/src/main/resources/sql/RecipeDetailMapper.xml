@@ -26,11 +26,12 @@
 	<select id="getRecipeDetail" parameterType="int"
 		resultMap="RecipeDetailSelectMap">
 		SELECT
-		recipeDetailNo,rcp_no, det_rcp_ord, det_img_path,
+		DET_NO,rcp_no, det_rcp_ord, det_img_path,
 		det_cont
 		FROM
 		detail_rcp
 		WHERE rcp_no = #{value}
+		ORDER BY  det_rcp_ord ASC
 	</select>
 
 	<delete id="deleteRecipeDetail" parameterType="int">
