@@ -55,29 +55,44 @@
 		</selectKey>
 		INSERT INTO RECIPES(RCP_NO,NICKNAME
 		,RCP_TITLE,RCP_IMG_PATH,RCP_CONT
-		,RCP_TIP,RCP_REC_CNT,RCP_CNT
-		,INGREDIENTS,RCP_DATE,STAR_TOT_CNT,STAR_CNT)
+		,RCP_TIP,RCP_CNT
+		,INGREDIENTS,RCP_DATE)
 
 		values(#{recipeNo},#{nickname},
 		#{recipeTitle},#{titleImage}
-		,#{recipeContents},#{tip},0,0
-		,#{ingredients},SYSDATE,0,0)
+		,#{recipeContents},#{tip},0
+		,#{ingredients},SYSDATE)
+	</insert>
+
+	<insert id="insertStar" parameterType="recipe">
+	INSERT INTO stars(RCP_NO,NICKNAME,star_cnt) 
+	values(#{recipeNo},#{nickname},#{star})
 	</insert>
 
 	<insert id="insertRcpIng" parameterType="ingredient">
 		INSERT INTO
-		RCP_ING( INGREDIENT_NO , RCP_NO )
+		RCP_ING(
+		INGREDIENT_NO , RCP_NO )
 		values
 		( #{ingredientNo} , #{recipeNo} )
 	</insert>
 
 	<select id="getRecipe" parameterType="int" resultMap="RecipeSelectMap">
-		SELECT
-		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip,
-		rcp_rec_cnt,
-		rcp_cnt, ingredients, rcp_date, star_tot_cnt, star_cnt
-		FROM recipes
-		WHERE rcp_no = #{value}
+	SELECT
+	r.rcp_no rcp_no, r.nickname nickname, r.rcp_title rcp_title,
+	r.rcp_img_path rcp_img_path, r.rcp_cont rcp_cont,
+	r.rcp_tip rcp_tip,
+	r.rcp_cnt rcp_cnt,
+	r.ingredients ingredients, to_char( r.rcp_date,'YYYY/MM/DD')
+	rcp_date,
+	s.star_tot_cnt star_tot_cnt, s.star_cnt star_cnt
+	FROM recipes
+	r,(SELECT
+	COUNT(*) star_tot_cnt,SUM(STAR_CNT)
+	star_cnt FROM stars
+	WHERE rcp_no=#{value}) s
+	WHERE r.rcp_no
+	= #{value} 
 	</select>
 
 	<delete id="deleteRecipe" parameterType="int">
@@ -92,14 +107,16 @@
 
 	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
 		SELECT
-		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip, rcp_rec_cnt,
+		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip,
+		rcp_rec_cnt,
 		rcp_cnt, ingredients, rcp_date, star_tot_cnt, star_cnt
 		FROM recipes
 		<where>
 			<if test="searchKeyword != null">
 				<if test="searchKeyword != '' ">
 					rcp_title like '%${searchKeyword}%' OR
-					nickname like '%${searchKeyword}%'
+					nickname like
+					'%${searchKeyword}%'
 				</if>
 			</if>
 		</where>
@@ -113,7 +130,8 @@
 			<if test="searchKeyword != null">
 				<if test="searchKeyword != '' ">
 					rcp_title like '%${searchKeyword}%' OR
-					nickname like '%${searchKeyword}%'
+					nickname like
+					'%${searchKeyword}%'
 				</if>
 			</if>
 		</where>
@@ -121,7 +139,8 @@
 	</select>
 	<update id="updateRecipeCount" parameterType="int">
 		UPDATE recipes
-		set rcp_cnt=rcp_cnt+1
+		set
+		rcp_cnt=rcp_cnt+1
 		WHERE rcp_no=#{value}
 	</update>
 </mapper>
