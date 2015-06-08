@@ -26,7 +26,6 @@ public class Recipe {
 	private String titleImage;
 	private String recipeContents;
 	private String tip;
-	private Integer recommend;
 	private Integer hit;
 	private String ingredients;
 	private String recipeDate;
@@ -55,9 +54,6 @@ public class Recipe {
 	public String getTip() {
 		return tip;
 	}
-	public Integer getRecommend() {
-		return recommend;
-	}
 	public Integer getHit() {
 		return hit;
 	}
@@ -68,7 +64,10 @@ public class Recipe {
 		return recipeDate;
 	}
 	public Integer getStar() {
-		return star;
+		if(star==0){
+			return 0;
+		}
+		return star/starHit;
 	}
 	public Integer getStarHit() {
 		return starHit;
@@ -97,9 +96,6 @@ public class Recipe {
 	public void setTip(String tip) {
 		this.tip = tip;
 	}
-	public void setRecommend(Integer recommend) {
-		this.recommend = recommend;
-	}
 	public void setHit(Integer hit) {
 		this.hit = hit;
 	}
@@ -126,7 +122,7 @@ public class Recipe {
 		return "Recipe [recipeNo=" + recipeNo + ", nickname=" + nickname
 				+ ", recipeTitle=" + recipeTitle + ", titleImage=" + titleImage
 				+ ", recipeContents=" + recipeContents + ", tip=" + tip
-				+ ", recommend=" + recommend + ", hit=" + hit
+				 + ", hit=" + hit
 				+ ", ingredients=" + ingredients + ", recipeDate=" + recipeDate
 				+ ", star=" + star + ", starHit=" + starHit + ", detailRecipe="
 				+ detailRecipe + ", commentList=" + commentList + "]";
