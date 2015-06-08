@@ -23,7 +23,7 @@ public class DetailRecipeDAOImpl implements DetailRecipeDAO {
 	@Override
 	public boolean insertDetailRecipe(List<DetailRecipe> list) throws Exception {
 		for (int i = 0; i < list.size(); i++) {
-			if (sqlSession.insert("RecipeDetailMapper.insertRecipeDetail",
+			if (sqlSession.insert("DetailRecipeMapper.insertDetailRecipe",
 					list.get(i)) != 1) {
 				return false;
 			}
@@ -33,7 +33,7 @@ public class DetailRecipeDAOImpl implements DetailRecipeDAO {
 
 	@Override
 	public List<DetailRecipe> getDetailRecipeList(int recipeNo) throws Exception {
-		return sqlSession.selectList("RecipeMapper.getRecipeDetail",recipeNo);
+		return sqlSession.selectList("DetailRecipeMapper.getDetailRecipeList",recipeNo);
 	}
 	
 
