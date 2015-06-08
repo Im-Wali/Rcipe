@@ -6,7 +6,6 @@ import java.util.Map;
 import com.rcipe.commons.Search;
 import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
-import com.rcipe.service.domain.RecipeDetail;
 
 public interface RecipeService {
 	
@@ -17,8 +16,6 @@ public interface RecipeService {
 	public Recipe insertRecipe(Recipe recipe)throws Exception;
 	
 	public boolean insertRcpIng(List<Ingredient> list)throws Exception;
-	
-	public boolean insertRecipeDetail(List<RecipeDetail> list)throws Exception;
 	
 	public boolean deleteRecipe(int recipeNo) throws Exception;
 

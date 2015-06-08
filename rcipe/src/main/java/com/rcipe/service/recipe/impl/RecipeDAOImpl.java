@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import com.rcipe.commons.Search;
 import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
-import com.rcipe.service.domain.RecipeDetail;
 import com.rcipe.service.recipe.RecipeDAO;
 
 @Repository("recipeDAOImpl")
@@ -54,15 +53,6 @@ public  class RecipeDAOImpl  implements RecipeDAO{
 		return 	true;
 	}
 
-	@Override
-	public boolean insertRecipeDetail(List<RecipeDetail> list) throws Exception {
-		for(int i=0;i<list.size();i++){
-			if(sqlSession.insert("RecipeDetailMapper.insertRecipeDetail",list.get(i))!=1){
-				return false;
-			}
-		}
-		return 	true;
-	}
 
 	@Override
 	public int deleteRecipe(int recipeNo) throws Exception {

@@ -12,7 +12,6 @@ import com.rcipe.commons.Search;
 import com.rcipe.service.comment.CommentService;
 import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
-import com.rcipe.service.domain.RecipeDetail;
 import com.rcipe.service.recipe.RecipeDAO;
 import com.rcipe.service.recipe.RecipeService;
 
@@ -51,11 +50,6 @@ public class RecipeServiceImpl  implements RecipeService{
 		return recipeDAO.insertRcpIng(list);
 	}
 
-	@Override
-	public boolean insertRecipeDetail(List<RecipeDetail> list) throws Exception {
-		return recipeDAO.insertRecipeDetail(list);
-	}
-	
 
 	@Override
 	public boolean deleteRecipe(int recipeNo) throws Exception {

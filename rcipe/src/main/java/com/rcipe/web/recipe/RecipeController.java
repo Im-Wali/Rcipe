@@ -25,9 +25,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.rcipe.commons.Search;
+import com.rcipe.service.detailRecipe.DetailRecipeService;
+import com.rcipe.service.domain.DetailRecipe;
 import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
-import com.rcipe.service.domain.RecipeDetail;
 import com.rcipe.service.domain.User;
 import com.rcipe.service.recipe.RecipeService;
 
@@ -38,14 +39,22 @@ public class RecipeController {
 	@Autowired
 	@Qualifier("recipeServiceImpl")
 	RecipeService recipeService;
+	
+	@Autowired
+	@Qualifier("detailRecipeServiceImpl")
+	DetailRecipeService detailRecipeService;
 
 	public RecipeController() {
 		System.out.println(getClass() + "start......");
 	}
 	@RequestMapping(value = "/viewRecipe", method = RequestMethod.GET)
 	public  String  viewRecipe(Model model,@RequestParam("recipeNo") int recipeNo)throws Exception{
+		Recipe recipe=recipeService.getRecipe(recipeNo);
+		recipe.setDetailRecipe(detailRecipeService.getDetailRecipeList(recipe.getRecipeNo()));
 		model.addAttribute("recipe",recipeService.getRecipe(recipeNo));
 		model.addAttribute("content",0);
+		System.out.println(recipe);
+		System.out.println(recipe.getDetailRecipe());
 		return "recipe/recipe";
 	}
 	
@@ -69,7 +78,7 @@ public class RecipeController {
 		recipeService.insertRecipe(recipe);
 		int recipeNo=recipe.getRecipeNo();
 		int count=0;
-		List<RecipeDetail> list=new ArrayList<RecipeDetail>();
+		List<DetailRecipe> list=new ArrayList<DetailRecipe>();
 		List<Ingredient> ingredientList=new ArrayList<Ingredient>();
 		String ingre[]=ingredientIds.trim().split("/");
 		System.out.println(ingre);
@@ -87,7 +96,7 @@ public class RecipeController {
 				break;
 			}else if(image!=null){
 				count++;
-				list.add(new RecipeDetail(recipeNo,count,image,content));
+				list.add(new DetailRecipe(recipeNo,count,image,content));
 			}
 			System.out.println(n + "detailImage="
 					+ image);
@@ -97,7 +106,7 @@ public class RecipeController {
 		for(int i=0;i<list.size();i++){
 			System.out.println("list== "+i+"="+list.get(i));
 		}
-		recipeService.insertRecipeDetail(list);
+		detailRecipeService.insertDetailRecipe(list);
 		recipeService.insertRcpIng(ingredientList);
 		return "redirect:viewRecipe?recipeNo="+recipeNo;
 	}

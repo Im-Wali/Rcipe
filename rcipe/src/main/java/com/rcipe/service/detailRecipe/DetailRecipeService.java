@@ -1,0 +1,12 @@
+package com.rcipe.service.detailRecipe;
+
+import java.util.List;
+
+import com.rcipe.service.domain.DetailRecipe;
+
+public interface DetailRecipeService {
+	
+	public boolean insertDetailRecipe(List<DetailRecipe> list)throws Exception;
+	
+	public List<DetailRecipe> getDetailRecipeList(int recipeNo)throws Exception;
+}

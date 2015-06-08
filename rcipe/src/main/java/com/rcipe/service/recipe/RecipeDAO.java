@@ -5,7 +5,6 @@ import java.util.List;
 import com.rcipe.commons.Search;
 import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
-import com.rcipe.service.domain.RecipeDetail;
 
 public interface RecipeDAO {
 
@@ -16,8 +15,6 @@ public interface RecipeDAO {
 	public Recipe insertRecipe(Recipe recipe) throws Exception;
 
 	public boolean insertRcpIng(List<Ingredient> list) throws Exception;
-
-	public boolean insertRecipeDetail(List<RecipeDetail> list) throws Exception;
 
 	public int deleteRecipe(int recipeNo) throws Exception;
 

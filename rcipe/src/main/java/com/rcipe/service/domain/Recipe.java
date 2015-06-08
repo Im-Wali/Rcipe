@@ -32,7 +32,7 @@ public class Recipe {
 	private String recipeDate;
 	private Integer star;
 	private Integer starHit;
-	private List<RecipeDetail> recipeDetail;
+	private List<DetailRecipe> detailRecipe;
 	private List<Comment> commentList;
 	public Recipe() {
 		// TODO Auto-generated constructor stub
@@ -68,16 +68,13 @@ public class Recipe {
 		return recipeDate;
 	}
 	public Integer getStar() {
-		if(star==0){
-			return 0;
-		}
-		return star/starHit;
+		return star;
 	}
 	public Integer getStarHit() {
 		return starHit;
 	}
-	public List<RecipeDetail> getRecipeDetail() {
-		return recipeDetail;
+	public List<DetailRecipe> getDetailRecipe() {
+		return detailRecipe;
 	}
 	public List<Comment> getCommentList() {
 		return commentList;
@@ -118,8 +115,8 @@ public class Recipe {
 	public void setStarHit(Integer starHit) {
 		this.starHit = starHit;
 	}
-	public void setRecipeDetail(List<RecipeDetail> recipeDetail) {
-		this.recipeDetail = recipeDetail;
+	public void setDetailRecipe(List<DetailRecipe> detailRecipe) {
+		this.detailRecipe = detailRecipe;
 	}
 	public void setCommentList(List<Comment> commentList) {
 		this.commentList = commentList;
@@ -131,9 +128,10 @@ public class Recipe {
 				+ ", recipeContents=" + recipeContents + ", tip=" + tip
 				+ ", recommend=" + recommend + ", hit=" + hit
 				+ ", ingredients=" + ingredients + ", recipeDate=" + recipeDate
-				+ ", star=" + star + ", starHit=" + starHit + ", recipeDetail="
-				+ recipeDetail + ", commentList=" + commentList + "]";
+				+ ", star=" + star + ", starHit=" + starHit + ", detailRecipe="
+				+ detailRecipe + ", commentList=" + commentList + "]";
 	}
+
 
 
 
