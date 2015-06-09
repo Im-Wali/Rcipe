@@ -52,6 +52,7 @@
 		FROM USERS
 		WHERE EMAIL LIKE #{email}
 	</select>
+	
 	<select id="checkedLogin" parameterType="user"
 		resultType="user">
 		SELECT nickname , email , password , user_img , join_date ,FLAG
@@ -59,6 +60,7 @@
 		WHERE EMAIL LIKE #{email} AND
 		PASSWORD LIKE #{password}
 	</select>
+	
 	<!-- SQL : SELECT ONE -->
 	<select id="getUser" parameterType="string" resultMap="userSelectMap">
 		SELECT
