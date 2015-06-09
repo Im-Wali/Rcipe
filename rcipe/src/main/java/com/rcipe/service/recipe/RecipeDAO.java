@@ -32,4 +32,7 @@ public interface RecipeDAO {
 	
 	public int updateRecipeCount(int recipeNo)throws Exception;
 
+	public List<Recipe> getRecipeListIngredients(List<String> searchIngredients) throws Exception;
+
+
 }

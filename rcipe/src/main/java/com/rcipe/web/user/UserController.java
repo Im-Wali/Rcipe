@@ -56,15 +56,23 @@ public class UserController {
 		return userService.checkedNickname(ConvertKo.convertKo(nickname)) + "";
 	}
 
-	@RequestMapping(value = "checkedPassword", method = RequestMethod.GET)
-	public @ResponseBody String checkedPassword(HttpSession session)
+	@RequestMapping(value = "checkedPassword", method = RequestMethod.POST)
+	public @ResponseBody String checkedPassword(@RequestParam("password") String password,HttpSession session)
 			throws Exception {
 		User user = (User) session.getAttribute("user");
 		System.out.println("checkedPassword user :" + user);
-		User newUser = userService.getUser(user.getEmail());
-		System.out
-				.println("checkedPassword password :" + newUser.getPassword());
-		return newUser.getPassword() + "";
+		System.out.println("입력된 password : "+password);
+		User newUser = new User();
+		newUser.setPassword(password);
+		System.out.println("입력된 password 암호화 : "+newUser.getPassword());
+		System.out.println("입력된 password 암호화1 : "+newUser.getDBPassword());
+		System.out.println("입력된 password 암호화2 : "+user.getDBPassword());
+		System.out.println("입력된 password 암호화3 : "+newUser.getPassword());
+		System.out.println("입력된 password 암호화4 : "+user.getPassword());
+		if(newUser.getDBPassword().equals(user.getPassword())){
+			return "true";
+		}
+		return "false";
 	}
 
 	@RequestMapping(value = "chechkedloginUser", method = RequestMethod.POST)
@@ -93,15 +101,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "viewUser", method = RequestMethod.GET)
-	public  String  viewUser()throws Exception{
+	public  String  viewUser() throws Exception{
 		System.out.println("AAAAAAAAAAaa");
 		return "user/viewUser";
 	}
 
 	@RequestMapping(value = "updatePassword", method = RequestMethod.POST)
-	public @ResponseBody void updatePassword(@ModelAttribute("user") User user,
-			Model model, HttpSession session,
-			@RequestParam("newPassword") String newPassword) throws Exception {
+	public void updatePassword(HttpSession session,
+			@RequestParam("updatePassword2") String newPassword) throws Exception {
 		System.out.println(newPassword);
 		User newUser = ((User) session.getAttribute("user"));
 		newUser.setPassword(newPassword);

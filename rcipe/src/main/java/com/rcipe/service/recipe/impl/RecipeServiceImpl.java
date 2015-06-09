@@ -1,5 +1,6 @@
 package com.rcipe.service.recipe.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,13 +83,32 @@ public class RecipeServiceImpl  implements RecipeService{
 
 	@Override
 	public Map<String, Object> getRecipeList(Search search) throws Exception {
-		// TODO Auto-generated method stub
-		List<Recipe> list = recipeDAO.getRecipeList(search);
-		int totalCount = recipeDAO.getTotalCount(search);
+		
+		String searchKeyword = search.getSearchKeyword();
+		
+		List<Recipe> list = null;
+		
+		if(searchKeyword==null){
+			list = recipeDAO.getRecipeList(search);		// order by 없음. 
+		}else{
+			if(searchKeyword.contains(",")==true){
+				String[] searchWordList = searchKeyword.split(",");
+				List<String> searchIngredients = new ArrayList<String>();
+				for(int i=0;i<searchWordList.length;i++){
+					searchIngredients.add(searchWordList[i]);
+				}
+				list = recipeDAO.getRecipeListIngredients(searchIngredients);
+			}else{
+				list = recipeDAO.getRecipeList(search); // nickname,title 기준으로 가져오는 것
+			}
+		}
+		
+		
+		// int totalCount = recipeDAO.getTotalCount(search);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
-		map.put("totalCount", new Integer(totalCount));
+		map.put("totalCount", list.size());
 		
 		return map;
 	}

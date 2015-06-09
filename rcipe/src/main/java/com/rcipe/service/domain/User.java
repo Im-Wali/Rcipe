@@ -145,11 +145,11 @@ public class User {
 	}
 
 	public String getPassword() {
-		return password;
+		return password ;
 	}
 
 	public void setPassword(String password) {
-		this.password = EncryptExample.encryptStr(password);
+		this.password=EncryptExample.encryptStr(password);
 	}
 
 
@@ -161,6 +161,10 @@ public class User {
 		this.joinDate = joinDate;
 	}
 
+	public String getDBPassword() {
+		return EncryptExample.encryptStr(password);
+	}
+	
 	@Override
 	public String toString() {
 		return "User [nickname=" + nickname + ", email=" + email + ", password="
