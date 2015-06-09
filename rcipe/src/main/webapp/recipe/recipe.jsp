@@ -103,7 +103,6 @@ stylize any heading tags withing white-panel below
 						<div style="margin-top: 1%" align="center">
 							<h2 style="font-size: 4em">${recipe.recipeTitle }</h2>
 						</div>
-						<%--
 						<div class="text-center center-block"
 							style="margin-left: 70%; " >
 						<jsp:include page="/sns/facebook.jsp"></jsp:include>
@@ -111,7 +110,6 @@ stylize any heading tags withing white-panel below
 						<img id="share_button" src="${pageContext.servletContext.contextPath}/img/mail.png">
 						<img id="share_button" src="${pageContext.servletContext.contextPath}/img/printer.png" height="60" width="60">
 						</div>
-					</div> --%>
 						<div align="center" style="margin-top: 2%">
 							<img class="img-rounded"
 								src="${pageContext.servletContext.contextPath}/images/${recipe.titleImage}">
@@ -120,51 +118,65 @@ stylize any heading tags withing white-panel below
 						<div class="row lead"
 							style="margin-top: 2%; margin-bottom: 0%; width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 100rem">
 							<div style="margin-top: 1%" align="right">
-								현재 평점 <span id="count-existing">${recipe.star/recipe.starHit }</span>
-								<span id="stars-existing" class="starrr" id="fixedStar"
-									data-rating='${recipe.star/recipe.starHit }'
-									style="color: orange;"></span>
+
+								<div id="fixedStar" data-rating='${recipe.star/recipe.starHit }'
+									style="color: orange;margin-right:9px;size:2em">
+									<c:forEach begin="1" end="${recipe.star/recipe.starHit}">
+										<i class='fa fa-star' style='margin-right:-8px;'></i>
+									</c:forEach>
+									<c:forEach begin="${recipe.star/recipe.starHit}" end="4">
+										<i class='fa fa-star-o' style='margin-right:-8px'></i>
+									</c:forEach>
+								</div>
+								<div id="count-existing">현재 평점${recipe.star/recipe.starHit }</div>
 							</div>
-							<c:if test="${user !=null }">
+							<c:if test="${user !=null && starRecipe !=null }">
 								<div style="margin-top: 1%" align="right">
-									별점 주기 <span id="count">${starRecipe.star}</span> <span
-										id="stars" data-rating='${starRecipe.star}' class="starrr"
-										style="color: orange;"></span>
+									<div id="stars" data-rating='${starRecipe.star}' class="starrr"
+										style="color: orange;"></div>
+									<div id="count">별점 주기 ${starRecipe.star}</div>
 
 								</div>
 							</c:if>
-							<c:if test="${user ==null }">
+							<c:if test="${user ==null && starRecipe ==null }">
 								<div style="margin-top: 1%" align="right">
-									<span id="stars" data-rating='0' class="starrr"
-										style="color: orange;"></span> 별점 주기 <span id="count">0</span>
+									<div id="stars" data-rating='0' class="starrr"
+										style="color: orange;"></div>
+									<div id="count">별점 주기0</div>
 								</div>
 							</c:if>
 
-						</div>
-						<div>
-							<h3 style="font-size: 3em">간단한 설명</h3>
-							<div style="font-size: medium; margin-top: 1%">${recipe.recipeContents }</div>
 						</div>
 					</div>
-					<div class="row"
-						style="width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 100rem">
+					<div>
 						<div style="margin-bottom: 1%; font-size: medium;">
-							<div>
-								<h3 style="font-size: 3em">요리재료</h3>
-							</div>
+							<h3 style="font-size: 3em">간단한 설명</h3>
 							<ul>
 								<li style="margin-top: 1%">
 									<div>
-										<div>${recipe.ingredients}</div>
+										<div style="font-size: x-large; margin-top: 2%">${recipe.recipeContents }</div>
 									</div>
 								</li>
 
 							</ul>
 						</div>
-						<div class="recipeTips" style="margin-top: 1%">
+						<div style="margin-bottom: 1%; font-size: medium;">
+							<div>
+								<h3 style="font-size: 3em">요리재료</h3>
+							</div>
+							<ul>
+								<li style="font-size: x-large; margin-top: 2%">
+									<div>
+										<div style="font-size: x-large; margin-top: 2%">${recipe.ingredients}</div>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+						<div style="margin-bottom: 1%; font-size: medium;">
 							<h3 style="font-size: 3em">*Tip</h3>
 							<ul>
-								<li>${recipe.tip }</li>
+								<li><div style="font-size: x-large; margin-top: 2%">${recipe.tip }</div></li>
 							</ul>
 						</div>
 						<!-- 영양정보는 보류 -->
