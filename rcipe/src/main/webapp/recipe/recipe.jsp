@@ -103,12 +103,15 @@ stylize any heading tags withing white-panel below
 						<div style="margin-top: 1%" align="center">
 							<h2 style="font-size: 4em">${recipe.recipeTitle }</h2>
 						</div>
-						<div class="text-center center-block"
-							style="margin-left: 70%; " >
-						<jsp:include page="/sns/facebook.jsp"></jsp:include>
-						<img id="share_button" src="${pageContext.servletContext.contextPath}/img/twitter.png">
-						<img id="share_button" src="${pageContext.servletContext.contextPath}/img/mail.png">
-						<img id="share_button" src="${pageContext.servletContext.contextPath}/img/printer.png" height="60" width="60">
+						<div class="text-center center-block" style="margin-left: 70%;">
+							<jsp:include page="/sns/facebook.jsp"></jsp:include>
+							<img id="share_button"
+								src="${pageContext.servletContext.contextPath}/img/twitter.png">
+							<img id="share_button"
+								src="${pageContext.servletContext.contextPath}/img/mail.png">
+							<img id="share_button"
+								src="${pageContext.servletContext.contextPath}/img/printer.png"
+								height="60" width="60">
 						</div>
 						<div align="center" style="margin-top: 2%">
 							<img class="img-rounded"
@@ -120,12 +123,12 @@ stylize any heading tags withing white-panel below
 							<div style="margin-top: 1%" align="right">
 
 								<div id="fixedStar" data-rating='${recipe.star/recipe.starHit }'
-									style="color: orange;margin-right:9px;size:2em">
+									style="color: orange; margin-right: 9px; size: 2em">
 									<c:forEach begin="1" end="${recipe.star/recipe.starHit}">
-										<i class='fa fa-star' style='margin-right:-8px;'></i>
+										<i class='fa fa-star' style='margin-right: -8px;'></i>
 									</c:forEach>
 									<c:forEach begin="${recipe.star/recipe.starHit}" end="4">
-										<i class='fa fa-star-o' style='margin-right:-8px'></i>
+										<i class='fa fa-star-o' style='margin-right: -8px'></i>
 									</c:forEach>
 								</div>
 								<div id="count-existing">현재 평점${recipe.star/recipe.starHit }</div>
