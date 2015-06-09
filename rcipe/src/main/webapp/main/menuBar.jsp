@@ -3,7 +3,14 @@
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/style.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/menuBar01.css" type="text/css" />
 <script src="${pageContext.servletContext.contextPath }/js/menuBar01.js">
-	
+</script>
+<script type="text/javascript">
+function search() {
+  var searchKeyword = document.getElementById("searchKeyword").value;
+  alert(searchKeyword);
+  location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='+searchKeyword;
+  }
+  
 </script>
 <!-- login.jsp :로그인 모달을 가지고 있는 jsp파일 -->
 <jsp:include page="/user/login.jsp"></jsp:include>
@@ -90,22 +97,22 @@
 		</ul>
 	</div>
 	<div align="right" style="padding-right: 10px; margin-top: 1%">
-		<form action="${pageContext.servletContext.contextPath }/main/searchResult.jsp" method="POST">
-			<span class="row"> <span class="col-sm-5 col-sm-offset-2"
-				style="display: inline-block; text-align: center; margin-top: 1%;">
-					<span id="imaginary_container"> <span
-						class="input-group stylish-input-group"> <input type="text"
-							class="form-control" placeholder="Search" id="inputsearch">
-							<span class="input-group-addon">
-								<button type="submit">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>
-						</span>
-					</span>
-				</span>
-			</span>
-			</span>
-		</form>
+		<form name="SearchForm" action="" method="POST" >
+      <span class="row"> <span class="col-sm-5 col-sm-offset-2"
+        style="display: inline-block; text-align: center; margin-top: 1%;">
+          <span id="imaginary_container"> <span
+            class="input-group stylish-input-group"> <input type="text"
+              class="form-control" placeholder="Search" id="searchKeyword" URIEncoding="UTF-8">
+              <span class="input-group-addon">
+                <button type="button" onclick="javascript:search();">
+                  <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+          </span>
+        </span>
+      </span>
+      </span>
+    </form>
 		<span class="dropdown dropdown-toggle"> <img
 			src="${pageContext.servletContext.contextPath }/img/001.jpg" class="img-circle" role="button"
 			style="width: 80px; height: 80px; margin-right: 1%; margin-top: -2%"

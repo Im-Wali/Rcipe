@@ -71,17 +71,23 @@
 								function() {
 									var p = $('#updatePassword2').val();
 									// if($('#passwordCheck').val()==='비밀번호 확인 완료')
-									$.get(
-											"../user/updatePassword?newPassword="
-													+ p, function(data) {
 
-											});
-												alert("비밀번호가 변경 되었습니다.");
+									$.post("../user/checkedPassword", {
+										password : $('#originaPassword').val()
+									}, function(data, str) {
+										if (data === "false") {
+											alert("기존 비밀번호가 일치하지 않습니다.");
+											 document.updatePasswordForm.originaPassword.focus();
+										} else if (data === "true") {
+											alert("성공");
+											$('#updatePasswordForm').submit();
+										}
+									});
 
 								});
 					});
 </script>
-<form method="POST" action="#">
+<form method="POST" action="${pageContext.servletContext.contextPath }/app/user/updatePassword" id="updatePasswordForm">
 	<div class="modal fade" id="modifyPasswordModal" tabindex="-1"
 		role="dialog" aria-labelledby="modifyPasswordModal" aria-hidden="true">
 		<div class="modal-dialog">
@@ -96,7 +102,8 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="recipient-name" class="control-label">기존
-							비밀번호입력</label> <input type="password" class="form-control" id="password">
+							비밀번호입력</label> <input type="password" class="form-control"
+							id="originaPassword">
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">변경 비밀번호</label> <input
@@ -106,13 +113,13 @@
 					</div>
 					<div class="form-group">
 						<label for="message-text" class="control-label">변경 비밀번호</label> <input
-							type="password" class="form-control" id="updatePassword2"
+							type="password" class="form-control" id="updatePassword2" name="updatePassword2"
 							placeholder="비밀번호확인">
 						<div id="updatePassword1Ckecked2"></div>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button id="passwardOK" type="submit" class="btn btn-primary">확인</button>
+					<button id="passwardOK" type="button" class="btn btn-primary">확인</button>
 				</div>
 			</div>
 		</div>
