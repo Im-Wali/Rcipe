@@ -133,6 +133,36 @@
 		</where>
 	</select>
 
+	<select id="getRecipeListIngredients" parameterType="int"
+		resultMap="RecipeSelectMap">
+		SELECT rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont,
+		rcp_tip,
+		rcp_cnt, ingredients, rcp_date
+		FROM recipes
+		WHERE rcp_no =
+		${value}
+	</select>
+
+	<select id="getIngredientsList" parameterType="java.util.List"
+		resultType="int">
+		SELECT inner.rcp_no FROM (SELECT rcp_no,count(*) AS firstRCP FROM
+		rcp_ing
+		WHERE ingredient_no IN (SELECT ingredient_no FROM ingredients
+		WHERE
+		ingredient_name IN
+		<foreach item="item" collection="list" open="(" close=")"
+			separator=",">
+			#{item}
+		</foreach>
+		) GROUP BY rcp_no ORDER BY firstRCP DESC)
+		inner
+	</select>
+
+	<select id="getCheckIngredient" parameterType="search"
+		resultType="int">
+		SELECT ingredient_no FROM ingredients WHERE ingredient_name = '${searchKeyword}'
+	</select>
+
 	<select id="getTotalCount" parameterType="search" resultType="int">
 		SELECT COUNT(*)
 		FROM ( SELECT *
