@@ -48,9 +48,15 @@ public class RecipeController {
 		System.out.println(getClass() + "start......");
 	}
 	@RequestMapping(value = "/viewRecipe", method = RequestMethod.GET)
-	public  String  viewRecipe(Model model,@RequestParam("recipeNo") int recipeNo)throws Exception{
+	public  String  viewRecipe(Model model,@RequestParam("recipeNo") int recipeNo,HttpSession session)throws Exception{
 		Recipe recipe=recipeService.getRecipe(recipeNo);
 		recipe.setDetailRecipe(detailRecipeService.getDetailRecipeList(recipe.getRecipeNo()));
+		User user=(User)session.getAttribute("user");
+		if(user!=null){
+			Recipe starRecipe=new Recipe(recipe.getRecipeNo(),user.getNickname());
+			starRecipe=recipeService.getStar(starRecipe);
+			model.addAttribute("starRecipe",starRecipe);
+		}
 		model.addAttribute("recipe",recipe);
 		model.addAttribute("content",0);
 		System.out.println(recipe);
@@ -109,6 +115,16 @@ public class RecipeController {
 		detailRecipeService.insertDetailRecipe(list);
 		recipeService.insertRcpIng(ingredientList);
 		return "redirect:viewRecipe?recipeNo="+recipeNo;
+	}
+	@RequestMapping(value = "/insertStar", method = RequestMethod.POST)
+	public ResponseEntity<String> insertStar(Recipe recipe) throws Exception {
+		Map<String,Object> map=new HashMap<String, Object>();
+		map.put("massage", recipeService.insertStar(recipe));
+		String jsonString = new Gson().toJson(map);
+		System.out.println("jsonString : " + jsonString);
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Content-Type", "text/plain;charset=UTF-8");
+		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/getIngredientList", method = RequestMethod.POST)

@@ -15,6 +15,10 @@ public interface RecipeService {
 	
 	public Recipe insertRecipe(Recipe recipe)throws Exception;
 	
+	public String insertStar(Recipe recipe)throws Exception;
+	
+	public Recipe getStar(Recipe recipe)throws Exception;
+	
 	public boolean insertRcpIng(List<Ingredient> list)throws Exception;
 	
 	public boolean deleteRecipe(int recipeNo) throws Exception;

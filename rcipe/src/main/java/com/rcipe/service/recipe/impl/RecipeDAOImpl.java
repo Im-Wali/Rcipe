@@ -22,6 +22,13 @@ public  class RecipeDAOImpl  implements RecipeDAO{
 	public RecipeDAOImpl() {
 		System.out.println(getClass()+"start....");
 	}
+	
+
+	@Override
+	public Recipe getStar(Recipe recipe) throws Exception {
+		return sqlSession.selectOne("RecipeMapper.selectStar",recipe);
+	}
+
 
 	@Override
 	public List<Ingredient> getIngredientList(String keyword) throws Exception {
@@ -35,6 +42,16 @@ public  class RecipeDAOImpl  implements RecipeDAO{
 			return false;
 		}
 		return sqlSession.insert("RecipeMapper.insertIngredient",ingredientName)==1 ? true:false;
+	}
+
+	@Override
+	public String insertStar(Recipe recipe) throws Exception {
+		if(sqlSession.update("RecipeMapper.updateStar",recipe)== 1){
+			return "별점을 "+recipe.getStar()+"개로 수정했습니다.";
+		}else if(sqlSession.insert("RecipeMapper.insertStar",recipe) ==1){
+			return "별점을 "+recipe.getStar()+"개 주었습니다..";
+		}else
+			return "별점 주는중 비정상적으로 종료되었습니다";
 	}
 
 	@Override

@@ -31,6 +31,11 @@ public class RecipeServiceImpl  implements RecipeService{
 	}
 
 	@Override
+	public Recipe getStar(Recipe recipe) throws Exception {
+		return recipeDAO.getStar(recipe);
+	}
+
+	@Override
 	public List<Ingredient> getIngredientList(String keyword) throws Exception {
 		return recipeDAO.getIngredientList(keyword);
 	}
@@ -38,6 +43,11 @@ public class RecipeServiceImpl  implements RecipeService{
 	@Override
 	public boolean insertIngredient(String ingredientName) throws Exception {
 		return recipeDAO.insertIngredient(ingredientName);
+	}
+
+	@Override
+	public String insertStar(Recipe recipe) throws Exception {
+		return recipeDAO.insertStar(recipe);
 	}
 
 	@Override

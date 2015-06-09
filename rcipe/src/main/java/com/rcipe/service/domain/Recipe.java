@@ -36,6 +36,13 @@ public class Recipe {
 	public Recipe() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Recipe(Integer recipeNo, String nickname) {
+		super();
+		this.recipeNo = recipeNo;
+		this.nickname = nickname;
+	}
+
 	public Integer getRecipeNo() {
 		return recipeNo;
 	}
@@ -64,10 +71,7 @@ public class Recipe {
 		return recipeDate;
 	}
 	public Integer getStar() {
-		if(star==0){
-			return 0;
-		}
-		return star/starHit;
+		return star;
 	}
 	public Integer getStarHit() {
 		return starHit;

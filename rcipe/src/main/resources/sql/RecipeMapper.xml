@@ -17,8 +17,8 @@
 		<result property="hit" column="rcp_cnt" jdbcType="INTEGER" />
 		<result property="ingredients" column="ingredients" jdbcType="CLOB" />
 		<result property="recipeDate" column="rcp_date" jdbcType="DATE" />
-		<result property="star" column="star_tot_cnt" jdbcType="INTEGER" />
-		<result property="starHit" column="star_cnt" jdbcType="INTEGER" />
+		<result property="star" column="star_cnt" jdbcType="INTEGER" />
+		<result property="starHit" column="star_tot_cnt" jdbcType="INTEGER" />
 	</resultMap>
 	<resultMap type="ingredient" id="ingredientSelectMap">
 		<result property="recipeNo" column="RCP_NO" jdbcType="INTEGER" />
@@ -63,11 +63,23 @@
 		,#{recipeContents},#{tip},0
 		,#{ingredients},SYSDATE)
 	</insert>
+	 <select id="selectStar" parameterType="recipe" resultMap="RecipeSelectMap">
+	 SELECT star_cnt ,rcp_no,nickname
+	 FROM stars
+	 WHERE rcp_no=#{recipeNo} AND nickname LIKE #{nickname}
+	 </select>
 
 	<insert id="insertStar" parameterType="recipe">
-	INSERT INTO stars(RCP_NO,NICKNAME,star_cnt) 
-	values(#{recipeNo},#{nickname},#{star})
+		INSERT INTO stars(RCP_NO,NICKNAME,star_cnt) 
+		values(#{recipeNo},#{nickname},#{star})
 	</insert>
+	
+	<update id="updateStar" parameterType="recipe" >
+		UPDATE stars
+		set
+		star_cnt=#{star}
+		WHERE rcp_no=#{recipeNo} AND nickname LIKE #{nickname}
+	</update>
 
 	<insert id="insertRcpIng" parameterType="ingredient">
 		INSERT INTO
@@ -78,21 +90,21 @@
 	</insert>
 
 	<select id="getRecipe" parameterType="int" resultMap="RecipeSelectMap">
-	SELECT
-	r.rcp_no rcp_no, r.nickname nickname, r.rcp_title rcp_title,
-	r.rcp_img_path rcp_img_path, r.rcp_cont rcp_cont,
-	r.rcp_tip rcp_tip,
-	r.rcp_cnt rcp_cnt,
-	r.ingredients ingredients, to_char( r.rcp_date,'YYYY/MM/DD')
-	rcp_date,
-	s.star_tot_cnt star_tot_cnt, s.star_cnt star_cnt
-	FROM recipes
-	r,(SELECT
-	COUNT(*) star_tot_cnt,SUM(STAR_CNT)
-	star_cnt FROM stars
-	WHERE rcp_no=#{value}) s
-	WHERE r.rcp_no
-	= #{value} 
+		SELECT
+		r.rcp_no rcp_no, r.nickname nickname, r.rcp_title rcp_title,
+		r.rcp_img_path rcp_img_path, r.rcp_cont rcp_cont,
+		r.rcp_tip rcp_tip,
+		r.rcp_cnt rcp_cnt,
+		r.ingredients ingredients, to_char( r.rcp_date,'YYYY/MM/DD')
+		rcp_date,
+		s.star_tot_cnt star_tot_cnt, s.star_cnt star_cnt
+		FROM recipes
+		r,(SELECT
+		COUNT(*) star_tot_cnt,SUM(STAR_CNT)
+		star_cnt FROM stars
+		WHERE rcp_no=#{value}) s
+		WHERE r.rcp_no
+		= #{value}
 	</select>
 
 	<delete id="deleteRecipe" parameterType="int">
