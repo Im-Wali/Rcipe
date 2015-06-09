@@ -97,9 +97,11 @@ stylize any heading tags withing white-panel below
 			<div class="form-login " style="margin-bottom: 2%;">
 				<div>
 					<div>
-			<div align="right" style="font-size: medium;">${recipe.recipeDate}</div>
+						<div align="right" style="font-size: medium;">${recipe.recipeDate}</div>
+						<div align="right" style="font-size: medium;">조회수 :
+							${recipe.hit}</div>
 						<div style="margin-top: 1%" align="center">
-							<h2 style="font-size:4em">${recipe.recipeTitle }</h2>
+							<h2 style="font-size: 4em">${recipe.recipeTitle }</h2>
 						</div>
 						<%--
 						<div class="text-center center-block"
@@ -118,14 +120,25 @@ stylize any heading tags withing white-panel below
 						<div class="row lead"
 							style="margin-top: 2%; margin-bottom: 0%; width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 100rem">
 							<div style="margin-top: 1%" align="right">
-								<span id="stars-existing" class="starrr"
-									data-rating='${recipe.star}' style="color: orange;"></span> 현재
-								평점 <span id="count-existing">${recipe.star}</span>
+								현재 평점 <span id="count-existing">${recipe.star/recipe.starHit }</span>
+								<span id="stars-existing" class="starrr" id="fixedStar"
+									data-rating='${recipe.star/recipe.starHit }'
+									style="color: orange;"></span>
 							</div>
-							<div style="margin-top: 1%" align="right">
-								<span id="stars" class="starrr" style="color: orange;"></span>
-								별점 주기 <span id="count">0</span>
-							</div>
+							<c:if test="${user !=null }">
+								<div style="margin-top: 1%" align="right">
+									별점 주기 <span id="count">${starRecipe.star}</span> <span
+										id="stars" data-rating='${starRecipe.star}' class="starrr"
+										style="color: orange;"></span>
+
+								</div>
+							</c:if>
+							<c:if test="${user ==null }">
+								<div style="margin-top: 1%" align="right">
+									<span id="stars" data-rating='0' class="starrr"
+										style="color: orange;"></span> 별점 주기 <span id="count">0</span>
+								</div>
+							</c:if>
 
 						</div>
 						<div>

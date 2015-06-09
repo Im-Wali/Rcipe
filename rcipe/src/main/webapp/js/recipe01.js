@@ -52,9 +52,27 @@ var __slice = [].slice;
 	            if (this.options.rating === rating) {
 	                rating = void 0;
 	            }
+	            if($('#userNickname').val()==""){
+	            	alert("로그인후 이용해주세요");
+	            	return;
+	            }
 	            this.options.rating = rating;
 	            this.syncRating();
-	            return this.$el.trigger('starrr:change', rating);
+	            this.$el.trigger('starrr:change', rating);
+	            $.ajax("insertStar", {
+					method : 'POST',
+					dataType : 'json',
+					data : 'star='+rating+'&nickname='
+							+ $('#userNickname').val()
+							+ '&'
+							+ 'recipeNo='
+							+ $('#recipeNo')
+									.val(),
+					success : function(result) {
+						alert(result.massage);
+					}
+				});
+	            return ;
 	        };
 
 	        Starrr.prototype.syncRating = function(rating) {
