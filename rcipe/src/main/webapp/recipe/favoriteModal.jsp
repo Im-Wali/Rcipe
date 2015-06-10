@@ -6,11 +6,12 @@
 		$("#favoriteAddOK").click(function(event) {
 			var recipeNo = document.getElementById("recipeNo").value;
 			var favoriteTitle = $('#favoriteTitle').val();
+			alert(favoriteTitle);
 			if (favoriteTitle == '') {
 				alert("제목을 입력해주세요!");
 				event.preventDefault();
 			}else{
-				$.get("${pageContext.servletContext.contextPath }/app/favorite/addFavorite?recipeNo="+ recipeNo+ "&favoriteTitle="+favoriteTitle,
+				$.get("${pageContext.servletContext.contextPath }/app/favorite/insertFavorite?recipeNo="+ recipeNo+ "&favorTitle="+favoriteTitle,
           function(data) {
 					   
           });
