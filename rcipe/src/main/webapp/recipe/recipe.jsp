@@ -103,7 +103,7 @@ stylize any heading tags withing white-panel below
 						<div style="margin-top: 1%" align="center">
 							<h2 style="font-size: 4em">${recipe.recipeTitle }</h2>
 						</div>
-						<div class="text-center center-block" style="margin-left: 70%;">
+						<%-- <div class="text-center center-block" style="margin-left: 70%;">
 							<jsp:include page="/sns/facebook.jsp"></jsp:include>
 							<img id="share_button"
 								src="${pageContext.servletContext.contextPath}/img/twitter.png">
@@ -112,7 +112,7 @@ stylize any heading tags withing white-panel below
 							<img id="share_button"
 								src="${pageContext.servletContext.contextPath}/img/printer.png"
 								height="60" width="60">
-						</div>
+						</div> --%>
 						<div align="center" style="margin-top: 2%">
 							<img class="img-rounded"
 								src="${pageContext.servletContext.contextPath}/images/${recipe.titleImage}">
