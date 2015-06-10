@@ -4,89 +4,67 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="BoardMapper">
+<mapper namespace="FavortiteMapper">
 
-	<resultMap type="com.model2.mvc.service.domain.Board" id="boardSelectMap">
-		<result property="boardNo" column="board_no" jdbcType="INTEGER" />
-		<result property="writer.userId" column="user_id" jdbcType="VARCHAR" />
-		<result property="boardTitle" column="board_title" jdbcType="VARCHAR" />
-		<result property="boardContent" column="board_content"
-			jdbcType="VARCHAR" />
+	<resultMap type="com.rcipe.service.domain.Favorite" id="FavoriteSelectMap">
+		<result property="recipeNo" column="rcp_no" jdbcType="INTEGER" />
+		<result property="nickname" column="nickname" jdbcType="VARCHAR" />
+		<result property="favorTitle" column="fav_title" jdbcType="VARCHAR" />
+		<result property="favorDate" column="fav_date" jdbcType="DATE" />
 	</resultMap>
 
-	<insert id="insertBoard" parameterType="com.model2.mvc.service.domain.Board">
-		INSERT
-		INTO
-		Board(board_no, user_id, board_title, board_content)
-		VALUES(seq_board_board_no.NEXTVAL, #{writer.userId}, #{boardTitle},
-		#{boardContent})
-	</insert>
+	<insert id="insertFavorite" parameterType="favorite">
+        <selectKey resultType="int" keyProperty="recipeNo" order="BEFORE">
+            select SEQ_FAV_RECIPES_NO.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO FAV_RECIPES(RCP_NO,NICKNAME
+        ,FAV_TITLE,FAV_DATE)
 
-	<select id="getBoard" parameterType="int" resultMap="boardSelectMap">
-		SELECT
-		user_id, board_title, board_content, board_no
-		FROM board
-		WHERE board_no = #{value}
-	</select>
+        values(#{recipeNo},#{nickname},
+        #{favorTitle},SYSDATE)
+    </insert>
 
-	<update id="updateBoard" parameterType="com.model2.mvc.service.domain.Board">
-		UPDATE board
-		<set>
-			board_title = #{boardTitle},
-			board_content = #{boardContent},
-		</set>
-		WHERE board_no = #{boardNo}
-	</update>
+	<sql id="searchFavorite" >
+        SELECT
+        f.rcp_no rcp_no, f.nickname nickname, f.fav_title fav_title,
+        to_char(f.fav_date,'YYYY/MM/DD') fav_date
+        FROM fav_recipes f, recipes r, users u
+        
+        WHERE
+        f.rcp_no = r.rcp_no AND f.nickname = u.nickame AND f.nickname = #{nickname}
+        ORDER BY fav_date
+    </sql>
 
-	<delete id="removeBoard" parameterType="int">
-		DELETE
-		FROM board
-		WHERE
-		board_no = #{value}
-	</delete>
+	<select id="getFavoriteList" parameterType="java.util.Map"
+        resultMap="FavoriteSelectMap">
+        SELECT
+        inner.*
+        FROM(
+        SELECT
+        inner_table.*, ROWNUM AS row_seq FROM
+        (
+        <include refid="searchFavorite" />
+        )
+        inner_table
+        WHERE ROWNUM &lt;= #{endRowNum} ) inner
+    WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum}
+    </select> 
+    
+    <delete id="deleteFavorite" parameterType="string">
+        DELETE FROM fav_recipes
+        WHERE nickname=${nickname}
+    </delete>
 
-	<select id="getUserList1" parameterType="com.model2.mvc.common.Search"
-		resultMap="boardSelectMap">
-		<include refid="sql" />
-	</select>
-
-	<select id="getTotalCount" parameterType="com.model2.mvc.common.Search"
-		resultType="int">
-		SELECT COUNT(*) FROM
-		(<include refid="sql" />)
-		countTable
-	</select>
-
-	<select id="getBoardList" parameterType="com.model2.mvc.common.Search"
-		resultMap="boardSelectMap">
-		SELECT * FROM ( SELECT inner_table.* , ROWNUM AS row_seq FROM (
-		<include refid="sql" />
-		) inner_table WHERE ROWNUM <![CDATA[<]]>=#{currentPage}*#{pageSize}
-		)
-		WHERE row_seq BETWEEN (#{currentPage}-1)*#{pageSize}+1 AND
-		#{currentPage}*#{pageSize}
-
-	</select>
-
-	<sql id="sql">
-		SELECT
-		board_no, user_id, board_title, board_content
-		FROM board
-		<where>
-			<choose>
-				<when test="searchCondition != null">
-					<if test="searchCondition == 0 and searchKeyword !='' ">
-						user_id IN
-						#{searchKeyword}
-					</if>
-					<if test="searchCondition == 1 and searchKeyword !='' ">
-						user_name IN
-						#{searchKeyword}
-					</if>
-				</when>
-			</choose>
-		</where>
-		ORDER BY board_no DESC
-	</sql>
+    <select id="getTotalCount" parameterType="user" resultType="int">
+        SELECT COUNT(*)
+        FROM ( SELECT *
+        FROM fav_recipes
+         <where> 
+         <if test="nickname != null">
+            nickname = #{nickname} 
+         </if>
+         </where> 
+        ) countTable
+    </select>
 
 </mapper>

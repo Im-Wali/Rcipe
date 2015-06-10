@@ -19,6 +19,7 @@
 		<typeAlias alias="recipe" type="com.rcipe.service.domain.Recipe"/>
 		<typeAlias alias="detailRecipe" type="com.rcipe.service.domain.DetailRecipe"/>
 		<typeAlias alias="ingredient" type="com.rcipe.service.domain.Ingredient"/>
+		<typeAlias alias="favorite" type="com.rcipe.service.domain.Favorite"/>
 	</typeAliases>
 
 	<!-- SQL Definition :: file include -->
@@ -28,6 +29,8 @@
 		<mapper resource="sql/CommentMapper.xml" />
 	  <mapper resource="sql/RecipeMapper.xml" />
 	  <mapper resource="sql/DetailRecipeMapper.xml" />
+	  <mapper resource="sql/FavoriteMapper.xml" />
+	  
 	</mappers>
 
 </configuration>
