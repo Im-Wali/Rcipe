@@ -4,9 +4,9 @@
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="FavortiteMapper">
+<mapper namespace="FavoriteMapper">
 
-	<resultMap type="com.rcipe.service.domain.Favorite" id="FavoriteSelectMap">
+	<resultMap type="favorite" id="FavoriteSelectMap">
 		<result property="recipeNo" column="rcp_no" jdbcType="INTEGER" />
 		<result property="nickname" column="nickname" jdbcType="VARCHAR" />
 		<result property="favorTitle" column="fav_title" jdbcType="VARCHAR" />
@@ -14,12 +14,8 @@
 	</resultMap>
 
 	<insert id="insertFavorite" parameterType="favorite">
-        <selectKey resultType="int" keyProperty="recipeNo" order="BEFORE">
-            select SEQ_FAV_RECIPES_NO.NEXTVAL FROM DUAL
-        </selectKey>
         INSERT INTO FAV_RECIPES(RCP_NO,NICKNAME
         ,FAV_TITLE,FAV_DATE)
-
         values(#{recipeNo},#{nickname},
         #{favorTitle},SYSDATE)
     </insert>
