@@ -1,9 +1,9 @@
 package com.rcipe.service.favorite;
 
-public class FavoriteService {
+import com.rcipe.service.domain.Favorite;
 
-	public FavoriteService() {
-		// TODO Auto-generated constructor stub
-	}
+public interface FavoriteService {
+
+	public boolean insertFavorite(Favorite favorite)throws Exception;
 
 }
