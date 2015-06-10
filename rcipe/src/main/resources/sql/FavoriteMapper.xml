@@ -46,9 +46,9 @@
     WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum}
     </select> 
     
-    <delete id="deleteFavorite" parameterType="string">
+    <delete id="deleteFavorite" parameterType="favorite">
         DELETE FROM fav_recipes
-        WHERE nickname=${nickname}
+        WHERE nickname = #{nickname} AND rcp_no = #{recipeNo}
     </delete>
 
     <select id="getTotalCount" parameterType="user" resultType="int">
