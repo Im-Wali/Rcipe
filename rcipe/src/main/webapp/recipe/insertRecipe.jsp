@@ -68,7 +68,7 @@ body {
 						$(document.body)
 								.on(
 										'click',
-										'#addDetail',
+										'.addDetail',
 										function(event) {
 											detailNumber++;
 											detailCount++;
@@ -321,9 +321,9 @@ body {
 				<input type="hidden" id="ingredientIds"name="ingredientIds" value="">
 				<div align="right">
 					<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
-						입력하세요!</span> <input type="button" class="btn   btn-lg"
+						입력하세요!</span> <input type="button" class="btn   btn-lg addDetail"
 						value="추가 사진 등록" style="margin-right: 1%; margin-bottom: 1%"
-						id="addDetail"> <input type="submit" id="recipeSubmit"
+						> <input type="submit" id="recipeSubmit"
 						class="btn  btn-lg" value="레시피 등록"
 						style="margin-right: 1%; margin-bottom: 1%;">
 				</div>
@@ -416,9 +416,9 @@ body {
 				<div id="detailLastDiv"></div>
 				<div class="form-login " style="margin-bottom: 2%;" align="center">
 					<div>
-					<input type="button" class="btn   btn-lg"
+					<input type="button" class="btn   btn-lg addDetail" 
 						value="추가 사진 등록" style="margin-right: 1%; margin-bottom: 1%;width: 100%;height:100%;background-color:#707070;color:white"
-						id="addDetail">
+						>
 					</div>
 					<div>
 						<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
