@@ -6,4 +6,6 @@ public interface FavoriteDAO {
 
 	public int insertFavorite(Favorite favorite)throws Exception;
 
+	public int deleteFavorite(Favorite favorite)throws Exception;
+
 }

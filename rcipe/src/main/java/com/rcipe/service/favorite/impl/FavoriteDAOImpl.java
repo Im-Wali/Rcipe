@@ -34,4 +34,10 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 		return sqlSession.insert("FavoriteMapper.insertFavorite",favorite);
 	}
 
+	@Override
+	public int deleteFavorite(Favorite favorite) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("FavoriteMapper.deleteFavorite",favorite);
+	}
+
 }

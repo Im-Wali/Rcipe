@@ -26,4 +26,10 @@ public class FavoriteServiceImpl implements FavoriteService {
 		return  favoriteDAO.insertFavorite(favorite) == 1 ? true : false;
 	}
 
+	@Override
+	public boolean deleteFavorite(Favorite favorite) throws Exception {
+		// TODO Auto-generated method stub
+		return favoriteDAO.deleteFavorite(favorite) == 1 ? true : false;
+	}
+
 }

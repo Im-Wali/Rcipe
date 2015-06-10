@@ -6,4 +6,6 @@ public interface FavoriteService {
 
 	public boolean insertFavorite(Favorite favorite)throws Exception;
 
+	public boolean deleteFavorite(Favorite favorite) throws Exception;
+
 }
