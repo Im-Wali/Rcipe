@@ -7,7 +7,6 @@
 <script type="text/javascript">
 function search() {
   var searchKeyword = document.getElementById("searchKeyword").value;
-  alert(searchKeyword);
   location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='+searchKeyword;
   }
   
@@ -133,7 +132,7 @@ function search() {
 						style="background-color: #FF9933; border: #FF9933; color: black">레시피등록</a></li>
 				</div>
 				<div align="center">
-					<li><a href="${pageContext.servletContext.contextPath }/app/favorite/favorite" class="btn btn-primary"
+					<li><a href="${pageContext.servletContext.contextPath }/app/favorite/getfavoriteList" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">즐겨찾기</a></li>
 				</div>
 				<div align="center">
