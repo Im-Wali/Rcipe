@@ -97,6 +97,9 @@ stylize any heading tags withing white-panel below
 			<div class="form-login " style="margin-bottom: 2%;">
 				<div>
 					<div>
+					   <jsp:include page="favoriteModal.jsp"></jsp:include>
+						<div align="right"><button type="button" class="btn btn-warning" data-toggle="modal"
+            data-target="#modifyFavoriteAdd" data-backdrop="false" data-dismiss="modal">즐겨찾기 추가</button></div>
 						<div align="right" style="font-size: medium;">${recipe.recipeDate}</div>
 						<div align="right" style="font-size: medium;">조회수 :
 							${recipe.hit}</div>
