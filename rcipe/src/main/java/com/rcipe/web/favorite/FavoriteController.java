@@ -1,6 +1,8 @@
 package com.rcipe.web.favorite;
 
 import java.net.URLDecoder;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.rcipe.commons.Search;
 import com.rcipe.service.domain.Favorite;
 import com.rcipe.service.domain.User;
 import com.rcipe.service.favorite.FavoriteService;
@@ -46,10 +50,29 @@ public class FavoriteController {
 	}
 	
 	@RequestMapping(value = "/getfavoriteList", method = RequestMethod.GET)
-	public void getfavoriteList(@ModelAttribute("favorite") Favorite favorite,
+	public ModelAndView getFavoriteList(@ModelAttribute("favorite") Favorite favorite,
+			@ModelAttribute("search") Search search,
 			HttpSession session) throws Exception {
 		
 		System.out.println("start getfavoriteList");
+		
+		favorite.setNickname(((User)session.getAttribute("user")).getNickname());
+		
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("favorite", favorite);
+		map1.put("search", search);
+		
+		Map<String, Object> map2 = favoriteService.getFavoriteList(map1);
+		
+		System.out.println("totalCount : "+ map2.get("totalCount") + "list : " + map2.get("list"));
+		
+		ModelAndView modelAndView = new ModelAndView();
+		
+		modelAndView.setViewName("forward:../../main/favorite.jsp");
+		System.out.println(modelAndView);
+		
+		return modelAndView;
+		
 		
 	}
 	
