@@ -39,6 +39,11 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
+	public boolean deleteRecipe(String path) throws Exception {
+		return FileUtil.deleteFile(ctx.getRealPath("/images") + "/"+path);
+	}
+
+	@Override
 	public boolean deleteModifyPicture(String deletePicturePaths)
 			throws Exception {
 		String paths[] = deletePicturePaths.split(",");
