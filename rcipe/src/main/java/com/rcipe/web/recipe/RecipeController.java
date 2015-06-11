@@ -1,7 +1,6 @@
 package com.rcipe.web.recipe;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -224,6 +223,20 @@ public class RecipeController {
 		System.out.println(modelAndView);
 		return modelAndView;
 
+	}
+	
+	
+	@RequestMapping(value = "/deleteRecipe", method = RequestMethod.GET)
+	public void deleteRecipe(@RequestParam("recipeNo") int recipeNo, @RequestParam("imagePath") String imagePath,ServletResponse response) throws Exception {
+		
+		String[] iamgePathArray = imagePath.split("/");
+		System.out.println(iamgePathArray[0]+"/"+iamgePathArray[1]);
+		
+		fileService.deleteRecipeImages(iamgePathArray[0]+"/"+iamgePathArray[1]);
+		
+		recipeService.deleteRecipe(recipeNo);
+		
+		
 	}
 
 }
