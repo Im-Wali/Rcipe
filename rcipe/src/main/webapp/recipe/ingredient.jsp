@@ -159,6 +159,10 @@
 						$("#insertIngredient").submit(function(event){
 							event.preventDefault();
 							$("#ingredientAdmitButton").click();
+						});
+						$("#searchIngredientForm").submit(function(event){
+							event.preventDefault();
+							$("#ingredientSearch").click();
 						})
 						$("#ingredientAdmitButton")
 								.click(
@@ -223,6 +227,7 @@
 				<div class="row" style="margin-top: 2%;">
 					<div class="col-md-1"></div>
 					<div class="col-md-10">
+					<form id="searchIngredientForm" action="#">
 						<span id="imaginary_container"> <span
 							class="input-group stylish-input-group"> <input
 								type="text" class="form-control" placeholder="Search"
@@ -233,6 +238,7 @@
 							</span>
 						</span>
 						</span>
+						</form>
 					</div>
 					<div class="col-md-1"></div>
 				</div>
