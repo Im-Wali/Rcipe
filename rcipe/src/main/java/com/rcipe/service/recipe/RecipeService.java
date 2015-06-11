@@ -15,6 +15,8 @@ public interface RecipeService {
 	
 	public Recipe insertRecipe(Recipe recipe)throws Exception;
 	
+	public int updateRecipe(Recipe recipe)throws Exception;
+	
 	public String insertStar(Recipe recipe)throws Exception;
 	
 	public Recipe getStar(Recipe recipe)throws Exception;

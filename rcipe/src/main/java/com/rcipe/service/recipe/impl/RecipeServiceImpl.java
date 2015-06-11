@@ -57,6 +57,11 @@ public class RecipeServiceImpl  implements RecipeService{
 	}
 
 	@Override
+	public int updateRecipe(Recipe recipe) throws Exception {
+		return recipeDAO.updateRecipe(recipe);
+	}
+
+	@Override
 	public boolean insertRcpIng(List<Ingredient> list) throws Exception {
 		return recipeDAO.insertRcpIng(list);
 	}

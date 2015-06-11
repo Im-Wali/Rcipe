@@ -13,6 +13,8 @@ public interface RecipeDAO {
 	public boolean insertIngredient(String ingredientName) throws Exception;
 
 	public Recipe insertRecipe(Recipe recipe) throws Exception;
+	
+	public int updateRecipe(Recipe recipe)throws Exception;
 
 	public boolean insertRcpIng(List<Ingredient> list) throws Exception;
 	

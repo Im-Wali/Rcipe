@@ -46,6 +46,11 @@ public class RecipeDAOImpl implements RecipeDAO {
 	}
 
 	@Override
+	public int updateRecipe(Recipe recipe) throws Exception {
+		return sqlSession.update("RecipeMapper.updateRecipe",recipe);
+	}
+
+	@Override
 	public String insertStar(Recipe recipe) throws Exception {
 		if (sqlSession.update("RecipeMapper.updateStar", recipe) == 1) {
 			return "별점을 " + recipe.getStar() + "개로 수정했습니다.";
