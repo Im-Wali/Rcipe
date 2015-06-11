@@ -40,8 +40,8 @@ body {
 	$("document")
 			.ready(
 					function() {
-						var detailCount = 1;
-						var detailNumber = 1;
+						var detailCount = $("#detailCount").val();
+						var detailNumber =$("#detailNumber").val();
 						var checkUnload = true;
 
 						//처음 두개의 img태그에 event등록
@@ -353,7 +353,7 @@ body {
 									data-buttonText="메인 사진 등록" alt="titleImage">
 							</div>
 							<div style="margin: 1%">
-								<label style="color: red; font-size: x-large;">*재료 입력</label> 예)
+								<label style="color: red; font-size: x-large;">*재료 입력(검색하여 추가해주세요)</label> 예)
 								당근(1개),시금치(100g),빵(조금) <a href="#" class="btn btn-warning"
 									data-toggle="modal" data-target="#ingredient"
 									data-whatever="ingredient" data-backdrop="false"
