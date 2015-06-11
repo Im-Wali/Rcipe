@@ -69,6 +69,7 @@ public class RecipeServiceImpl  implements RecipeService{
 
 	@Override
 	public boolean deleteRecipe(int recipeNo) throws Exception {
+		commentServcie.deleteRecipeCmtList(recipeNo);
 		return recipeDAO.deleteRecipe(recipeNo) == 1 ? true : false;
 	}
 

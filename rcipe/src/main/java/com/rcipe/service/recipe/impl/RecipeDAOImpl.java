@@ -78,7 +78,9 @@ public class RecipeDAOImpl implements RecipeDAO {
 
 	@Override
 	public int deleteRecipe(int recipeNo) throws Exception {
-		return sqlSession.update("RecipeMapper.deleteRecipe", recipeNo);
+		deleteRcpIng(recipeNo);
+		sqlSession.delete("RecipeMapper.deleteDetailRcp", recipeNo);
+		return sqlSession.delete("RecipeMapper.deleteRecipe", recipeNo);
 
 	}
 
@@ -91,7 +93,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 	@Override
 	public int deleteRcpIng(int recipeNo) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.update("RecipeMapper.deleteRcpIng", recipeNo);
+		return sqlSession.delete("RecipeMapper.deleteRcpIng", recipeNo);
 	}
 
 	@Override
@@ -146,4 +148,5 @@ public class RecipeDAOImpl implements RecipeDAO {
 		}
 		return listRecipe;
 	}
+
 }

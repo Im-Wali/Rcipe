@@ -37,4 +37,5 @@ public interface RecipeDAO {
 	public List<Recipe> getRecipeListIngredients(List<String> searchIngredients) throws Exception;
 
 
+
 }
