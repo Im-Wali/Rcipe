@@ -88,9 +88,8 @@ stylize any heading tags withing white-panel below
 	<jsp:include page="/favorite/favoriteModal.jsp"></jsp:include>
 	<div class="row">
 		<input type="hidden" id="recipeNo" name="recipeNo"
-			value="${recipe.recipeNo}">
-			<input type="hidden" id="imagePath" name="imagePath"
-      value="${recipe.titleImage}">
+			value="${recipe.recipeNo}"> <input type="hidden"
+			id="imagePath" name="imagePath" value="${recipe.titleImage}">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<div class="form-login " align="center"
@@ -101,27 +100,27 @@ stylize any heading tags withing white-panel below
 				<div>
 					<div>
 						<div class="row">
-							<div class="col-md-6"  align="left">
+							<div class="col-md-6" align="left">
 								<span>
 									<button type="button" class="btn btn-warning"
 										data-toggle="modal" data-target="#modifyFavoriteAdd"
 										data-backdrop="false" data-dismiss="modal">즐겨찾기 추가</button>
 								</span>
 								<c:if test="${user.nickname ==  recipe.nickname }">
-									<span >
-										<a href="viewModifyRecipe?recipeNo=${recipe.recipeNo}"><button
+									<span> <a
+										href="viewModifyRecipe?recipeNo=${recipe.recipeNo}"><button
 												type="button" class="btn btn-warning">레시피 수정</button></a>
 									</span>
 								</c:if>
 								<c:if test="${user.nickname eq  recipe.nickname }">
-							   <jsp:include page="askRecipeRemove.jsp"></jsp:include>
-								<button type="button" class="btn btn-warning" data-toggle="modal"
-                data-target="#modifyRecipeRemove" data-backdrop="false"
-                data-dismiss="modal">삭제</button>
-							</c:if>
+									<jsp:include page="askRecipeRemove.jsp"></jsp:include>
+									<button type="button" class="btn btn-warning"
+										data-toggle="modal" data-target="#modifyRecipeRemove"
+										data-backdrop="false" data-dismiss="modal">삭제</button>
+								</c:if>
 							</div>
 							<div class="col-md-6">
-								<div align="right" style="font-size: medium;">${recipe.recipeDate}</div>
+								<div align="right" style="font-size: medium;">작성자:${recipe.nickname}/작성날짜:${recipe.recipeDate}</div>
 								<div align="right" style="font-size: medium;">조회수 :
 									${recipe.hit}</div>
 							</div>
@@ -131,7 +130,7 @@ stylize any heading tags withing white-panel below
 						</div>
 						<%-- <div class="text-center center-block" style="margin-left: 70%;">
 							<jsp:include page="/sns/facebook.jsp"></jsp:include>
-							<img id="share_button"
+							<img id="share_button" 
 								src="${pageContext.servletContext.contextPath}/img/twitter.png">
 							<img id="share_button"
 								src="${pageContext.servletContext.contextPath}/img/mail.png">
