@@ -48,29 +48,20 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 	
 	@Override
 	public List<Favorite> getFavoriteList(Map<String, Object> map) throws Exception{
-		// TODO Auto-generated method stub
-//				if (search.getSearchKeyword() == null) {
-//					return sqlSession.selectList("RecipeMapper.getRecipeList", search);
-/*				} else {
-					List<Recipe> temp1, temp2, favoriteList = new ArrayList<Recipe>();
-					if (sqlSession.selectOne("RecipeMapper.getCheckIngredient", search) != null) {
-						List<String> listTemp = new ArrayList<String>();
-						listTemp.add(search.getSearchKeyword());
-
-						temp1 = sqlSession.selectList("RecipeMapper.getRecipeList",
-								search);
-						temp2 = getRecipeListIngredients(listTemp);
-
-						for (int i = 0; i < temp1.size(); i++) {
-							favoriteList.add(temp1.get(i));
-						}
-						for (int i = 0; i < temp1.size(); i++) {
-							favoriteList.add(temp2.get(i));
-						}
-
-					}*/
+		List<Integer> list = new ArrayList<Integer>();
+		list = sqlSession.selectList("FavoriteMapper.getRecipeNumNickname", map.get("nickname"));
+		System.err.println("유저가 갖고 있는 즐겨찾기의 레시피 넘버 : "+sqlSession.selectList("FavoriteMapper.getRecipeNumNickname", map.get("nickname")));
+		List<Favorite> list1 = sqlSession.selectList("FavoriteMapper.getJoinFavorite", map.get("nickname"));
+		System.err.println("유저가 갖고 있는 3개 조인 : "+sqlSession.selectList("FavoriteMapper.getJoinFavorite", map.get("nickname")));
+		if(list.size()!=0){
+			for(int i=0; i < list.size(); i++){
+				System.err.println(sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i)));
+				list1.get(i).setCmtCnt((Integer) sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i)));
+			}
+		}
 		
-		return sqlSession.selectList("FavoriteMapper.getFavoriteList", map);
+		
+		return list1;
 	}
 
 }

@@ -56,10 +56,10 @@ public class FavoriteController {
 		
 		System.out.println("start getfavoriteList");
 		
-		favorite.setNickname(((User)session.getAttribute("user")).getNickname());
+		//favorite.setNickname(((User)session.getAttribute("user")).getNickname());
 		
 		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1.put("favorite", favorite);
+		map1.put("nickname", ((User)session.getAttribute("user")).getNickname());
 		map1.put("search", search);
 		
 		Map<String, Object> map2 = favoriteService.getFavoriteList(map1);
@@ -68,7 +68,8 @@ public class FavoriteController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		modelAndView.setViewName("forward:../../main/favorite.jsp");
+		modelAndView.setViewName("forward:../../favorite/favorite.jsp");
+		modelAndView.addObject("list", map2.get("list"));
 		System.out.println(modelAndView);
 		
 		return modelAndView;

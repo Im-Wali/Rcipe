@@ -11,72 +11,112 @@
 		<result property="nickname" column="nickname" jdbcType="VARCHAR" />
 		<result property="favorTitle" column="fav_title" jdbcType="VARCHAR" />
 		<result property="favorDate" column="fav_date" jdbcType="DATE" />
+		<result property="starCnt" column="star_Cnt" jdbcType="INTEGER" />
+		
+		<association property="recipe" javaType="recipe">
+      <id property="recipeNo" column="rcp_no" jdbcType="INTEGER" />
+      <result property="nickname" column="nickname" jdbcType="VARCHAR" />
+      <result property="recipeTitle" column="rcp_title" jdbcType="VARCHAR" />
+      <result property="titleImage" column="rcp_img_path" jdbcType="VARCHAR" />
+      <result property="recipeContents" column="rcp_cont" jdbcType="CLOB" />
+      <result property="tip" column="rcp_tip" jdbcType="CLOB" />
+      <result property="recommend" column="rcp_rec_cnt" jdbcType="INTEGER" />
+      <result property="hit" column="rcp_cnt" jdbcType="INTEGER" />
+      <result property="ingredients" column="ingredients" jdbcType="CLOB" />
+     <result property="recipeDate" column="rcp_date" jdbcType="DATE" />
+    </association> 
+		
 	</resultMap>
-	
+
 	<!-- recipeCmt리스트 가져온다. -->
- 
-  <sql id="get" >
-    SELECT COUNT(*) FROM
-    
-  </sql>
+
 
 	<insert id="insertFavorite" parameterType="favorite">
-        INSERT INTO FAV_RECIPES(RCP_NO,NICKNAME
-        ,FAV_TITLE,FAV_DATE)
-        values(#{recipeNo},#{nickname},
-        #{favorTitle},SYSDATE)
-    </insert>
+		INSERT INTO
+		FAV_RECIPES(RCP_NO,NICKNAME
+		,FAV_TITLE,FAV_DATE)
+		values(#{recipeNo},#{nickname},
+		#{favorTitle},SYSDATE)
+	</insert>
 
-	<sql id="searchFavorite" >
-         SELECT
-        f.rcp_no rcp_no,
-   f.nickname nickname, f.fav_title fav_title,
-        to_char(f.fav_date,'YYYY/MM/DD') fav_date, (SELECT COUNT(*) FROM
-(   SELECT
-        c.CMT_NO
-        FROM comments c,recipes_cmt r,users u
-           WHERE
-          r.rcp_no=#{favorite.recipeNo} AND
-          r.cmt_no=c.cmt_no
-          AND
-          u.nickname LIKE c.nickname
-          ORDER BY c.CMT_DATE DESC ) ) AS cmtcnt
-        FROM fav_recipes f, recipes r, users u
-        WHERE
-        f.rcp_no = r.rcp_no AND f.nickname = u.nickname AND f.nickname = #{favorite.nickname}
-        ORDER BY fav_date
-    </sql>
+	<sql id="searchFavorite">
+		SELECT
+		f.rcp_no rcp_no,
+		f.nickname nickname, f.fav_title
+		fav_title,
+		to_char(f.fav_date,'YYYY/MM/DD') fav_date, (SELECT COUNT(*)
+		FROM
+		( SELECT
+		c.CMT_NO
+		FROM comments c,recipes_cmt r,users u
+		WHERE
+		r.rcp_no=#{favorite.recipeNo} AND
+		r.cmt_no=c.cmt_no
+		AND
+		u.nickname LIKE
+		c.nickname
+		ORDER BY c.CMT_DATE DESC ) ) AS cmtcnt
+		FROM fav_recipes f,
+		recipes r, users u
+		WHERE
+		f.rcp_no = r.rcp_no AND f.nickname = u.nickname
+		AND f.nickname =
+		#{favorite.nickname}
+		ORDER BY fav_date
+	</sql>
 
 	<select id="getFavoriteList" parameterType="java.util.Map"
-        resultMap="FavoriteSelectMap">
-        SELECT
-        inner.*
-        FROM(
-        SELECT
-        inner_table.*, ROWNUM AS row_seq FROM
-        (
-        <include refid="searchFavorite" />
-        )
-        inner_table
-        WHERE ROWNUM &lt;= '1' ) inner
-    WHERE row_seq BETWEEN '1' AND '3'
-    </select> 
-    
-    <delete id="deleteFavorite" parameterType="favorite">
-        DELETE FROM fav_recipes
-        WHERE nickname = #{nickname} AND rcp_no = #{recipeNo}
-    </delete>
+		resultMap="FavoriteSelectMap">
+		SELECT
+		inner.*
+		FROM(
+		SELECT
+		inner_table.*, ROWNUM AS row_seq FROM
+		(
+		<include refid="searchFavorite" />
+		)
+		inner_table
+		WHERE ROWNUM &lt;= '1' ) inner
+		WHERE row_seq BETWEEN '1'
+		AND '3'
+	</select>
 
-    <select id="getTotalCount" parameterType="user" resultType="int">
-        SELECT COUNT(*)
-        FROM ( SELECT *
-        FROM fav_recipes
-         <where> 
-         <if test="nickname != null">
-            nickname = #{nickname} 
-         </if>
-         </where> 
-        ) countTable
-    </select>
+	<delete id="deleteFavorite" parameterType="favorite">
+		DELETE FROM
+		fav_recipes
+		WHERE nickname = #{nickname} AND rcp_no = #{recipeNo}
+	</delete>
+
+	<select id="getTotalCount" parameterType="user" resultType="int">
+		SELECT COUNT(*)
+		FROM ( SELECT *
+		FROM fav_recipes
+		<where>
+			<if test="nickname != null">
+				nickname = #{nickname}
+			</if>
+		</where>
+		) countTable
+	</select>
+
+	<select id="getJoinFavorite" parameterType="String" resultMap="FavoriteSelectMap">
+		select r.*,fr.fav_title,fr.fav_date,s.star_cnt from stars s,recipes r,
+		fav_recipes fr where r.nickname = s.nickname(+) AND s.rcp_no(+) =
+		r.rcp_no AND r.rcp_no = fr.rcp_no AND r.rcp_no IN(select rcp_no from (
+		select fr1.rcp_no from fav_recipes fr1 where fr1.nickname = #{value}
+		))
+	</select>
+
+
+	<select id="getRecipeNumNickname" parameterType="String"
+		resultType="int">
+		select rcp_no from ( select rcp_no from fav_recipes where nickname =
+		#{value} )
+	</select>
+
+	<select id="getCommentCount" parameterType="int" resultType="int">
+		select Count(*) from (select rc.cmt_no, rc.rcp_no from recipes_cmt rc,
+		recipes r where rc.rcp_no = r.rcp_no and r.rcp_no = #{value})
+	</select>
 
 </mapper>
