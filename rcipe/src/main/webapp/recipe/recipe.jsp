@@ -99,14 +99,17 @@ stylize any heading tags withing white-panel below
 				<div>
 					<div>
 						<div class="row">
-							<div class="col-md-6">
-						<div align="left"><button type="button" class="btn btn-warning" data-toggle="modal"
-            data-target="#modifyFavoriteAdd" data-backdrop="false" data-dismiss="modal">즐겨찾기 추가</button></div>
+							<div class="col-md-6"  align="left">
+								<span>
+									<button type="button" class="btn btn-warning"
+										data-toggle="modal" data-target="#modifyFavoriteAdd"
+										data-backdrop="false" data-dismiss="modal">즐겨찾기 추가</button>
+								</span>
 								<c:if test="${user.nickname ==  recipe.nickname }">
-									<div align="left">
+									<span >
 										<a href="viewModifyRecipe?recipeNo=${recipe.recipeNo}"><button
 												type="button" class="btn btn-warning">레시피 수정</button></a>
-									</div>
+									</span>
 								</c:if>
 							</div>
 							<div class="col-md-6">
