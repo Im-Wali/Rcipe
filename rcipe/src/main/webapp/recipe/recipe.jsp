@@ -85,7 +85,7 @@ stylize any heading tags withing white-panel below
 <body
 	style="background-color: #fff color: #383838; padding: 0; margin: 0; font-family: Verdana, Arial, sans-serif; font-weight: 400; font-style: normal; line-height: 131%; position: relative; cursor: default">
 	<div><jsp:include page="/main/menuBar.jsp"></jsp:include></div>
-	<jsp:include page="favoriteModal.jsp"></jsp:include>
+	<jsp:include page="/favorite/favoriteModal.jsp"></jsp:include>
 	<div class="row">
 		<input type="hidden" id="recipeNo" name="recipeNo"
 			value="${recipe.recipeNo}">
