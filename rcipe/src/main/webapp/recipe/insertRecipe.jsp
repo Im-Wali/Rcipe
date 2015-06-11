@@ -157,15 +157,19 @@ body {
 							var t = $("#image" + fileUploadId).val();
 							if (t.length > 1) {
 								//해당 "recipe"+id 의 아이디로 hidden태그가 있다면 거기에 있는 파일 삭제 ajax를 사용한다.
-								$.ajax("../file/deletePicture", {
-									method : 'POST',
-									data : 'path=' + t,
-									success : function(result) {
-									}
-								});
+								deletePicture(t);
 
 							}
 							$("#image" + fileUploadId).val(str3);
+						}
+						;
+						function deletePicture(t) {
+							$.ajax("../file/deletePicture", {
+								method : 'POST',
+								data : 'path=' + t,
+								success : function(result) {
+								}
+							});
 						}
 						;
 
