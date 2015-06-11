@@ -37,9 +37,23 @@ public class FileController {
 	@Autowired
 	private ServletContext ctx;
 	
+	@RequestMapping(value = "/modifyRecipePictureUpload", method = RequestMethod.POST)
+	public @ResponseBody String  modifyRecipePictureUpload(@RequestParam("recipeFolderPath") String recipeFolderPath,
+			HttpServletRequest request,HttpSession session) throws Exception {
+		System.out.println(recipeFolderPath);
+		System.out.println("modifyRecipePictureUpload실행!!!!");
+		Map< String, String> map=FileUtil.upload(request,ctx.getRealPath("/images"),recipeFolderPath);
+		String str=URLEncoder.encode(map+"", "UTF-8");
+		return str;
+	}
+	
+	@RequestMapping(value = "/deleteModifyPicture", method = RequestMethod.POST)
+	public @ResponseBody String deleteModifyPicture(@RequestParam("deletePicturePaths") String deletePicturePaths)throws Exception {
+		return ""+fileService.deleteModifyPicture(deletePicturePaths);
+	}
+	
 	@RequestMapping(value = "/recipePictureUpload", method = RequestMethod.POST)
 	public @ResponseBody String  recipePictureUpload(HttpServletRequest request,HttpSession session) throws Exception {
-		String projectPath="http:/"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+"/rcipe/images/";
 		User user=(User)session.getAttribute("user");	
 		String recipeImagPath=(String)session.getAttribute("recipeImagPath");
 		if(recipeImagPath==null){
@@ -76,7 +90,6 @@ public class FileController {
 	@RequestMapping(value = "/profileUpload", method = RequestMethod.POST)
 	public @ResponseBody String  uploadUser(HttpServletRequest request,
 			HttpSession session) throws Exception {
-		String projectPath="http:/"+java.net.InetAddress.getLocalHost().getHostAddress()+":"+request.getServerPort()+"/rcipe/images/";
 		// 여기에 회원 별로 관리할수 있는 부분
 		User user=(User)session.getAttribute("user");
 //		 File("c:\\fileUploadTest\\user"+user.getNickname"+"\\profile");
