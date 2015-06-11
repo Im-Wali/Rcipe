@@ -306,12 +306,6 @@
 								style="background-color: rgb(57, 179, 215); color: white"></i></span>
 						</div>
 					</form>
-					<!-- <div class="input-group">
-								<input type="text" class="form-control " id="search"
-									id="ingredientAdmitText" >
-								 <span class="btn btn-primary input-group-addon" id="ingredientAdmitButton"
-									style=" color: white">재료등록</span> 
-							</div> -->
 				</div>
 			</div>
 			<div class="modal-footer"></div>
