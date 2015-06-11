@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,58 +67,22 @@
 			<div class="row">
 			
 			
-				<div class="col-md-6">
-					<div class="well well-sm">
-						<div class="row">
-							<div class="col-xs-3 col-md-3 text-center">
-								<a href="recipe11.jsp"><img src="../img/images.jpg"
-									alt="bootsnipp"
-									style="width: 114px; height: 114px; position: absolute;"
-									class="img-rounded img-responsive" /></a>
-							</div>
-
-							<div class="col-xs-9 col-md-9 section-box">
-								<a href="recipe11.jsp" style="color: black"><h2>닭가슴살
-										샌드위치</h2></a>
-								<div align="right">
-									레시피 설명? 요리설명?
-									<button type="button" class="btn btn-warning">즐겨찾기 삭제</button>
-									<button type="button" class="btn btn-warning">수정</button>
-								</div>
-								<hr />
-								<div class="row rating-desc">
-									<div class="col-md-12">
-										<span class="glyphicon glyphicon-heart"></span><span
-											class="glyphicon glyphicon-heart"> </span><span
-											class="glyphicon glyphicon-heart"></span><span
-											class="glyphicon glyphicon-heart"> </span><span
-											class="glyphicon glyphicon-heart"></span>(36)<span
-											class="separator">|</span> <span
-											class="glyphicon glyphicon-comment"></span>(100 Comments)
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				
-				<c:forEach var="recipe" items="${ list }">
+				<c:forEach var="favorite" items="${ list }">
 				
 <div class="col-md-6">
           <div class="well well-sm">
             <div class="row">
               <div class="col-xs-3 col-md-3 text-center">
-                <a href="recipe11.jsp"><img src="../img/images.jpg"
+                <a href="${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"><img src=" ${ favorite.recipe.titleImage }"
                   alt="bootsnipp"
                   style="width: 114px; height: 114px; position: absolute;"
                   class="img-rounded img-responsive" /></a>
               </div>
 
               <div class="col-xs-9 col-md-9 section-box">
-                <a href="recipe11.jsp" style="color: black"><h2>${ recipe.recipeTitle }</h2></a>
+                <a href="${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}" style="color: black"><h2>${ favorite.favorTitle }</h2></a>
                 <div align="right">
-                  레시피 설명? 요리설명?
+                 ${ favorite.recipe.recipeContents }
                   <button type="button" class="btn btn-warning">즐겨찾기 삭제</button>
                   <button type="button" class="btn btn-warning">수정</button>
                 </div>
@@ -130,7 +95,7 @@
                       class="glyphicon glyphicon-heart"> </span><span
                       class="glyphicon glyphicon-heart"></span>(36)<span
                       class="separator">|</span> <span
-                      class="glyphicon glyphicon-comment"></span>(100 Comments)
+                      class="glyphicon glyphicon-comment"></span>(${ favorite.cmtCnt } Comments)
                   </div>
                 </div>
               </div>
