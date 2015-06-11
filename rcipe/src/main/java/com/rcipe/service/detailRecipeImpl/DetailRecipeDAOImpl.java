@@ -35,6 +35,11 @@ public class DetailRecipeDAOImpl implements DetailRecipeDAO {
 	public List<DetailRecipe> getDetailRecipeList(int recipeNo) throws Exception {
 		return sqlSession.selectList("DetailRecipeMapper.getDetailRecipeList",recipeNo);
 	}
+
+	@Override
+	public int deleteDetailRecipe(int recipeNo) throws Exception {
+		return sqlSession.delete("DetailRecipeMapper.deleteDetailRecipe",recipeNo);
+	}
 	
 
 }

@@ -32,4 +32,9 @@ public class DetailRecipeImpl implements DetailRecipeService {
 		return detailRecipeDAO.getDetailRecipeList(recipeNo);
 	}
 
+	@Override
+	public int deleteDetailRecipe(int recipeNo) throws Exception {
+		return detailRecipeDAO.deleteDetailRecipe(recipeNo);
+	}
+
 }

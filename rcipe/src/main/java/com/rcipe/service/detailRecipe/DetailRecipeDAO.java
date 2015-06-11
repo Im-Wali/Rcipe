@@ -9,4 +9,6 @@ public interface DetailRecipeDAO {
 	public boolean insertDetailRecipe(List<DetailRecipe> list) throws Exception;
 	
 	public List<DetailRecipe> getDetailRecipeList(int recipeNo)throws Exception;
+	
+	public int deleteDetailRecipe(int recipeNo)throws Exception;
 }
