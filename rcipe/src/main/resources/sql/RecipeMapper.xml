@@ -128,6 +128,12 @@
 		WHERE rcp_no=${value}
 	</delete>
 
+	<delete id="deleteDetailRcp" parameterType="int">
+		DELETE FROM
+		detail_rcp
+		WHERE rcp_no=${value}
+	</delete>
+
 	<delete id="deleteRcpIng" parameterType="int">
 		DELETE FROM rcp_ing
 		WHERE rcp_no=#{value}
