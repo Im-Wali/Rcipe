@@ -48,6 +48,16 @@
 		INGREDIENTS(INGREDIENT_NO,INGREDIENT_NAME)
 		values(SEQ_INGREDIENT_NO.nextval,#{value})
 	</insert>
+	<update id="updateRecipe" parameterType="recipe">
+		UPDATE recipes
+		SET
+		rcp_title=#{recipeTitle} ,
+		rcp_img_path=#{titleImage} ,
+		rcp_cont=#{recipeContents},
+		rcp_tip=#{tip},
+		ingredients=#{ingredients}
+		WHERE rcp_no=#{recipeNo}
+	</update>
 
 	<insert id="insertRecipe" parameterType="recipe">
 		<selectKey resultType="int" keyProperty="recipeNo" order="BEFORE">
@@ -63,18 +73,21 @@
 		,#{recipeContents},#{tip},0
 		,#{ingredients},SYSDATE)
 	</insert>
-	 <select id="selectStar" parameterType="recipe" resultMap="RecipeSelectMap">
-	 SELECT star_cnt ,rcp_no,nickname
-	 FROM stars
-	 WHERE rcp_no=#{recipeNo} AND nickname LIKE #{nickname}
-	 </select>
+	<select id="selectStar" parameterType="recipe" resultMap="RecipeSelectMap">
+		SELECT
+		star_cnt ,rcp_no,nickname
+		FROM stars
+		WHERE rcp_no=#{recipeNo} AND
+		nickname LIKE #{nickname}
+	</select>
 
 	<insert id="insertStar" parameterType="recipe">
-		INSERT INTO stars(RCP_NO,NICKNAME,star_cnt) 
+		INSERT INTO
+		stars(RCP_NO,NICKNAME,star_cnt)
 		values(#{recipeNo},#{nickname},#{star})
 	</insert>
-	
-	<update id="updateStar" parameterType="recipe" >
+
+	<update id="updateStar" parameterType="recipe">
 		UPDATE stars
 		set
 		star_cnt=#{star}
@@ -95,12 +108,15 @@
 		r.rcp_img_path rcp_img_path, r.rcp_cont rcp_cont,
 		r.rcp_tip rcp_tip,
 		r.rcp_cnt rcp_cnt,
-		r.ingredients ingredients, to_char( r.rcp_date,'YYYY/MM/DD')
+		r.ingredients ingredients, to_char(
+		r.rcp_date,'YYYY/MM/DD')
 		rcp_date,
-		s.star_tot_cnt star_tot_cnt, s.star_cnt star_cnt
+		s.star_tot_cnt star_tot_cnt,
+		s.star_cnt star_cnt
 		FROM recipes
 		r,(SELECT
-		COUNT(*) star_tot_cnt,SUM(STAR_CNT)
+		COUNT(*)
+		star_tot_cnt,SUM(STAR_CNT)
 		star_cnt FROM stars
 		WHERE rcp_no=#{value}) s
 		WHERE r.rcp_no
@@ -114,7 +130,7 @@
 
 	<delete id="deleteRcpIng" parameterType="int">
 		DELETE FROM rcp_ing
-		WHERE rcp_no=${value}
+		WHERE rcp_no=#{value}
 	</delete>
 
 	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
@@ -160,7 +176,8 @@
 
 	<select id="getCheckIngredient" parameterType="search"
 		resultType="int">
-		SELECT ingredient_no FROM ingredients WHERE ingredient_name = '${searchKeyword}'
+		SELECT ingredient_no FROM ingredients WHERE ingredient_name
+		= '${searchKeyword}'
 	</select>
 
 	<select id="getTotalCount" parameterType="search" resultType="int">
