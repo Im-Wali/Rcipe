@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/style.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/menuBar01.css" type="text/css" />
 <script src="${pageContext.servletContext.contextPath }/js/menuBar01.js">
@@ -120,14 +121,27 @@ function search() {
 				aria-labelledby="user-div-image"
 				style="margin-top:20px; background-color: #FF9933; border: none;"
 				role="menu">
-				<li><a href="#" class="btn btn-primary" data-toggle="modal"
+				<c:if test="${user.nickname == null }">                  
+				  <li><a href="#" class="btn btn-primary" data-toggle="modal"
 					data-target="#loginModal" data-whatever="Login"
 					data-backdrop="false"
 					style="background-color: #FF9933; border: #FF9933; color: black">로그인</a></li>
 				<li><a href="#" class="btn btn-primary" data-toggle="modal"
 					data-target="#joinModal" data-whatever="Join" data-backdrop="false"
 					style="background-color: #FF9933; border: #FF9933; color: black">회원가입</a></li>
+					       <div align="center">
+          <li><a href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0" class="btn btn-primary"
+            style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
+        </div>
+        </c:if>
+        <c:if test="${user.nickname != null }">                  
+          <li><a href="${pageContext.servletContext.contextPath }/app/user/userLogout" class="btn btn-primary" 
+          style="background-color: #FF9933; border: #FF9933; color: black">로그아웃</a></li>
 				<div align="center">
+				<div align="center">
+					<li><a href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0" class="btn btn-primary"
+						style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
+				</div>
 					<li><a href="${pageContext.servletContext.contextPath }/app/recipe/viewInsertRecipe" class="btn btn-primary"
 						style="background-color: #FF9933; border: #FF9933; color: black">레시피등록</a></li>
 				</div>
@@ -136,13 +150,12 @@ function search() {
 						style="background-color: #FF9933; border: #FF9933; color: black">즐겨찾기</a></li>
 				</div>
 				<div align="center">
-					<li><a href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0" class="btn btn-primary"
-						style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
-				</div>
-				<div align="center">
-					<li><a href="${pageContext.servletContext.contextPath }/app/user/viewUser" class="btn btn-primary"
-						style="background-color: #FF9933; border: #FF9933; color: black">내정보보기</a></li>
-				</div>
+          <li><a href="${pageContext.servletContext.contextPath }/app/user/viewUser" class="btn btn-primary"
+            style="background-color: #FF9933; border: #FF9933; color: black">내정보보기</a></li>
+        </div>
+        </c:if>
+        
+				
 			</ul>
 		</span>
 	</div>
