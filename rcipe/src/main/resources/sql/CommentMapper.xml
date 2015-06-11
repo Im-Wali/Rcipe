@@ -187,7 +187,7 @@
     <where>
           cmt_no2 IN
         <foreach item="item" collection="list" open="(" close=")" separator=",">
-          #{item.cmtNo}
+          #{item}
         </foreach>
     </where>
       </if>
