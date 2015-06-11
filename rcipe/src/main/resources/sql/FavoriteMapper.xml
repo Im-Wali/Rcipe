@@ -12,64 +12,71 @@
 		<result property="favorTitle" column="fav_title" jdbcType="VARCHAR" />
 		<result property="favorDate" column="fav_date" jdbcType="DATE" />
 	</resultMap>
+	
+	<!-- recipeCmt리스트 가져온다. -->
+ 
+  <sql id="get" >
+    SELECT COUNT(*) FROM
+    
+  </sql>
 
 	<insert id="insertFavorite" parameterType="favorite">
-		INSERT INTO FAV_RECIPES(RCP_NO,NICKNAME
-		,FAV_TITLE,FAV_DATE)
-		values(#{recipeNo},#{nickname},
-		#{favorTitle},SYSDATE)
-	</insert>
+        INSERT INTO FAV_RECIPES(RCP_NO,NICKNAME
+        ,FAV_TITLE,FAV_DATE)
+        values(#{recipeNo},#{nickname},
+        #{favorTitle},SYSDATE)
+    </insert>
 
-	<sql id="searchFavorite">
-		SELECT
-		f.rcp_no rcp_no,
-		f.nickname nickname, f.fav_title fav_title,
-		to_char(f.fav_date,'YYYY/MM/DD') fav_date, count(*)
-		FROM fav_recipes f, recipes r, users u,
-		( SELECT
-		c.CMT_NO CMT_NO
-		FROM comments c,recipes_cmt r,users u
-		WHERE
-		r.rcp_no=#{recipeNo} AND
-		r.cmt_no=c.cmt_no
-		AND
-		u.nickname LIKE c.nickname
-		ORDER BY c.CMT_DATE DESC) as
-		WHERE
-		f.rcp_no = r.rcp_no AND f.nickname = u.nickname AND f.nickname = #{nickname}
-		ORDER BY fav_date;
-	</sql>
+	<sql id="searchFavorite" >
+         SELECT
+        f.rcp_no rcp_no,
+   f.nickname nickname, f.fav_title fav_title,
+        to_char(f.fav_date,'YYYY/MM/DD') fav_date, (SELECT COUNT(*) FROM
+(   SELECT
+        c.CMT_NO
+        FROM comments c,recipes_cmt r,users u
+           WHERE
+          r.rcp_no=#{favorite.recipeNo} AND
+          r.cmt_no=c.cmt_no
+          AND
+          u.nickname LIKE c.nickname
+          ORDER BY c.CMT_DATE DESC ) ) AS cmtcnt
+        FROM fav_recipes f, recipes r, users u
+        WHERE
+        f.rcp_no = r.rcp_no AND f.nickname = u.nickname AND f.nickname = #{favorite.nickname}
+        ORDER BY fav_date
+    </sql>
 
 	<select id="getFavoriteList" parameterType="java.util.Map"
-		resultMap="FavoriteSelectMap">
-		SELECT
-		inner.*
-		FROM(
-		SELECT
-		inner_table.*, ROWNUM AS row_seq FROM
-		(
-		<include refid="searchFavorite" />
-		)
-		inner_table
-		WHERE ROWNUM &lt;= #{search.endRowNum} ) inner
-		WHERE row_seq BETWEEN #{search.startRowNum} AND #{search.endRowNum}
-	</select>
+        resultMap="FavoriteSelectMap">
+        SELECT
+        inner.*
+        FROM(
+        SELECT
+        inner_table.*, ROWNUM AS row_seq FROM
+        (
+        <include refid="searchFavorite" />
+        )
+        inner_table
+        WHERE ROWNUM &lt;= '1' ) inner
+    WHERE row_seq BETWEEN '1' AND '3'
+    </select> 
+    
+    <delete id="deleteFavorite" parameterType="favorite">
+        DELETE FROM fav_recipes
+        WHERE nickname = #{nickname} AND rcp_no = #{recipeNo}
+    </delete>
 
-	<delete id="deleteFavorite" parameterType="favorite">
-		DELETE FROM fav_recipes
-		WHERE nickname = #{nickname} AND rcp_no = #{recipeNo}
-	</delete>
-
-	<select id="getTotalCount" parameterType="user" resultType="int">
-		SELECT COUNT(*)
-		FROM ( SELECT *
-		FROM fav_recipes
-		<where>
-			<if test="nickname != null">
-				nickname = #{nickname}
-			</if>
-		</where>
-		) countTable
-	</select>
+    <select id="getTotalCount" parameterType="user" resultType="int">
+        SELECT COUNT(*)
+        FROM ( SELECT *
+        FROM fav_recipes
+         <where> 
+         <if test="nickname != null">
+            nickname = #{nickname} 
+         </if>
+         </where> 
+        ) countTable
+    </select>
 
 </mapper>
