@@ -45,39 +45,62 @@ body {
 						var detailNumber = $("#detailNumber").val();
 						var checkUnload = true;
 						var recipeFolderPath = $("#recipeFolderPath").val();
-						var deletePicturePaths=""
-						recipeFolderPath=recipeFolderPath.split("/")[0]+"/"+recipeFolderPath.split("/")[1];
+						var deletePicturePaths = ""
+						recipeFolderPath = recipeFolderPath.split("/")[0] + "/"
+								+ recipeFolderPath.split("/")[1];
 
 						//처음 두개의 img태그에 event등록
 						var dropzone1 = document.getElementById('titleImage');
 						setDnDhandler(dropzone1);
-						for(var i=1;i<=detailCount;i++){
-							dropzone1 = document.getElementById('detailImage'+i);
+						for (var i = 1; i <= detailCount; i++) {
+							dropzone1 = document.getElementById('detailImage'
+									+ i);
 							setDnDhandler(dropzone1);
 						}
 
-						$(window).on("beforeunload", function() {
-							if (checkUnload) {
-								deletePicturePaths=$("#imagetitleImage").attr("alt")=="none" ? "":$("#imagetitleImage").val()+",";
-								for (var i = 1; i <= detailNumber; i++) {
-									if($("#imagedetailImage"+i).attr("alt")!="none"){
-										deletePicturePaths += $("#imagedetailImage"+i).val()+",";
-									}
-								}
-								return "페이지를 벗어나면 작성된 내용은 삭제됩니다.";
-							}
-						});
-						$(window).unload(
-								function() {
-									if (checkUnload) {
-										if(deletePicturePaths.length !=0){
-										$.post("../file/deleteModifyPicture?"+"deletePicturePaths="+deletePicturePaths,
-												function(data) {
-													alert(data);
-												});
-										}
-									}
-								});
+						$(window)
+								.on(
+										"beforeunload",
+										function() {
+											if (checkUnload) {
+												deletePicturePaths = $(
+														"#imagetitleImage")
+														.attr("alt") == "none" ? ""
+														: $("#imagetitleImage")
+																.val()
+																+ ",";
+												for (var i = 1; i <= detailNumber; i++) {
+													if ($(
+															"#imagedetailImage"
+																	+ i).attr(
+															"alt") != "none") {
+														deletePicturePaths += $(
+																"#imagedetailImage"
+																		+ i)
+																.val()
+																+ ",";
+													}
+												}
+												return "페이지를 벗어나면 작성된 내용은 삭제됩니다.";
+											}
+										});
+						$(window)
+								.unload(
+										function() {
+											if (checkUnload) {
+												if (deletePicturePaths.length != 0) {
+													$
+															.post(
+																	"../file/deleteModifyPicture?"
+																			+ "deletePicturePaths="
+																			+ deletePicturePaths,
+																	function(
+																			data) {
+																		alert(data);
+																	});
+												}
+											}
+										});
 
 						$(document.body)
 								.on(
@@ -142,18 +165,26 @@ body {
 													.getElementById('detailImage'
 															+ detailNumber));
 										});
-						$(document.body).on('click', '.recipeClose',
-								function(event) {
-									//해당 상세레시피의 사진을 지운다.
-									//removePicture(this.val());
-									if (detailCount == 1) {
-										alert("하나이상의 상세레시피를 작성해야합니다.")
-										return;
-									}
-									$("#" + $(this).val()).remove();
-									detailCount--;
-									$("#detailCount").val(detailCount);
-								});
+						$(document.body)
+								.on(
+										'click',
+										'.recipeClose',
+										function(event) {
+											//해당 상세레시피의 사진을 지운다.
+											//removePicture(this.val());
+											if (detailCount == 1) {
+												alert("하나이상의 상세레시피를 작성해야합니다.")
+												return;
+											}
+											var str=$(this).val()
+											if ($("#imagedetailImage" + str.substring(str.length-1)).attr("alt") != "none"
+													&& $("#imagedetailImage" +str.substring(str.length-1)).val()!="") {
+												deletePicture($("#imagedetailImage" +str.substring(str.length-1)).val());
+											}
+											$("#" + $(this).val()).remove();
+											detailCount--;
+											$("#detailCount").val(detailCount);
+										});
 
 						function modifyRecipeFileHandler(str) {
 							str = str.replace(/\+/g, " ");
@@ -162,26 +193,32 @@ body {
 							var str3 = str.split("changeImg")[1].substring("1")
 									.split(",")[0];
 							alert(str2);
-						
+
 							var t = $("#image" + fileUploadId).val();
-							if($("#image" + fileUploadId).attr("alt")=="none"){
-								var deletePicturePaths=t+","+$("#deletePicturePaths").val();
-								$("#deletePicturePaths").val(deletePicturePaths);
+							if ($("#image" + fileUploadId).attr("alt") == "none") {
+								var deletePicturePaths = t + ","
+										+ $("#deletePicturePaths").val();
+								$("#deletePicturePaths")
+										.val(deletePicturePaths);
 								alert(deletePicturePaths);
-								$("#image" + fileUploadId).attr("alt","");
-							}else if (t.length > 1) {
+								$("#image" + fileUploadId).attr("alt", "");
+							} else if (t.length > 1) {
 								//해당 "recipe"+id 의 아이디로 hidden태그가 있다면 거기에 있는 파일 삭제 ajax를 사용한다.
-								$.ajax("../file/deletePicture", {
-									method : 'POST',
-									data : 'path=' + t,
-									success : function(result) {
-									}
-								});
+								deletePicture(t);
 
 							}
 							$("#" + fileUploadId).attr("src",
 									"../../images/" + str3);
 							$("#image" + fileUploadId).val(str3);
+						}
+						;
+						function deletePicture(t) {
+							$.ajax("../file/deletePicture", {
+								method : 'POST',
+								data : 'path=' + t,
+								success : function(result) {
+								}
+							});
 						}
 						;
 
@@ -236,10 +273,11 @@ body {
 							};
 							// var p=$('#pictureLcation').val();
 							// xhr.open("POST","../app/"+p);
-							xhr.open("POST", "../file/modifyRecipePictureUpload");
+							xhr.open("POST",
+									"../file/modifyRecipePictureUpload");
 							var fd = new FormData();
 							fd.append("file", file);
-							fd.append("recipeFolderPath",recipeFolderPath);
+							fd.append("recipeFolderPath", recipeFolderPath);
 							xhr.send(fd);
 						}
 						;
@@ -248,38 +286,44 @@ body {
 						//$(":file").filestyle('clear');이부분을 실행시에 또호출되기때문에
 						var isFile = false;
 
-						$(document.body).on(
-								'change',
-								'.recipeButtonUpload',
-								function() {
-									if (isFile) {
-										return;
-									}
-									isFile = true;
-									var id = $(this).attr("id");
-									var formData = new FormData();
-									$.each($('#' + id)[0].files, function(i,
-											file) {
-										formData.append('file', file);
-									});
-									formData.append("recipeFolderPath",recipeFolderPath);
-									$.ajax({
-										url : '../file/modifyRecipePictureUpload',
-										data : formData,
-										processData : false,
-										contentType : false,
-										type : 'POST',
-										success : function(data) {
-											var str = decodeURIComponent(data);
-											modifyRecipeFileHandler(str);
-											$(":file").filestyle('clear');
-											isFile = false;
-										},
-										error : function(data) {
-											alert("파일업로드에 실패했습니다.")
-										}
-									});
-								});
+						$(document.body)
+								.on(
+										'change',
+										'.recipeButtonUpload',
+										function() {
+											if (isFile) {
+												return;
+											}
+											isFile = true;
+											var id = $(this).attr("id");
+											var formData = new FormData();
+											$.each($('#' + id)[0].files,
+													function(i, file) {
+														formData.append('file',
+																file);
+													});
+											formData.append("recipeFolderPath",
+													recipeFolderPath);
+											$
+													.ajax({
+														url : '../file/modifyRecipePictureUpload',
+														data : formData,
+														processData : false,
+														contentType : false,
+														type : 'POST',
+														success : function(data) {
+															var str = decodeURIComponent(data);
+															modifyRecipeFileHandler(str);
+															$(":file")
+																	.filestyle(
+																			'clear');
+															isFile = false;
+														},
+														error : function(data) {
+															alert("파일업로드에 실패했습니다.")
+														}
+													});
+										});
 						$("#ingredients").focus(function() {
 							$("#ingredientOpen").click();
 						});
@@ -341,25 +385,27 @@ body {
 			<form role="form"
 				action="${pageContext.servletContext.contextPath }/app/recipe/modifyRecipe"
 				method="post">
-				<input type="hidden" id="recipeNo" name="recipeNo"value="${recipe.recipeNo}">
-				<input type="hidden" id="nickname"name="nickname" value="${user.nickname }">
-				<input type="hidden" id="detailCount" name="detailCount"
+				<input type="hidden" id="recipeNo" name="recipeNo"
+					value="${recipe.recipeNo}"> <input type="hidden"
+					id="nickname" name="nickname" value="${user.nickname }"> <input
+					type="hidden" id="detailCount" name="detailCount"
 					value="${recipe.detailRecipe.size()}"> <input type="hidden"
-					id="detailNumber" name="detailNumber" value="${recipe.detailRecipe.size()}">
-				<input type="hidden" id="recipeFolderPath" name="recipeFolderPath"
-					value='${recipe.titleImage}'>
-				<input type="hidden" id="ingredientIds" name="ingredientIds"
-					value=""> 
-					<!--deletePicturePaths==이전에 있던 레시피 사진들을 저장한다. -->
-					<input type="hidden"
-					id="deletePicturePaths" name="deletePicturePaths"
-					value=""> 
+					id="detailNumber" name="detailNumber"
+					value="${recipe.detailRecipe.size()}"> <input type="hidden"
+					id="recipeFolderPath" name="recipeFolderPath"
+					value='${recipe.titleImage}'> <input type="hidden"
+					id="ingredientIds" name="ingredientIds" value="">
+				<!--deletePicturePaths==이전에 있던 레시피 사진들을 저장한다. -->
+				<input type="hidden" id="deletePicturePaths"
+					name="deletePicturePaths" value="">
 				<div align="right">
 					<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
 						입력하세요!</span> <input type="button" class="btn   btn-lg addDetail"
-						value="추가 사진 등록" style="background-color:#707070;color:white;margin-right: 1%; margin-bottom: 1%">
+						value="추가 사진 등록"
+						style="background-color: #707070; color: white; margin-right: 1%; margin-bottom: 1%">
 					<input type="submit" id="recipeSubmit" class="btn  btn-lg"
-						value="레시피 수장" style="background-color:#707070;color:white; margin-right: 1%; margin-bottom: 1%;">
+						value="레시피 수정"
+						style="background-color: #707070; color: white; margin-right: 1%; margin-bottom: 1%;">
 				</div>
 				<div class="form-login " style="margin-bottom: 2%;">
 					<h3 align="center" style="margin-bottm: 1%">레시피 수정</h3>
@@ -375,11 +421,10 @@ body {
 							style="color: red; font-size: x-large; margin: 1%">*메인 사진</label><br />
 						<div class="media">
 							<input type="hidden" id="imagetitleImage" name="titleImage"
-								value="${recipe.titleImage}"  alt="none">
+								value="${recipe.titleImage}" alt="none">
 							<div class="media-left">
 								<img class="media-object img-rounded fileUpload"
-									src="../../images/${recipe.titleImage}"
-									id="titleImage">
+									src="../../images/${recipe.titleImage}" id="titleImage">
 							</div>
 							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
 								사진을 위의 공간에 드래그 하세요</div>
@@ -417,7 +462,7 @@ body {
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- 상세레시피을 뿌려준다. -->
 				<c:set var="i" value="0" />
 				<c:forEach var="detail" items="${recipe.detailRecipe}">
@@ -434,10 +479,11 @@ body {
 							<div class="media">
 								<div class="media-left">
 									<input type="hidden" id="imagedetailImage${ i}"
-										name="detailImage${ i}" value="${detail.detailImage}" alt="none"> <img
+										name="detailImage${ i}" value="${detail.detailImage}"
+										alt="none"> <img
 										class="media-object img-rounded fileUpload"
-										src="../../images/${detail.detailImage}"
-										alt="..." id="detailImage${ i}">
+										src="../../images/${detail.detailImage}" alt="..."
+										id="detailImage${ i}">
 								</div>
 								<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
 									사진을 위의 공간에 드래그 하세요</div>
@@ -457,7 +503,7 @@ body {
 						</div>
 					</div>
 				</c:forEach>
-				
+
 				<!-- 해당 태그.before에 상세레시피 차레대로 나옴 -->
 				<div id="detailLastDiv"></div>
 				<div class="form-login " style="margin-bottom: 2%;" align="center">

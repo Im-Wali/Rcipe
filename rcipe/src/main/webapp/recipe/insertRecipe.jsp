@@ -136,6 +136,10 @@ body {
 										alert("하나이상의 상세레시피를 작성해야합니다.")
 										return;
 									}
+									var str=$(this).val()
+									if ($("#imagedetailImage" +str.substring(str.length-1)).val()!="") {
+										deletePicture($("#imagedetailImage" +str.substring(str.length-1)).val());
+									}
 									$("#" + $(this).val()).remove();
 									detailCount--;
 									$("#detailCount").val(detailCount);
