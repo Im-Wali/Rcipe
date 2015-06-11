@@ -2,7 +2,6 @@ package com.rcipe.web.favorite;
 
 import java.net.URLDecoder;
 
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;

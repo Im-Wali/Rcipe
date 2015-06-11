@@ -1,5 +1,7 @@
 package com.rcipe.web.user;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rcipe.commons.ConvertKo;
+import com.rcipe.commons.Search;
 import com.rcipe.service.domain.User;
 import com.rcipe.service.recipe.RecipeService;
 import com.rcipe.service.user.UserService;
@@ -60,15 +63,8 @@ public class UserController {
 	public @ResponseBody String checkedPassword(@RequestParam("password") String password,HttpSession session)
 			throws Exception {
 		User user = (User) session.getAttribute("user");
-		System.out.println("checkedPassword user :" + user);
-		System.out.println("입력된 password : "+password);
 		User newUser = new User();
 		newUser.setPassword(password);
-		System.out.println("입력된 password 암호화 : "+newUser.getPassword());
-		System.out.println("입력된 password 암호화1 : "+newUser.getDBPassword());
-		System.out.println("입력된 password 암호화2 : "+user.getDBPassword());
-		System.out.println("입력된 password 암호화3 : "+newUser.getPassword());
-		System.out.println("입력된 password 암호화4 : "+user.getPassword());
 		if(newUser.getDBPassword().equals(user.getPassword())){
 			return "true";
 		}
@@ -107,7 +103,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "updatePassword", method = RequestMethod.POST)
-	public void updatePassword(HttpSession session,
+	public ModelAndView updatePassword(HttpSession session,
 			@RequestParam("updatePassword2") String newPassword) throws Exception {
 		System.out.println(newPassword);
 		User newUser = ((User) session.getAttribute("user"));
@@ -117,6 +113,16 @@ public class UserController {
 		if (sessionId.equals(newUser.getNickname())) {
 			session.setAttribute("user", newUser);
 		}
+		Search search = new Search();
+		Map<String, Object> map = recipeService.getRecipeList(search);
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("forward:../../main/mainPage.jsp");
+		modelAndView.addObject("list", map.get("list"));
+		
+		session.removeAttribute("user");
+		
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "deleteUser", method = RequestMethod.GET)

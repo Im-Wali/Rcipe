@@ -7,7 +7,7 @@ public interface FileService {
 	
 	public boolean deleteProfile(String nickname,String path)throws Exception;
 	
-	public boolean deleteRecipe(String path)throws Exception;
+	public boolean deleteRecipeImages(String path)throws Exception;
 	
 	public boolean deleteModifyPicture( String deletePicturePaths)throws Exception;
 }
