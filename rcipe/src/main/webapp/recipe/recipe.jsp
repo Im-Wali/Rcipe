@@ -85,6 +85,7 @@ stylize any heading tags withing white-panel below
 <body
 	style="background-color: #fff color: #383838; padding: 0; margin: 0; font-family: Verdana, Arial, sans-serif; font-weight: 400; font-style: normal; line-height: 131%; position: relative; cursor: default">
 	<div><jsp:include page="/main/menuBar.jsp"></jsp:include></div>
+	<jsp:include page="favoriteModal.jsp"></jsp:include>
 	<div class="row">
 		<input type="hidden" id="recipeNo" name="recipeNo"
 			value="${recipe.recipeNo}">
@@ -97,12 +98,23 @@ stylize any heading tags withing white-panel below
 			<div class="form-login " style="margin-bottom: 2%;">
 				<div>
 					<div>
-					   <jsp:include page="favoriteModal.jsp"></jsp:include>
-						<div align="right"><button type="button" class="btn btn-warning" data-toggle="modal"
+						<div class="row">
+							<div class="col-md-6">
+						<div align="left"><button type="button" class="btn btn-warning" data-toggle="modal"
             data-target="#modifyFavoriteAdd" data-backdrop="false" data-dismiss="modal">즐겨찾기 추가</button></div>
-						<div align="right" style="font-size: medium;">${recipe.recipeDate}</div>
-						<div align="right" style="font-size: medium;">조회수 :
-							${recipe.hit}</div>
+								<c:if test="${user.nickname ==  recipe.nickname }">
+									<div align="left">
+										<a href="viewModifyRecipe?recipeNo=${recipe.recipeNo}"><button
+												type="button" class="btn btn-warning">레시피 수정</button></a>
+									</div>
+								</c:if>
+							</div>
+							<div class="col-md-6">
+								<div align="right" style="font-size: medium;">${recipe.recipeDate}</div>
+								<div align="right" style="font-size: medium;">조회수 :
+									${recipe.hit}</div>
+							</div>
+						</div>
 						<div style="margin-top: 1%" align="center">
 							<h2 style="font-size: 4em">${recipe.recipeTitle }</h2>
 						</div>
@@ -134,9 +146,9 @@ stylize any heading tags withing white-panel below
 										<i class='fa fa-star-o' style='margin-right: -8px'></i>
 									</c:forEach>
 								</div>
-								<div id="count-existing">현재 평점${recipe.star/recipe.starHit }</div>
+								<div id="count-existing">현재 평점:${recipe.starHit!=0 ? (recipe.star/recipe.starHit):0  }개</div>
 							</div>
-							<c:if test="${user !=null && starRecipe !=null }">
+							<c:if test="${user !=null }">
 								<div style="margin-top: 1%" align="right">
 									<div id="stars" data-rating='${starRecipe.star}' class="starrr"
 										style="color: orange;"></div>
