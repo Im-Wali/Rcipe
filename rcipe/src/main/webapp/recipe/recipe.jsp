@@ -89,6 +89,8 @@ stylize any heading tags withing white-panel below
 	<div class="row">
 		<input type="hidden" id="recipeNo" name="recipeNo"
 			value="${recipe.recipeNo}">
+			<input type="hidden" id="imagePath" name="imagePath"
+      value="${recipe.titleImage}">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<div class="form-login " align="center"
@@ -111,6 +113,12 @@ stylize any heading tags withing white-panel below
 												type="button" class="btn btn-warning">레시피 수정</button></a>
 									</span>
 								</c:if>
+								<c:if test="${user.nickname eq  recipe.nickname }">
+							   <jsp:include page="askRecipeRemove.jsp"></jsp:include>
+								<button type="button" class="btn btn-warning" data-toggle="modal"
+                data-target="#modifyRecipeRemove" data-backdrop="false"
+                data-dismiss="modal">삭제</button>
+							</c:if>
 							</div>
 							<div class="col-md-6">
 								<div align="right" style="font-size: medium;">${recipe.recipeDate}</div>
