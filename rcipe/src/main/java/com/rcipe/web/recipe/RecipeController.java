@@ -26,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.rcipe.commons.Search;
+import com.rcipe.service.commons.FileService;
 import com.rcipe.service.detailRecipe.DetailRecipeService;
 import com.rcipe.service.domain.DetailRecipe;
 import com.rcipe.service.domain.Ingredient;
@@ -45,6 +46,10 @@ public class RecipeController {
 	@Qualifier("detailRecipeServiceImpl")
 	DetailRecipeService detailRecipeService;
 
+	@Autowired
+	@Qualifier("fileServiceImpl")
+	FileService fileService;
+
 	public RecipeController() {
 		System.out.println(getClass() + "start......");
 	}
@@ -56,6 +61,7 @@ public class RecipeController {
 		Recipe recipe = recipeService.getRecipe(recipeNo);
 		recipe.setDetailRecipe(detailRecipeService.getDetailRecipeList(recipe
 				.getRecipeNo()));
+		// 유저의 별점을 가지고온다.
 		User user = (User) session.getAttribute("user");
 		if (user != null) {
 			Recipe starRecipe = new Recipe(recipe.getRecipeNo(),
@@ -81,10 +87,6 @@ public class RecipeController {
 			@RequestParam("detailNumber") int detailNumber,
 			@RequestParam("ingredientIds") String ingredientIds,
 			HttpSession session) throws Exception {
-		System.out.println("detailCount = " + detailCount);
-		System.out.println("detailNumber = " + detailNumber);
-		System.out.println("ingnredientIds = " + ingredientIds);
-		System.out.println(recipe);
 		recipe.setNickname(((User) session.getAttribute("user")).getNickname());
 		recipeService.insertRecipe(recipe);
 		int recipeNo = recipe.getRecipeNo();
@@ -92,15 +94,10 @@ public class RecipeController {
 		List<DetailRecipe> list = new ArrayList<DetailRecipe>();
 		List<Ingredient> ingredientList = new ArrayList<Ingredient>();
 		String ingre[] = ingredientIds.trim().split("/");
-		System.out.println(ingre);
 		for (int k = 1; k < ingre.length; k++) {
 			System.out.println(ingre[k]);
 			ingredientList.add(new Ingredient(Integer.parseInt(ingre[k]),
 					recipeNo));
-		}
-		for (int j = 0; j < ingredientList.size(); j++) {
-			System.out.println("IngredientIds " + j + "="
-					+ ingredientList.get(j));
 		}
 		for (int n = 1; n <= detailNumber; n++) {
 			String image = request.getParameter("detailImage" + n);
@@ -111,14 +108,65 @@ public class RecipeController {
 				count++;
 				list.add(new DetailRecipe(recipeNo, count, image, content));
 			}
-			System.out.println(n + "detailImage=" + image);
-			System.out.println(n + "detailContents=" + content);
-		}
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println("list== " + i + "=" + list.get(i));
 		}
 		detailRecipeService.insertDetailRecipe(list);
 		recipeService.insertRcpIng(ingredientList);
+		return "redirect:viewRecipe?recipeNo=" + recipeNo;
+	}
+
+	@RequestMapping(value = "/viewModifyRecipe", method = RequestMethod.GET)
+	public String viewModifyRecipe(Model model,
+			@RequestParam("recipeNo") int recipeNo) throws Exception {
+		// 댓글도 같이 가지고오겠지만 그냥 상관없어서 그냥 함
+		Recipe recipe = recipeService.getRecipe(recipeNo);
+		recipe.setDetailRecipe(detailRecipeService.getDetailRecipeList(recipe
+				.getRecipeNo()));
+		model.addAttribute("recipe", recipe);
+		System.out.println(recipe);
+		return "recipe/modifyRecipe";
+	}
+
+	@RequestMapping(value = "/modifyRecipe", method = RequestMethod.POST)
+	public String modifyRecipe(Model model, HttpServletRequest request,
+			Recipe recipe, @RequestParam("detailCount") int detailCount,
+			@RequestParam("detailNumber") int detailNumber,
+			@RequestParam("deletePicturePaths") String deletePicturePaths,
+			@RequestParam("ingredientIds") String ingredientIds,
+			HttpSession session) throws Exception {
+		recipeService.updateRecipe(recipe);
+		int recipeNo = recipe.getRecipeNo();
+		int count = 0;
+		List<DetailRecipe> list =  new ArrayList<DetailRecipe>();
+		// 레시피 사진들과 레시피을 일단 지운다.
+		fileService.deleteModifyPicture(deletePicturePaths);
+		//만약에 재로를 고치면 일단 이전에 있던 rcp_ing을 지우고 다시 insert한다.start.
+		if (ingredientIds != null&&!"".equals(ingredientIds)) {
+			recipeService.deleteRcpIng(recipeNo);
+			List<Ingredient> ingredientList = new ArrayList<Ingredient>();
+			String ingre[] = ingredientIds.trim().split("/");
+			for (int k = 1; k < ingre.length; k++) {
+				System.out.println(ingre[k]);
+				ingredientList.add(new Ingredient(Integer.parseInt(ingre[k]),
+						recipeNo));
+			}
+			recipeService.insertRcpIng(ingredientList);
+		}
+		//end
+		
+		//detailRecip로직 start.
+		detailRecipeService.deleteDetailRecipe(recipeNo);
+		for (int n = 1; n <= detailNumber; n++) {
+			String image = request.getParameter("detailImage" + n);
+			String content = request.getParameter("detailContents" + n);
+			if (count == detailCount) {
+				break;
+			} else if (image != null) {
+				count++;
+				list.add(new DetailRecipe(recipeNo, count, image, content));
+			}
+		}
+		detailRecipeService.insertDetailRecipe(list);
+		//detailRecipe로직 End
 		return "redirect:viewRecipe?recipeNo=" + recipeNo;
 	}
 
