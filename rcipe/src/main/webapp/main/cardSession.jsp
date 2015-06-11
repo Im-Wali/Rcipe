@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script src="../js/jquery.lazyload.js"></script>
+<script src="${pageContext.servletContext.contextPath }/js/jquery.lazyload.js"></script>
 
 <script>
 	$(document).ready(function() {
@@ -193,7 +193,7 @@ section li .projectInfo {
 					<li id="fullPreview"></li>
 					<li><a
 						href="${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo=${recipe.recipeNo}"></a>
-						<img src="${recipe.titleImage}" width="240" height="200"
+						<img src="${pageContext.servletContext.contextPath }/images/${recipe.titleImage}" width="240" height="200"
 						style="display: inline;">
 						<div class="overLayer"></div>
 						<div class="infoLayer">
