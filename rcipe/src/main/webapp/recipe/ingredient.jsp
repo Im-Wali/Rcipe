@@ -43,7 +43,7 @@
 															var list = data.list;
 															var tag = "";
 															for ( var i in list) {
-																tag += "<div class='col-md-3' align='center' style='margin-top: 1%'>"
+																tag += "<div class='col-md-3' align='center' style='margin-top: 1%' align='right'>"
 																		+ "<label id='name_"
 																		+ list[i].ingredientNo
 																		+ "' style='margin-right:1%'>"
