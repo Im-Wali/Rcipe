@@ -93,7 +93,15 @@ public class UserController {
 		session.setAttribute("user", dbUser);
 		System.out.println("loginUser :" + dbUser);
 
-		return "app/recipe/getRecipeList";
+		return "/index";
+	}
+	
+	@RequestMapping(value = "userLogout")
+	public String userLogout(HttpSession session) throws Exception {
+		// Business Logic
+		session.removeAttribute("user");
+
+		return "/index";
 	}
 	
 	@RequestMapping(value = "viewUser", method = RequestMethod.GET)
