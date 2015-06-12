@@ -351,7 +351,7 @@ body {
 								value="">
 							<div class="media-left">
 								<img class="media-object img-rounded fileUpload"
-									src="../img/images3.jpg" alt="..." id="titleImage">
+									src="${pageContext.servletContext.contextPath}/img/images3.jpg" alt="..." id="titleImage">
 							</div>
 							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
 								사진을 위의 공간에 드래그 하세요</div>
@@ -401,7 +401,7 @@ body {
 								<input type="hidden" id="imagedetailImage1" name="detailImage1"
 									value=""> <img
 									class="media-object img-rounded fileUpload"
-									src="../img/images3.jpg" alt="..." id="detailImage1">
+									src="${pageContext.servletContext.contextPath}/img/images3.jpg" alt="..." id="detailImage1">
 							</div>
 							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
 								사진을 위의 공간에 드래그 하세요</div>
