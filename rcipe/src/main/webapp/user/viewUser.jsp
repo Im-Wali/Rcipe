@@ -96,7 +96,7 @@ $("document").ready(function() {
 						<div style="margin-top: 3%">
 							<div style="font-size: 2em; margin-top: 1%; margin-left: 2%;margin-bottom:1%;" align="center">프로필사진</div>
 							<div align="center">
-								<img src="../img/001.jpg" class="img-circle fileUpload" role="button"
+								<img src="${pageContext.servletContext.contextPath}/img/001.jpg" class="img-circle fileUpload" role="button"
 									style="width: 150px; height: 150px; margin-top: 1%"
 									aria-haspopup="true" aria-expanded="false" id="fileUpload">
 							</div>
