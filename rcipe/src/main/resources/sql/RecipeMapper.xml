@@ -139,6 +139,11 @@
 		WHERE rcp_no=#{value}
 	</delete>
 
+	<delete id="deleteStars" parameterType="int">
+    DELETE FROM stars
+    WHERE rcp_no=${value}
+  </delete>
+	
 	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
 		SELECT
 		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip,
