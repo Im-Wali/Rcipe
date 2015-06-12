@@ -1,24 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/style.css" type="text/css" />
-<link rel="stylesheet" href="${pageContext.servletContext.contextPath }/css/menuBar01.css" type="text/css" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath }/css/style.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.servletContext.contextPath }/css/menuBar01.css"
+	type="text/css" />
 <script src="${pageContext.servletContext.contextPath }/js/menuBar01.js">
+	
 </script>
 <script type="text/javascript">
-function search() {
-  var searchKeyword = document.getElementById("searchKeyword").value;
-  location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='+searchKeyword;
-  }
-  
+	function search() {
+		var searchKeyword = document.getElementById("searchKeyword").value;
+		location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='
+				+ searchKeyword;
+	}
 </script>
 <!-- login.jsp :로그인 모달을 가지고 있는 jsp파일 -->
 <jsp:include page="/user/login.jsp"></jsp:include>
 <jsp:include page="/user/join.jsp"></jsp:include>
+<jsp:include page="/main/searchIngredient.jsp"></jsp:include>
 <nav id="filp" class="navbar navbar-inverse "
 	style="border: none; width: 100%; height: 30%; padding: 10px; text-align: center; background-color: #FF9933;">
 	<span style="float: left; padding-left: 10px; margin-top: 1%"><a
-		href="${pageContext.servletContext.contextPath }" style="font-size: 2em; color: black">Rcipe</a></span>
+		href="${pageContext.servletContext.contextPath }"
+		style="font-size: 2em; color: black">Rcipe</a></span>
 	<div class="dropdown">
 		<div id="dLabel" data-toggle="dropdown" aria-haspopup="true"
 			aria-expanded="false"
@@ -93,69 +100,88 @@ function search() {
 							for="checkbox12" class="css-label">건조</label></li>
 					</ul>
 				</div>
+				<div align="right">
+						<button type="button" class="btn btn-default" style="margin-right: 2%" 
+						data-target="#searchIngredient" data-whatever="dialog"  data-toggle="modal"
+						data-backdrop="false"><a>상세검색</a></button>
+				</div>
 			</div>
 		</ul>
 	</div>
 	<div align="right" style="padding-right: 10px; margin-top: 1%">
-		<form name="SearchForm" action="" method="POST" >
-      <span class="row"> <span class="col-sm-5 col-sm-offset-2"
-        style="display: inline-block; text-align: center; margin-top: 1%;">
-          <span id="imaginary_container"> <span
-            class="input-group stylish-input-group"> <input type="text"
-              class="form-control" placeholder="Search" id="searchKeyword" URIEncoding="UTF-8">
-              <span class="input-group-addon">
-                <button type="button" onclick="javascript:search();">
-                  <span class="glyphicon glyphicon-search"></span>
-                </button>
-            </span>
-          </span>
-        </span>
-      </span>
-      </span>
-    </form>
+		<form name="SearchForm" action="" method="POST">
+			<span class="row"> <span class="col-sm-5 col-sm-offset-2"
+				style="display: inline-block; text-align: center; margin-top: 1%;">
+					<span id="imaginary_container"> <span
+						class="input-group stylish-input-group"> <input type="text"
+							class="form-control" placeholder="Search" id="searchKeyword"
+							URIEncoding="UTF-8"> <span class="input-group-addon">
+								<button type="button" onclick="javascript:search();">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+						</span>
+					</span>
+				</span>
+			</span>
+			</span>
+		</form>
 		<span class="dropdown dropdown-toggle"> <img
-			src="${pageContext.servletContext.contextPath }/img/001.jpg" class="img-circle" role="button"
+			src="${pageContext.servletContext.contextPath }/img/001.jpg"
+			class="img-circle" role="button"
 			style="width: 80px; height: 80px; margin-right: 1%; margin-top: -2%"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			<ul class="dropdown-menu dropdown-menu-right "
 				aria-labelledby="user-div-image"
-				style="margin-top:20px; background-color: #FF9933; border: none;"
+				style="margin-top: 20px; background-color: #FF9933; border: none;"
 				role="menu">
-				<c:if test="${user.nickname == null }">                  
-				  <li><a href="#" class="btn btn-primary" data-toggle="modal"
-					data-target="#loginModal" data-whatever="Login"
-					data-backdrop="false"
-					style="background-color: #FF9933; border: #FF9933; color: black">로그인</a></li>
-				<li><a href="#" class="btn btn-primary" data-toggle="modal"
-					data-target="#joinModal" data-whatever="Join" data-backdrop="false"
-					style="background-color: #FF9933; border: #FF9933; color: black">회원가입</a></li>
-					       <div align="center">
-          <li><a href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0" class="btn btn-primary"
-            style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
-        </div>
-        </c:if>
-        <c:if test="${user.nickname != null }">                  
-          <li><a href="${pageContext.servletContext.contextPath }/app/user/userLogout" class="btn btn-primary" 
-          style="background-color: #FF9933; border: #FF9933; color: black">로그아웃</a></li>
-				<div align="center">
-				<div align="center">
-					<li><a href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0" class="btn btn-primary"
-						style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
-				</div>
-					<li><a href="${pageContext.servletContext.contextPath }/app/recipe/viewInsertRecipe" class="btn btn-primary"
-						style="background-color: #FF9933; border: #FF9933; color: black">레시피등록</a></li>
-				</div>
-				<div align="center">
-					<li><a href="${pageContext.servletContext.contextPath }/app/favorite/getfavoriteList" class="btn btn-primary"
-						style="background-color: #FF9933; border: #FF9933; color: black">즐겨찾기</a></li>
-				</div>
-				<div align="center">
-          <li><a href="${pageContext.servletContext.contextPath }/app/user/viewUser" class="btn btn-primary"
-            style="background-color: #FF9933; border: #FF9933; color: black">내정보보기</a></li>
-        </div>
-        </c:if>
-        
-				
+				<c:if test="${user.nickname == null }">
+					<li><a href="#" class="btn btn-primary" data-toggle="modal"
+						data-target="#loginModal" data-whatever="Login"
+						data-backdrop="false"
+						style="background-color: #FF9933; border: #FF9933; color: black">로그인</a></li>
+					<li><a href="#" class="btn btn-primary" data-toggle="modal"
+						data-target="#joinModal" data-whatever="Join"
+						data-backdrop="false"
+						style="background-color: #FF9933; border: #FF9933; color: black">회원가입</a></li>
+					<div align="center">
+						<li><a
+							href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0"
+							class="btn btn-primary"
+							style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
+					</div>
+				</c:if>
+				<c:if test="${user.nickname != null }">
+					<li><a
+						href="${pageContext.servletContext.contextPath }/app/user/userLogout"
+						class="btn btn-primary"
+						style="background-color: #FF9933; border: #FF9933; color: black">로그아웃</a></li>
+					<div align="center">
+						<div align="center">
+							<li><a
+								href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0"
+								class="btn btn-primary"
+								style="background-color: #FF9933; border: #FF9933; color: black">게시판리스트</a></li>
+						</div>
+						<li><a
+							href="${pageContext.servletContext.contextPath }/app/recipe/viewInsertRecipe"
+							class="btn btn-primary"
+							style="background-color: #FF9933; border: #FF9933; color: black">레시피등록</a></li>
+					</div>
+					<div align="center">
+						<li><a
+							href="${pageContext.servletContext.contextPath }/app/favorite/getfavoriteList"
+							class="btn btn-primary"
+							style="background-color: #FF9933; border: #FF9933; color: black">즐겨찾기</a></li>
+					</div>
+					<div align="center">
+						<li><a
+							href="${pageContext.servletContext.contextPath }/app/user/viewUser"
+							class="btn btn-primary"
+							style="background-color: #FF9933; border: #FF9933; color: black">내정보보기</a></li>
+					</div>
+				</c:if>
+
+
 			</ul>
 		</span>
 	</div>
