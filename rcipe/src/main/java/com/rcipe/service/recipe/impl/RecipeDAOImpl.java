@@ -80,6 +80,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 	public int deleteRecipe(int recipeNo) throws Exception {
 		deleteRcpIng(recipeNo);
 		sqlSession.delete("RecipeMapper.deleteDetailRcp", recipeNo);
+		sqlSession.delete("RecipeMapper.deleteStars", recipeNo);
 		return sqlSession.delete("RecipeMapper.deleteRecipe", recipeNo);
 
 	}
