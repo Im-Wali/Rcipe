@@ -49,14 +49,17 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 	@Override
 	public List<Favorite> getFavoriteList(Map<String, Object> map) throws Exception{
 		List<Integer> list = new ArrayList<Integer>();
+		System.err.println("nickname : "+map.get("nickname"));
 		list = sqlSession.selectList("FavoriteMapper.getRecipeNumNickname", map.get("nickname"));
 		System.err.println("유저가 갖고 있는 즐겨찾기의 레시피 넘버 : "+sqlSession.selectList("FavoriteMapper.getRecipeNumNickname", map.get("nickname")));
 		List<Favorite> list1 = sqlSession.selectList("FavoriteMapper.getJoinFavorite", map.get("nickname"));
 		System.err.println("유저가 갖고 있는 3개 조인 : "+sqlSession.selectList("FavoriteMapper.getJoinFavorite", map.get("nickname")));
 		if(list.size()!=0){
 			for(int i=0; i < list.size(); i++){
-				System.err.println(sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i)));
+				System.err.println("CommentCount : "+sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i)));
 				list1.get(i).setCmtCnt((Integer) sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i)));
+				list1.get(i).setStarAvg((Integer) sqlSession.selectOne("FavoriteMapper.getStarAvg", list.get(i)));
+				System.err.println("starAvG : "+(Integer) sqlSession.selectOne("FavoriteMapper.getStarAvg", list.get(i)));
 			}
 		}
 		
