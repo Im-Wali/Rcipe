@@ -11,7 +11,7 @@
 		<div class="media">
 			<div class="media-left">
 				<a href="#"> <img class="media-object img-rounded"
-					src="http://127.0.0.1:8080/rcipe/img/images3.jpg" alt="...">
+					src="${pageContext.servletContext.contextPath}/img/images3.jpg" alt="...">
 				</a>
 			</div>
 			<div style="margin: 1%">
