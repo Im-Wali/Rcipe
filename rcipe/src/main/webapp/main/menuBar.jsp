@@ -12,9 +12,9 @@
 </script>
 <script type="text/javascript">
 	function search() {
-		var searchKeyword = document.getElementById("searchKeyword").value;
+	/* 	var searchKeyword = document.getElementById("searchKeyword").value;
 		location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='
-				+ searchKeyword;
+				+ searchKeyword; */
 	}
 </script>
 <!-- login.jsp :로그인 모달을 가지고 있는 jsp파일 -->
@@ -24,7 +24,7 @@
 <nav id="filp" class="navbar navbar-inverse "
 	style="border: none; width: 100%; height: 30%; padding: 10px; text-align: center; background-color: #FF9933;">
 	<span style="float: left; padding-left: 10px; margin-top: 1%"><a
-		href="${pageContext.servletContext.contextPath }"
+		href="${pageContext.servletContext.contextPath}"
 		style="font-size: 2em; color: black">Rcipe</a></span>
 	<div class="dropdown">
 		<div id="dLabel" data-toggle="dropdown" aria-haspopup="true"
@@ -109,14 +109,14 @@
 		</ul>
 	</div>
 	<div align="right" style="padding-right: 10px; margin-top: 1%">
-		<form name="SearchForm" action="" method="POST">
+		<form  method="GET" name="searchForm"  id="searchForm" action="${pageContext.servletContext.contextPath }/app/recipe/getRecipeList" >
 			<span class="row"> <span class="col-sm-5 col-sm-offset-2"
 				style="display: inline-block; text-align: center; margin-top: 1%;">
 					<span id="imaginary_container"> <span
-						class="input-group stylish-input-group"> <input type="text"
-							class="form-control" placeholder="Search" id="searchKeyword"
+						class="input-group stylish-input-group"> <input type="text" value="${search.searchKeyword}"
+							class="form-control" placeholder="Search" id="searchKeyword" name="searchKeyword" 
 							URIEncoding="UTF-8"> <span class="input-group-addon">
-								<button type="button" onclick="javascript:search();">
+								<button type="submit">
 									<span class="glyphicon glyphicon-search"></span>
 								</button>
 						</span>

@@ -101,26 +101,10 @@ public class RecipeDAOImpl implements RecipeDAO {
 	public List<Recipe> getRecipeList(Search search) throws Exception {
 		// TODO Auto-generated method stub
 		if (search.getSearchKeyword() == null) {
-			return sqlSession.selectList("RecipeMapper.getRecipeList", search);
+			return sqlSession.selectList("RecipeMapper.getDefalutRecipeList");
 		} else {
-			List<Recipe> temp1, temp2, listRecipe = new ArrayList<Recipe>();
-			if (sqlSession.selectOne("RecipeMapper.getCheckIngredient", search) != null) {
-				List<String> listTemp = new ArrayList<String>();
-				listTemp.add(search.getSearchKeyword());
-
-				temp1 = sqlSession.selectList("RecipeMapper.getRecipeList",
-						search);
-				temp2 = getRecipeListIngredients(listTemp);
-
-				for (int i = 0; i < temp1.size(); i++) {
-					listRecipe.add(temp1.get(i));
-				}
-				for (int i = 0; i < temp1.size(); i++) {
-					listRecipe.add(temp2.get(i));
-				}
-
-			}
-
+			List<Recipe> listRecipe = new ArrayList<Recipe>();
+			listRecipe=sqlSession.selectList("RecipeMapper.getRecipeList", search);
 			return listRecipe;
 		}
 	}

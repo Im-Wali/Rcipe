@@ -104,7 +104,7 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="../user/login.jsp"></jsp:include>
+	<jsp:include page="/user/login.jsp"></jsp:include>
 
 	<!-- jQuery -->
 	<script src="js/jquery.js"></script>

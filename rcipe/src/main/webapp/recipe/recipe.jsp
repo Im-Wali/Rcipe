@@ -244,7 +244,7 @@ stylize any heading tags withing white-panel below
 			</c:forEach>
 		</div>
 	</div>
-	<%-- <div class="row">
+	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<div class="form-login " style="margin-bottom: 2%;">
@@ -252,7 +252,7 @@ stylize any heading tags withing white-panel below
 			</div>
 		</div>
 		<div class="col-md-1"></div>
-	</div> --%>
+	</div>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">

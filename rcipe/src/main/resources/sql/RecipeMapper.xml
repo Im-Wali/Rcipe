@@ -140,24 +140,49 @@
 	</delete>
 
 	<delete id="deleteStars" parameterType="int">
-    DELETE FROM stars
-    WHERE rcp_no=${value}
-  </delete>
-	
+		DELETE FROM stars
+		WHERE
+		rcp_no=${value}
+	</delete>
+
 	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
+		SELECT
+		re.rcp_no, re.nickname, re.rcp_title, re.rcp_img_path,
+		re.rcp_cont, re.rcp_tip,
+		re.rcp_cnt,re.ingredients, re.rcp_date
+		FROM
+		recipes re,(SELECT
+		rc.RCP_NO iRcpNo,i.INGREDIENT_NAME ingName
+		FROM
+		ingredients i,rcp_ing rc,recipes rec
+		WHERE i.INGREDIENT_NO =
+		rc.INGREDIENT_NO AND rc.rcp_no=rec.rcp_no)ingre
+		<if test="searchKeyword != null">
+			<if test="searchKeyword != '' ">
+				<where>
+					(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
+					=re.rcp_no) OR
+					re.rcp_title
+					like '%${searchKeyword}%' OR
+					re.nickname
+					like
+					'%${searchKeyword}%'
+				</where>
+			</if>
+		</if>
+		<if test="searchKeyword == null">
+				<where>
+					ingre.iRcpNo(+) =re.rcp_no
+				</where>
+				ORDER BY  re.rcp_cnt
+		</if>
+	</select>
+	<select id="getDefalutRecipeList"  resultMap="RecipeSelectMap">
 		SELECT
 		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip,
 		rcp_cnt, ingredients, rcp_date
 		FROM recipes
-		<where>
-			<if test="searchKeyword != null">
-				<if test="searchKeyword != '' ">
-					rcp_title like '%${searchKeyword}%' OR
-					nickname like
-					'%${searchKeyword}%'
-				</if>
-			</if>
-		</where>
+		ORDER BY rcp_cnt
 	</select>
 
 	<select id="getRecipeListIngredients" parameterType="int"
@@ -194,16 +219,30 @@
 	<select id="getTotalCount" parameterType="search" resultType="int">
 		SELECT COUNT(*)
 		FROM ( SELECT *
-		FROM recipes
-		<where>
-			<if test="searchKeyword != null">
-				<if test="searchKeyword != '' ">
-					rcp_title like '%${searchKeyword}%' OR
-					nickname like
+		FROM recipes,(SELECT
+		rc.RCP_NO
+		iRcpNo,i.INGREDIENT_NAME ingName
+		FROM ingredients i,rcp_ing rc,recipes
+		rec
+		WHERE i.INGREDIENT_NO = rc.INGREDIENT_NO AND
+		rc.rcp_no=rec.rcp_no)ingre
+		<if test="searchKeyword != null">
+			<if test="searchKeyword != '' ">
+				<where>
+					(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
+					=re.rcp_no) OR
+					re.rcp_title like '%${searchKeyword}%' OR
+					re.nickname
+					like
 					'%${searchKeyword}%'
-				</if>
+				</where>
 			</if>
-		</where>
+		</if>
+		<if test="searchKeyword == null">
+				<where>
+					ingre.iRcpNo(+) =re.rcp_no
+				</where>
+		</if>
 		) countTable
 	</select>
 	<update id="updateRecipeCount" parameterType="int">

@@ -2,6 +2,74 @@
 	pageEncoding="UTF-8"%>
 <style type="text/css">
 </style>
+<div class="modal fade" id="searchIngredient" tabindex="-1"
+	role="dialog" aria-labelledby="ingredient" aria-hidden="false">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header" style="border-color: white" align="right">
+				<button type="button" class="close" data-dismiss="modal"
+					id="ingredientClose" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h3 class="modal-title" align="center">음식재료 검색</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row" style="margin-top: 2%;">
+					<div class="col-md-12">
+						<form id="searchIngredientForm" action="#">
+							<span id="imaginary_container"> <span
+								class="input-group stylish-input-group"> <input
+									type="text" class="form-control" placeholder="Search"
+									id="searchIngredientKeyword"> <span
+									class="input-group-addon">
+										<button type="submit" id="searchIngreButton">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+								</span>
+							</span>
+							</span>
+						</form>
+					</div>
+				</div>
+				<div class="row" style="border-color: white;margin-top:1%">
+					<div align="left" class="col-md-6">
+						<label for="title"
+							style="color: red; font-size: medium; margin: 1%">*검색할
+							재료들을 추가하세요.</label>
+					</div>
+					<div align="right"  class="col-md-6">
+						<button type="button" class="btn  btn-warning btn-lg "
+							id="settingSearchIngredient" style="color: black; margin-top: 1%">완료</button>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 2%;">
+					<div class="col-md-6">
+						<hr style="border-color: black" />
+						<h4 align="center" style="font: bolder;">음식재료 선택</h4>
+						<hr style="border-color: black" />
+						<!-- <iframe height="600px" width="100%" style="border: none;" > -->
+						<div class="row" style="margin-top: 2%;" id="searchIngre">
+							<!-- 음식재료을 보여주는 부분 -->
+						</div>
+						<!-- </iframe> -->
+					</div>
+					<div class="col-md-6">
+						<hr style="border-color: black" />
+						<h4 align="center" style="font: bolder;">선택된 음식재료</h4>
+						<hr style="border-color: black" />
+						<div class="row">
+							<!-- <iframe height="600px" width="100%" style="border: none;"> -->
+							<div id="ingredSearchIentAfter"></div>
+							<!--선택된 음식을 보여주는 부분 -->
+							<!-- </iframe> -->
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
 <script>
 	$(document)
 			.ready(
@@ -133,9 +201,12 @@
 
 											}
 											ingredientValues=ingredientValues.trim();
+											ingredientValues=ingredientValues.substring(0,ingredientValues.length-1);
 											alert(ingredientIds);
 											alert(ingredientValues);
 											$("#ingredientClose").click();
+											$("#searchKeyword").val(ingredientValues);
+											$("#searchForm").submit();
 										});
 						$("#searchIngredientForm").submit(function(event) {
 							event.preventDefault();
@@ -143,72 +214,3 @@
 						})
 					});
 </script>
-
-<div class="modal fade" id="searchIngredient" tabindex="-1"
-	role="dialog" aria-labelledby="ingredient" aria-hidden="false">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header" style="border-color: white" align="right">
-				<button type="button" class="close" data-dismiss="modal"
-					id="ingredientClose" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h3 class="modal-title" align="center">음식재료 검색</h3>
-			</div>
-			<div class="modal-body">
-				<div class="row" style="margin-top: 2%;">
-					<div class="col-md-12">
-						<form id="searchIngredientForm" action="#">
-							<span id="imaginary_container"> <span
-								class="input-group stylish-input-group"> <input
-									type="text" class="form-control" placeholder="Search"
-									id="searchIngredientKeyword"> <span
-									class="input-group-addon">
-										<button type="submit" id="searchIngreButton">
-											<span class="glyphicon glyphicon-search"></span>
-										</button>
-								</span>
-							</span>
-							</span>
-						</form>
-					</div>
-				</div>
-				<div class="row" style="border-color: white;margin-top:1%">
-					<div align="left" class="col-md-6">
-						<label for="title"
-							style="color: red; font-size: medium; margin: 1%">*검색할
-							재료들을 추가하세요.</label>
-					</div>
-					<div align="right"  class="col-md-6">
-						<button type="button" class="btn  btn-warning btn-lg "
-							id="settingSearchIngredient" style="color: black; margin-top: 1%">완료</button>
-					</div>
-				</div>
-				<div class="row" style="margin-top: 2%;">
-					<div class="col-md-6">
-						<hr style="border-color: black" />
-						<h4 align="center" style="font: bolder;">음식재료 선택</h4>
-						<hr style="border-color: black" />
-						<!-- <iframe height="600px" width="100%" style="border: none;" > -->
-						<div class="row" style="margin-top: 2%;" id="searchIngre">
-							<!-- 음식재료을 보여주는 부분 -->
-						</div>
-						<!-- </iframe> -->
-					</div>
-					<div class="col-md-6">
-						<hr style="border-color: black" />
-						<h4 align="center" style="font: bolder;">선택된 음식재료</h4>
-						<hr style="border-color: black" />
-						<div class="row">
-							<!-- <iframe height="600px" width="100%" style="border: none;"> -->
-							<div id="ingredSearchIentAfter"></div>
-							<!--선택된 음식을 보여주는 부분 -->
-							<!-- </iframe> -->
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-</div>
