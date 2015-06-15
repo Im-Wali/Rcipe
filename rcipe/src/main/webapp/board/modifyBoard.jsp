@@ -5,30 +5,8 @@
 <!DOCTYPE html>
 <html>
 <HEAD>
-<%-- <%
-	Board board = new Board(
-			10021,
-			"user01",
-			"test1",
-			"아아아아아아아아아아아아엥에에에엥<br />"
-					+ "ㅇ엥엥에에에에엥엉어어어어어어어어<br />"
-					+ "어어어어어어엉엉어엉ㅇㅇ엉어엉엉어엉엉어어엉어어엉ㄻㄴㅇㄻㄴㅇ러<br />"
-					+ "<br />"
-					+ "ㅁㄴㅇ러<br />"
-					+ "ㅁㄴㅇㄻ넝ㄻㄴㅇ<img alt='' src=' http://192.168.200.159:8080/rcipe/images/user01/1432272482129/1432272482169.JPG' style='height:194px; width:309px' /><br />"
-					+ "어<br />" + "어<br />" + "어<br />" + "어<br />"
-					+ "어<br />" + "에", 1, new Date(2015, 03, 29), 30,
-			"", null);
-%> --%>
 <title>Recipe</title>
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
-<style type="http://127.0.0.1:8080/rcipe/text/css">
+<style type="text/css">
 .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;
@@ -85,7 +63,7 @@
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="http://127.0.0.1:8080/rcipe/app/board/modifyBoard" method="POST">
+			<form action="${pageContext.servletContext.contextPath}/app/board/modifyBoard" method="POST">
 				<div align="right">
 					<label style="font-size:1.2em;margin-right:1%;">등록된 날짜:<%-- <%=board.getBoardDate().getYear()%>/
 					<%=board.getBoardDate().getMonth()%>/
@@ -189,5 +167,12 @@
 											});
 						});
 	</script>
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 </body>
-</HEAD>
+</html>
