@@ -82,7 +82,7 @@
 	<update id="updateImage" parameterType="user">
 		UPDATE users
 		<set>
-			user_img = #{userImage}
+			user_img = #{userImage:VARCHAR}
 		</set>
 		WHERE nickname = #{nickname}
 	</update>

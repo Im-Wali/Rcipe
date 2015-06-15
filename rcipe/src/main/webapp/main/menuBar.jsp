@@ -12,9 +12,9 @@
 </script>
 <script type="text/javascript">
 	function search() {
-	/* 	var searchKeyword = document.getElementById("searchKeyword").value;
-		location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='
-				+ searchKeyword; */
+		/* 	var searchKeyword = document.getElementById("searchKeyword").value;
+			location.href = 'http://localhost:8080/rcipe/app/recipe/getRecipeList?searchKeyword='
+					+ searchKeyword; */
 	}
 </script>
 <!-- login.jsp :로그인 모달을 가지고 있는 jsp파일 -->
@@ -101,20 +101,24 @@
 					</ul>
 				</div>
 				<div align="right">
-						<button type="button" class="btn btn-default" style="margin-right: 2%" 
-						data-target="#searchIngredient" data-whatever="dialog"  data-toggle="modal"
-						data-backdrop="false"><a>상세검색</a></button>
+					<button type="button" class="btn btn-default"
+						style="margin-right: 2%" data-target="#searchIngredient"
+						data-whatever="dialog" data-toggle="modal" data-backdrop="false">
+						<a>상세검색</a>
+					</button>
 				</div>
 			</div>
 		</ul>
 	</div>
 	<div align="right" style="padding-right: 10px; margin-top: 1%">
-		<form  method="GET" name="searchForm"  id="searchForm" action="${pageContext.servletContext.contextPath }/app/recipe/getRecipeList" >
+		<form method="GET" name="searchForm" id="searchForm"
+			action="${pageContext.servletContext.contextPath }/app/recipe/getRecipeList">
 			<span class="row"> <span class="col-sm-5 col-sm-offset-2"
 				style="display: inline-block; text-align: center; margin-top: 1%;">
 					<span id="imaginary_container"> <span
-						class="input-group stylish-input-group"> <input type="text" value="${search.searchKeyword}"
-							class="form-control" placeholder="Search" id="searchKeyword" name="searchKeyword" 
+						class="input-group stylish-input-group"> <input type="text"
+							value="${search.searchKeyword}" class="form-control"
+							placeholder="Search" id="searchKeyword" name="searchKeyword"
 							URIEncoding="UTF-8"> <span class="input-group-addon">
 								<button type="submit">
 									<span class="glyphicon glyphicon-search"></span>
@@ -125,19 +129,19 @@
 			</span>
 			</span>
 		</form>
-		<span class="dropdown dropdown-toggle"> 
-		<c:if test="${user.nickname == null }"><img
-			src="${pageContext.servletContext.contextPath }/images/userIcon.png"
-			class="img-circle" role="button"
-			style="width: 80px; height: 80px; margin-right: 1%; margin-top: -2%"
-			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			</c:if>
-			<c:if test="${user.nickname != null }">
-			<img
-			src="${pageContext.servletContext.contextPath }/images/${user.userImage}"
-			class="img-circle" role="button"
-			style="width: 80px; height: 80px; margin-right: 1%; margin-top: -2%"
-			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		<span class="dropdown dropdown-toggle"> <c:if
+				test="${user.userImage == null }">
+				<img
+					src="${pageContext.servletContext.contextPath }/images/userIcon.png"
+					class="img-circle" role="button"
+					style="width: 80px; height: 80px; margin-right: 1%; margin-top: -2%"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			</c:if> <c:if test="${user.userImage != null }">
+				<img
+					src="${pageContext.servletContext.contextPath }/images/${user.userImage}"
+					class="img-circle" role="button"
+					style="width: 80px; height: 80px; margin-right: 1%; margin-top: -2%"
+					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			</c:if>
 			<ul class="dropdown-menu dropdown-menu-right "
 				aria-labelledby="user-div-image"

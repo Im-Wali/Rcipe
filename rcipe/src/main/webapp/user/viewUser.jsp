@@ -41,7 +41,7 @@
 								data = data.replace(/\+/g, " ");
 								alert(data);
 								$("#fileUpload").attr("src",
-										"../images/recipeIcon.png");
+										"../../images/userIcon.png");
 							});
 						});
 				//파일 버튼에서 아이콘을 빼주는 script
