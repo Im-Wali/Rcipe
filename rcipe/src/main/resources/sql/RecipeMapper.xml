@@ -147,26 +147,26 @@
 
 	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
 		SELECT
-		inner.*
+		inner.rcp_no, inner.nickname, inner.rcp_title, inner.rcp_img_path,
+		inner.rcp_cnt ,innerR.rcp_cont
 		FROM(
 		SELECT
-		inner_table.*, ROWNUM AS row_seq FROM
+		inner_table.rcp_no, inner_table.nickname, inner_table.rcp_title, inner_table.rcp_img_path,
+		inner_table.rcp_cnt, ROWNUM AS row_seq FROM
 		(
-		SELECT
+		SELECT DISTINCT
 		re.rcp_no, re.nickname, re.rcp_title, re.rcp_img_path,
-		re.rcp_cont, re.rcp_tip,
-		re.rcp_cnt,re.ingredients, re.rcp_date
+		re.rcp_cnt
 		FROM
 		recipes re,
-		(SELECT
+		(SELECT 
 		rc.RCP_NO iRcpNo,
 		i.INGREDIENT_NAME ingName
 		FROM
 		ingredients i,
-		rcp_ing rc,
-		recipes rec
+		rcp_ing rc
 		WHERE i.INGREDIENT_NO =
-		rc.INGREDIENT_NO AND rc.rcp_no=rec.rcp_no)ingre
+		rc.INGREDIENT_NO )ingre
 		<if test="searchKeyword != '' ">
 			<where>
 				(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
@@ -181,8 +181,8 @@
 		ORDER BY re.rcp_cnt  DESC
 		)
 		inner_table
-		WHERE ROWNUM &lt;= #{endRowNum} ) inner
-    	WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum}
+		WHERE ROWNUM &lt;= #{endRowNum} ) inner ,recipes innerR
+    	WHERE inner.rcp_no = innerR.rcp_no AND row_seq BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 
 	<select id="getDefalutRecipeList" resultMap="RecipeSelectMap">
@@ -193,11 +193,9 @@
 		inner_table.*, ROWNUM AS row_seq FROM
 		(
 		SELECT
-		nickname, rcp_title,
-		rcp_img_path, rcp_cont, rcp_tip,
-		rcp_cnt,
-		ingredients,
-		to_char(rcp_date,'YYYY/MM/DD') rcp_date
+		rcp_no,nickname, rcp_title,
+		rcp_img_path,rcp_cont,
+		rcp_cnt
 		FROM recipes
 		ORDER BY rcp_cnt  DESC
 		)
@@ -239,14 +237,18 @@
 
 	<select id="getTotalCount" parameterType="search" resultType="int">
 		SELECT COUNT(*)
-		FROM ( SELECT *
-		FROM recipes re,(SELECT
-		rc.RCP_NO
-		iRcpNo,i.INGREDIENT_NAME ingName
-		FROM ingredients i,rcp_ing rc,recipes
-		rec
-		WHERE i.INGREDIENT_NO = rc.INGREDIENT_NO AND
-		rc.rcp_no=rec.rcp_no)ingre
+		FROM ( SELECT DISTINCT
+		re.rcp_no
+		FROM
+		recipes re ,
+		(SELECT 
+		rc.RCP_NO iRcpNo,
+		i.INGREDIENT_NAME ingName
+		FROM
+		ingredients i,
+		rcp_ing rc
+		WHERE i.INGREDIENT_NO =
+		rc.INGREDIENT_NO )ingre
 		<where>
 			(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
 			=re.rcp_no) OR

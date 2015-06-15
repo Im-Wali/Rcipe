@@ -27,13 +27,14 @@
 											var replyListId1 = this.title
 													.split(",")[2];
 											replyListId = replyListId1;
+											var userImg=$("#userImg").val() =="" ? "userIcon.png": $("#userImg").val();
 											var s = "<div class='row'>"
 													+ "<div class='col-md-1' align='center'>"
 													+ " <span class='glyphicon glyphicon-arrow-right'"
 													+ " style='margin-top: 2%; font-size: 1.5em; margin-left: 2%'></span></div>"
 													+ " <div class='col-md-1'>"
 													+ " <img alt='' class='img-circle' src='../../images/"
-													+ $("#userImg").val()
+													+ userImg
 													+ "' width='70px'"
 													+ " height='70px' style='margin-top: 1%'></div>"
 													+ " <div class='col-md-10'>"

@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script
-	src="${pageContext.servletContext.contextPath}/js/comment.js"></script>
+
 <div align="center">
 	<h4>댓글</h4>
 </div>
@@ -14,8 +13,17 @@
 	<from action="#" method="post">
 	<div class="row">
 		<div class="col-md-1">
-			<img alt="" class="img-circle" src="../../images/${user.userImage}"
-				width="70px" height="70px" style="margin-top: 1%">
+			<c:if test="${user.userImgae !=null}">
+				<img alt="" class="img-circle"
+					src="../../images/${comment.userImg }" width="
+								70px"
+					height="70px" style="margin-top: 1%">
+			</c:if>
+			<c:if test="${user.userImgae == null}">
+				<img alt="" class="img-circle" src="../../images/userIcon.png"
+					width="
+								70px" height="70px" style="margin-top: 1%">
+			</c:if>
 		</div>
 		<div class="col-md-11">
 			<!-- <input type="hidden" id="contentNo" value="10089"> -->
@@ -46,10 +54,17 @@
 				<div class="row">
 					<div class="col-md-1">
 						<div>
-							<img alt="" class="img-circle"
-								src="../../images/${comment.userImg }" width="
+							<c:if test="${user.userImgae !=null}">
+								<img alt="" class="img-circle"
+									src="../../images/${comment.userImg }" width="
 								70px"
-								height="70px" style="margin-top: 1%">
+									height="70px" style="margin-top: 1%">
+							</c:if>
+							<c:if test="${user.userImgae == null}">
+								<img alt="" class="img-circle" src="../../images/userIcon.png"
+									width="
+								70px" height="70px" style="margin-top: 1%">
+							</c:if>
 						</div>
 					</div>
 					<div class="col-md-11" id="commentBody${i}">
@@ -91,3 +106,4 @@
 		</c:forEach>
 	</div>
 </div>
+<script src="${pageContext.servletContext.contextPath}/js/comment.js"></script>
