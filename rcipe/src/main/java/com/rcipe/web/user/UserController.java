@@ -140,4 +140,5 @@ public class UserController {
 		// userService.deleteUser(user.getNickname());
 		userService.deleteUser(nickname);
 	}
+	
 }

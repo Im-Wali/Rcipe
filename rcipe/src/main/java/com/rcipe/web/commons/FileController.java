@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.rcipe.commons.FileUtil;
 import com.rcipe.service.commons.FileService;
 import com.rcipe.service.domain.User;
+import com.rcipe.service.user.UserService;
 
 /*
  * 파일 업로드Test class 일단 file upload위치는 C:\\fileUploadTest폴더 밑으로 했고 일단 확장자가 JPG만 할수 있게 해놨다.
@@ -33,6 +34,10 @@ public class FileController {
 	@Autowired
 	@Qualifier("fileServiceImpl")
 	FileService fileService;
+	
+	@Autowired
+	@Qualifier("userServiceImpl")
+	UserService userService;
 	
 	@Autowired
 	private ServletContext ctx;
@@ -110,6 +115,8 @@ public class FileController {
 	@RequestMapping("deleteProfile")
 	public @ResponseBody String deleteUser(HttpSession session)throws Exception {
 		User user=(User)session.getAttribute("user");
+		user.setUserImage(null);
+		userService.updateImage(user);
 		return URLEncoder.encode((fileService.deleteProfile(user.getNickname(),ctx.getRealPath("/images")) == true ?  "성공적으로 삭제했습니다":"삭제에 실패했습니다."),"UTF-8");
 	}
 	

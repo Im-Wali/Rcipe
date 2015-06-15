@@ -75,9 +75,6 @@ body {
 											$("#detailCount").val(detailCount);
 											$("#detailNumber")
 													.val(detailNumber);
-											alert("detailNumber="
-													+ detailNumber);
-											alert("detailCount=" + detailCount);
 											$("#detailLastDiv")
 													.before(
 															"<div class='form-login ' style='margin-bottom: 2%;' id='detail"
@@ -94,7 +91,7 @@ body {
 																	+ "<input type='hidden' id='imagedetailImage"+detailNumber+"' name='detailImage"+detailNumber+"' value=''>"
 																	+ "<img"
 							+" class='media-object img-rounded fileUpload'"
-							+"src='../images/recipeIcon.png'  id='detailImage"+detailNumber+"' >"
+							+"src='../../images/recipeIcon.png'  id='detailImage"+detailNumber+"' >"
 																	+ "</div>"
 																	+ "<div style='color: red; margin-right: 1%; margin-top: 1%'>*등록할"
 																	+ "사진을 위의 공간에 드래그 하세요</div>"
