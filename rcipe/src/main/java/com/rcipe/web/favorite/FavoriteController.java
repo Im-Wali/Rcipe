@@ -12,12 +12,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.rcipe.commons.Search;
+import com.rcipe.service.detailRecipe.DetailRecipeService;
 import com.rcipe.service.domain.Favorite;
+import com.rcipe.service.domain.Recipe;
 import com.rcipe.service.domain.User;
 import com.rcipe.service.favorite.FavoriteService;
+import com.rcipe.service.recipe.RecipeService;
 
 @Controller
 @RequestMapping("/favorite")
@@ -26,7 +30,7 @@ public class FavoriteController {
 	@Autowired
 	@Qualifier("favoriteServiceImpl")
 	FavoriteService favoriteService;
-
+	
 	public FavoriteController() {
 		// TODO Auto-generated constructor stub
 		System.out.println(getClass() + "start......");
@@ -71,7 +75,6 @@ public class FavoriteController {
 		modelAndView.setViewName("forward:../../favorite/favorite.jsp");
 		modelAndView.addObject("list", map2.get("list"));
 		System.out.println(modelAndView);
-		
 		return modelAndView;
 		
 		

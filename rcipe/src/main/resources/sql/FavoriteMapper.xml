@@ -101,10 +101,9 @@
 
 	<select id="getJoinFavorite" parameterType="String" resultMap="FavoriteSelectMap">
 		select r.*,fr.fav_title,fr.fav_date,s.star_cnt from stars s,recipes r,
-		fav_recipes fr where r.nickname = s.nickname(+) AND s.rcp_no(+) =
-		r.rcp_no AND r.rcp_no = fr.rcp_no AND r.rcp_no IN(select rcp_no from (
-		select fr1.rcp_no from fav_recipes fr1 where fr1.nickname = #{value}
-		))
+		fav_recipes fr where s.rcp_no(+) = r.rcp_no AND r.rcp_no = fr.rcp_no AND 
+		r.rcp_no IN(select rcp_no from (
+		select fr1.rcp_no from fav_recipes fr1 where fr1.nickname = #{value}))
 	</select>
 
 
@@ -115,8 +114,14 @@
 	</select>
 
 	<select id="getCommentCount" parameterType="int" resultType="int">
-		select Count(*) from (select rc.cmt_no, rc.rcp_no from recipes_cmt rc,
-		recipes r where rc.rcp_no = r.rcp_no and r.rcp_no = #{value})
+		<!-- select Count(*) from (select rc.cmt_no, rc.rcp_no from recipes_cmt rc,
+		recipes r where rc.rcp_no = r.rcp_no and r.rcp_no = #{value}) -->
+		select count(*) from (select cmt_no from recipes_cmt where rcp_no =#{value})
 	</select>
+	
+	<select id="getStarAvg" parameterType="int" resultType="int">
+	   select avg(s.star_cnt) from recipes r, stars s where s.rcp_no = #{value}
+	</select>
+	
 
 </mapper>

@@ -15,6 +15,7 @@ public class Favorite {
 	private Recipe recipe;
 	private Integer starAvg;
 	private Integer cmtCnt;
+	private Integer starCnt;
 
 	public Favorite() {
 
@@ -74,6 +75,14 @@ public class Favorite {
 
 	public void setCmtCnt(Integer cmtCnt) {
 		this.cmtCnt = cmtCnt;
+	}
+
+	public Integer getStarCnt() {
+		return starCnt;
+	}
+
+	public void setStarCnt(Integer starCnt) {
+		this.starCnt = starCnt;
 	}
 
 	@Override

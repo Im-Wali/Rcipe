@@ -10,6 +10,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link
+    href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+    rel="stylesheet">
+	<%-- <link href="${pageContext.servletContext.contextPath}/css/recipe01.css"
+    rel="stylesheet"> --%>
+	<%-- <script type="text/javascript"
+    src="${pageContext.servletContext.contextPath}/js/recipe01.js"></script> --%>
 <title>Recipe</title>
 <style type="text/css">
 .glyphicon {
@@ -68,7 +75,6 @@
 			
 			
 				<c:forEach var="favorite" items="${ list }">
-				
 <div class="col-md-6">
           <div class="well well-sm">
             <div class="row">
@@ -89,11 +95,17 @@
                 <hr />
                 <div class="row rating-desc">
                   <div class="col-md-12">
-                    <span class="glyphicon glyphicon-heart"></span><span
-                      class="glyphicon glyphicon-heart"> </span><span
-                      class="glyphicon glyphicon-heart"></span><span
-                      class="glyphicon glyphicon-heart"> </span><span
-                      class="glyphicon glyphicon-heart"></span>(36)<span
+                                <span id="fixedStar" data-rating='${favorite.starAvg }'
+                                    style="color: orange; margin-right: 9px; size: 2em">
+                                    <c:forEach begin="1" end="${favorite.starAvg }">
+                                        <i class='fa fa-star' style='margin-right: -8px;'></i>
+                                    </c:forEach>
+                                    <c:forEach begin="${favorite.starAvg }" end="4">
+                                        <i class='fa fa-star-o' style='margin-right: -8px'></i>
+                                    </c:forEach> 
+                                </div>
+                                <div id="count-existing">현재 별점:${favorite.starCnt !=null ? favorite.starAvg : 0  }점</span>
+                              <span
                       class="separator">|</span> <span
                       class="glyphicon glyphicon-comment"></span>(${ favorite.cmtCnt } Comments)
                   </div>
@@ -102,7 +114,6 @@
             </div>
           </div>
         </div>
-
 </c:forEach>
 				
 				
