@@ -99,8 +99,8 @@ public class CommentDAOImpl implements CommentDAO {
 		List<String> list = sqlSession.selectList(
 				"commentMapper.getRecipesCmtCmtNo", rcp_no);
 		if (list.size() != 0) {
-			sqlSession.delete("commentMapper.deleteRecipesCmtList", rcp_no);
 			sqlSession.delete("commentMapper.deleteReplyList", list);
+			sqlSession.delete("commentMapper.deleteRecipesCmtList", rcp_no);
 			return sqlSession.delete("commentMapper.deleteCommentList", list);
 		}
 		return 0;

@@ -147,42 +147,63 @@
 
 	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
 		SELECT
+		inner.*
+		FROM(
+		SELECT
+		inner_table.*, ROWNUM AS row_seq FROM
+		(
+		SELECT
 		re.rcp_no, re.nickname, re.rcp_title, re.rcp_img_path,
 		re.rcp_cont, re.rcp_tip,
 		re.rcp_cnt,re.ingredients, re.rcp_date
 		FROM
-		recipes re,(SELECT
-		rc.RCP_NO iRcpNo,i.INGREDIENT_NAME ingName
+		recipes re,
+		(SELECT
+		rc.RCP_NO iRcpNo,
+		i.INGREDIENT_NAME ingName
 		FROM
-		ingredients i,rcp_ing rc,recipes rec
+		ingredients i,
+		rcp_ing rc,
+		recipes rec
 		WHERE i.INGREDIENT_NO =
 		rc.INGREDIENT_NO AND rc.rcp_no=rec.rcp_no)ingre
-		<if test="searchKeyword != null">
-			<if test="searchKeyword != '' ">
-				<where>
-					(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
-					=re.rcp_no) OR
-					re.rcp_title
-					like '%${searchKeyword}%' OR
-					re.nickname
-					like
-					'%${searchKeyword}%'
-				</where>
-			</if>
+		<if test="searchKeyword != '' ">
+			<where>
+				(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
+				=re.rcp_no) OR
+				re.rcp_title
+				like '%${searchKeyword}%' OR
+				re.nickname
+				like
+				'%${searchKeyword}%'
+			</where>
 		</if>
-		<if test="searchKeyword == null">
-				<where>
-					ingre.iRcpNo(+) =re.rcp_no
-				</where>
-				ORDER BY  re.rcp_cnt
-		</if>
+		ORDER BY re.rcp_cnt  DESC
+		)
+		inner_table
+		WHERE ROWNUM &lt;= #{endRowNum} ) inner
+    	WHERE row_seq BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
-	<select id="getDefalutRecipeList"  resultMap="RecipeSelectMap">
+
+	<select id="getDefalutRecipeList" resultMap="RecipeSelectMap">
 		SELECT
-		rcp_no, nickname, rcp_title, rcp_img_path, rcp_cont, rcp_tip,
-		rcp_cnt, ingredients, rcp_date
+		inner.*
+		FROM(
+		SELECT
+		inner_table.*, ROWNUM AS row_seq FROM
+		(
+		SELECT
+		nickname, rcp_title,
+		rcp_img_path, rcp_cont, rcp_tip,
+		rcp_cnt,
+		ingredients,
+		to_char(rcp_date,'YYYY/MM/DD') rcp_date
 		FROM recipes
-		ORDER BY rcp_cnt
+		ORDER BY rcp_cnt  DESC
+		)
+		inner_table 
+		WHERE ROWNUM &lt;= 51) inner
+		WHERE row_seq BETWEEN 1 AND 50
 	</select>
 
 	<select id="getRecipeListIngredients" parameterType="int"
@@ -219,30 +240,21 @@
 	<select id="getTotalCount" parameterType="search" resultType="int">
 		SELECT COUNT(*)
 		FROM ( SELECT *
-		FROM recipes,(SELECT
+		FROM recipes re,(SELECT
 		rc.RCP_NO
 		iRcpNo,i.INGREDIENT_NAME ingName
 		FROM ingredients i,rcp_ing rc,recipes
 		rec
 		WHERE i.INGREDIENT_NO = rc.INGREDIENT_NO AND
 		rc.rcp_no=rec.rcp_no)ingre
-		<if test="searchKeyword != null">
-			<if test="searchKeyword != '' ">
-				<where>
-					(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
-					=re.rcp_no) OR
-					re.rcp_title like '%${searchKeyword}%' OR
-					re.nickname
-					like
-					'%${searchKeyword}%'
-				</where>
-			</if>
-		</if>
-		<if test="searchKeyword == null">
-				<where>
-					ingre.iRcpNo(+) =re.rcp_no
-				</where>
-		</if>
+		<where>
+			(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
+			=re.rcp_no) OR
+			re.rcp_title like '%${searchKeyword}%' OR
+			re.nickname
+			like
+			'%${searchKeyword}%'
+		</where>
 		) countTable
 	</select>
 	<update id="updateRecipeCount" parameterType="int">

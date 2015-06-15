@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.rcipe.commons.Page;
 import com.rcipe.commons.Search;
 import com.rcipe.service.commons.FileService;
 import com.rcipe.service.detailRecipe.DetailRecipeService;
@@ -49,6 +51,12 @@ public class RecipeController {
 	@Qualifier("fileServiceImpl")
 	FileService fileService;
 
+	@Value("#{commonProperties['pageSize']}")
+	int pageSize;
+	
+	@Value("#{commonProperties['pageUnit']}")
+	int pageUnit;
+	
 	public RecipeController() {
 		System.out.println(getClass() + "start......");
 	}
@@ -201,24 +209,27 @@ public class RecipeController {
 
 	@RequestMapping(value = "/getRecipeList")
 	public ModelAndView getRecipeList(@ModelAttribute("search") Search search,
-			ServletResponse response) throws Exception {
+			ServletResponse response,HttpServletRequest request) throws Exception {
 		response.setContentType("text/plain;charset=UTF-8");
 		System.out.println("getRecipeList start");
 		System.out.println("search : " + search);
-
-		Map<String, Object> map = recipeService.getRecipeList(search);
-
-		System.out.println("totalCount : " + map.get("totalCount") + " list : "
-				+ map.get("list"));
-
 		ModelAndView modelAndView = new ModelAndView();
-
-		if (search.getSearchKeyword() == null
-				|| search.getSearchKeyword() == "") {
+		if (search.getSearchKeyword() == null ) {
 			modelAndView.setViewName("forward:../../main/mainPage.jsp");
 		} else {
+			if(search.getCurrentPage() ==0 ){
+				search.setCurrentPage(1);
+			}
 			modelAndView.setViewName("forward:../../main/searchResult.jsp");
 		}
+		search.setPageSize(pageSize);
+		Map<String, Object> map = recipeService.getRecipeList(search);
+		if (search.getSearchKeyword() != null ) {
+			Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
+			modelAndView.addObject("resultPage",resultPage);
+			System.out.println("resultPage : "+resultPage);
+		}
+		modelAndView.addObject("search",search);
 		modelAndView.addObject("list", map.get("list"));
 		System.out.println(modelAndView);
 		return modelAndView;
@@ -230,10 +241,10 @@ public class RecipeController {
 	public void deleteRecipe(@RequestParam("recipeNo") int recipeNo, @RequestParam("imagePath") String imagePath,ServletResponse response) throws Exception {
 		
 		String[] iamgePathArray = imagePath.split("/");
-		System.out.println(iamgePathArray[0]+"/"+iamgePathArray[1]);
-		
-		fileService.deleteRecipeImages(iamgePathArray[0]+"/"+iamgePathArray[1]);
-		
+		if(iamgePathArray.length >1){
+			System.out.println(iamgePathArray[0]+"/"+iamgePathArray[1]);
+			fileService.deleteRecipeImages(iamgePathArray[0]+"/"+iamgePathArray[1]);
+		}
 		recipeService.deleteRecipe(recipeNo);
 		
 		

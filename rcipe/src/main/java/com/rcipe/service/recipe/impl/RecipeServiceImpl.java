@@ -93,7 +93,7 @@ public class RecipeServiceImpl  implements RecipeService{
 		String searchKeyword = search.getSearchKeyword();
 		
 		List<Recipe> list = null;
-		
+		Map<String, Object> map = new HashMap<String, Object>();
 		if(searchKeyword==null){
 			list = recipeDAO.getRecipeList(search);		// order by 없음. 
 		}else{
@@ -107,14 +107,11 @@ public class RecipeServiceImpl  implements RecipeService{
 			}else{
 				list = recipeDAO.getRecipeList(search); // nickname,title 기준으로 가져오는 것
 			}
+			int totalCount = recipeDAO.getTotalCount(search);
+			//메인 페이지는 COUNT가 필요없다. 50개만 가져올거임
+			map.put("totalCount", totalCount);
 		}
-		
-		
-		// int totalCount = recipeDAO.getTotalCount(search);
-		
-		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
-		map.put("totalCount", list.size());
 		
 		return map;
 	}

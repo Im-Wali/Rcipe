@@ -38,8 +38,8 @@
 							재료들을 추가하세요.</label>
 					</div>
 					<div align="right"  class="col-md-6">
-						<button type="button" class="btn  btn-warning btn-lg "
-							id="settingSearchIngredient" style="color: black; margin-top: 1%">완료</button>
+						<button type="button" class="btn  btn-primary btn-lg "
+							id="settingSearchIngredient" style="color: white; margin-top: 1%">해당 재료포함 검색</button>
 					</div>
 				</div>
 				<div class="row" style="margin-top: 2%;">

@@ -103,9 +103,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 		if (search.getSearchKeyword() == null) {
 			return sqlSession.selectList("RecipeMapper.getDefalutRecipeList");
 		} else {
-			List<Recipe> listRecipe = new ArrayList<Recipe>();
-			listRecipe=sqlSession.selectList("RecipeMapper.getRecipeList", search);
-			return listRecipe;
+			return sqlSession.selectList("RecipeMapper.getRecipeList", search);
 		}
 	}
 
