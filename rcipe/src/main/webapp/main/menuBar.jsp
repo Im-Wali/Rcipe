@@ -125,11 +125,20 @@
 			</span>
 			</span>
 		</form>
-		<span class="dropdown dropdown-toggle"> <img
-			src="${pageContext.servletContext.contextPath }/img/001.jpg"
+		<span class="dropdown dropdown-toggle"> 
+		<c:if test="${user.nickname == null }"><img
+			src="${pageContext.servletContext.contextPath }/images/userIcon.png"
 			class="img-circle" role="button"
 			style="width: 80px; height: 80px; margin-right: 1%; margin-top: -2%"
 			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			</c:if>
+			<c:if test="${user.nickname != null }">
+			<img
+			src="${pageContext.servletContext.contextPath }/images/${user.userImage}"
+			class="img-circle" role="button"
+			style="width: 80px; height: 80px; margin-right: 1%; margin-top: -2%"
+			data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			</c:if>
 			<ul class="dropdown-menu dropdown-menu-right "
 				aria-labelledby="user-div-image"
 				style="margin-top: 20px; background-color: #FF9933; border: none;"
