@@ -202,8 +202,6 @@
 											}
 											ingredientValues=ingredientValues.trim();
 											ingredientValues=ingredientValues.substring(0,ingredientValues.length-1);
-											alert(ingredientIds);
-											alert(ingredientValues);
 											$("#ingredientClose").click();
 											$("#searchKeyword").val(ingredientValues);
 											$("#searchForm").submit();
