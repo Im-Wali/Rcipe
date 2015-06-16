@@ -116,7 +116,9 @@
 			<span class="row"> <span class="col-sm-5 col-sm-offset-2"
 				style="display: inline-block; text-align: center; margin-top: 1%;">
 					<span id="imaginary_container"> <span
-						class="input-group stylish-input-group"> <input type="text"
+						class="input-group stylish-input-group">
+						<input type="hidden" name="searchCategory" value="inquiry" /> 
+						<input type="text"
 							value="${search.searchKeyword}" class="form-control"
 							placeholder="Search" id="searchKeyword" name="searchKeyword"
 							URIEncoding="UTF-8"> <span class="input-group-addon">

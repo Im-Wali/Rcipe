@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <HTML>
 <HEAD>
@@ -76,30 +77,40 @@
 }
 </Style>
 </HEAD>
-
 <BODY>
+<script>
+function category(param){
+	alert(param.id);
+	var searchKeyword = document.getElementById("searchKeyword").value;
+	$.get(
+        "${pageContext.servletContext.contextPath }/app/recipe/getRecipeList?searchCategory="
+            + param.id+"&searchKeyword="+searchKeyword,
+        function(data) {
+              alert(data);
+              $('body').html(data);
+        });
+	
+}
+</script>
 	<div><jsp:include page="menuBar.jsp"></jsp:include></div>
+	<input type="hidden" id="searchKeyword" name="searchKeyword" value="${search.searchKeyword}">
 	<div class="containerTap">
 		<div class="panel with-nav-tabs panel-success">
 			<div class="panel-heading">
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="#tab1success" data-toggle="tab">추천순</a></li>
-					<li><a href="#tab2success" data-toggle="tab">조회순</a></li>
-					<li><a href="#tab3success" data-toggle="tab">최신순</a></li>
+					<li class="<c:if test="${ search.searchCategory eq 'inquiry' }">active</c:if>"><a href="#inquiry" onclick="category(inquiry)" data-toggle="tab">조회순</a></li>
+					<li class="<c:if test="${ search.searchCategory eq 'newest' }">active</c:if>"><a  href="#recommend" data-toggle="tab" onclick="category(newest)">최신순</a></li>
 				</ul>
 			</div>
 			<div class="panel-body">
 				<div class="tab-content">
-					<div class="tab-pane fade in active" id="tab1success">
-						<h3>여기는 추천순</h3>
+					<div class="tab-pane fade in active" id="inquiry">
+						<h3>여기는 조회순 </h3>
 						<jsp:include page="cardSession.jsp" />
 					</div>
-					<div class="tab-pane fade" id="tab2success">
-						<h3>여기는 조회순</h3>
-						<jsp:include page="cardSession.jsp" /></div>
-					<div class="tab-pane fade" id="tab3success">
+					<div class="tab-pane fade" id="newest">
 						<h3>여기는 최신순</h3>
-						<jsp:include page="cardSession.jsp" /></div>
+						
 				</div>
 			</div>
 		</div>
