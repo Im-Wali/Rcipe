@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html style="font-size: 13px">
-<head>
 <meta charset="utf-8">
 <head>
 <link rel="stylesheet"
@@ -15,8 +14,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<link href="${pageContext.servletContext.contextPath}/css/recipe01.css"
-	rel="stylesheet">
+<%--  <link href="${pageContext.servletContext.contextPath}/css/recipe01.css"
+	rel="stylesheet"> --%>
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/js/recipe01.js"></script>
 
@@ -83,7 +82,7 @@ stylize any heading tags withing white-panel below
 </style>
 </head>
 <body
-	style="background-color: #fff color: #383838; padding: 0; margin: 0; font-family: Verdana, Arial, sans-serif; font-weight: 400; font-style: normal; line-height: 131%; position: relative; cursor: default">
+	style="background-color: #fff color: #383838;">
 	<div><jsp:include page="/main/menuBar.jsp"></jsp:include></div>
 	<jsp:include page="/favorite/favoriteModal.jsp"></jsp:include>
 	<div class="row">
@@ -243,12 +242,13 @@ stylize any heading tags withing white-panel below
 				</div>
 			</c:forEach>
 		</div>
+		<div class="col-md-1"></div>
 	</div>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<div class="form-login " style="margin-bottom: 2%;">
-				<jsp:include page="/blog/blog.jsp"></jsp:include>
+				<%-- <jsp:include page="/blog/blog.jsp"></jsp:include> --%>
 			</div>
 		</div>
 		<div class="col-md-1"></div>
