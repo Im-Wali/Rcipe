@@ -167,6 +167,7 @@
 		rcp_ing rc
 		WHERE i.INGREDIENT_NO =
 		rc.INGREDIENT_NO )ingre
+		<if test="searchKeyword != null ">
 		<if test="searchKeyword != '' ">
 			<where>
 				(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
@@ -177,6 +178,7 @@
 				like
 				'%${searchKeyword}%'
 			</where>
+			</if>
 		</if>
 		ORDER BY 
 		
@@ -256,6 +258,8 @@
 		rcp_ing rc
 		WHERE i.INGREDIENT_NO =
 		rc.INGREDIENT_NO )ingre
+		<if test="searchKeyword != null ">
+		<if test="searchKeyword != '' ">
 		<where>
 			(ingre.ingName LIKE #{searchKeyword} AND ingre.iRcpNo
 			=re.rcp_no) OR
@@ -264,8 +268,11 @@
 			like
 			'%${searchKeyword}%'
 		</where>
+		</if>
+		</if>
 		) countTable
 	</select>
+	
 	<update id="updateRecipeCount" parameterType="int">
 		UPDATE recipes
 		set
