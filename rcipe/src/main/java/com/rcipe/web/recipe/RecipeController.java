@@ -214,6 +214,7 @@ public class RecipeController {
 		System.out.println("getRecipeList start");
 		System.out.println("search : " + search);
 		ModelAndView modelAndView = new ModelAndView();
+		
 		if (search.getSearchKeyword() == null ) {
 			modelAndView.setViewName("forward:../../main/mainPage.jsp");
 		} else {
@@ -222,6 +223,7 @@ public class RecipeController {
 			}
 			modelAndView.setViewName("forward:../../main/searchResult.jsp");
 		}
+		
 		search.setPageSize(pageSize);
 		Map<String, Object> map = recipeService.getRecipeList(search);
 		if (search.getSearchKeyword() != null ) {
