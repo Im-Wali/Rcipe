@@ -156,7 +156,7 @@
 		(
 		SELECT DISTINCT
 		re.rcp_no, re.nickname, re.rcp_title, re.rcp_img_path,
-		re.rcp_cnt
+		re.rcp_cnt, re.rcp_date
 		FROM
 		recipes re,
 		(SELECT 
@@ -178,7 +178,14 @@
 				'%${searchKeyword}%'
 			</where>
 		</if>
-		ORDER BY re.rcp_cnt  DESC
+		ORDER BY 
+		
+		<if test="searchCategory == 'newest'">
+		re.rcp_date  DESC
+		</if>
+		<if test="searchCategory == 'inquiry' || searchCategory == null">
+    re.rcp_cnt  DESC
+    </if>
 		)
 		inner_table
 		WHERE ROWNUM &lt;= #{endRowNum} ) inner ,recipes innerR
