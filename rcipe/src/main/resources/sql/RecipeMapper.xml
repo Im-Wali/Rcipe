@@ -180,10 +180,8 @@
 			</where>
 			</if>
 		</if>
-		ORDER BY 
-		
 		<if test="searchCategory == 'newest'">
-		re.rcp_date  DESC
+			ORDER BY  re.rcp_date  DESC
 		</if>
 		<if test="searchCategory == 'inquiry' || searchCategory == null">
     re.rcp_cnt  DESC
