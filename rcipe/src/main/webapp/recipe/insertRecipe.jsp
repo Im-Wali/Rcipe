@@ -36,7 +36,129 @@ body {
 	box-shadow: 0 1px 0 #cfcfcf;
 }
 </style>
-<script type="text/javascript">
+</HEAD>
+
+<BODY>
+	<div><jsp:include page="../main/menuBar.jsp"></jsp:include></div>
+	<div><jsp:include page="ingredient.jsp"></jsp:include></div>
+	<div class="row" style="margin-top: 4%; text-align: left;">
+		<div class="col-md-2 "></div>
+		<div class="col-md-8 ">
+			<form role="form" action="${pageContext.servletContext.contextPath }/app/recipe/insertRecipe" method="post">
+				<input type="hidden" id="detailCount" name="detailCount" value="1">
+				<input type="hidden" id="detailNumber" name="detailNumber" value="1">
+				<input type="hidden" id="ingredientIds"name="ingredientIds" value="">
+				<div align="right">
+					<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
+						입력하세요!</span> <input type="button" class="btn   btn-lg addDetail"
+						value="추가 사진 등록" style="margin-right: 1%; margin-bottom: 1%;background-color:#707070;color:white"
+						> <input type="submit" id="recipeSubmit"
+						class="btn  btn-lg" value="레시피 등록"
+						style="margin-right: 1%; margin-bottom: 1%;background-color:#707070;color:white">
+				</div>
+				<div class="form-login " style="margin-bottom: 2%;">
+					<h3 align="center" style="margin-bottm: 1%">레시피 등록</h3>
+					<div style="margin-top: 1%">
+						<label for="title"
+							style="color: red; font-size: x-large; margin: 1%">*제목</label><input
+							type="text" class="form-control" id="recipeTitle"
+							name="recipeTitle" placeholder="제목을 입려하세요">
+					</div>
+					<div style="margin-top: 1%">
+						<label for="mainImage"
+							style="color: red; font-size: x-large; margin: 1%">*메인 사진</label><br />
+						<div class="media">
+							<input type="hidden" id="imagetitleImage" name="titleImage"
+								value="">
+							<div class="media-left">
+								<img class="media-object img-rounded fileUpload"
+									src="${pageContext.servletContext.contextPath}/images/recipeIcon.png" alt="..." id="titleImage">
+							</div>
+							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
+								사진을 위의 공간에 드래그 하세요</div>
+							<div style="margin-top: 1%">
+								<input type="file" class="filestyle recipeButtonUpload"
+									data-buttonName="btn-warning" data-input="false"
+									data-buttonText="메인 사진 등록" alt="titleImage">
+							</div>
+							<div style="margin: 1%">
+								<label style="color: red; font-size: x-large;">*재료 입력(검색하여 추가해주세요)</label> 예)
+								당근(1개),시금치(100g),빵(조금) <a href="#" class="btn btn-warning"
+									data-toggle="modal" data-target="#ingredient"
+									data-whatever="ingredient" data-backdrop="false"
+									id="ingredientOpen">재료검색</a>
+							</div>
+							<div>
+								<textarea class="form-control" readonly="readonly" rows="3" style="background-color:white"
+									placeholder="재료를 입력하세요" id="ingredients" name="ingredients"></textarea>
+							</div>
+							<div style="margin: 1%">
+								<label style="color: red; font-size: x-large;">*간단한 설명</label>
+							</div>
+							<div>
+								<textarea class="form-control" rows="10"
+									placeholder="간단한 설명을 적어주세요" name="recipeContents"></textarea>
+							</div>
+							<div style="margin: 1%">
+								<label style="color: red; font-size: x-large;">*Tip</label>
+							</div>
+							<div>
+								<textarea class="form-control" rows="3" placeholder="Tip을 적어주세요" id="tip"
+									name="tip"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-login " style="margin-bottom: 2%;" id="detail1">
+					<!-- 여기서 CLOSE버튼을 누루면 해당 설명 from 사라짐 -->
+					<button type="button" class="close recipeClose"
+						data-dismiss="modal" aria-label="Close" value="detail1">
+						<span>&times;</span>
+					</button>
+					<h3 align="center" style="margin-bottm: 1%">상세 레시피 작성</h3>
+					<div style="margin-top: 1%">
+						<div class="media">
+							<div class="media-left">
+								<input type="hidden" id="imagedetailImage1" name="detailImage1"
+									value=""> <img
+									class="media-object img-rounded fileUpload"
+									src="${pageContext.servletContext.contextPath}/images/recipeIcon.png" alt="..." id="detailImage1">
+							</div>
+							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
+								사진을 위의 공간에 드래그 하세요</div>
+							<div style="margin-top: 1%">
+								<input type="file" class="filestyle recipeButtonUpload"
+									data-buttonName="btn-warning" data-input="false"
+									data-buttonText="사진 등록" alt="detailImage1">
+							</div>
+							<div style="margin: 1%">
+								<label style="font-size: x-large; margin: 1%">사진에 대한 설명</label>
+							</div>
+							<div>
+								<textarea class="form-control" rows="5"
+									placeholder="사진에 대한 설명을 적어주세요" name="detailContents1"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 해당 태그.before에 상세레시피 차레대로 나옴 -->
+				<div id="detailLastDiv"></div>
+				<div class="form-login " style="margin-bottom: 2%;" align="center">
+					<div>
+					<input type="button" class="btn   btn-lg addDetail" 
+						value="추가 사진 등록" style="margin-right: 1%; margin-bottom: 1%;width: 100%;height:100%;background-color:#707070;color:white"
+						>
+					</div>
+					<div>
+						<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
+							입력하세요!</span>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+	<script type="text/javascript">
 	$("document")
 			.ready(
 					function() {
@@ -312,127 +434,5 @@ body {
 						});
 					});
 </script>
-</HEAD>
-
-<BODY>
-	<div><jsp:include page="../main/menuBar.jsp"></jsp:include></div>
-	<div><jsp:include page="ingredient.jsp"></jsp:include></div>
-	<div class="row" style="margin-top: 4%; text-align: left;">
-		<div class="col-md-2 "></div>
-		<div class="col-md-8 ">
-			<form role="form" action="${pageContext.servletContext.contextPath }/app/recipe/insertRecipe" method="post">
-				<input type="hidden" id="detailCount" name="detailCount" value="1">
-				<input type="hidden" id="detailNumber" name="detailNumber" value="1">
-				<input type="hidden" id="ingredientIds"name="ingredientIds" value="">
-				<div align="right">
-					<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
-						입력하세요!</span> <input type="button" class="btn   btn-lg addDetail"
-						value="추가 사진 등록" style="margin-right: 1%; margin-bottom: 1%"
-						> <input type="submit" id="recipeSubmit"
-						class="btn  btn-lg" value="레시피 등록"
-						style="margin-right: 1%; margin-bottom: 1%;">
-				</div>
-				<div class="form-login " style="margin-bottom: 2%;">
-					<h3 align="center" style="margin-bottm: 1%">레시피 등록</h3>
-					<div style="margin-top: 1%">
-						<label for="title"
-							style="color: red; font-size: x-large; margin: 1%">*제목</label><input
-							type="text" class="form-control" id="recipeTitle"
-							name="recipeTitle" placeholder="제목을 입려하세요">
-					</div>
-					<div style="margin-top: 1%">
-						<label for="mainImage"
-							style="color: red; font-size: x-large; margin: 1%">*메인 사진</label><br />
-						<div class="media">
-							<input type="hidden" id="imagetitleImage" name="titleImage"
-								value="">
-							<div class="media-left">
-								<img class="media-object img-rounded fileUpload"
-									src="${pageContext.servletContext.contextPath}/images/recipeIcon.png" alt="..." id="titleImage">
-							</div>
-							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
-								사진을 위의 공간에 드래그 하세요</div>
-							<div style="margin-top: 1%">
-								<input type="file" class="filestyle recipeButtonUpload"
-									data-buttonName="btn-warning" data-input="false"
-									data-buttonText="메인 사진 등록" alt="titleImage">
-							</div>
-							<div style="margin: 1%">
-								<label style="color: red; font-size: x-large;">*재료 입력(검색하여 추가해주세요)</label> 예)
-								당근(1개),시금치(100g),빵(조금) <a href="#" class="btn btn-warning"
-									data-toggle="modal" data-target="#ingredient"
-									data-whatever="ingredient" data-backdrop="false"
-									id="ingredientOpen">재료검색</a>
-							</div>
-							<div>
-								<textarea class="form-control" readonly="readonly" rows="3" style="background-color:white"
-									placeholder="재료를 입력하세요" id="ingredients" name="ingredients"></textarea>
-							</div>
-							<div style="margin: 1%">
-								<label style="color: red; font-size: x-large;">*간단한 설명</label>
-							</div>
-							<div>
-								<textarea class="form-control" rows="10"
-									placeholder="간단한 설명을 적어주세요" name="recipeContents"></textarea>
-							</div>
-							<div style="margin: 1%">
-								<label style="color: red; font-size: x-large;">*Tip</label>
-							</div>
-							<div>
-								<textarea class="form-control" rows="3" placeholder="Tip을 적어주세요" id="tip"
-									name="tip"></textarea>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="form-login " style="margin-bottom: 2%;" id="detail1">
-					<!-- 여기서 CLOSE버튼을 누루면 해당 설명 from 사라짐 -->
-					<button type="button" class="close recipeClose"
-						data-dismiss="modal" aria-label="Close" value="detail1">
-						<span>&times;</span>
-					</button>
-					<h3 align="center" style="margin-bottm: 1%">상세 레시피 작성</h3>
-					<div style="margin-top: 1%">
-						<div class="media">
-							<div class="media-left">
-								<input type="hidden" id="imagedetailImage1" name="detailImage1"
-									value=""> <img
-									class="media-object img-rounded fileUpload"
-									src="${pageContext.servletContext.contextPath}/images/recipeIcon.png" alt="..." id="detailImage1">
-							</div>
-							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
-								사진을 위의 공간에 드래그 하세요</div>
-							<div style="margin-top: 1%">
-								<input type="file" class="filestyle recipeButtonUpload"
-									data-buttonName="btn-warning" data-input="false"
-									data-buttonText="사진 등록" alt="detailImage1">
-							</div>
-							<div style="margin: 1%">
-								<label style="font-size: x-large; margin: 1%">사진에 대한 설명</label>
-							</div>
-							<div>
-								<textarea class="form-control" rows="5"
-									placeholder="사진에 대한 설명을 적어주세요" name="detailContents1"></textarea>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- 해당 태그.before에 상세레시피 차레대로 나옴 -->
-				<div id="detailLastDiv"></div>
-				<div class="form-login " style="margin-bottom: 2%;" align="center">
-					<div>
-					<input type="button" class="btn   btn-lg addDetail" 
-						value="추가 사진 등록" style="margin-right: 1%; margin-bottom: 1%;width: 100%;height:100%;background-color:#707070;color:white"
-						>
-					</div>
-					<div>
-						<span style="color: red; margin-right: 1%">*추가적인 사진과 정보를
-							입력하세요!</span>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="col-md-2"></div>
-	</div>
 </BODY>
 </HTML>
