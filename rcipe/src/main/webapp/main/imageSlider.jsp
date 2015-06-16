@@ -7,10 +7,10 @@
 			<div class="container">
 
 				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-8">
+					<div class="col-md-1"></div>
+					<div class="col-md-10">
 						<div class="row carousel-holder">
-							<div class="col-md-12">
+							<div class="col-md-12" align="center">
 								<div id="carousel-example-generic" class="carousel slide"
 									data-ride="carousel">
 									<ol class="carousel-indicators">
@@ -31,42 +31,42 @@
 										</div>
 										<div class="item active">
 											<a
-												href="../../recipe/recipe.jsp"
-												target="_parent"> <img class="slide-image"
-												src="http://127.0.0.1:8080/rcipe/img/test1.jpg" alt="">
+												href="#"
+												target="_parent"> <img class="slide-image" 
+												src="${pageContext.servletContext.contextPath }/img/test1.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
 													<a
-														href="../../recipe/recipe.jsp"
+														href="#"
 														target="_parent">cupcakes1</a>
 												</h3>
 											</div>
 										</div>
 										<div class="item">
 											<a
-												href="../../recipe/recipe.jsp"
+												href="#"
 												target="_parent"> <img class="slide-image"
-												src="http://127.0.0.1:8080/rcipe/img/test2.jpg" alt="">
+												src="${pageContext.servletContext.contextPath }/img/test2.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
 													<a
-														href="../../recipe/recipe.jsp"
+														href="#"
 														target="_parent">cupcakes2</a>
 												</h3>
 											</div>
 										</div>
 										<div class="item">
 											<a
-												href="../../recipe/recipe.jsp"
+												href="#"
 												target="_parent"> <img class="slide-image"
-												src="http://127.0.0.1:8080/rcipe/img/test3.jpg" alt="">
+												src="${pageContext.servletContext.contextPath }/img/test3.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
 													<a
-														href="../../recipe/recipe.jsp"
+														href="#"
 														target="_parent">cupcakes3</a>
 												</h3>
 											</div>
@@ -82,10 +82,9 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-2"></div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-2"></div>
+			<div class="col-md-1"></div>
 		</div>
 	</div>
