@@ -1,17 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <HTML>
 <HEAD>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<script
+<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <Style>
-
 #checklist {
 	list-style-type: none;
 }
@@ -75,42 +74,189 @@
 	color: #fff;
 	background-color: #3c763d;
 }
+#pagingfooter a {
+  padding: 5px;
+}
 </Style>
 </HEAD>
 <BODY>
-<script>
-function category(param){
-	alert(param.id);
-	var searchKeyword = document.getElementById("searchKeyword").value;
-	$.get(
-        "${pageContext.servletContext.contextPath }/app/recipe/getRecipeList?searchCategory="
-            + param.id+"&searchKeyword="+searchKeyword,
-        function(data) {
-              alert(data);
-              $('body').html(data);
-        });
-	
-}
-</script>
+	<script>
+		$("document")
+				.ready(
+						function() {
+
+							$('li > a').click(function() {
+								$('li').removeClass();
+								$(this).parent().addClass('active');
+							});
+
+							$('#selectList')
+									.change(
+											function() {
+												var e = document
+														.getElementById("selectList");
+												selectListNum = e.options[e.selectedIndex].value;
+												currentCategory = document
+														.getElementById("currentCategory").value;
+												alert('selectListNum : '
+														+ selectListNum
+														+ ' currentCategory : '
+														+ currentCategory);
+												category(currentCategory);
+											});
+						});
+
+		var searchKeyword;
+		var currentCategory;
+		var currentPageNum;
+		var selectListNum;
+
+		function fncGetList(currentPage) {
+			alert("currentPage : " + currentPage);
+			document.getElementById("currentPage").value = currentPage;
+			currentPageNum = currentPage;
+			category(currentCategory);
+
+		}
+
+		window.category = function (category) {
+
+			alert("categogy : " + category);
+
+			currentPageNum = document.getElementById("currentPage").value;
+
+			if (typeof category === 'undefined') {
+				currentCategory = document.getElementById("currentCategory").value;
+				alert("currentCategory2 : " + currentCategory);
+			} else {
+
+				if (category != 'inquiry') {
+					if (category != 'newest') {
+						currentCategory = category.id;
+						alert("currentCategory1 : " + currentCategory);
+					}
+				} else {
+					currentCategory = category;
+					alert("currentCategory3 : " + currentCategory);
+				}
+			}
+			document.getElementById("currentCategory").value = currentCategory;
+
+			var searchKeyword = document.getElementById("searchKeyword").value;
+
+			if (typeof selectListNum === 'undefined') {
+				selectListNum = 10;
+			}
+
+			if (typeof currentPageNum === 'undefined') {
+				var params = 'searchCategory=' + currentCategory + '&pageSize='
+						+ selectListNum;
+			} else {
+				var params = 'searchCategory=' + currentCategory + '&pageSize='
+						+ selectListNum + '&currentPage=' + currentPageNum;
+			}
+
+			alert(params);
+			$
+	        .ajax(
+	            "${pageContext.servletContext.contextPath }/app/recipe/getRecipeSearchList",
+	            {
+	              method : 'get',
+	              dataType : 'json',
+	              data : params,
+	              success : function(result) {
+
+								var resultPage = result.resultPage;
+								var search = result.search;
+								var list = result.list;
+								alert(list);
+								$("#pagingfooter").empty();
+
+								if (resultPage.currentPage <= resultPage.pageUnit) {
+									$("#pagingfooter").append("◀ 이전");
+								}
+								if (resultPage.currentPage > resultPage.pageUnit) {
+									$("#pagingfooter")
+											.append(
+													"<a href='javascript:fncGetList('"
+															+ (resultPage.currentPage - 1)
+															+ "')'>◀ 이전</a>");
+								}
+
+								for (var i = resultPage.beginUnitPage; i <= resultPage.endUnitPage; i++) {
+									$("#pagingfooter").append(
+											"<a href='javascript:fncGetList("
+													+ i + ");'>" + i + "</a>");
+								}
+
+								if (resultPage.endUnitPage >= resultPage.maxPage) {
+									$("#pagingfooter").append("이후 ▶");
+								}
+								if (resultPage.endUnitPage < resultPage.maxPage) {
+									$("#pagingfooter")
+											.append(
+													"<a href='javascript:fncGetList('"
+															+ (resultPage.endUnitPage + 1)
+															+ "')'>이후 ▶</a>");
+								}
+								
+								var selector = $("#"+result.search.searchCategory);
+								
+								selector.empty();
+								selector.append("<div class='row' style='margin-top: 1%; margin-left: 2px; display: inline-block; text-align: center; width: 100%;'>").trigger("create");;
+								selector.append("<div></div><div style='display: inline-block; text-align: center;'> <section><ul data-role='listview' id='gallery'>").trigger("create");;
+								
+								
+								for(var i = 0; i < list.length; i++){
+									selector.append("<li data-role='listview'><a href='${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo="+list[i].recipeNo+"></a>").trigger("create");;
+									selector.append("<img class='lazy' src='${pageContext.servletContext.contextPath }/images/"+list[i].titleImage+"' width='240' height='200' style='display: inline;'>").trigger("create");;
+									selector.append("<div class='overLayer'></div>").trigger("create");;
+									selector.append("<div class='infoLayer'><ul data-role='listview'><li data-role='listview'><h2>"+ list[i].recipeTitle +"</h2></li><li>").trigger("create");;
+									selector.append(" <p>"+ list[i].recipeContents +"</p></li></ul></div></li>").trigger("create");;
+								}
+								selector.append("</ul></section></div>").trigger("create");;
+	              }
+							});
+
+		}
+	</script>
 	<div><jsp:include page="menuBar.jsp"></jsp:include></div>
-	<input type="hidden" id="searchKeyword" name="searchKeyword" value="${search.searchKeyword}">
+	<input type="hidden" id="searchKeyword" name="searchKeyword"
+		value="${search.searchKeyword}">
+	<input type="hidden" id="currentPage" name="currentPage" value="1" />
+	<input type="hidden" id="currentCategory" name="currentCategory"
+		value="inquiry" />
 	<div class="containerTap">
 		<div class="panel with-nav-tabs panel-success">
 			<div class="panel-heading">
 				<ul class="nav nav-tabs">
-					<li class="<c:if test="${ search.searchCategory eq 'inquiry' }">active</c:if>"><a href="#inquiry" onclick="category(inquiry)" data-toggle="tab">조회순</a></li>
-					<li class="<c:if test="${ search.searchCategory eq 'newest' }">active</c:if>"><a  href="#recommend" data-toggle="tab" onclick="category(newest)">최신순</a></li>
+					<li
+						class="<c:if test="${ search.searchCategory eq 'inquiry' }">active</c:if>"><a
+						href="#inquiry" onclick="category(inquiry)" data-toggle="tab">조회순</a></li>
+					<li
+						class="<c:if test="${ search.searchCategory eq 'newest' }">active</c:if>"><a
+						href="#recommend" data-toggle="tab" onclick="category(newest)">최신순</a></li>
+					<li style="float: right;">
+						<div class="select-style" style="margin-top: 8px;">
+							<select id="selectList">
+								<option value="10" selected="selected">10</option>
+								<option value="20">20</option>
+								<option value="50">50</option>
+							</select>
+						</div>
+					</li>
 				</ul>
 			</div>
 			<div class="panel-body">
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="inquiry">
-						<h3>여기는 조회순 </h3>
 						<jsp:include page="cardSession.jsp" />
 					</div>
-					<div class="tab-pane fade" id="newest">
-						<h3>여기는 최신순</h3>
-						
+					<div class="tab-pane fade" id="newest"></div>
+				</div>
+				<div id="pagingfooter" class="pagingfooter"
+					style="margin-left: 45%;">
+					<jsp:include page="../commons/navigationPage.jsp" />
 				</div>
 			</div>
 		</div>
