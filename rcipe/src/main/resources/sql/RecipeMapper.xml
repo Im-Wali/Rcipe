@@ -184,7 +184,7 @@
 			ORDER BY  re.rcp_date  DESC
 		</if>
 		<if test="searchCategory == 'inquiry' || searchCategory == null">
-    re.rcp_cnt  DESC
+         ORDER BY  re.rcp_cnt  DESC
     </if>
 		)
 		inner_table
