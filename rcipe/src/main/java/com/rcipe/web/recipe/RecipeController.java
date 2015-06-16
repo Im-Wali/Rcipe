@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.rcipe.commons.Page;
 import com.rcipe.commons.Search;
 import com.rcipe.service.commons.FileService;
@@ -53,10 +54,10 @@ public class RecipeController {
 
 	@Value("#{commonProperties['pageSize']}")
 	int pageSize;
-	
+
 	@Value("#{commonProperties['pageUnit']}")
 	int pageUnit;
-	
+
 	public RecipeController() {
 		System.out.println(getClass() + "start......");
 	}
@@ -143,11 +144,11 @@ public class RecipeController {
 		recipeService.updateRecipe(recipe);
 		int recipeNo = recipe.getRecipeNo();
 		int count = 0;
-		List<DetailRecipe> list =  new ArrayList<DetailRecipe>();
+		List<DetailRecipe> list = new ArrayList<DetailRecipe>();
 		// 레시피 사진들과 레시피을 일단 지운다.
 		fileService.deleteModifyPicture(deletePicturePaths);
-		//만약에 재로를 고치면 일단 이전에 있던 rcp_ing을 지우고 다시 insert한다.start.
-		if (ingredientIds != null&&!"".equals(ingredientIds)) {
+		// 만약에 재로를 고치면 일단 이전에 있던 rcp_ing을 지우고 다시 insert한다.start.
+		if (ingredientIds != null && !"".equals(ingredientIds)) {
 			recipeService.deleteRcpIng(recipeNo);
 			List<Ingredient> ingredientList = new ArrayList<Ingredient>();
 			String ingre[] = ingredientIds.trim().split("/");
@@ -158,9 +159,9 @@ public class RecipeController {
 			}
 			recipeService.insertRcpIng(ingredientList);
 		}
-		//end
-		
-		//detailRecip로직 start.
+		// end
+
+		// detailRecip로직 start.
 		detailRecipeService.deleteDetailRecipe(recipeNo);
 		for (int n = 1; n <= detailNumber; n++) {
 			String image = request.getParameter("detailImage" + n);
@@ -173,7 +174,7 @@ public class RecipeController {
 			}
 		}
 		detailRecipeService.insertDetailRecipe(list);
-		//detailRecipe로직 End
+		// detailRecipe로직 End
 		return "redirect:viewRecipe?recipeNo=" + recipeNo;
 	}
 
@@ -209,47 +210,87 @@ public class RecipeController {
 
 	@RequestMapping(value = "/getRecipeList")
 	public ModelAndView getRecipeList(@ModelAttribute("search") Search search,
-			ServletResponse response,HttpServletRequest request) throws Exception {
+			ServletResponse response, HttpServletRequest request)
+			throws Exception {
 		response.setContentType("text/plain;charset=UTF-8");
 		System.out.println("getRecipeList start");
-		System.out.println("search : " + search);
+		System.err.println("search : " + search);
 		ModelAndView modelAndView = new ModelAndView();
-		
-		if (search.getSearchKeyword() == null ) {
-			modelAndView.setViewName("forward:../../main/mainPage.jsp");
+
+		if (search.getSearchKeyword() == null) {
+			if (search.getSearchCategory() == null) {
+				modelAndView.setViewName("forward:../../main/mainPage.jsp");
+			} else {
+				modelAndView.setViewName("forward:../../main/searchResult.jsp");
+			}
 		} else {
-			if(search.getCurrentPage() ==0 ){
+			if (search.getCurrentPage() == 0) {
 				search.setCurrentPage(1);
 			}
 			modelAndView.setViewName("forward:../../main/searchResult.jsp");
 		}
-		
-		search.setPageSize(pageSize);
-		Map<String, Object> map = recipeService.getRecipeList(search);
-		if (search.getSearchKeyword() != null ) {
-			Page resultPage = new Page( search.getCurrentPage(), ((Integer)map.get("totalCount")).intValue(), pageUnit, pageSize);
-			modelAndView.addObject("resultPage",resultPage);
-			System.out.println("resultPage : "+resultPage);
+
+		if (search.getPageSize() != 0) {
+
+		} else {
+			search.setPageSize(pageSize);
 		}
-		modelAndView.addObject("search",search);
+		Map<String, Object> map = recipeService.getRecipeList(search);
+
+		Page resultPage = new Page(search.getCurrentPage(),
+				((Integer) map.get("totalCount")).intValue(), pageUnit,
+				pageSize);
+		modelAndView.addObject("resultPage", resultPage);
+		System.out.println("resultPage : " + resultPage);
+
+		modelAndView.addObject("search", search);
 		modelAndView.addObject("list", map.get("list"));
 		System.out.println(modelAndView);
 		return modelAndView;
 
 	}
-	
-	
+
+	@RequestMapping(value = "/getRecipeSearchList")
+	public ResponseEntity<String> getRecipeSearchList(
+			@ModelAttribute("search") Search search, ServletResponse response,
+			HttpServletRequest request) throws Exception {
+		response.setContentType("text/plain;charset=UTF-8");
+		System.out.println("getRecipeSearchList start");
+		System.err.println("search : " + search);
+
+		Map<String, Object> map = recipeService.getRecipeList(search);
+
+		Page resultPage = new Page(search.getCurrentPage(),
+				((Integer) map.get("totalCount")).intValue(), pageUnit,
+				search.getPageSize());
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("resultPage", resultPage);
+		result.put("search", search);
+		result.put("list", map.get("list"));
+
+		Gson gson = new GsonBuilder().serializeNulls().create();
+		String jsonString = gson.toJson(result);
+		System.err.println("jsonString : "+jsonString);
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Content-Type", "text/plain;charset=UTF-8");
+		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
+
+	}
+
 	@RequestMapping(value = "/deleteRecipe", method = RequestMethod.GET)
-	public void deleteRecipe(@RequestParam("recipeNo") int recipeNo, @RequestParam("imagePath") String imagePath,ServletResponse response) throws Exception {
-		
+	public void deleteRecipe(@RequestParam("recipeNo") int recipeNo,
+			@RequestParam("imagePath") String imagePath,
+			ServletResponse response) throws Exception {
+
 		String[] iamgePathArray = imagePath.split("/");
-		if(iamgePathArray.length >1){
-			System.out.println(iamgePathArray[0]+"/"+iamgePathArray[1]);
-			fileService.deleteRecipeImages(iamgePathArray[0]+"/"+iamgePathArray[1]);
+		if (iamgePathArray.length > 1) {
+			System.out.println(iamgePathArray[0] + "/" + iamgePathArray[1]);
+			fileService.deleteRecipeImages(iamgePathArray[0] + "/"
+					+ iamgePathArray[1]);
 		}
 		recipeService.deleteRecipe(recipeNo);
-		
-		
+
 	}
 
 }

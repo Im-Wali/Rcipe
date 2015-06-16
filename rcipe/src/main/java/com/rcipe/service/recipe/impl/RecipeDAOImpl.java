@@ -100,7 +100,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 	@Override
 	public List<Recipe> getRecipeList(Search search) throws Exception {
 		// TODO Auto-generated method stub
-		if (search.getSearchKeyword() == null) {
+		if (search.getSearchCategory() == null) {
 			return sqlSession.selectList("RecipeMapper.getDefalutRecipeList");
 		} else {
 			return sqlSession.selectList("RecipeMapper.getRecipeList", search);

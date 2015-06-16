@@ -107,10 +107,10 @@ public class RecipeServiceImpl  implements RecipeService{
 			}else{
 				list = recipeDAO.getRecipeList(search); // nickname,title 기준으로 가져오는 것
 			}
-			// int totalCount = recipeDAO.getTotalCount(search);
-			//메인 페이지는 COUNT가 필요없다. 50개만 가져올거임
-			map.put("totalCount", list.size());
 		}
+		int totalCount = recipeDAO.getTotalCount(search);
+		//메인 페이지는 COUNT가 필요없다. 50개만 가져올거임
+		map.put("totalCount", totalCount);
 		map.put("list", list);
 		
 		return map;
