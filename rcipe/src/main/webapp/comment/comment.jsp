@@ -13,13 +13,13 @@
 	<from action="#" method="post">
 	<div class="row">
 		<div class="col-md-1">
-			<c:if test="${user.userImgae !=null}">
+			<c:if test="${user.userImage !=null}">
 				<img alt="" class="img-circle"
 					src="../../images/${comment.userImg }" width="
 								70px"
 					height="70px" style="margin-top: 1%">
 			</c:if>
-			<c:if test="${user.userImgae == null}">
+			<c:if test="${user.userImage == null}">
 				<img alt="" class="img-circle" src="../../images/userIcon.png"
 					width="
 								70px" height="70px" style="margin-top: 1%">
@@ -54,13 +54,13 @@
 				<div class="row">
 					<div class="col-md-1">
 						<div>
-							<c:if test="${user.userImgae !=null}">
+							<c:if test="${user.userImage !=null}">
 								<img alt="" class="img-circle"
 									src="../../images/${comment.userImg }" width="
 								70px"
 									height="70px" style="margin-top: 1%">
 							</c:if>
-							<c:if test="${user.userImgae == null}">
+							<c:if test="${user.userImage == null}">
 								<img alt="" class="img-circle" src="../../images/userIcon.png"
 									width="
 								70px" height="70px" style="margin-top: 1%">

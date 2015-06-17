@@ -192,10 +192,10 @@ $("document").ready(function(){
 <form method="post" action="${pageContext.servletContext.contextPath }/app/user/joinUser"  id="joinUser" name="joinUser">
 	<div class="modal fade" id="joinModal" tabindex="-1" role="dialog"
 		aria-labelledby="joinModal" aria-hidden="true">
-		<div class="modal-dialog" style="background-color: #FF9933">
-			<div class="modal-content" style="background-color: #FF9933;">
+		<div class="modal-dialog">
+			<div class="modal-content" >
 				<div class="modal-header"
-					style="background-color: #FF9933; border-color: black">
+					style=" border-color: black">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>

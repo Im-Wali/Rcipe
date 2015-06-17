@@ -41,10 +41,10 @@ $("document").ready(function(){
 <form method="post" action="${pageContext.servletContext.contextPath }/app/user/userLogin" name="loginForm" id="loginForm">
 	<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 		aria-labelledby="loginModal" aria-hidden="true">
-		<div class="modal-dialog" style="background-color: #FF9933">
-			<div class="modal-content" style="background-color: #FF9933;">
+		<div class="modal-dialog" >
+			<div class="modal-content" >
 				<div class="modal-header"
-					style="background-color: #FF9933; border-color: black">
+					style=" border-color: black">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -68,14 +68,14 @@ $("document").ready(function(){
 					<div id="losePasswordDiv" class="form-group"></div>
 				</div>
 				<div class="modal-footer" style="border-color: black">
-					<button type="button" class="btn btn-primary" id="loseButton"
-						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black;margin-top:1%"
+					<button type="button" class="btn btn-info" id="loseButton"
+						style=";margin-top:1%"
 						id="change_password" data-toggle="modal"
 						data-target="#modifyLosePasswordModal" data-backdrop="false" data-dismiss="modal"
             aria-label="Close" >비밀번호
 						찾기</button>
-					<button type="submit" class="btn btn-primary" id="loginSubmit"
-						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black;margin-top:1%">로그인</button>
+					<button type="submit" class="btn btn-info" id="loginSubmit"
+						style=";margin-top:1%">로그인</button>
 					<!-- 					<input type="image" src="login.gif" alt="로그인" /> -->
 				</div>
 			</div>

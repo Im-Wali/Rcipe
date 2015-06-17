@@ -63,10 +63,10 @@
 	<div class="modal fade" id="modifyLosePasswordModal" tabindex="-1"
 		role="dialog" aria-labelledby="modifyLosePasswordModal"
 		aria-hidden="true">
-		<div class="modal-dialog" style="background-color: #FF9933">
-			<div class="modal-content" style="background-color: #FF9933;">
+		<div class="modal-dialog" >
+			<div class="modal-content" style="background-color: #75DDFF;">
 				<div class="modal-header"
-					style="background-color: #FF9933; border-color: black">
+					style="background-color: #75DDFF; border-color: black">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
