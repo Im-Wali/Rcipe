@@ -101,6 +101,8 @@ stylize any heading tags withing white-panel below
 						<div class="row">
 							<div class="col-md-6" align="left">
 								<span>
+								 <jsp:include page="../sns/facebook.jsp"></jsp:include>
+								  <jsp:include page="../sns/twitter.jsp"></jsp:include>
 									<button type="button" class="btn btn-warning"
 										data-toggle="modal" data-target="#modifyFavoriteAdd"
 										data-backdrop="false" data-dismiss="modal">즐겨찾기 추가</button>
