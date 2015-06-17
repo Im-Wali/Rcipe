@@ -14,8 +14,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<%--  <link href="${pageContext.servletContext.contextPath}/css/recipe01.css"
-	rel="stylesheet"> --%>
+  <link href="${pageContext.servletContext.contextPath}/css/recipe01.css"
+	rel="stylesheet"> 
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/js/recipe01.js"></script>
 

@@ -385,7 +385,7 @@
 										+ "<div class='col-md-1'>"
 										+ "	<div>"
 										+ "		<img  class='img-circle' src='../../images/"
-										+ list[i].userImg
+										+ (list[i].userImg == null ? "userIcon.png":list[i].userImg)
 										+ "' width='70px'"
 										+ "height='70px' style='margin-top: 1%'>"
 										+ "</div>"
@@ -431,7 +431,7 @@
 										+ "<div class='col-md-1'>"
 										+ "<div>"
 										+ "<img  class='img-circle' src='../../images/"
-										+ list[i].userImg
+										+ (list[i].userImg == null ? "userIcon.png":list[i].userImg)
 										+ "' width='70px'"
 										+ "height='70px' style='margin-top: 1%''>"
 										+ "</div>"

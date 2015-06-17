@@ -10,6 +10,10 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script
+	src="${pageContext.servletContext.contextPath }/js/jquery.lazyload.js"></script>
+	<link rel="stylesheet"
+  href="${pageContext.servletContext.contextPath }/css/cardSession.css">
 <Style>
 #checklist {
 	list-style-type: none;
@@ -74,8 +78,9 @@
 	color: #fff;
 	background-color: #3c763d;
 }
+
 #pagingfooter a {
-  padding: 5px;
+	padding: 5px;
 }
 </Style>
 </HEAD>
@@ -84,7 +89,8 @@
 		$("document")
 				.ready(
 						function() {
-
+							$(".lazy").fn.lazyload();
+							$(".lazy").lazyload();
 							$('li > a').click(function() {
 								$('li').removeClass();
 								$(this).parent().addClass('active');
@@ -119,7 +125,7 @@
 
 		}
 
-		window.category = function (category) {
+		window.category = function(category) {
 
 			alert("categogy : " + category);
 
@@ -158,64 +164,75 @@
 
 			alert(params);
 			$
-	        .ajax(
-	            "${pageContext.servletContext.contextPath }/app/recipe/getRecipeSearchList",
-	            {
-	              method : 'get',
-	              dataType : 'json',
-	              data : params,
-	              success : function(result) {
+					.ajax(
+							"${pageContext.servletContext.contextPath }/app/recipe/getRecipeSearchList",
+							{
+								method : 'get',
+								dataType : 'json',
+								data : params,
+								success : function(result) {
+									var resultPage = result.resultPage;
+									var search = result.search;
+									var list = result.list;
+									$("#pagingfooter").empty();
 
-								var resultPage = result.resultPage;
-								var search = result.search;
-								var list = result.list;
-								alert(list);
-								$("#pagingfooter").empty();
+									if (resultPage.currentPage <= resultPage.pageUnit) {
+										$("#pagingfooter").append("◀ 이전");
+									}
+									if (resultPage.currentPage > resultPage.pageUnit) {
+										$("#pagingfooter")
+												.append(
+														"<a href='javascript:fncGetList('"
+																+ (resultPage.currentPage - 1)
+																+ "')'>◀ 이전</a>");
+									}
 
-								if (resultPage.currentPage <= resultPage.pageUnit) {
-									$("#pagingfooter").append("◀ 이전");
-								}
-								if (resultPage.currentPage > resultPage.pageUnit) {
-									$("#pagingfooter")
-											.append(
-													"<a href='javascript:fncGetList('"
-															+ (resultPage.currentPage - 1)
-															+ "')'>◀ 이전</a>");
-								}
+									for (var i = resultPage.beginUnitPage; i <= resultPage.endUnitPage; i++) {
+										$("#pagingfooter").append(
+												"<a href='javascript:fncGetList("
+														+ i + ");'>" + i
+														+ "</a>");
+									}
 
-								for (var i = resultPage.beginUnitPage; i <= resultPage.endUnitPage; i++) {
-									$("#pagingfooter").append(
-											"<a href='javascript:fncGetList("
-													+ i + ");'>" + i + "</a>");
-								}
+									if (resultPage.endUnitPage >= resultPage.maxPage) {
+										$("#pagingfooter").append("이후 ▶");
+									}
+									if (resultPage.endUnitPage < resultPage.maxPage) {
+										$("#pagingfooter")
+												.append(
+														"<a href='javascript:fncGetList('"
+																+ (resultPage.endUnitPage + 1)
+																+ "')'>이후 ▶</a>");
+									}
 
-								if (resultPage.endUnitPage >= resultPage.maxPage) {
-									$("#pagingfooter").append("이후 ▶");
+									var selector = $("#"
+											+ result.search.searchCategory);
+									selector.empty();
+									alert(result.search.searchCategory);
+									var path=$("#path").val();
+									var str = "";
+									str += " <div class='row' style='margin-top: 1%; margin-left: 2px; display: inline-block; text-align: center; width: 100%;'>";
+									str += " <div style='display: inline-block; text-align: center;'> <section><ul id='gallery'>";
+									for (var i = 0; i < list.length; i++) {
+										str += " <li ><a href='"
+												+ path
+												+ "/app/recipe/viewRecipe?recipeNo="
+												+ list[i].recipeNo
+												+ "'></a>";
+										str += " <img class='lazy' src='${pageContext.servletContext.contextPath }/images/"+list[i].titleImage+"' width='240' height='200' style='display: inline;'>";
+										str += " <div class='overLayer'></div>";
+										str += " <div class='infoLayer'><ul><li><h2>"
+												+ list[i].recipeTitle
+												+ "</h2></li>";
+										str += " <li><p>"
+												+ list[i].recipeContents
+												+ "</p></li></ul></div></li>";
+									}
+									str += " </ul></section></div></div>";
+									selector.html(str);
+									$(".lazy").fn.lazyload();
+									$(".lazy").lazyload();
 								}
-								if (resultPage.endUnitPage < resultPage.maxPage) {
-									$("#pagingfooter")
-											.append(
-													"<a href='javascript:fncGetList('"
-															+ (resultPage.endUnitPage + 1)
-															+ "')'>이후 ▶</a>");
-								}
-								
-								var selector = $("#"+result.search.searchCategory);
-								
-								selector.empty();
-								selector.append("<div class='row' style='margin-top: 1%; margin-left: 2px; display: inline-block; text-align: center; width: 100%;'>").trigger("create");;
-								selector.append("<div></div><div style='display: inline-block; text-align: center;'> <section><ul data-role='listview' id='gallery'>").trigger("create");;
-								
-								
-								for(var i = 0; i < list.length; i++){
-									selector.append("<li data-role='listview'><a href='${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo="+list[i].recipeNo+"></a>").trigger("create");;
-									selector.append("<img class='lazy' src='${pageContext.servletContext.contextPath }/images/"+list[i].titleImage+"' width='240' height='200' style='display: inline;'>").trigger("create");;
-									selector.append("<div class='overLayer'></div>").trigger("create");;
-									selector.append("<div class='infoLayer'><ul data-role='listview'><li data-role='listview'><h2>"+ list[i].recipeTitle +"</h2></li><li>").trigger("create");;
-									selector.append(" <p>"+ list[i].recipeContents +"</p></li></ul></div></li>").trigger("create");;
-								}
-								selector.append("</ul></section></div>").trigger("create");;
-	              }
 							});
 
 		}
@@ -226,16 +243,19 @@
 	<input type="hidden" id="currentPage" name="currentPage" value="1" />
 	<input type="hidden" id="currentCategory" name="currentCategory"
 		value="inquiry" />
+	<input type="hidden" id="path"
+		value="${pageContext.servletContext.contextPath }">
 	<div class="containerTap">
 		<div class="panel with-nav-tabs panel-success">
 			<div class="panel-heading">
 				<ul class="nav nav-tabs">
 					<li
-						class="<c:if test="${ search.searchCategory eq 'inquiry' }">active</c:if>"><a
-						href="#inquiry" onclick="category(inquiry)" data-toggle="tab">조회순</a></li>
+						<c:if test="${ search.searchCategory.trim() eq 'inquiry' }">class="active"</c:if>><a
+						title="inquiry" href="#inquiry" onclick="category(inquiry)"data-toggle="tab">조회순</a></li>
 					<li
-						class="<c:if test="${ search.searchCategory eq 'newest' }">active</c:if>"><a
-						href="#recommend" data-toggle="tab" onclick="category(newest)">최신순</a></li>
+						<c:if test="${ search.searchCategory.trim() eq 'newest' }">class="active"</c:if>><a
+						title="newest" href="#recommend"onclick="category(newest)" data-toggle="tab"
+						class="category">최신순</a></li>
 					<li style="float: right;">
 						<div class="select-style" style="margin-top: 8px;">
 							<select id="selectList">
@@ -256,17 +276,10 @@
 				</div>
 				<div id="pagingfooter" class="pagingfooter"
 					style="margin-left: 45%;">
-					<jsp:include page="../commons/navigationPage.jsp" />
+					<jsp:include page="/commons/navigationPage.jsp" />
 				</div>
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/user/login.jsp"></jsp:include>
-
-	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
 </BODY>
 </HTML>

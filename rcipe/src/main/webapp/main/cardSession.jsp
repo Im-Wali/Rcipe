@@ -5,7 +5,6 @@
   href="${pageContext.servletContext.contextPath }/css/cardSession.css">
 <script>
 	$(document).ready(function() {
-		$('#gallery').least();
 	});
 </script>
 
