@@ -91,11 +91,12 @@ public class RecipeServiceImpl  implements RecipeService{
 	public Map<String, Object> getRecipeList(Search search) throws Exception {
 		
 		String searchKeyword = search.getSearchKeyword();
-		
+		int totalCount;
 		List<Recipe> list = null;
 		Map<String, Object> map = new HashMap<String, Object>();
 		if(searchKeyword==null){
 			list = recipeDAO.getRecipeList(search);		// order by 없음. 
+			totalCount = recipeDAO.getTotalCount(search);
 		}else{
 			if(searchKeyword.contains(",")==true){
 				String[] searchWordList = searchKeyword.split(",");
@@ -104,11 +105,19 @@ public class RecipeServiceImpl  implements RecipeService{
 					searchIngredients.add(searchWordList[i]);
 				}
 				list = recipeDAO.getRecipeListIngredients(searchIngredients);
+				totalCount = list.size();
+				
+				if(totalCount>search.getEndRowNum()){
+					list = list.subList(search.getStartRowNum()-1, search.getEndRowNum());
+				}else{
+					list = list.subList(search.getStartRowNum()-1, totalCount);
+				}
 			}else{
 				list = recipeDAO.getRecipeList(search); // nickname,title 기준으로 가져오는 것
+				totalCount = recipeDAO.getTotalCount(search);
 			}
 		}
-		int totalCount = recipeDAO.getTotalCount(search);
+		
 		//메인 페이지는 COUNT가 필요없다. 50개만 가져올거임
 		map.put("totalCount", totalCount);
 		map.put("list", list);
