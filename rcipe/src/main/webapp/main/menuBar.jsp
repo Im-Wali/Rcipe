@@ -41,15 +41,15 @@
 				</div>
 				<div class="col-md-5">
 					<div class="dropdown"> -->
-					<img id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+			<%-- <img id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 						src="${pageContext.servletContext.contextPath }/images/ingredientIcon.jpg"
 						class="img-rounded" role="button"
-						style="width: 100px; height: 100px;background-color: #D7D7D7">
-						<!-- <button id="dLabel" data-toggle="dropdown" aria-haspopup="true" class="btn btn-default" 
+						style="width: 100px; height: 100px;background-color: #D7D7D7"> --%>
+			<!--  <button id="dLabel" data-toggle="dropdown" aria-haspopup="true" class="btn btn-default" 
 							aria-expanded="false" style="font-size: 2em; background-color:#75DDFF;border-color:#75DDFF; font-family:cursive; color: black">
 							Menu <span class="caret"></span>
-						</button> -->
-						<div class="dropdown-menu dropdown-menu-left" role="menu"
+						</button>  -->
+			<!-- <div class="dropdown-menu dropdown-menu-left" role="menu"
 							aria-labelledby="dLabel" style="border: none;margin-top:1%">
 							<div id="panel">
 								<span class="row" style="float: left"> <span
@@ -124,38 +124,39 @@
 									</button>
 								</div>
 							</div>
-						</div>
-					</div>
-				<!-- </div>
-			</div>
-		</div> -->
+						</div> -->
+			<!-- </div> -->
+			<!-- </div>
+			</div> -->
+		</div>
 
 		<div class="col-md-8" style="margin-top: 1%;">
-			<form method="GET" name="searchForm" id="searchForm"
-				action="${pageContext.servletContext.contextPath }/app/recipe/getRecipeList">
 				<div class="row">
 					<div class="col-sm-1"></div>
 					<div class="col-sm-10 " align="center"
-						style="display: inline-block; text-align: center;margin-top:-2%">
+						style="display: inline-block; text-align: center; margin-top: -2%">
+						<a href="${pageContext.servletContext.contextPath}/index.jsp"><button
+								id="homeButton" class="btn btn-default"
+								style="font-size: 2.5em; font-family: cursive; color: black; background-color: #75DDFF; border-color: #75DDFF;">Rcipe</button></a>
 						<div id="imaginary_container">
-						<a href="${pageContext.servletContext.contextPath}/index.jsp" 
-							><button id="homeButton" class="btn btn-default" style="font-size: 2em; font-family:cursive; color: black;background-color:#75DDFF;
-							border-color:#75DDFF;">Rcipe</button></a>
-							<span class="input-group stylish-input-group"> <input
-								type="hidden" name="searchCategory" value="inquiry " /> <input
-								type="text" value="${search.searchKeyword}" class="form-control"
-								placeholder="Search" id="searchKeyword" name="searchKeyword"
-								URIEncoding="UTF-8"> <span class="input-group-addon">
-									<button type="submit">
-										<span class="glyphicon glyphicon-search"></span>
-									</button>
-							</span>
-							</span>
+							<form method="GET" name="searchForm" id="searchForm"
+								action="${pageContext.servletContext.contextPath }/app/recipe/getRecipeList">
+								<span class="input-group stylish-input-group"> <input
+									type="hidden" name="searchCategory" value="inquiry " /> <input
+									type="text" value="${search.searchKeyword}"
+									class="form-control" placeholder="Search" id="searchKeyword"
+									name="searchKeyword" URIEncoding="UTF-8"> <span
+									class="input-group-addon">
+										<button type="submit">
+											<span class="glyphicon glyphicon-search"></span>
+										</button>
+								</span>
+								</span>
+							</form>
 						</div>
 					</div>
 					<div class="col-sm-1 "></div>
 				</div>
-			</form>
 		</div>
 
 		<div class="col-md-2">
@@ -164,18 +165,18 @@
 					<img
 						src="${pageContext.servletContext.contextPath }/images/userIcon.png"
 						class="img-circle" role="button"
-						style="width: 100px; height:100px; margin-top: 1%;background-color: #D7D7D7"
+						style="width: 100px; height: 100px; margin-top: 1%; background-color: #D7D7D7"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				</c:if> <c:if test="${user.userImage != null }">
 					<img
 						src="${pageContext.servletContext.contextPath }/images/${user.userImage}"
 						class="img-circle" role="button"
-						style="width: 100px; height: 100px;background-color: #D7D7D7" data-toggle="dropdown"
-						aria-haspopup="true" aria-expanded="false">
+						style="width: 100px; height: 100px; background-color: #D7D7D7"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				</c:if>
-				<div
-					class="dropdown-menu  dropdown-menu-right "
-					aria-labelledby="user-div-image" style="border: none;margin-top:45%" role="menu">
+				<div class="dropdown-menu  dropdown-menu-right "
+					aria-labelledby="user-div-image"
+					style="border: none; margin-top: 45%" role="menu">
 					<c:if test="${user.nickname == null }">
 						<li><a href="#" class="btn" data-toggle="modal"
 							data-target="#loginModal" data-whatever="Login"
@@ -186,7 +187,10 @@
 						<div align="center">
 							<li><a
 								href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0"
-								class="btn " style="color: black">게시판리스트</a></li>
+								class="btn " style="color: black">게시판리스트</a></li> <a
+								data-target="#searchIngredient" class="btn "
+								style="color: black" data-whatever="dialog" data-toggle="modal"
+								data-backdrop="false">재료상세검색</a>
 						</div>
 					</c:if>
 					<c:if test="${user.nickname != null }">

@@ -11,7 +11,7 @@
 					id="ingredientClose" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-				<h3 class="modal-title" align="center">음식재료 검색</h3>
+				<h3 class="modal-title" align="center">재료상세검색</h3>
 			</div>
 			<div class="modal-body">
 				<div class="row" style="margin-top: 2%;">
