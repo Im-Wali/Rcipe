@@ -131,32 +131,31 @@
 		</div>
 
 		<div class="col-md-8" style="margin-top: 1%;">
-				<div class="row">
-					<div class="col-sm-1"></div>
-					<div class="col-sm-10 " align="center"
-						style="display: inline-block; text-align: center; margin-top: -2%">
-						<a href="${pageContext.servletContext.contextPath}/index.jsp"><button
-								id="homeButton" class="btn btn-default"
-								style="font-size: 2.5em; font-family: cursive; color: black; background-color: #75DDFF; border-color: #75DDFF;">Rcipe</button></a>
-						<div id="imaginary_container">
-							<form method="GET" name="searchForm" id="searchForm"
-								action="${pageContext.servletContext.contextPath }/app/recipe/getRecipeList">
-								<span class="input-group stylish-input-group"> <input
-									type="hidden" name="searchCategory" value="inquiry " /> <input
-									type="text" value="${search.searchKeyword}"
-									class="form-control" placeholder="Search" id="searchKeyword"
-									name="searchKeyword" URIEncoding="UTF-8"> <span
-									class="input-group-addon">
-										<button type="submit">
-											<span class="glyphicon glyphicon-search"></span>
-										</button>
-								</span>
-								</span>
-							</form>
-						</div>
+			<div class="row">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-10 " align="center"
+					style="display: inline-block; text-align: center; margin-top: -2%">
+					<a href="${pageContext.servletContext.contextPath}/index.jsp"><button
+							id="homeButton" class="btn btn-default"
+							style="font-size: 2.5em; font-family: cursive; color: black; background-color: #75DDFF; border-color: #75DDFF;">Rcipe</button></a>
+					<div id="imaginary_container">
+						<form method="GET" name="searchForm" id="searchForm"
+							action="${pageContext.servletContext.contextPath }/app/recipe/getRecipeList">
+							<span class="input-group stylish-input-group"> <input
+								type="hidden" name="searchCategory" value="inquiry " /> <input
+								type="text" value="${search.searchKeyword}" class="form-control"
+								placeholder="Search" id="searchKeyword" name="searchKeyword"
+								URIEncoding="UTF-8"> <span class="input-group-addon">
+									<button type="submit">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+							</span>
+							</span>
+						</form>
 					</div>
-					<div class="col-sm-1 "></div>
 				</div>
+				<div class="col-sm-1 "></div>
+			</div>
 		</div>
 
 		<div class="col-md-2">
@@ -185,12 +184,13 @@
 							data-target="#joinModal" data-whatever="Join"
 							data-backdrop="false" style="color: black">회원가입</a></li>
 						<div align="center">
+							<li><a data-target="#searchIngredient" class="btn "
+								style="color: black" data-whatever="dialog" data-toggle="modal"
+								data-backdrop="false">재료상세검색</a></li>
 							<li><a
 								href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0"
-								class="btn " style="color: black">게시판리스트</a></li> <a
-								data-target="#searchIngredient" class="btn "
-								style="color: black" data-whatever="dialog" data-toggle="modal"
-								data-backdrop="false">재료상세검색</a>
+								class="btn " style="color: black">게시판리스트</a></li>
+
 						</div>
 					</c:if>
 					<c:if test="${user.nickname != null }">
@@ -199,6 +199,9 @@
 							class="btn " style="color: black">로그아웃</a></li>
 						<div align="center">
 							<div align="center">
+								<li><a data-target="#searchIngredient" class="btn "
+									style="color: black" data-whatever="dialog" data-toggle="modal"
+									data-backdrop="false">재료상세검색</a></li>
 								<li><a
 									href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0"
 									class="btn " style="color: black">게시판리스트</a></li>
