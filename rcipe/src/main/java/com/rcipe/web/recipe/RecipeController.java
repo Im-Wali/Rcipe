@@ -214,7 +214,7 @@ public class RecipeController {
 			throws Exception {
 		response.setContentType("text/plain;charset=UTF-8");
 		System.out.println("getRecipeList start");
-		System.err.println("search : " + search);
+		System.out.println("search : " + search);
 		ModelAndView modelAndView = new ModelAndView();
 
 		if (search.getSearchKeyword() == null) {
