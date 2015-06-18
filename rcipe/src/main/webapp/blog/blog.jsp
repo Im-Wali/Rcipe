@@ -25,7 +25,7 @@
 																$("#ref")
 																		.append(
 																				"<div class='col-md-3'>"
-																				+"<div class='thumbnail '   style='border-color: black; background: white; width:100%;height:250px'>"
+																				+"<div class='thumbnail live'   style='border-color: black; background: white; width:100%;height:250px'>"
 																						+ "<h4><a href='"+list[i].link+"' target='_blank'>"
 																						+ list[i].title
 																						+ "</a>"
