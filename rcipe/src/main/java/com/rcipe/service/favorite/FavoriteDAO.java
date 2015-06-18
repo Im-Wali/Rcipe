@@ -14,4 +14,6 @@ public interface FavoriteDAO {
 	
 	public List<Favorite> getFavoriteList(Map<String, Object> map) throws Exception;
 
+	public int updateFavorite(Favorite favorite);
+
 }

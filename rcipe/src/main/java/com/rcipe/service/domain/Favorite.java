@@ -1,6 +1,7 @@
 package com.rcipe.service.domain;
 
 import java.util.Date;
+import java.util.List;
 
 public class Favorite {
 
@@ -85,12 +86,14 @@ public class Favorite {
 		this.starCnt = starCnt;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Favorite [recipeNo=" + recipeNo + ", nickname=" + nickname
 				+ ", favorTitle=" + favorTitle + ", favorDate=" + favorDate
 				+ ", recipe=" + recipe + ", starAvg=" + starAvg + ", cmtCnt="
-				+ cmtCnt + "]";
+				+ cmtCnt + ", starCnt=" + starCnt + "]";
 	}
 	
 	

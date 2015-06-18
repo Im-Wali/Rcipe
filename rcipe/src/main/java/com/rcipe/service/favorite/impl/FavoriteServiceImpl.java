@@ -51,4 +51,10 @@ public class FavoriteServiceImpl implements FavoriteService {
 		
 		
 	}
+
+	@Override
+	public int updateFavorite(Favorite favorite) throws Exception{
+		// TODO Auto-generated method stub
+		return favoriteDAO.updateFavorite(favorite);
+	}
 }

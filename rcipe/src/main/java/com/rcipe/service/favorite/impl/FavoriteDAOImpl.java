@@ -67,4 +67,10 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 		return list1;
 	}
 
+	@Override
+	public int updateFavorite(Favorite favorite) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("FavoriteMapper.updateFavorite", favorite);
+	}
+
 }

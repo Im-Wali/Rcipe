@@ -11,8 +11,8 @@ public interface FavoriteService {
 
 	public boolean deleteFavorite(Favorite favorite) throws Exception;
 	
-//	public Map<String, Object> getFavoriteList(Search search) throws Exception;
-
 	Map<String, Object> getFavoriteList(Map<String, Object> map) throws Exception;
+
+	public int updateFavorite(Favorite favorite) throws Exception;
 
 }
