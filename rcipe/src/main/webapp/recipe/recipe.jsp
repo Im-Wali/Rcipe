@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html style="font-size: 13px">
 <meta charset="utf-8">
@@ -112,8 +113,7 @@ stylize any heading tags withing white-panel below
 						<div class="row">
 							<div class="col-md-6" align="left">
 								<span> <jsp:include page="/sns/facebook.jsp"></jsp:include>
-									<jsp:include page="/sns/twitter.jsp"></jsp:include>
-									
+									<jsp:include page="/sns/twitter.jsp"></jsp:include> <img
 									<c:if test="${user.nickname ne  null }">
 									<c:if test="${favCon eq true }">
 									   
@@ -179,7 +179,6 @@ stylize any heading tags withing white-panel below
 								<div class="row lead"
 									style="width: 100%;max-width: 100rem">
 									<div style="margin-top: 1%" align="right">
-
 										<div id="fixedStar"
 											data-rating='${recipe.star/recipe.starHit }'
 											style="color: orange; margin-right: 9px; size: 2em">
@@ -189,8 +188,10 @@ stylize any heading tags withing white-panel below
 											<c:forEach begin="${recipe.star/recipe.starHit}" end="4">
 												<i class='fa fa-star-o' style='margin-right: -8px'></i>
 											</c:forEach>
+											<c:set var="number" value="0" ></c:set>
+											<fmt:formatNumber var="number" value="${recipe.star/recipe.starHit }" pattern=".00"/>
 										</div>
-										<div id="count-existing">현재 평점:${recipe.starHit!=0 ? (recipe.star/recipe.starHit):0  }개</div>
+										<div id="count-existing">현재 평점:${recipe.starHit!=0 ? number:0  }개</div>
 									</div>
 									<c:if test="${user !=null && starRecipe !=null }">
 										<div style="margin-top: 1%" align="right">
