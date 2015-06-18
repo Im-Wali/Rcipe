@@ -94,7 +94,7 @@ public class User {
 	private String email;
 	private String password;
 	private String userImage;
-	private Date joinDate;
+	private String joinDate;
 	private String flag;
 	public User() {
 	}
@@ -153,11 +153,11 @@ public class User {
 	}
 
 
-	public Date getJoinDate() {
+	public String getJoinDate() {
 		return joinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
+	public void setJoinDate(String joinDate) {
 		this.joinDate = joinDate;
 	}
 
