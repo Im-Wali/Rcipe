@@ -81,6 +81,7 @@ public class RecipeDAOImpl implements RecipeDAO {
 		deleteRcpIng(recipeNo);
 		sqlSession.delete("RecipeMapper.deleteDetailRcp", recipeNo);
 		sqlSession.delete("RecipeMapper.deleteStars", recipeNo);
+		sqlSession.delete("RecipeMapper.deleteRecipeFavorite", recipeNo);
 		return sqlSession.delete("RecipeMapper.deleteRecipe", recipeNo);
 
 	}

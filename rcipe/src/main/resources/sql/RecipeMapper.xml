@@ -144,6 +144,11 @@
 		WHERE
 		rcp_no=${value}
 	</delete>
+	<delete id="deleteRecipeFavorite" parameterType="int">
+		DELETE FROM fav_recipes
+		WHERE
+		rcp_no=${value}
+	</delete>
 
 	<select id="getRecipeList" parameterType="search" resultMap="RecipeSelectMap">
 		SELECT
