@@ -95,7 +95,7 @@ h4 {
 				<div style="margin-top: 1%">
 					<div class="btn-group" style="margin: 1%;">
 						<span>
-							<button type="button" class="btn btn-warning"
+							<button type="button" class="btn btn-info"
 								id="select_category" style="margin: 1%;">
 								<span class="caret"></span>
 							</button>
@@ -115,15 +115,15 @@ h4 {
 					</div>
 					<div align="right" style="margin: 1%">
 						<a href="#">
-							<button type='button' class="btn btn-warning ">목록보기</button>
+							<button type='button' class="btn btn-info ">목록보기</button>
 						</a>
 						<c:if test="${board.nickname eq user.nickname }">
 							<a href="viewModifyBoard?boardNo=${board.boardNo}">
-								<button type="button" class="btn btn-warning ">수정하기</button>
+								<button type="button" class="btn btn-info ">수정하기</button>
 							</a>
 							<a
 								href="deleteBoard?boardNo=${board.boardNo}&boardImgPath=/${board.nickname}/${board.boardImgPath}">
-								<button type="button" class="btn btn-warning">게시글 삭제</button>
+								<button type="button" class="btn btn-info">게시글 삭제</button>
 							</a>
 						</c:if>
 					</div>

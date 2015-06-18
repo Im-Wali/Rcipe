@@ -109,9 +109,9 @@
 							<textarea name="boardContent" id="editor1" class="ckeditor"> ${board.boardContent}</textarea>
 						</div>
 						<div align="right" style="margin-top: 1%">
-							<span><button type="submit" class="btn btn-warning"
+							<span><button type="submit" class="btn btn-info"
 									id="boardSubmit">등록</button></span> <span><button type="reset"
-									class="btn btn-warning">취소</button></span>
+									class="btn btn-info">취소</button></span>
 						</div>
 					</div>
 				</div>
