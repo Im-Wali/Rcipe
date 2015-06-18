@@ -112,12 +112,23 @@ stylize any heading tags withing white-panel below
 						<div class="row">
 							<div class="col-md-6" align="left">
 								<span> <jsp:include page="/sns/facebook.jsp"></jsp:include>
-									<jsp:include page="/sns/twitter.jsp"></jsp:include> <img
-									src="${pageContext.servletContext.contextPath}/images/starIcon2.jpg"
-									data-toggle="modal" data-target="#modifyFavoriteAdd"
-									data-backdrop="false" data-dismiss="modal" height="55px"
-									width="55px" class="img-rounded"
-									style="background-color: white; color: orange; cursor: pointer;">
+									<jsp:include page="/sns/twitter.jsp"></jsp:include>
+									
+									<c:if test="${user.nickname ne  null }">
+									<c:if test="${favCon eq true }">
+									   
+									 <img src="${pageContext.servletContext.contextPath}/images/starIcon2.jpg"
+								  	data-toggle="modal" data-target="#modifyFavoriteAdd" id="addFavoriteImg"
+								  	data-backdrop="false" data-dismiss="modal" height="55px"
+									 width="55px" class="img-rounded"
+									 style="background-color: white; color: orange; cursor: pointer;">
+									 </c:if>
+									<c:if test="${ favCon eq false }">
+									   <img src="${pageContext.servletContext.contextPath}/images/starIcon2.jpg"
+                  height="55px"  width="55px" class="img-rounded" id="alreadyFavorite"
+                  style="background-color: white; color: orange; cursor: pointer;">
+									</c:if>
+									</c:if>
 								</span>
 							</div>
 							<div class="col-md-6">
