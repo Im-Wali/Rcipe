@@ -14,8 +14,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <link href="${pageContext.servletContext.contextPath}/css/recipe01.css"
-	rel="stylesheet"> 
+<%--   <link href="${pageContext.servletContext.contextPath}/css/recipe01.css"
+	rel="stylesheet">  --%>
 <script type="text/javascript"
 	src="${pageContext.servletContext.contextPath}/js/recipe01.js"></script>
 
@@ -81,8 +81,7 @@ stylize any heading tags withing white-panel below
 }
 </style>
 </head>
-<body
-	style="background-color: #fff color: #383838;">
+<body style="background-color: #fff color: #383838;">
 	<div><jsp:include page="/main/menuBar.jsp"></jsp:include></div>
 	<jsp:include page="/favorite/favoriteModal.jsp"></jsp:include>
 	<div class="row">
@@ -92,20 +91,21 @@ stylize any heading tags withing white-panel below
 		<div class="col-md-1"></div>
 		<div class="col-md-10">
 			<div class="form-login " align="center"
-				style="margin-bottom: 2%; background-color: #000000; color: white">
-				<h2>레시피</h2>
+				style="margin-bottom: 1.5%; background-color: #75DDFF; color: black">
+				<h2 style="font-family: cursive; font-size: 3em">레시피</h2>
 			</div>
 			<div class="form-login " style="margin-bottom: 2%;">
 				<div>
 					<div>
 						<div class="row">
 							<div class="col-md-6" align="left">
-								<span>
-								 <jsp:include page="../sns/facebook.jsp"></jsp:include>
-								  <jsp:include page="../sns/twitter.jsp"></jsp:include>
-									<button type="button" class="btn btn-warning"
-										data-toggle="modal" data-target="#modifyFavoriteAdd"
-										data-backdrop="false" data-dismiss="modal">즐겨찾기 추가</button>
+								<span> <jsp:include page="/sns/facebook.jsp"></jsp:include>
+									<jsp:include page="/sns/twitter.jsp"></jsp:include> <img
+									src="${pageContext.servletContext.contextPath}/images/starIcon2.jpg"
+									data-toggle="modal" data-target="#modifyFavoriteAdd"
+									data-backdrop="false" data-dismiss="modal" height="55px"
+									width="55px" class="img-rounded"
+									style="background-color: white; color: orange; cursor: pointer;">
 								</span>
 								<c:if test="${user.nickname ==  recipe.nickname }">
 									<span> <a
@@ -121,13 +121,13 @@ stylize any heading tags withing white-panel below
 								</c:if>
 							</div>
 							<div class="col-md-6">
-								<div align="right" style="font-size: medium;">작성자:${recipe.nickname}/작성날짜:${recipe.recipeDate}</div>
-								<div align="right" style="font-size: medium;">조회수 :
-									${recipe.hit}</div>
+								<div align="right" style="font-size: large;">작성자:${recipe.nickname}조회수
+									: ${recipe.hit}/작성날짜:${recipe.recipeDate}</div>
 							</div>
 						</div>
 						<div style="margin-top: 1%" align="center">
-							<h2 style="font-size: 4em">${recipe.recipeTitle }</h2>
+							<p style="font-size: 4em; font-family: cursive;">${recipe.recipeTitle }
+							<p>
 						</div>
 						<%-- <div class="text-center center-block" style="margin-left: 70%;">
 							<jsp:include page="/sns/facebook.jsp"></jsp:include>
@@ -141,6 +141,7 @@ stylize any heading tags withing white-panel below
 						</div> --%>
 						<div align="center" style="margin-top: 2%">
 							<img class="img-rounded"
+								style="max-height: 800px; max-height: 800px; min-height: 400px; min-width: 400px"
 								src="${pageContext.servletContext.contextPath}/images/${recipe.titleImage}">
 						</div>
 
@@ -162,7 +163,7 @@ stylize any heading tags withing white-panel below
 							<c:if test="${user !=null }">
 								<div style="margin-top: 1%" align="right">
 									<div id="stars" data-rating='${starRecipe.star}' class="starrr"
-										style="color: orange;"></div>
+										style="color: orange; font-family: cursive;"></div>
 									<div id="count">별점 주기 ${starRecipe.star}</div>
 
 								</div>
@@ -170,7 +171,7 @@ stylize any heading tags withing white-panel below
 							<c:if test="${user ==null && starRecipe ==null }">
 								<div style="margin-top: 1%" align="right">
 									<div id="stars1" data-rating='0' class="starrr"
-										style="color: orange;"></div>
+										style="color: orange; font-family: cursive;"></div>
 									<div id="count1">별점 주기0</div>
 								</div>
 							</c:if>
@@ -178,35 +179,28 @@ stylize any heading tags withing white-panel below
 						</div>
 					</div>
 					<div>
-						<div style="margin-bottom: 1%; font-size: medium;">
-							<h3 style="font-size: 3em">간단한 설명</h3>
-							<ul>
-								<li style="margin-top: 1%">
-									<div>
-										<div style="font-size: x-large; margin-top: 2%">${recipe.recipeContents }</div>
+						<div style="margin-bottom: 1%; font-size: medium;" align="center">
+							<p style="font-size: 3em; font-family: cursive;">간단한 설명</p>
+									<div class="form-login" align="center" style="; background-color: white;" >
+										<p
+											style="font-size: 2em; margin-top: 2%; font-family: cursive;">${recipe.recipeContents }</p>
 									</div>
-								</li>
-
-							</ul>
 						</div>
-						<div style="margin-bottom: 1%; font-size: medium;">
-							<div>
-								<h3 style="font-size: 3em">요리재료</h3>
+						<div style="margin-bottom: 1%; font-size: medium;"  align="center">
+							<div  align="center">
+								<p style="font-size: 3em; font-family: cursive;">요리재료</p>
 							</div>
-							<ul>
-								<li style="font-size: x-large; margin-top: 2%">
-									<div>
-										<div style="font-size: x-large; margin-top: 2%">${recipe.ingredients}</div>
+									<div class="form-login" align="center" style="; background-color: white;" >
+										<p
+											style="font-size: 2em; margin-top: 2%; font-family: cursive;">${recipe.ingredients}</p>
 									</div>
-								</li>
-
-							</ul>
 						</div>
-						<div style="margin-bottom: 1%; font-size: medium;">
-							<h3 style="font-size: 3em">*Tip</h3>
-							<ul>
-								<li><div style="font-size: x-large; margin-top: 2%">${recipe.tip }</div></li>
-							</ul>
+						<div style="margin-bottom: 1%; font-size: medium;"  align="center"> 
+							<p style="font-size: 2.5em; color: red; font-family: cursive;">*Tip</p>
+									<div class="form-login" align="center" style="; background-color: white;" >
+										<p
+											style="font-size: 1.5em; margin-top: 2%; font-family: cursive;">${recipe.tip }</p>
+									</div>
 						</div>
 						<!-- 영양정보는 보류 -->
 						<!-- <div>
@@ -220,12 +214,12 @@ stylize any heading tags withing white-panel below
 						</div>
 					</div> -->
 					</div>
-					<div></div>
+					<div class="col-md-1"></div>
 				</div>
 			</div>
 			<div class="form-login " align="center"
-				style="margin-bottom: 2%; background-color: #000000; color: white">
-				<h2>조리 방법</h2>
+				style="margin-bottom: 1.5%; background-color: #75DDFF; color: black">
+				<h2 style="font-family: cursive; font-size: 3em">조리 방법</h2>
 			</div>
 			<c:set var="i" value="0" />
 			<c:forEach var="detail" items="${recipe.detailRecipe}">
@@ -235,6 +229,7 @@ stylize any heading tags withing white-panel below
 					<div align="center" style="margin: 4%;">
 						<div class="sBlog" style="margin: 1%">
 							<img class="img-rounded"
+								style="max-height: 800px; max-height: 800px; min-height: 400px; min-width: 400px"
 								src="${pageContext.servletContext.contextPath}/images/${detail.detailImage}" />
 							<h4 class="brand"
 								style="margin: 1%; font: bolder; font-size: 2em;">${i}.

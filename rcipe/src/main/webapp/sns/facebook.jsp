@@ -25,7 +25,8 @@
          }());
       </script>
 
-      <img id="share_button" src="http://127.0.0.1:8080/rcipe/img/facebook.png">
+      <img id="share_button" src="${pageContext.servletContext.contextPath}/images/facebookIcon.jpg"
+       height="55px" width="55px"class="img-rounded" style="cursor:pointer;  ">
 
       <script type="text/javascript">
          $(document)
