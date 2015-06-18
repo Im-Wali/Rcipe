@@ -178,15 +178,10 @@ public class RecipeController {
 		return "redirect:viewRecipe?recipeNo=" + recipeNo;
 	}
 
-	@RequestMapping(value = "/insertStar", method = RequestMethod.POST)
-	public ResponseEntity<String> insertStar(Recipe recipe) throws Exception {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("massage", recipeService.insertStar(recipe));
-		String jsonString = new Gson().toJson(map);
-		System.out.println("jsonString : " + jsonString);
-		HttpHeaders headers = new HttpHeaders();
-		headers.set("Content-Type", "text/plain;charset=UTF-8");
-		return new ResponseEntity<String>(jsonString, headers, HttpStatus.OK);
+	@RequestMapping(value = "/insertStar", method = RequestMethod.GET)
+	public String insertStar(Recipe recipe) throws Exception {
+		recipeService.insertStar(recipe);
+		return "redirect:viewRecipe?recipeNo="+recipe.getRecipeNo();
 	}
 
 	@RequestMapping(value = "/getIngredientList", method = RequestMethod.POST)
