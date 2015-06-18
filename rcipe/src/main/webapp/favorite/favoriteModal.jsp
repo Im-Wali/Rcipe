@@ -45,7 +45,7 @@
 			<div class="modal-body">
 				<div class="form-group">
 					<label class="control-label" style="margin-bottom: 10px;">제목</label>
-					<input type="text" class="form-control" id="favoriteTitle"
+					<input type="text" class="form-control" id="favoriteTitle" maxlength="12" 
 						name="favoriteTitle" value="${ recipe.recipeTitle }">
 					<div class="modal-footer">
 						<button class="btn btn-warning" id="favoriteAddOK"
