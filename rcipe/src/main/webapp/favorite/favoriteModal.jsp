@@ -7,10 +7,11 @@
 						$("#favoriteAddOK")
 								.click(
 										function(event) {
+											var isModal = true;
 											var recipeNo = document
 													.getElementById("recipeNo").value;
-											var temp = $(
-													'#favoriteTitle').val();
+											var temp = $('#favoriteTitle')
+													.val();
 											var favoriteTitle = escape(encodeURIComponent(temp));
 											if (favoriteTitle == '') {
 												alert("제목을 입력해주세요!");
@@ -23,8 +24,19 @@
 																		+ "&favorTitle="
 																		+ favoriteTitle,
 																function(data) {
+																	if (data == 'false') {
+																		alert("이미 추가된 즐겨찾기");
+																		isModal = false;
+																	} else {
+																		alert("즐겨찾기에 추가되었습니다.");
+
+																	}
 
 																});
+												if (isModal) {
+													location.href = "viewRecipe?recipeNo="
+															+ recipeNo;
+												}
 											}
 
 										});
@@ -45,7 +57,7 @@
 			<div class="modal-body">
 				<div class="form-group">
 					<label class="control-label" style="margin-bottom: 10px;">제목</label>
-					<input type="text" class="form-control" id="favoriteTitle" maxlength="12" 
+					<input type="text" class="form-control" id="favoriteTitle"
 						name="favoriteTitle" value="${ recipe.recipeTitle }">
 					<div class="modal-footer">
 						<button class="btn btn-warning" id="favoriteAddOK"
