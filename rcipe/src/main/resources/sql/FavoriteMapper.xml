@@ -127,5 +127,9 @@
 	   update fav_recipes set fav_title = #{favorTitle}
 	   WHERE rcp_no=#{recipeNo} AND nickname LIKE #{nickname}
 	</update>
+	
+	<select id="confirmFavorite" parameterType="favorite" resultMap="FavoriteSelectMap">
+     select rcp_no,nickname, fav_title from fav_recipes where nickname = #{nickname} AND rcp_no = #{recipeNo}
+  </select>
 
 </mapper>
