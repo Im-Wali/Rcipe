@@ -31,10 +31,13 @@ import com.rcipe.commons.Search;
 import com.rcipe.service.commons.FileService;
 import com.rcipe.service.detailRecipe.DetailRecipeService;
 import com.rcipe.service.domain.DetailRecipe;
+import com.rcipe.service.domain.Favorite;
 import com.rcipe.service.domain.Ingredient;
 import com.rcipe.service.domain.Recipe;
 import com.rcipe.service.domain.User;
+import com.rcipe.service.favorite.FavoriteService;
 import com.rcipe.service.recipe.RecipeService;
+import com.rcipe.web.favorite.FavoriteController;
 
 @Controller
 @RequestMapping("/recipe")
@@ -51,6 +54,10 @@ public class RecipeController {
 	@Autowired
 	@Qualifier("fileServiceImpl")
 	FileService fileService;
+	
+	@Autowired
+	@Qualifier("favoriteServiceImpl")
+	FavoriteService favoriteService;
 
 	@Value("#{commonProperties['pageSize']}")
 	int pageSize;
@@ -71,12 +78,20 @@ public class RecipeController {
 				.getRecipeNo()));
 		// 유저의 별점을 가지고온다.
 		User user = (User) session.getAttribute("user");
+		String favCon = "false";
 		if (user != null) {
 			Recipe starRecipe = new Recipe(recipe.getRecipeNo(),
 					user.getNickname());
 			starRecipe = recipeService.getStar(starRecipe);
 			model.addAttribute("starRecipe", starRecipe);
+			
+			Favorite favorite = new Favorite();
+			favorite.setNickname(user.getNickname());
+			favorite.setRecipeNo(recipeNo);
+			favCon=String.valueOf(favoriteService.selectFavorite(favorite));
+			
 		}
+		model.addAttribute("favCon",favCon);
 		model.addAttribute("recipe", recipe);
 		model.addAttribute("content", 0);
 		System.out.println(recipe);
