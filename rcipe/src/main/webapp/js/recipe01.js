@@ -59,18 +59,17 @@ var __slice = [].slice;
 			if (rating != undefined) {
 				this.options.rating = rating;
 				this.syncRating();
-				this.$el.trigger('starrr:change', "현재 별점:" + rating+"개");
-				alert("별점을 "+rating+"개를 주셨습니다.");
-				var url = "insertStar?recipeNo="+ $('#recipeNo').val()+"&nickname="+ $('#userNickname').val()+"&star=" + rating;    
-				$(location).attr('href',url);
-				/*$.ajax("insertStar", {
+				this.$el.trigger('starrr:change', "별점 주기" + rating);
+				$.ajax("insertStar", {
 					method : 'POST',
+					dataType : 'json',
 					data : 'star=' + rating + '&nickname='
 							+ $('#userNickname').val() + '&' + 'recipeNo='
 							+ $('#recipeNo').val(),
 					success : function(result) {
+						alert(result.massage);
 					}
-				});*/
+				});
 			}
 			return;
 		};
@@ -126,10 +125,19 @@ $(function() {
 	return $(".starrr").starrr();
 });
 
+
 $(document).ready(function() {
 	$('#stars').on('starrr:change', function(e, value) {
 		$('#count').html(value);
 	});
+	
+	$("#alreadyFavorite")
+	.click(function(event) {
+		alert("이미 추가된 즐겨찾기 레시피입니다.");
+	});
+	
+
+	
 	$('#fixedStar').on(function(){
 		alert("AAA");
 		});
