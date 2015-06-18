@@ -62,7 +62,7 @@ body {
 						<label for="title"
 							style="color: red; font-size: x-large; margin: 1%">*제목</label><input
 							type="text" class="form-control" id="recipeTitle"
-							name="recipeTitle" placeholder="제목을 입려하세요">
+							name="recipeTitle" placeholder="제목을 입력하세요">
 					</div>
 					<div style="margin-top: 1%">
 						<label for="mainImage"
@@ -78,12 +78,12 @@ body {
 								사진을 위의 공간에 드래그 하세요</div>
 							<div style="margin-top: 1%">
 								<input type="file" class="filestyle recipeButtonUpload"
-									data-buttonName="btn-warning" data-input="false"
+									data-buttonName="btn-info" data-input="false"
 									data-buttonText="메인 사진 등록" alt="titleImage">
 							</div>
 							<div style="margin: 1%">
 								<label style="color: red; font-size: x-large;">*재료 입력(검색하여 추가해주세요)</label> 예)
-								당근(1개),시금치(100g),빵(조금) <a href="#" class="btn btn-warning"
+								당근(1개),시금치(100g),빵(조금) <a href="#" class="btn btn-info"
 									data-toggle="modal" data-target="#ingredient"
 									data-whatever="ingredient" data-backdrop="false"
 									id="ingredientOpen">재료검색</a>
@@ -128,7 +128,7 @@ body {
 								사진을 위의 공간에 드래그 하세요</div>
 							<div style="margin-top: 1%">
 								<input type="file" class="filestyle recipeButtonUpload"
-									data-buttonName="btn-warning" data-input="false"
+									data-buttonName="btn-info" data-input="false"
 									data-buttonText="사진 등록" alt="detailImage1">
 							</div>
 							<div style="margin: 1%">
