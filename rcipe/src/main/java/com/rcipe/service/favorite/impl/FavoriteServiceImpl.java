@@ -57,4 +57,11 @@ public class FavoriteServiceImpl implements FavoriteService {
 		// TODO Auto-generated method stub
 		return favoriteDAO.updateFavorite(favorite);
 	}
+
+	@Override
+	public boolean selectFavorite(Favorite favorite) throws Exception {
+		// TODO Auto-generated method stub
+		System.err.println("selectFavorite Service");
+		return favoriteDAO.selectFavorite(favorite);
+	}
 }

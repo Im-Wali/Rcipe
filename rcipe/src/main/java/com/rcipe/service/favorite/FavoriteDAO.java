@@ -16,4 +16,6 @@ public interface FavoriteDAO {
 
 	public int updateFavorite(Favorite favorite);
 
+	public boolean selectFavorite(Favorite favorite) throws Exception;
+
 }

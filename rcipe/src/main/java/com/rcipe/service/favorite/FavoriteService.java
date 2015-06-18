@@ -2,7 +2,6 @@ package com.rcipe.service.favorite;
 
 import java.util.Map;
 
-import com.rcipe.commons.Search;
 import com.rcipe.service.domain.Favorite;
 
 public interface FavoriteService {
@@ -14,5 +13,7 @@ public interface FavoriteService {
 	Map<String, Object> getFavoriteList(Map<String, Object> map) throws Exception;
 
 	public int updateFavorite(Favorite favorite) throws Exception;
+
+	public boolean selectFavorite(Favorite favorite) throws Exception;
 
 }

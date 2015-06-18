@@ -12,22 +12,20 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
 import com.rcipe.commons.Search;
-import com.rcipe.service.detailRecipe.DetailRecipeService;
 import com.rcipe.service.domain.Favorite;
-import com.rcipe.service.domain.Recipe;
 import com.rcipe.service.domain.User;
 import com.rcipe.service.favorite.FavoriteService;
-import com.rcipe.service.recipe.RecipeService;
+import com.rcipe.web.recipe.RecipeController;
 
 @Controller
 @RequestMapping("/favorite")
@@ -44,10 +42,10 @@ public class FavoriteController {
 	}
 
 	@RequestMapping(value = "/insertFavorite", method = RequestMethod.GET)
-	public void insertFavorite(@ModelAttribute("favorite") Favorite favorite,
+	public void insertFavorite(Model model,@ModelAttribute("favorite") Favorite favorite,
 			HttpSession session) throws Exception {
 		
-		System.out.println("start insertFavorite");
+		System.err.println("start insertFavorite");
 		
 		String tempfavoriteTitle = URLDecoder.decode(favorite.getFavorTitle() , "UTF-8");
 		favorite.setFavorTitle(tempfavoriteTitle);
@@ -56,9 +54,32 @@ public class FavoriteController {
 		
 		favorite.setNickname(user.getNickname());
 		
-		favoriteService.insertFavorite(favorite);
+		// DB에 있나 확인하기
+		String confirm = String.valueOf(favoriteService.selectFavorite(favorite));
+		
+		if(confirm.equals("true")){
+			favoriteService.insertFavorite(favorite);	// insert 하는 부분	
+		}
 		
 	}
+	
+	@RequestMapping(value = "/confirmFavorite", method = RequestMethod.GET)
+	public @ResponseBody String confirmFavorite(@ModelAttribute("favorite") Favorite favorite,
+			HttpSession session) throws Exception {
+		
+		System.err.println("start confirmFavorite");
+		
+		User user = (User) session.getAttribute("user");
+		
+		favorite.setNickname(user.getNickname());
+		
+		// DB에 있나 확인하기
+		String confirm = String.valueOf(favoriteService.selectFavorite(favorite));
+		
+		return confirm;
+		
+	}
+	
 	
 	@RequestMapping(value = "/getfavoriteList", method = RequestMethod.GET)
 	public ModelAndView getFavoriteList(@ModelAttribute("favorite") Favorite favorite,

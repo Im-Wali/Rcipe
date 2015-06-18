@@ -73,4 +73,18 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 		return sqlSession.update("FavoriteMapper.updateFavorite", favorite);
 	}
 
+	@Override
+	public boolean selectFavorite(Favorite favorite) throws Exception {
+		// TODO Auto-generated method stub
+		Favorite temp = sqlSession.selectOne("FavoriteMapper.confirmFavorite", favorite);
+		boolean confirm;
+		if(temp == null){
+			confirm = true;	// null. insert 가능
+		}else{
+			confirm = false;	// 값이 이미 있음 insert 불가능
+		}
+		System.err.println("confirm : "+confirm);
+		return confirm;
+	}
+
 }
