@@ -123,5 +123,9 @@
 	   select avg(s.star_cnt) from recipes r, stars s where s.rcp_no = #{value}
 	</select>
 	
+	<update id="updateFavorite" parameterType="favorite" >
+	   update fav_recipes set fav_title = #{favorTitle}
+	   WHERE rcp_no=#{recipeNo} AND nickname LIKE #{nickname}
+	</update>
 
 </mapper>
