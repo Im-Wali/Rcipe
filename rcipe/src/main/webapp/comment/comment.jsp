@@ -33,7 +33,7 @@
 				placeholder="댓글을 작성해주세요"></textarea>
 
 			<div class="form-group" align="right">
-				<button type="submit" class="btn btn-warning"
+				<button type="submit" class="btn btn-info"
 					style="margin-top: 1%;" id="commentSubmit">댓글작성</button>
 			</div>
 		</div>
