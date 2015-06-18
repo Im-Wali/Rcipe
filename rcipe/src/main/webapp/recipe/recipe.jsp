@@ -141,8 +141,12 @@ stylize any heading tags withing white-panel below
 						</div> --%>
 						<div align="center" style="margin-top: 2%">
 							<img class="img-rounded"
+
+								src="${pageContext.servletContext.contextPath}/images/${recipe.titleImage}.jpg">
+
 								style="max-height: 800px; max-height: 800px; min-height: 400px; min-width: 400px"
 								src="${pageContext.servletContext.contextPath}/images/${recipe.titleImage}">
+
 						</div>
 
 						<div class="row lead"
@@ -219,8 +223,15 @@ stylize any heading tags withing white-panel below
 					<div align="center" style="margin: 4%;">
 						<div class="sBlog" style="margin: 1%">
 							<img class="img-rounded"
+
+								src="${pageContext.servletContext.contextPath}/images/${detail.detailImage}.jpg" />
+
 								style="max-height: 800px; max-height: 800px; min-height: 400px; min-width: 400px"
 								src="${pageContext.servletContext.contextPath}/images/${detail.detailImage}" />
+
+							<h4 class="brand"
+								style="margin: 1%; font: bolder; font-size: 2em;">${i}.
+								${detail.detailContents}</h4>
 							<c:if test="${detail.detailContents ne null }">
 								<p
 									style="font-size: 2.5em;margin-top: 2%; font-family: cursive;">
