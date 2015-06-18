@@ -15,7 +15,7 @@
 		<div class="col-md-1">
 			<c:if test="${user.userImage !=null}">
 				<img alt="" class="img-circle"
-					src="../../images/${comment.userImg }" width="
+					src="../../images/${user.userImage }" width="
 								70px"
 					height="70px" style="margin-top: 1%">
 			</c:if>

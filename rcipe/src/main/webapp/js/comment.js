@@ -43,7 +43,7 @@
 													+ "placeholder='답글을 작성해주세요'></textarea>"
 													+ "<div class='form-group' align='right'>"
 													+ "<input type='hidden' id='replyCommentReNo' value='"+commentRe+"'>"
-													+ "<button type='button' class='btn btn-warning' id='replySubmit' style='margin-top: 1%'"
+													+ "<button type='button' class='btn btn-info' id='replySubmit' style='margin-top: 1%'"
 													+ ">답글작성</button></div></div></div></from><hr />"
 													+ "<div id='getReplyList'>";
 											$("#" + replyListId1).html(s);
@@ -152,9 +152,9 @@
 														+ "style='margin-left: 2%; margin-rghit: 2%; width: 98%; height: 80px'"
 														+ "></textarea>"
 														+ "<div class='form-group' align='right'>"
-														+ "<button  class='btn btn-warning' id='updateReplySubmit'"
+														+ "<button  class='btn btn-info' id='updateReplySubmit'"
 														+ "style='margin-top: 1%;margin-right:1%'>답글수정</button>"
-														+ "<button class='btn btn-warning' id='updateReplyReset' style='margin-top:1%;'>취소</button>"
+														+ "<button class='btn btn-danger' id='updateReplyReset' style='margin-top:1%;'>취소</button>"
 														+ "</div>"
 														+ "<input type='hidden' id='updateCommentNo' value='"+contentNo+"'>";
 											}
@@ -243,9 +243,9 @@
 														+ "style='margin-left: 2%; margin-rghit: 2%; width: 98%; height: 80px'"
 														+ "></textarea>"
 														+ "<div class='form-group' align='right'>"
-														+ "<button  class='btn btn-warning' id='updateSubmit'"
+														+ "<button  class='btn btn-info' id='updateSubmit'"
 														+ "style='margin-top: 1%;margin-right:1%'>댓글수정</button>"
-														+ "<button class='btn btn-warning' id='updateReset' style='margin-top:1%;'>취소</button>"
+														+ "<button class='btn btn-danger' id='updateReset' style='margin-top:1%;'>취소</button>"
 														+ "</div>"
 														+ "<input type='hidden' id='updateCommentNo' value='"+contentNo+"'>";
 											}
