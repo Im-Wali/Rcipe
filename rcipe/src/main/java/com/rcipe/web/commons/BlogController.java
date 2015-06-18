@@ -68,7 +68,7 @@ public class BlogController {
 
 		try{
 			uri = "http://openapi.naver.com/search?key=" + apiKey + "&target="+ targets[11] +"&query=" + 
-					URLEncoder.encode(searchQuery, "UTF-8")+"&display=6";
+					URLEncoder.encode(searchQuery, "UTF-8")+"&display=8";
 		}catch(UnsupportedEncodingException e){
 			System.out.println(e);
 		}

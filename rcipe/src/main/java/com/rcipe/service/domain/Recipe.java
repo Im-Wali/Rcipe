@@ -33,6 +33,8 @@ public class Recipe {
 	private Integer starHit;
 	private List<DetailRecipe> detailRecipe;
 	private List<Comment> commentList;
+	private String writerImage;
+	
 	public Recipe() {
 		// TODO Auto-generated constructor stub
 	}
@@ -41,6 +43,13 @@ public class Recipe {
 		super();
 		this.recipeNo = recipeNo;
 		this.nickname = nickname;
+	}
+	public String getWriterImage() {
+		return writerImage;
+	}
+
+	public void setWriterImage(String writerImage) {
+		this.writerImage = writerImage;
 	}
 
 	public Integer getRecipeNo() {

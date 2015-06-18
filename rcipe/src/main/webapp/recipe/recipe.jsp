@@ -121,8 +121,8 @@ stylize any heading tags withing white-panel below
 								</span>
 							</div>
 							<div class="col-md-6">
-								<div align="right" style="font-size: large;">작성자:${recipe.nickname}조회수
-									: ${recipe.hit}/작성날짜:${recipe.recipeDate}</div>
+								<div align="right" style="font-size: large;">조회수 :
+									${recipe.hit}/작성날짜:${recipe.recipeDate}</div>
 							</div>
 						</div>
 						<div style="margin-top: 1%" align="center">
@@ -144,38 +144,60 @@ stylize any heading tags withing white-panel below
 								style="max-height: 800px; max-height: 800px; min-height: 400px; min-width: 400px"
 								src="${pageContext.servletContext.contextPath}/images/${recipe.titleImage}">
 						</div>
-
-						<div class="row lead"
-							style="margin-top: 2%; margin-bottom: 0%; width: 100%; margin-left: auto; margin-right: auto; margin-top: 0; margin-bottom: 0; max-width: 100rem">
-							<div style="margin-top: 1%" align="right">
-
-								<div id="fixedStar" data-rating='${recipe.star/recipe.starHit }'
-									style="color: orange; margin-right: 9px; size: 2em">
-									<c:forEach begin="1" end="${recipe.star/recipe.starHit}">
-										<i class='fa fa-star' style='margin-right: -8px;'></i>
-									</c:forEach>
-									<c:forEach begin="${recipe.star/recipe.starHit}" end="4">
-										<i class='fa fa-star-o' style='margin-right: -8px'></i>
-									</c:forEach>
+						<div class="row" style="margin-bottom: 2%;margin-top:2%;">
+							<div class="col-md-4"></div>
+							<div class="col-md-4" >
+								<div align="center" >
+									<c:if test="${recipe.writerImage != null}">
+										<img
+											src="${pageContext.servletContext.contextPath}/images/${recipe.writerImage}"
+											class="img-circle"
+											style="width: 150px; height: 150px; margin-top: 1%">
+									</c:if>
+									<c:if test="${recipe.writerImage == null}">
+										<img
+											src="${pageContext.servletContext.contextPath}/images/userIcon.png"
+											class="img-circle"
+											style="width: 150px; height: 150px; margin-top: 1%">
+									</c:if>
+									<div align="center"
+										style="font-size: 2em; font-family: cursive;">작성자:${recipe.nickname}</div>
 								</div>
-								<div id="count-existing">현재 평점:${recipe.starHit!=0 ? (recipe.star/recipe.starHit):0  }개</div>
 							</div>
-							<c:if test="${user !=null && starRecipe !=null }">
-								<div style="margin-top: 1%" align="right">
-									<div id="stars" data-rating='${starRecipe.star}' class="starrr"
-										style="color: orange; font-family: cursive;"></div>
-									<div id="count">현재별점: ${starRecipe.star}개</div>
+							<div class="col-md-4" style="margin-top:2%">
+								<div class="row lead"
+									style="width: 100%;max-width: 100rem">
+									<div style="margin-top: 1%" align="right">
 
-								</div>
-							</c:if>
-							<c:if test="${user ==null || starRecipe ==null }">
-								<div style="margin-top: 1%" align="right">
-									<div id="stars1" data-rating='0' class="starrr"
-										style="color: orange; font-family: cursive;"></div>
-									<div id="count1">별점 주기</div>
-								</div>
-							</c:if>
+										<div id="fixedStar"
+											data-rating='${recipe.star/recipe.starHit }'
+											style="color: orange; margin-right: 9px; size: 2em">
+											<c:forEach begin="1" end="${recipe.star/recipe.starHit}">
+												<i class='fa fa-star' style='margin-right: -8px;'></i>
+											</c:forEach>
+											<c:forEach begin="${recipe.star/recipe.starHit}" end="4">
+												<i class='fa fa-star-o' style='margin-right: -8px'></i>
+											</c:forEach>
+										</div>
+										<div id="count-existing">현재 평점:${recipe.starHit!=0 ? (recipe.star/recipe.starHit):0  }개</div>
+									</div>
+									<c:if test="${user !=null && starRecipe !=null }">
+										<div style="margin-top: 1%" align="right">
+											<div id="stars" data-rating='${starRecipe.star}'
+												class="starrr" style="color: orange; font-family: cursive;"></div>
+											<div id="count">현재별점: ${starRecipe.star}개</div>
 
+										</div>
+									</c:if>
+									<c:if test="${user ==null || starRecipe ==null }">
+										<div style="margin-top: 1%" align="right">
+											<div id="stars1" data-rating='0' class="starrr"
+												style="color: orange; font-family: cursive;"></div>
+											<div id="count1">별점 주기</div>
+										</div>
+									</c:if>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div>
@@ -183,7 +205,8 @@ stylize any heading tags withing white-panel below
 							<p style="font-size: 3em; font-family: cursive;">간단한 설명</p>
 							<div class="form-login" align="center"
 								style="background-color: white;">
-								<p style="font-size: 1.6em; margin-top: 2%; font-family: cursive;">${recipe.recipeContents }</p>
+								<p
+									style="font-size: 1.6em; margin-top: 2%; font-family: cursive;">${recipe.recipeContents }</p>
 							</div>
 						</div>
 						<div style="margin-bottom: 1%; font-size: medium;" align="center">
@@ -192,7 +215,8 @@ stylize any heading tags withing white-panel below
 							</div>
 							<div class="form-login" align="center"
 								style="background-color: white;">
-								<p style="font-size: 1.6em; margin-top: 2%; font-family: cursive;">${recipe.ingredients}</p>
+								<p
+									style="font-size: 1.6em; margin-top: 2%; font-family: cursive;">${recipe.ingredients}</p>
 							</div>
 						</div>
 						<div style="margin-bottom: 1%; font-size: medium;" align="center">
@@ -215,7 +239,8 @@ stylize any heading tags withing white-panel below
 			<c:forEach var="detail" items="${recipe.detailRecipe}">
 				<c:set var="i" value="${ i+1}" />
 				<div class="form-login " style="margin-bottom: 2%;">
-					<div align="left" class="btn btn-lg disabled " style="font-size:2em;width:2em;cursor:default;background-color:black; color:white  ">${ i}</div>
+					<div align="left" class="btn btn-lg disabled "
+						style="font-size: 2em; width: 2em; cursor: default; background-color: black; color: white">${ i}</div>
 					<div align="center" style="margin: 4%;">
 						<div class="sBlog" style="margin: 1%">
 							<img class="img-rounded"
@@ -223,7 +248,7 @@ stylize any heading tags withing white-panel below
 								src="${pageContext.servletContext.contextPath}/images/${detail.detailImage}" />
 							<c:if test="${detail.detailContents ne null }">
 								<p
-									style="font-size: 2.5em;margin-top: 2%; font-family: cursive;">
+									style="font-size: 2.5em; margin-top: 2%; font-family: cursive;">
 									${detail.detailContents}</p>
 							</c:if>
 						</div>
