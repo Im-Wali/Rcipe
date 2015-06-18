@@ -19,6 +19,7 @@
 		<result property="recipeDate" column="rcp_date" jdbcType="DATE" />
 		<result property="star" column="star_cnt" jdbcType="INTEGER" />
 		<result property="starHit" column="star_tot_cnt" jdbcType="INTEGER" />
+		<result property="writerImage" column="WRITERIMAGE" jdbcType="VARCHAR" />
 	</resultMap>
 	<resultMap type="ingredient" id="ingredientSelectMap">
 		<result property="recipeNo" column="RCP_NO" jdbcType="INTEGER" />
@@ -111,6 +112,7 @@
 		r.ingredients ingredients, to_char(
 		r.rcp_date,'YYYY/MM/DD')
 		rcp_date,
+		u.user_img WRITERIMAGE,
 		s.star_tot_cnt star_tot_cnt,
 		s.star_cnt star_cnt
 		FROM recipes
@@ -118,9 +120,9 @@
 		COUNT(*)
 		star_tot_cnt,SUM(STAR_CNT)
 		star_cnt FROM stars
-		WHERE rcp_no=#{value}) s
+		WHERE rcp_no=#{value}) s,users u
 		WHERE r.rcp_no
-		= #{value}
+		= #{value} AND u.nickname LIKE r.nickname
 	</select>
 
 	<delete id="deleteRecipe" parameterType="int">
