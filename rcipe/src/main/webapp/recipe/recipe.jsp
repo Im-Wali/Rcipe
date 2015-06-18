@@ -169,9 +169,9 @@ stylize any heading tags withing white-panel below
 							</c:if>
 							<c:if test="${user ==null && starRecipe ==null }">
 								<div style="margin-top: 1%" align="right">
-									<div id="stars" data-rating='0' class="starrr"
+									<div id="stars1" data-rating='0' class="starrr"
 										style="color: orange;"></div>
-									<div id="count">별점 주기0</div>
+									<div id="count1">별점 주기0</div>
 								</div>
 							</c:if>
 

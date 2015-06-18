@@ -29,6 +29,7 @@
 
 .panel.with-nav-tabs .panel-heading {
 	padding: 5px 5px 0 5px;
+	background-color: #75DDFF;
 }
 
 .panel.with-nav-tabs .nav-tabs {
@@ -39,45 +40,45 @@
 	margin-bottom: -1px;
 }
 
-.with-nav-tabs.panel-success .nav-tabs>li>a, .with-nav-tabs.panel-success .nav-tabs>li>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li>a:focus {
+.with-nav-tabs.panel-info .nav-tabs>li>a, .with-nav-tabs.panel-info .nav-tabs>li>a:hover,
+	.with-nav-tabs.panel-info .nav-tabs>li>a:focus {
 	color: #3c763d;
 }
 
-.with-nav-tabs.panel-success .nav-tabs>.open>a, .with-nav-tabs.panel-success .nav-tabs>.open>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>.open>a:focus, .with-nav-tabs.panel-success .nav-tabs>li>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li>a:focus {
+.with-nav-tabs.panel-info .nav-tabs>.open>a, .with-nav-tabs.panel-info .nav-tabs>.open>a:hover,
+	.with-nav-tabs.panel-info .nav-tabs>.open>a:focus, .with-nav-tabs.panel-info .nav-tabs>li>a:hover,
+	.with-nav-tabs.panel-info .nav-tabs>li>a:focus {
 	color: #3c763d;
 	background-color: #d6e9c6;
 	border-color: transparent;
 }
 
-.with-nav-tabs.panel-success .nav-tabs>li.active>a, .with-nav-tabs.panel-success .nav-tabs>li.active>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li.active>a:focus {
+.with-nav-tabs.panel-info .nav-tabs>li.active>a, .with-nav-tabs.panel-info .nav-tabs>li.active>a:hover,
+	.with-nav-tabs.panel-info .nav-tabs>li.active>a:focus {
 	color: #3c763d;
 	background-color: #fff;
 	border-color: #d6e9c6;
 	border-bottom-color: transparent;
 }
 
-.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu {
+.with-nav-tabs.panel-info .nav-tabs>li.dropdown .dropdown-menu {
 	background-color: #dff0d8;
 	border-color: #d6e9c6;
 }
 
-.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>li>a {
+.with-nav-tabs.panel-info .nav-tabs>li.dropdown .dropdown-menu>li>a {
 	color: #3c763d;
 }
 
-.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>li>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>li>a:focus
+.with-nav-tabs.panel-info .nav-tabs>li.dropdown .dropdown-menu>li>a:hover,
+	.with-nav-tabs.panel-info .nav-tabs>li.dropdown .dropdown-menu>li>a:focus
 	{
 	background-color: #d6e9c6;
 }
 
-.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>.active>a,
-	.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>.active>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>.active>a:focus
+.with-nav-tabs.panel-info .nav-tabs>li.dropdown .dropdown-menu>.active>a,
+	.with-nav-tabs.panel-info .nav-tabs>li.dropdown .dropdown-menu>.active>a:hover,
+	.with-nav-tabs.panel-info .nav-tabs>li.dropdown .dropdown-menu>.active>a:focus
 	{
 	color: #fff;
 	background-color: #3c763d;
@@ -185,7 +186,7 @@
 							method : 'get',
 							dataType : 'json',
 							data : params,
-							success : function(result) {
+							info : function(result) {
 								var list = result.list;
 								var resultPage = result.resultPage;
 
@@ -249,19 +250,19 @@
 	<input type="hidden" id="currentCategory" name="currentCategory"
 		value="0" />
 	<jsp:include page="/main/menuBar.jsp"></jsp:include>
-	<div class="container">
+	<div class="container" style="width:90%;">
 		<div class="col-md-12">
-			<div class="panel with-nav-tabs panel-success">
+			<div class="panel with-nav-tabs">
 				<div class="panel-heading">
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="#" onClick="funcTab(0);" id="0"
-							data-toggle="tab">레시피</a></li>
+							data-toggle="tab" style="color:black;">레시피</a></li>
 						<li><a href="#" onClick="funcTab(1);" data-toggle="tab"
-							id="1">추천맛집</a></li>
+							id="1" style="color:black;">추천맛집</a></li>
 						<li><a href="#" onClick="funcTab(2);" data-toggle="tab"
-							id="2">고민상담</a></li>
+							id="2" style="color:black;">고민상담</a></li>
 						<li><a href="#" onClick="funcTab(3);" data-toggle="tab"
-							id="3">기타</a></li>
+							id="3" style="color:black;">기타</a></li>
 						<li style="float: right; width: 500px;"><form
 								class="navbar-form navbar-left" role="search">
 								<div class="form-group">

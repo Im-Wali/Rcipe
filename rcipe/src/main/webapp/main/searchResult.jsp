@@ -23,6 +23,7 @@
 
 .panel.with-nav-tabs .panel-heading {
 	padding: 5px 5px 0 5px;
+	background-color: #75DDFF;
 }
 
 .panel.with-nav-tabs .nav-tabs {
@@ -31,50 +32,6 @@
 
 .panel.with-nav-tabs .nav-justified {
 	margin-bottom: -1px;
-}
-/*** PANEL SUCCESS ***/
-.with-nav-tabs.panel-success .nav-tabs>li>a, .with-nav-tabs.panel-success .nav-tabs>li>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li>a:focus {
-	color: #3c763d;
-}
-
-.with-nav-tabs.panel-success .nav-tabs>.open>a, .with-nav-tabs.panel-success .nav-tabs>.open>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>.open>a:focus, .with-nav-tabs.panel-success .nav-tabs>li>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li>a:focus {
-	color: #3c763d;
-	background-color: #d6e9c6;
-	border-color: transparent;
-}
-
-.with-nav-tabs.panel-success .nav-tabs>li.active>a, .with-nav-tabs.panel-success .nav-tabs>li.active>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li.active>a:focus {
-	color: #3c763d;
-	background-color: #fff;
-	border-color: #d6e9c6;
-	border-bottom-color: transparent;
-}
-
-.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu {
-	background-color: #dff0d8;
-	border-color: #d6e9c6;
-}
-
-.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>li>a {
-	color: #3c763d;
-}
-
-.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>li>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>li>a:focus
-	{
-	background-color: #d6e9c6;
-}
-
-.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>.active>a,
-	.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>.active>a:hover,
-	.with-nav-tabs.panel-success .nav-tabs>li.dropdown .dropdown-menu>.active>a:focus
-	{
-	color: #fff;
-	background-color: #3c763d;
 }
 #pagingfooter a {
   padding: 5px;
@@ -144,10 +101,10 @@
 
 			if (typeof currentPageNum === 'undefined') {
 				var params = 'searchCategory=' + currentCategory + '&pageSize='
-						+ selectListNum;
+						+ selectListNum+'&searchKeyword='+searchKeyword;
 			} else {
 				var params = 'searchCategory=' + currentCategory + '&pageSize='
-						+ selectListNum + '&currentPage=' + currentPageNum;
+						+ selectListNum + '&currentPage=' + currentPageNum+'&searchKeyword='+searchKeyword;
 			}
 
 			$
@@ -239,15 +196,15 @@
 		value="inquiry" />
 	<input type="hidden" id="path" value="${pageContext.servletContext.contextPath }">
 	<div class="containerTap">
-		<div class="panel with-nav-tabs panel-success">
+		<div class="panel with-nav-tabs">
 			<div class="panel-heading">
 				<ul class="nav nav-tabs">
 					<li
 						class="<c:if test="${ search.searchCategory.trim() eq 'inquiry' }">active</c:if>"><a
-						href="#inquiry" onclick="category(inquiry)" data-toggle="tab">조회순</a></li>
+						href="#inquiry" onclick="category(inquiry)" data-toggle="tab" style="color:black;">조회순</a></li>
 					<li
 						class="<c:if test="${ search.searchCategory.trim() eq 'newest' }">active</c:if>"><a
-						href="#recommend" data-toggle="tab" onclick="category(newest)">최신순</a></li>
+						href="#recommend" data-toggle="tab" onclick="category(newest)" style="color:black;">최신순</a></li>
 					<li style="float: right;">
 						<div class="select-style" style="margin-top: 8px;">
 							<select id="selectList">

@@ -4,12 +4,10 @@ ul {
 }
 
 a {
-  color: #e94439;
   text-decoration: none
 }
 
 a:hover {
-  color: #ee6f67;
   text-decoration: underline
 }
 
@@ -84,7 +82,7 @@ section #fullPreview figure {
 section li {
   display: inline-block;
   vertical-align: top;
-  position: relative
+  position: relative;
 }
 
 section li:hover .overLayer {
