@@ -131,11 +131,11 @@
 							</div>
 							<div style="margin-top: 1%" align="center">
 								<input type="file" class="filestyle" id="buttonProfileUpload"
-									data-buttonName="btn-warning" data-input="false"
+									data-buttonName="btn-info" data-input="false"
 									data-buttonText="프로필 수정">
 							</div>
 							<div style="margin-top: 1%" align="center">
-								<button type="button" class="btn btn-warning "
+								<button type="button" class="btn btn-info "
 									id="delete_profil">프로필 삭제</button>
 							</div>
 
@@ -143,19 +143,20 @@
 							<div style="margin-top: 3%">
 								<span style="font-size: 2em">닉네임</span><span
 									style="margin-left: 4%; font-size: 2em">:</span><span
-									style="font-size: 2em">아이디</span>
+									style="font-size: 2em">${user.nickname}</span>
 							</div>
 							<hr />
 							<div style="margin-top: 3%">
 								<span style="font-size: 2em">이메일</span><span
 									style="margin-left: 4%; font-size: 2em">:</span><span
-									style="font-size: 2em">이메일</span>
+									style="font-size: 2em">${user.email}</span>
 							</div>
 							<hr />
 							<div style="margin-top: 3%">
 								<span style="font-size: 2em">비밀번호</span><span
-									style="margin-left: 2%; font-size: 2em">:</span><span></span>
-								<button type="button" class="btn btn-warning " id="chage_profil"
+									style="margin-left: 2%; font-size: 2em">:
+									********</span><span></span>
+								<button type="button" class="btn btn-info " id="chage_profil"
 									style="float: right; margin-right: 1%;" id="change_password"
 									data-toggle="modal" data-target="#modifyPasswordModal"
 									data-backdrop="false">비밀번호 변경</button>
@@ -164,11 +165,11 @@
 							<div style="margin-top: 3%; margin-bottom: 3%">
 								<span style="font-size: 2em">가입날짜</span><span
 									style="margin-left: 2%; font-size: 2em">:</span><span
-									style="font-size: 2em">2015-05-06</span>
+									style="font-size: 2em">${user.joinDate}</span>
 							</div>
 							<hr />
 							<div align="right">
-								<button type="button" class="btn btn-warning " id="deleteUser"
+								<button type="button" class="btn btn-info " id="deleteUser"
 									style="margin-right: 1%" data-toggle="modal"
 									data-target="#deleteUserPWModal" data-backdrop="false">회원탈퇴</button>
 							</div>
