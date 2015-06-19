@@ -112,14 +112,14 @@
 							<div align="center">
 								<c:if test="${user.userImage==null}">
 									<img
-										src="${pageContext.servletContext.contextPath}/images/userIcon.png"
+										src="../../images/userIcon.png"
 										class="img-circle fileUpload" role="button"
 										style="width: 150px; height: 150px; margin-top: 1%"
 										aria-haspopup="true" aria-expanded="false" id="fileUpload">
 								</c:if>
 								<c:if test="${user.userImage!=null}">
 									<img
-										src="${pageContext.servletContext.contextPath}/images/${user.userImage}"
+										src="../../images/${user.userImage}"
 										class="img-circle fileUpload" role="button"
 										style="width: 150px; height: 150px; margin-top: 1%"
 										aria-haspopup="true" aria-expanded="false" id="fileUpload">

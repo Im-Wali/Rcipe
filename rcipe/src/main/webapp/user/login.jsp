@@ -40,7 +40,7 @@
 <jsp:include page="losePassword.jsp"></jsp:include>
 
 <form method="post"
-	action="${pageContext.servletContext.contextPath }/app/user/userLogin"
+	action="../../app/user/userLogin"
 	name="loginForm" id="loginForm">
 	<div class="row">
 		<div class="col-sm-6 col-md-4 col-md-offset-4">

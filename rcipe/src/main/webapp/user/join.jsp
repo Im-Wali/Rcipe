@@ -189,7 +189,7 @@ $("document").ready(function(){
 <input type='hidden' id='isEmail' value='false'>
 <!-- 인증번호를 저자하는 부분-->
 <input type='hidden' id='randomNumber' value='false'>
-<form method="post" action="${pageContext.servletContext.contextPath }/app/user/joinUser"  id="joinUser" name="joinUser">
+<form method="post" action="../../app/user/joinUser"  id="joinUser" name="joinUser">
 	<div class="modal fade" id="joinModal" tabindex="-1" role="dialog"
 		aria-labelledby="joinModal" aria-hidden="true">
 		<div class="modal-dialog">

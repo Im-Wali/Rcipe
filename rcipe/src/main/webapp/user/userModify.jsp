@@ -87,7 +87,7 @@
 								});
 					});
 </script>
-<form method="POST" action="${pageContext.servletContext.contextPath }/app/user/updatePassword" id="updatePasswordForm">
+<form method="POST" action="../../app/user/updatePassword" id="updatePasswordForm">
 	<div class="modal fade" id="modifyPasswordModal" tabindex="-1"
 		role="dialog" aria-labelledby="modifyPasswordModal" aria-hidden="true">
 		<div class="modal-dialog">
