@@ -10,7 +10,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="${pageContext.servletContext.contextPath }/js/bootstrap-filestyle.js"></script>
+<script type="text/javascript" src="../../js/bootstrap-filestyle.js"></script>
 
 <style type="text/css">
 body {
@@ -44,7 +44,7 @@ body {
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form role="form" action="${pageContext.servletContext.contextPath }/app/recipe/insertRecipe" method="post">
+			<form role="form" action="../../app/recipe/insertRecipe" method="post">
 				<input type="hidden" id="detailCount" name="detailCount" value="1">
 				<input type="hidden" id="detailNumber" name="detailNumber" value="1">
 				<input type="hidden" id="ingredientIds"name="ingredientIds" value="">
@@ -72,7 +72,7 @@ body {
 								value="">
 							<div class="media-left">
 								<img class="media-object img-rounded fileUpload"
-									src="${pageContext.servletContext.contextPath}/images/recipeIcon.png" alt="..." id="titleImage">
+									src="../../images/recipeIcon.png" alt="..." id="titleImage">
 							</div>
 							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
 								사진을 위의 공간에 드래그 하세요</div>
@@ -122,7 +122,7 @@ body {
 								<input type="hidden" id="imagedetailImage1" name="detailImage1"
 									value=""> <img
 									class="media-object img-rounded fileUpload"
-									src="${pageContext.servletContext.contextPath}/images/recipeIcon.png" alt="..." id="detailImage1">
+									src="../../images/recipeIcon.png" alt="..." id="detailImage1">
 							</div>
 							<div style="color: red; margin-right: 1%; margin-top: 1%">*등록할
 								사진을 위의 공간에 드래그 하세요</div>
