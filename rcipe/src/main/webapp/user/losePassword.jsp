@@ -20,12 +20,15 @@
 																});
 											} else {
 												$('#loseEmailDiv')
-					                            .html(
-					                                function(index,
-					                                    html) {
-					                                	$('#isEmail').val("true");
-					                                  return "<span style='color:blue;'>이메일 형식이 일치합니다.</span>";
-					                                });
+														.html(
+																function(index,
+																		html) {
+																	$(
+																			'#isEmail')
+																			.val(
+																					"true");
+																	return "<span style='color:blue;'>이메일 형식이 일치합니다.</span>";
+																});
 											}
 										});
 						$("#sendCheckEmailTempPw")
@@ -34,10 +37,10 @@
 											var check = $('#isEmail').val();
 											var loseEmail = $('#loseEmail')
 													.val();
-											if(loseEmail==''){
+											if (loseEmail == '') {
 												alert("이메일을 입력해주세요!");
 												event.preventDefault();
-											}else if (check === 'false') {
+											} else if (check === 'false') {
 												alert("이메일을 정확히 입력하세요.");
 												event.preventDefault();
 												$('#sendCheckTempPwDiv')
@@ -48,45 +51,42 @@
 																});
 											} else {
 												alert("임시 비밀번호가 발송되었습니다. 로그인해주세요.");
-												$.get(
-														"../email/send?email="
-																+ loseEmail
-																+ "&type=lose",
+												$.get("../email/send?email="
+														+ loseEmail
+														+ "&type=lose",
 														function(data) {
 														});
-												
+
 											}
 										});
 					});
 </script>
 <input type='hidden' id='isEmail' value='false'>
-	<div class="modal fade" id="modifyLosePasswordModal" tabindex="-1"
-		role="dialog" aria-labelledby="modifyLosePasswordModal"
-		aria-hidden="true">
-		<div class="modal-dialog" >
-			<div class="modal-content" style="background-color: #75DDFF;">
-				<div class="modal-header"
-					style="background-color: #75DDFF; border-color: black">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="exampleModalLabel">비밀번호 찾기</h4>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
+<div class="modal fade" id="modifyLosePasswordModal" tabindex="-1"
+	role="dialog" aria-labelledby="modifyLosePasswordModal"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header" style="border-color: black" align="center">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title" id="exampleModalLabel"
+					style="font-size: 2em">비밀번호 찾기</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group">
 
-						<label for="recipient-name" class="control-label">이메일</label> <input
-							type="text" class="form-control" id="loseEmail" name="loseEmail">
-						<div id="loseEmailDiv"></div>
-						<div class="modal-footer" style="border-color: black">
-							<button  class="btn btn-primary"
-								id="sendCheckEmailTempPw"
-								style="background-color: #FFFFFF; border-color: #FFFFFF; color: black">임시비밀번호발송</button>
-							<!--          <input type="image" src="login.gif" alt="로그인" /> -->
-						</div>
+					<label for="recipient-name" class="control-label">이메일</label> <input
+						type="text" class="form-control" id="loseEmail" name="loseEmail">
+					<div id="loseEmailDiv"></div>
+					<div align="center" style="margin:2%">
+						<button class="btn btn-lg btn-info" id="sendCheckEmailTempPw"
+							style="color: white;width:60%">임시비밀번호발송</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
