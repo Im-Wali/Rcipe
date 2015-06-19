@@ -13,13 +13,14 @@ import com.rcipe.service.domain.Favorite;
 import com.rcipe.service.favorite.FavoriteDAO;
 import com.rcipe.service.favorite.FavoriteService;
 
+
 @Service("favoriteServiceImpl")
 public class FavoriteServiceImpl implements FavoriteService {
 
 	@Autowired
 	@Qualifier("favoriteDAOImpl")
 	private FavoriteDAO favoriteDAO;
-
+	
 	public FavoriteServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
@@ -27,7 +28,7 @@ public class FavoriteServiceImpl implements FavoriteService {
 	@Override
 	public boolean insertFavorite(Favorite favorite) throws Exception {
 		// TODO Auto-generated method stub
-		return favoriteDAO.insertFavorite(favorite) == 1 ? true : false;
+		return  favoriteDAO.insertFavorite(favorite) == 1 ? true : false;
 	}
 
 	@Override
@@ -35,15 +36,32 @@ public class FavoriteServiceImpl implements FavoriteService {
 		// TODO Auto-generated method stub
 		return favoriteDAO.deleteFavorite(favorite) == 1 ? true : false;
 	}
-
+ 
 	@Override
-	public Map<String, Object> getFavoriteList(Search search) throws Exception {
-		return favoriteDAO.getFavoriteList(search);
+	public Map<String, Object> getFavoriteList(Map<String, Object> map) throws Exception {
+		
+		List<Favorite> list = favoriteDAO.getFavoriteList(map);
+		
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1.put("list", list);
+		map1.put("totalCount", list.size());
+		
+		return map1;
+		
+		
+		
 	}
 
 	@Override
-	public int updateFavorite(Favorite favorite) throws Exception {
+	public int updateFavorite(Favorite favorite) throws Exception{
 		// TODO Auto-generated method stub
 		return favoriteDAO.updateFavorite(favorite);
+	}
+
+	@Override
+	public boolean selectFavorite(Favorite favorite) throws Exception {
+		// TODO Auto-generated method stub
+		System.err.println("selectFavorite Service");
+		return favoriteDAO.selectFavorite(favorite);
 	}
 }
