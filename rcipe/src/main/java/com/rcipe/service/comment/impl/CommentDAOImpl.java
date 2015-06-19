@@ -89,9 +89,12 @@ public class CommentDAOImpl implements CommentDAO {
 	public int deleteBoardCmtList(int boardNo) throws Exception {
 		List<Integer> list = sqlSession.selectList(
 				"commentMapper.getBoardsCmtCmtNo", boardNo);
-		sqlSession.delete("commentMapper.deleteReplyList", list);
-		sqlSession.delete("commentMapper.deleteBoardCmtList", boardNo);
-		return sqlSession.delete("commentMapper.deleteCommentList", list);
+		if (list.size() != 0) {
+			sqlSession.delete("commentMapper.deleteReplyList", list);
+			sqlSession.delete("commentMapper.deleteBoardCmtList", boardNo);
+			return sqlSession.delete("commentMapper.deleteCommentList", list);
+		}
+		return 0;
 	}
 
 	@Override

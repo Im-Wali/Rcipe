@@ -151,6 +151,6 @@ public class BoardController {
 	public String deleteBoard(@RequestParam("boardNo") int boardNo,@RequestParam("boardImgPath") String boardImgPath)throws Exception{
 		System.out.println(cx.getRealPath("/images")+boardImgPath);
 		boardService.deleteBoard(boardNo,cx.getRealPath("/images")+boardImgPath);
-		return "getBoardListFirst?searchCategory=0";
+		return "redirect:getBoardListFirst?searchCategory=0";
 	}
 }
