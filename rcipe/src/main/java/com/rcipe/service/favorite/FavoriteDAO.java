@@ -12,10 +12,8 @@ public interface FavoriteDAO {
 
 	public int deleteFavorite(Favorite favorite)throws Exception;
 	
-	public List<Favorite> getFavoriteList(Map<String, Object> map) throws Exception;
+	public Map<String, Object> getFavoriteList(Search search) throws Exception;
 
 	public int updateFavorite(Favorite favorite);
-
-	public boolean selectFavorite(Favorite favorite) throws Exception;
 
 }
