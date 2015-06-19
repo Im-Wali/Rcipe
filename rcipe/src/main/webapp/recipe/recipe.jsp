@@ -18,7 +18,7 @@
 <%--   <link href="${pageContext.servletContext.contextPath}/css/recipe01.css"
 	rel="stylesheet">  --%>
 <script type="text/javascript"
-	src="${pageContext.servletContext.contextPath}/js/recipe01.js"></script>
+	src="../../js/recipe01.js"></script>
 
 <TITLE>Recipe</TITLE>
 <style type="text/css">
