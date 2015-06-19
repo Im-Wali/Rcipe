@@ -82,7 +82,7 @@
 								<div class="well well-sm">
 									<div class="row">
 										<div class="col-xs-3 col-md-3 text-center">
-											<a href="${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"><img
+											<a href="../../app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"><img
 												src=" ${ favorite.recipe.titleImage }" alt="bootsnipp"
 												style="width: 114px; height: 114px; position: absolute;"
 												class="img-rounded img-responsive" /></a>
@@ -90,7 +90,7 @@
 
 										<div class="col-xs-9 col-md-9 section-box" >
 										<div id="favoriteBody${i}">
-											<a href="${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"
+											<a href="../../app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"
 												style="color: black"><h2 >${ favorite.favorTitle }</h2></a></div>
 											<div align="left">${ favorite.recipe.recipeContents }</div>
 											<div align="right">
