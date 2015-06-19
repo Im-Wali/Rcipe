@@ -179,7 +179,7 @@
 					<c:if test="${user.nickname == null }">
 						<li><a href="#" class="btn" data-toggle="modal"
 							data-target="#loginModal" data-whatever="Login"
-							data-backdrop="false" style="color: black">로그인</a></li>
+							data-backdrop="false" style="background-color:white;color: black">로그인</a></li>
 						<li><a href="#" class="btn" data-toggle="modal"
 							data-target="#joinModal" data-whatever="Join"
 							data-backdrop="false" style="background-color:white;color: black">회원가입</a></li>
@@ -196,7 +196,7 @@
 					<c:if test="${user.nickname != null }">
 						<li><a
 							href="${pageContext.servletContext.contextPath }/app/user/userLogout"
-							class="btn " style="color: black">로그아웃</a></li>
+							class="btn " style="background-color:white;color: black">로그아웃</a></li>
 						<div align="center">
 							<div align="center">
 								<li><a data-target="#searchIngredient" class="btn "
@@ -208,17 +208,17 @@
 							</div>
 							<li><a
 								href="${pageContext.servletContext.contextPath }/app/recipe/viewInsertRecipe"
-								class="btn " style="color: black">레시피등록</a></li>
+								class="btn " style="background-color:white;color: black">레시피등록</a></li>
 						</div>
 						<div align="center">
 							<li><a
 								href="${pageContext.servletContext.contextPath }/app/favorite/getfavoriteList"
-								class="btn " style="color: black">즐겨찾기</a></li>
+								class="btn " style="background-color:white;color: black">즐겨찾기</a></li>
 						</div>
 						<div align="center">
 							<li><a
 								href="${pageContext.servletContext.contextPath }/app/user/viewUser"
-								class="btn " style="color: black">내정보보기</a></li>
+								class="btn " style="background-color:white;color: black">내정보보기</a></li>
 						</div>
 					</c:if>
 				</div>
