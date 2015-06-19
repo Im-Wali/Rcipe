@@ -83,7 +83,7 @@
 									<div class="row">
 										<div class="col-xs-3 col-md-3 text-center">
 											<a href="../../app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"><img
-												src=" ${ favorite.recipe.titleImage }" alt="bootsnipp"
+												src="../../images/${ favorite.recipe.titleImage }" alt="bootsnipp"
 												style="width: 114px; height: 114px; position: absolute;"
 												class="img-rounded img-responsive" /></a>
 										</div>
@@ -169,7 +169,7 @@
 											+ "/app/recipe/viewRecipe?recipeNo="
 											+ list[i].recipeNo
 											+ "'>"
-											+ "<img src='"+list[i].recipe.titleImage +"' alt='bootsnipp' style='width: 114px; height: 114px; position: absolute;'"
+											+ "<img src='../../images/"+list[i].recipe.titleImage. +"' alt='bootsnipp' style='width: 114px; height: 114px; position: absolute;'"
                                           +" class='img-rounded img-responsive' /></a></div>"
 											+ "<div class='col-xs-9 col-md-9 section-box'>"
 											+ "<a href='"
@@ -267,7 +267,6 @@
                         name="favorTitle" value="">
                     <div class="modal-footer">
                         <button class="btn btn-primary" id=""  type="submit" >수정</button>
-                        <!--          <input type="image" src="login.gif" alt="로그인" /> -->
                     </div>
                 </div>
             </div>
