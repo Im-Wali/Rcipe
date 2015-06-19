@@ -240,7 +240,7 @@ body {
 											$(":file").filestyle('buttonText',
 													'사진 등록');
 											$(":file").filestyle('buttonName',
-													'btn-warning');
+													'btn-info');
 											/* 	$(":file").addClass('filestyle');  */
 											//event등록
 											setDnDhandler(document

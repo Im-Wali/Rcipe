@@ -278,7 +278,7 @@
 						</div>
 					</div>
 					<div class="modal-footer" style="border-color: white;">
-						<button type="button" class="btn btn-warning "
+						<button type="button" class="btn btn-primary"
 							id="settingIngredient" style="color: black; margin-top: 1%">완료</button>
 						<!-- 					<input type="image" src="login.gif" alt="로그인" /> -->
 					</div>
