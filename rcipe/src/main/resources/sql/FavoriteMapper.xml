@@ -10,7 +10,7 @@
 		<result property="recipeNo" column="rcp_no" jdbcType="INTEGER" />
 		<result property="nickname" column="nickname" jdbcType="VARCHAR" />
 		<result property="favorTitle" column="fav_title" jdbcType="VARCHAR" />
-		<result property="favorDate" column="fav_date" jdbcType="DATE" />
+		<result property="favorDate" column="fav_date" jdbcType="VARCHAR" />
 		<result property="starCnt" column="star_Cnt" jdbcType="INTEGER" />
 		
 		<association property="recipe" javaType="recipe">
@@ -42,30 +42,18 @@
 	<sql id="searchFavorite">
 		SELECT
 		f.rcp_no rcp_no,
-		f.nickname nickname, f.fav_title
-		fav_title,
-		to_char(f.fav_date,'YYYY/MM/DD') fav_date, (SELECT COUNT(*)
-		FROM
-		( SELECT
-		c.CMT_NO
-		FROM comments c,recipes_cmt r,users u
+		f.nickname nickname,
+		f.fav_title fav_title,
+		to_char(f.fav_date,'YYYY/MM/DD') fav_date
+		FROM fav_recipes f, recipes r
 		WHERE
-		r.rcp_no=#{favorite.recipeNo} AND
-		r.cmt_no=c.cmt_no
-		AND
-		u.nickname LIKE
-		c.nickname
-		ORDER BY c.CMT_DATE DESC ) ) AS cmtcnt
-		FROM fav_recipes f,
-		recipes r, users u
-		WHERE
-		f.rcp_no = r.rcp_no AND f.nickname = u.nickname
-		AND f.nickname =
-		#{favorite.nickname}
+		f.rcp_no = r.rcp_no 
+		AND f.nickname LIKE
+		#{searchKeyword}
 		ORDER BY fav_date
 	</sql>
 
-	<select id="getFavoriteList" parameterType="java.util.Map"
+	<select id="getFavoriteList" parameterType="search"
 		resultMap="FavoriteSelectMap">
 		SELECT
 		inner.*
@@ -76,9 +64,9 @@
 		<include refid="searchFavorite" />
 		)
 		inner_table
-		WHERE ROWNUM &lt;= '1' ) inner
-		WHERE row_seq BETWEEN '1'
-		AND '3'
+		WHERE ROWNUM &lt;= #{endRowNum} ) inner
+		WHERE row_seq BETWEEN #{startRowNum}
+		AND #{endRowNum}
 	</select>
 
 	<delete id="deleteFavorite" parameterType="favorite">
@@ -87,13 +75,13 @@
 		WHERE nickname = #{nickname} AND rcp_no = #{recipeNo}
 	</delete>
 
-	<select id="getTotalCount" parameterType="user" resultType="int">
+	<select id="getTotalCount" parameterType="search" resultType="int">
 		SELECT COUNT(*)
 		FROM ( SELECT *
 		FROM fav_recipes
 		<where>
-			<if test="nickname != null">
-				nickname = #{nickname}
+			<if test="searchKeyword != null">
+				nickname = #{searchKeyword}
 			</if>
 		</where>
 		) countTable

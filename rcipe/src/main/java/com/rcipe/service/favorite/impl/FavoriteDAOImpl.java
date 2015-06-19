@@ -1,6 +1,7 @@
 package com.rcipe.service.favorite.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -47,24 +48,20 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 	}
 	
 	@Override
-	public List<Favorite> getFavoriteList(Map<String, Object> map) throws Exception{
-		List<Integer> list = new ArrayList<Integer>();
-		System.err.println("nickname : "+map.get("nickname"));
-		list = sqlSession.selectList("FavoriteMapper.getRecipeNumNickname", map.get("nickname"));
-		System.err.println("유저가 갖고 있는 즐겨찾기의 레시피 넘버 : "+sqlSession.selectList("FavoriteMapper.getRecipeNumNickname", map.get("nickname")));
-		List<Favorite> list1 = sqlSession.selectList("FavoriteMapper.getJoinFavorite", map.get("nickname"));
-		System.err.println("유저가 갖고 있는 3개 조인 : "+sqlSession.selectList("FavoriteMapper.getJoinFavorite", map.get("nickname")));
+	public Map<String,Object> getFavoriteList(Search search) throws Exception{
+		List<Favorite> list=sqlSession.selectList("FavoriteMapper.getFavoriteList",search);
 		if(list.size()!=0){
 			for(int i=0; i < list.size(); i++){
-				System.err.println("CommentCount : "+sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i)));
-				list1.get(i).setCmtCnt((Integer) sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i)));
-				list1.get(i).setStarAvg((Integer) sqlSession.selectOne("FavoriteMapper.getStarAvg", list.get(i)));
-				System.err.println("starAvG : "+(Integer) sqlSession.selectOne("FavoriteMapper.getStarAvg", list.get(i)));
+				list.get(i).setCmtCnt(((Integer) sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i).getRecipeNo())));
+				System.out.println("ㅊㅋ1 : "+((Integer) sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i).getRecipeNo())));
+				list.get(i).setStarAvg(((Integer) sqlSession.selectOne("FavoriteMapper.getStarAvg", list.get(i).getRecipeNo())));
+				System.out.println("ㅊㅋ2 : "+((Integer) sqlSession.selectOne("FavoriteMapper.getStarAvg", list.get(i).getRecipeNo())));
 			}
 		}
-		
-		
-		return list1;
+		Map<String,Object> map=new HashMap<String, Object>();
+		map.put("list", list);
+		map.put("totalCount", sqlSession.selectOne("FavoriteMapper.getTotalCount",search));
+		return map;
 	}
 
 	@Override
@@ -86,5 +83,4 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 		System.err.println("confirm : "+confirm);
 		return confirm;
 	}
-
 }
