@@ -67,7 +67,7 @@
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
 		<div class="col-md-8 ">
-			<form action="${pageContext.servletContext.contextPath }/app/board/insertBoard" method="POST">
+			<form action="../../app/board/insertBoard" method="POST">
 				<div class="form-login " style="margin-bottom: 2%;">
 					<h3 align="center" style="margin-bottm: 1%;">게시판글 등록</h3>
 					<div style="margin-top: 1%">
