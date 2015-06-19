@@ -12,7 +12,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="${pageContext.servletContext.contextPath }/js/jquery.lazyload.js"></script>
 <style type="text/css">
-.form-login {
+/* .form-login {
 	background-color: #DDDDDD;
 	padding-top: 10px;
 	padding-bottom: 20px;
@@ -22,11 +22,13 @@
 	border-color: #d2d2d2;
 	border-width: 5px;
 	box-shadow: 0 1px 0 #cfcfcf;
-}
+} */
 </style>
 </HEAD>
 <BODY>
-	<div><jsp:include page="menuBar.jsp"></jsp:include></div>
+	<div><jsp:include page="menuBar.jsp"></jsp:include>
+	
+	</div>
 	<jsp:include page="imageSlider.jsp"></jsp:include>
 	<!-- 가상의 입력 목록  start-->
 	<jsp:include page="cardSession.jsp"/>
