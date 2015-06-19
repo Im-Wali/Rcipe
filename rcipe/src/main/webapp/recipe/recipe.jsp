@@ -17,8 +17,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <%--   <link href="${pageContext.servletContext.contextPath}/css/recipe01.css"
 	rel="stylesheet">  --%>
-<script type="text/javascript"
-	src="../../js/recipe01.js"></script>
+<script type="text/javascript" src="../../js/recipe01.js"></script>
 
 <TITLE>Recipe</TITLE>
 <style type="text/css">
@@ -113,22 +112,22 @@ stylize any heading tags withing white-panel below
 						<div class="row">
 							<div class="col-md-6" align="left">
 								<span> <jsp:include page="/sns/facebook.jsp"></jsp:include>
-									<jsp:include page="/sns/twitter.jsp"></jsp:include> <img
-									<c:if test="${user.nickname ne  null }">
-									<c:if test="${favCon eq true }">
-									   
-									 <img src="../../images/starIcon2.jpg"
-								  	data-toggle="modal" data-target="#modifyFavoriteAdd" id="addFavoriteImg"
-								  	data-backdrop="false" data-dismiss="modal" height="55px"
-									 width="55px" class="img-rounded"
-									 style="background-color: white; color: orange; cursor: pointer;">
-									 </c:if>
-									<c:if test="${ favCon eq false }">
-									   <img src="${pageContext.servletContext.contextPath}/images/starIcon2.jpg"
-                  height="55px"  width="55px" class="img-rounded" id="alreadyFavorite"
-                  style="background-color: white; color: orange; cursor: pointer;">
+									<jsp:include page="/sns/twitter.jsp"></jsp:include> <c:if
+										test="${user.nickname ne  null }">
+										<c:if test="${favCon eq true }">
+
+											<img src="../../images/starIcon2.jpg" data-toggle="modal"
+												data-target="#modifyFavoriteAdd" id="addFavoriteImg"
+												data-backdrop="false" data-dismiss="modal" height="55px"
+												width="55px" class="img-rounded"
+												style="background-color: white; color: orange; cursor: pointer;">
+										</c:if>
+										<c:if test="${ favCon eq false }">
+											<img src="../../images/starIcon2.jpg" height="55px"
+												width="55px" class="img-rounded" id="alreadyFavorite"
+												style="background-color: white; color: orange; cursor: pointer;">
+										</c:if>
 									</c:if>
-								</c:if>
 								</span>
 							</div>
 							<div class="col-md-6">
@@ -161,13 +160,13 @@ stylize any heading tags withing white-panel below
 								<div align="center">
 									<c:if test="${recipe.writerImage != null}">
 										<img
-											src="${pageContext.servletContext.contextPath}/images/${recipe.writerImage}"
+											src="../../images/${recipe.writerImage}"
 											class="img-circle"
 											style="width: 150px; height: 150px; margin-top: 1%">
 									</c:if>
 									<c:if test="${recipe.writerImage == null}">
 										<img
-											src="${pageContext.servletContext.contextPath}/images/userIcon.png"
+											src="../../images/userIcon.png"
 											class="img-circle"
 											style="width: 150px; height: 150px; margin-top: 1%">
 									</c:if>
