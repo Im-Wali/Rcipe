@@ -25,7 +25,7 @@
          }());
       </script>
 
-      <img id="share_button" src="${pageContext.servletContext.contextPath}/images/facebookIcon.jpg"
+      <img id="share_button" src="../../images/facebookIcon.jpg"
        height="55px" width="55px"class="img-rounded" style="cursor:pointer;  ">
 
       <script type="text/javascript">

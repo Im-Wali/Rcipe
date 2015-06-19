@@ -42,7 +42,7 @@
 				<div class="col-sm-1"></div>
 				<div class="col-sm-10 " align="center"
 					style="display: inline-block; text-align: center; margin-top: -2%">
-					<a href="${pageContext.servletContext.contextPath}/index.jsp"><button
+					<a href="../../index.jsp"><button
 							id="homeButton" class="btn btn-default"
 							style="font-size: 2.5em; font-family: cursive; color: black; background-color: #75DDFF; border-color: #75DDFF;">Rcipe</button></a>
 					<div id="imaginary_container">

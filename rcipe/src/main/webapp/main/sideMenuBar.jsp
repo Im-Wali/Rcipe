@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-</script>
 <style>
 <!--
 .row {
@@ -178,12 +177,12 @@
 		<ul class="sidebar-nav" id="sidebar">
 			<li><c:if test="${user.userImage == null }">
 					<img
-					src="${pageContext.servletContext.contextPath }/images/userIcon.png"
+					src="../../images/userIcon.png"
 					class="img-circle"
 					style="width: 100px; height: 100px; margin-top: 1%;margin-right:-50px;background-color:#D7D7D7">
 			</c:if> <c:if test="${user.userImage != null }"> 
 					<img
-						src="${pageContext.servletContext.contextPath }/images/${user.userImage}"
+						src="../../images/${user.userImage}"
 						class="img-circle"
 						style="width: 100px; height: 100px; margin-right: -50px;background-color:#D7D7D7">
 				</c:if></li>
@@ -201,28 +200,28 @@
 					data-backdrop="false" style="color: white; padding-right:30px">재료상세검색</a></li>
 					
 				<li style="background-color: #75DDFF"><a  class="btn"
-					href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0"
+					href="../../app/board/getBoardListFirst?searchCategory=0"
 					style="color: white; padding-right: 30px">게시판리스트</a></li>
 			</c:if>
 			<c:if test="${user.nickname != null }">
 				<li style="background-color: #75DDFF"><a
-					href="${pageContext.servletContext.contextPath }/app/user/userLogout"
+					href="../../app/user/userLogout"
 					class="btn " style="color: white; padding-right: 30px">로그아웃</a></li>
 				<li style="background-color: #75DDFF;"><a
 					data-target="#searchIngredient" class="btn "
 					style="color: white; padding-right: 30px" data-whatever="dialog"
 					data-toggle="modal" data-backdrop="false">재료상세검색</a></li>
 				<li style="background-color: #75DDFF;"><a
-					href="${pageContext.servletContext.contextPath }/app/board/getBoardListFirst?searchCategory=0"
+					href="../../app/board/getBoardListFirst?searchCategory=0"
 					class="btn " style="color: white; padding-right: 30px">게시판리스트</a></li>
 				<li style="background-color: #75DDFF;"><a
-					href="${pageContext.servletContext.contextPath }/app/recipe/viewInsertRecipe"
+					href="../../app/recipe/viewInsertRecipe"
 					class="btn " style="color: white; padding-right: 30px">레시피등록</a></li>
 				<li style="background-color: #75DDFF"><a
-					href="${pageContext.servletContext.contextPath }/app/favorite/getfavoriteList"
+					href="../../app/favorite/getfavoriteList"
 					class="btn " style="color: white; padding-right: 30px">즐겨찾기</a></li>
 				<li style="background-color: #75DDFF"><a
-					href="${pageContext.servletContext.contextPath }/app/user/viewUser"
+					href="../../app/user/viewUser"
 					class="btn " style="color: white; padding-right: 30px">내정보보기</a></li>
 			</c:if>
 		</ul>

@@ -128,7 +128,7 @@ stylize any heading tags withing white-panel below
                   height="55px"  width="55px" class="img-rounded" id="alreadyFavorite"
                   style="background-color: white; color: orange; cursor: pointer;">
 									</c:if>
-									</c:if>
+								</c:if>
 								</span>
 							</div>
 							<div class="col-md-6">
@@ -155,10 +155,10 @@ stylize any heading tags withing white-panel below
 								style="max-height: 800px; max-height: 800px; min-height: 400px; min-width: 400px"
 								src="${pageContext.servletContext.contextPath}/images/${recipe.titleImage}">
 						</div>
-						<div class="row" style="margin-bottom: 2%;margin-top:2%;">
+						<div class="row" style="margin-bottom: 2%; margin-top: 2%;">
 							<div class="col-md-4"></div>
-							<div class="col-md-4" >
-								<div align="center" >
+							<div class="col-md-4">
+								<div align="center">
 									<c:if test="${recipe.writerImage != null}">
 										<img
 											src="${pageContext.servletContext.contextPath}/images/${recipe.writerImage}"
@@ -175,9 +175,8 @@ stylize any heading tags withing white-panel below
 										style="font-size: 2em; font-family: cursive;">작성자:${recipe.nickname}</div>
 								</div>
 							</div>
-							<div class="col-md-4" style="margin-top:2%">
-								<div class="row lead"
-									style="width: 100%;max-width: 100rem">
+							<div class="col-md-4" style="margin-top: 2%">
+								<div class="row lead" style="width: 100%; max-width: 100rem">
 									<div style="margin-top: 1%" align="right">
 										<div id="fixedStar"
 											data-rating='${recipe.star/recipe.starHit }'
@@ -188,8 +187,9 @@ stylize any heading tags withing white-panel below
 											<c:forEach begin="${recipe.star/recipe.starHit}" end="4">
 												<i class='fa fa-star-o' style='margin-right: -8px'></i>
 											</c:forEach>
-											<c:set var="number" value="0" ></c:set>
-											<fmt:formatNumber var="number" value="${recipe.star/recipe.starHit }" pattern=".00"/>
+											<c:set var="number" value="0"></c:set>
+											<fmt:formatNumber var="number"
+												value="${recipe.star/recipe.starHit }" pattern=".00" />
 										</div>
 										<div id="count-existing">현재 평점:${recipe.starHit!=0 ? number:0  }개</div>
 									</div>

@@ -18,6 +18,6 @@
 </script>
 	<button id="btnTweet" title="Rcipe recipe11 @Rcipe" style="border:none;"
 		name="http://127.0.0.1:8080${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo=${recipe.recipeNo}">
-		<img src="${pageContext.servletContext.contextPath}/images/twitterIcon.jpg""
+		<img src="../../images/twitterIcon.jpg""
 		 height="55px" width="55px"class="img-rounded" style="cursor:pointer;  ">
 	</button>
