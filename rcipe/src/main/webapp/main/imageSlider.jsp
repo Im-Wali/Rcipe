@@ -33,7 +33,7 @@
 											<a
 												href="#"
 												target="_parent"> <img class="slide-image"  style="width:1280px;height:400px;"  class="img-rounded"
-												src="${pageContext.servletContext.contextPath }/img/test1.jpg" alt="">
+												src="../../img/test1.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
@@ -47,7 +47,7 @@
 											<a
 												href="#"
 												target="_parent"> <img class="slide-image" style="width:1280px;height:400px;"  class="img-rounded"
-												src="${pageContext.servletContext.contextPath }/img/test2.jpg" alt="">
+												src="../../img/test2.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>
@@ -61,7 +61,7 @@
 											<a
 												href="#"
 												target="_parent"> <img class="slide-image" style="width:1280px;height:400px;"  class="img-rounded"
-												src="${pageContext.servletContext.contextPath }/img/test3.jpg" alt="">
+												src="../../img/test3.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
 												<h3>

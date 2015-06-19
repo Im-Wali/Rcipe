@@ -11,7 +11,7 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<link rel="stylesheet"
-  href="${pageContext.servletContext.contextPath }/css/cardSession.css">
+  href="../../css/cardSession.css">
 <Style>
 #checklist {
 	list-style-type: none;
