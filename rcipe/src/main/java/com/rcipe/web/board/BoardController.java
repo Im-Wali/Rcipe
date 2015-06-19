@@ -135,13 +135,6 @@ public class BoardController {
 		result.put("flag", "Y");
 		Gson gson = new GsonBuilder().serializeNulls().create();
 		String jsonString = gson.toJson(result);
-		
-		// list.add();
-//		
-//		
-//		model.put("search", search);
-//		model.put("list", map.get("list"));
-//		
 		System.out.println("jsonString : "+jsonString);
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Content-Type", "text/plain;charset=UTF-8");
