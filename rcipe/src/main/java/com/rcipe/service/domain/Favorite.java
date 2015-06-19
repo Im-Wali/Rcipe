@@ -1,7 +1,5 @@
 package com.rcipe.service.domain;
 
-import java.util.Date;
-import java.util.List;
 
 public class Favorite {
 
@@ -12,7 +10,7 @@ public class Favorite {
 	private Integer recipeNo;
 	private String nickname;
 	private String favorTitle;
-	private Date favorDate;
+	private String favorDate;
 	private Recipe recipe;
 	private Integer starAvg;
 	private Integer cmtCnt;
@@ -46,11 +44,11 @@ public class Favorite {
 		this.favorTitle = favorTitle;
 	}
 
-	public Date getFavorDate() {
+	public String getFavorDate() {
 		return favorDate;
 	}
 
-	public void setFavorDate(Date favorDate) {
+	public void setFavorDate(String favorDate) {
 		this.favorDate = favorDate;
 	}
 
