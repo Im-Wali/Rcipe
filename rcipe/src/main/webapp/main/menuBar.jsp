@@ -182,7 +182,7 @@
 							data-backdrop="false" style="color: black">로그인</a></li>
 						<li><a href="#" class="btn" data-toggle="modal"
 							data-target="#joinModal" data-whatever="Join"
-							data-backdrop="false" style="color: black">회원가입</a></li>
+							data-backdrop="false" style="background-color:white;color: black">회원가입</a></li>
 						<div align="center">
 							<li><a data-target="#searchIngredient" class="btn "
 								style="color: black" data-whatever="dialog" data-toggle="modal"
