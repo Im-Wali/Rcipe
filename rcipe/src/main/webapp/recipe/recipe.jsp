@@ -117,7 +117,7 @@ stylize any heading tags withing white-panel below
 									<c:if test="${user.nickname ne  null }">
 									<c:if test="${favCon eq true }">
 									   
-									 <img src="${pageContext.servletContext.contextPath}/images/starIcon2.jpg"
+									 <img src="../../images/starIcon2.jpg"
 								  	data-toggle="modal" data-target="#modifyFavoriteAdd" id="addFavoriteImg"
 								  	data-backdrop="false" data-dismiss="modal" height="55px"
 									 width="55px" class="img-rounded"
