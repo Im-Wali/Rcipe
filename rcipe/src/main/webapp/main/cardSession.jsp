@@ -43,7 +43,7 @@
 
 					<li><a
 						href="${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo=${recipe.recipeNo}"></a>
-						<img class="lazy"
+						<img class="lazy  img-rounded"
 						src="${pageContext.servletContext.contextPath }/images/${recipe.titleImage}"
 						width="240" height="200" style="display: inline;">
 						<div class="overLayer"></div>

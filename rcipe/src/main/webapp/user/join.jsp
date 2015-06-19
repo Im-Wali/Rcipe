@@ -200,7 +200,7 @@ $("document").ready(function(){
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="exampleModalLabel" style="border-color:#FF9933">회원가입</h4>
+					<h4 class="modal-title" id="exampleModalLabel" style="border-color:#FF9933;font-size:2em" >회원가입</h4>
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
@@ -235,18 +235,18 @@ $("document").ready(function(){
 						<div align="right" style="font:bold;font-size:1.5em"><span id="numberMinuteTimer"></span><span id="numberTimer"></span><span id="numberSecondTimer"></span></div>
 					</div>
 					<div align="right">
-						<button id="sendCheckEmailNumber" type="button" class="btn btn-primary"
-							style="background-color: #FFFFFF; border-color: #FFFFFF; color: black; margin-bottom: 1%">인증번호
+						<button id="sendCheckEmailNumber" type="button" class="btn btn-info"
+							style=" color: white; margin-bottom: 1%">인증번호
 							발송</button>
-						<button id="checkSendNumber" type="button" class="btn btn-primary" 
-							style="background-color: #FFFFFF; border-color: #FFFFFF; color: black; margin-bottom: 1%">인증</button>
+						<button id="checkSendNumber" type="button" class="btn btn-info" 
+							style="color: white; margin-bottom: 1%">인증</button>
 					</div>
 				</div>
 				<div class="modal-footer" style="border-color: black">
-					<button  type="submit" class="btn btn-primary" id="joinSubmit"
-						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black">회원가입</button>
-					<button type="reset" class="btn btn-primary"
-						style="background-color: #FFFFFF; border-color: #FFFFFF; color: black">최소</button>
+					<button  type="submit" class="btn btn-info" id="joinSubmit"
+						style="color: white;">회원가입</button>
+					<button type="reset" class="btn btn-info"
+						style="color: white;">최소</button>
 				</div>
 			</div>
 		</div>

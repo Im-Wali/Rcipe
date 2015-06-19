@@ -8,7 +8,7 @@
 
 				<div class="row">
 					<div class="col-md-1"></div>
-					<div class="col-md-10">
+					<div class="col-md-10" align="center">
 						<div class="row carousel-holder">
 							<div class="col-md-12" align="center">
 								<div id="carousel-example-generic" class="carousel slide"
@@ -32,7 +32,7 @@
 										<div class="item active">
 											<a
 												href="#"
-												target="_parent"> <img class="slide-image" 
+												target="_parent"> <img class="slide-image"  style="width:1280px;height:400px;"  class="img-rounded"
 												src="${pageContext.servletContext.contextPath }/img/test1.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
@@ -46,7 +46,7 @@
 										<div class="item">
 											<a
 												href="#"
-												target="_parent"> <img class="slide-image"
+												target="_parent"> <img class="slide-image" style="width:1280px;height:400px;"  class="img-rounded"
 												src="${pageContext.servletContext.contextPath }/img/test2.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
@@ -60,7 +60,7 @@
 										<div class="item">
 											<a
 												href="#"
-												target="_parent"> <img class="slide-image"
+												target="_parent"> <img class="slide-image" style="width:1280px;height:400px;"  class="img-rounded"
 												src="${pageContext.servletContext.contextPath }/img/test3.jpg" alt="">
 											</a>
 											<div class="carousel-caption">
