@@ -46,14 +46,14 @@
 						<img class="lazy  img-rounded"
 						src="${pageContext.servletContext.contextPath }/images/${recipe.titleImage}"
 						width="240" height="200" style="display: inline;">
-						<div class="overLayer"></div>
+						<div class="overLayer img-rounded"></div>
 						<div class="infoLayer">
 							<ul>
 								<li>
-									<h2>${ recipe.recipeTitle }</h2>
+									<h2 class="textLength">${ recipe.recipeTitle }</h2>
 								</li>
 								<li>
-									<p>${ recipe.recipeContents }</p>
+									<p class="textLength">${ recipe.recipeContents }</p>
 								</li>
 							</ul>
 						</div></li>
