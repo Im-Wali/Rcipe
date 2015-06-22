@@ -88,8 +88,8 @@
 										<div class="row">
 											<div class="col-xs-3 col-md-3 text-center">
 												<a
-													href="${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"><img
-													src=" ${ favorite.recipe.titleImage }" alt="bootsnipp"
+													href="../../app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"><img
+													src=" ../../images/${ favorite.recipe.titleImage }" alt="bootsnipp"
 													style="width: 114px; height: 114px; position: absolute;"
 													class="img-rounded img-responsive" /></a>
 											</div>
@@ -97,7 +97,7 @@
 											<div class="col-xs-9 col-md-9 section-box">
 												<div id="favoriteBody${i}" style="width:100%; text-overflow:ellipsis; overflow:hidden; white-space:nowrap; font-family:'맑은고딕';">
 													<a
-														href="${pageContext.servletContext.contextPath }/app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"
+														href="../../app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"
 														style="color: black"><h2>${ favorite.favorTitle }</h2></a>
 												</div>
 												<div align="left">${ favorite.recipe.recipeContents }</div>
@@ -233,7 +233,7 @@
 																+ "/app/recipe/viewRecipe?recipeNo="
 																+ list[i].recipeNo
 																+ "'>"
-																+ "<img src='"+list[i].recipe.titleImage +"' alt='bootsnipp' style='width: 114px; height: 114px; position: absolute;'"
+																+ "<img src='../../images/"+list[i].recipe.titleImage +"' alt='bootsnipp' style='width: 114px; height: 114px; position: absolute;'"
                                           +" class='img-rounded img-responsive' /></a></div>"
 																+ "<div class='col-xs-9 col-md-9 section-box'>"
 																+ "<a href='"
