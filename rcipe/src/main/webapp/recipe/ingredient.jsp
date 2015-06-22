@@ -213,7 +213,7 @@
 </script>
 
 <div class="modal fade" id="ingredient" tabindex="-1" role="dialog"
-	aria-labelledby="ingredient" aria-hidden="false">
+	aria-labelledby="ingredient" aria-hidden="false" style="position:absolute; overflow:scroll;">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header" style="border-color: white" align="right">
