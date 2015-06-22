@@ -75,47 +75,6 @@ public class FavoriteController {
 		
 	}
 	
-	@RequestMapping(value = "/confirmFavorite", method = RequestMethod.GET)
-	public @ResponseBody String confirmFavorite(@ModelAttribute("favorite") Favorite favorite,
-			HttpSession session) throws Exception {
-		
-		System.err.println("start confirmFavorite");
-		
-		User user = (User) session.getAttribute("user");
-		
-		favorite.setNickname(user.getNickname());
-		
-		// DB에 있나 확인하기
-		String confirm = String.valueOf(favoriteService.selectFavorite(favorite));
-		
-		return confirm;
-		
-	}
-	
-	/*@RequestMapping(value = "/getfavoriteList", method = RequestMethod.GET)
-	public ModelAndView getFavoriteList(@ModelAttribute("favorite") Favorite favorite,
-			@ModelAttribute("search") Search search,
-			HttpSession session) throws Exception {
-		
-		System.out.println("start getfavoriteList");
-		
-		//favorite.setNickname(((User)session.getAttribute("user")).getNickname());
-		
-		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1.put("nickname", ((User)session.getAttribute("user")).getNickname());
-		map1.put("search", search);
-		
-		Map<String, Object> map2 = favoriteService.getFavoriteList(map1);
-		
-		System.out.println("totalCount : "+ map2.get("totalCount") + "list : " + map2.get("list"));
-		
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("forward:../../favorite/favorite.jsp");
-		modelAndView.addObject("list", map2.get("list"));
-		System.out.println(modelAndView);
-		return modelAndView;
-	}*/
-	
 	@RequestMapping(value = "/getfavoriteList", method = RequestMethod.GET)
 	public ModelAndView getFavoriteList(@ModelAttribute("favorite") Favorite favorite,
 			@ModelAttribute("search") Search search,

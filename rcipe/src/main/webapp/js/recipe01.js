@@ -130,6 +130,11 @@ $(document).ready(function() {
 	$('#stars').on('starrr:change', function(e, value) {
 		$('#count').html(value);
 	});
+	
+	$('#alreadyFavorite').click(
+			function(event) {
+		alert("이미 추가된 즐겨찾기입니다.");
+	});
 	$('#fixedStar').on(function(){
 		alert("AAA");
 		});
