@@ -134,7 +134,7 @@
     </form>
     <div id="pagingfooter" class="pagingfooter" style="margin-left: 47%;">
         <jsp:include page="/commons/navigationPage.jsp" />
-    </div>`
+    </div>
     <input type="hidden" id="projectPath"
         value="${pageContext.servletContext.contextPath }">
         
@@ -256,7 +256,6 @@
                                             + "</div>";
                                 }
                                 $(id).html(str);
-                                pageNavigation()
                             };
 
                         });
