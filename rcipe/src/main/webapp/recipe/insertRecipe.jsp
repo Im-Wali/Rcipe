@@ -39,7 +39,7 @@ body {
 </HEAD>
 
 <BODY>
-	<div><jsp:include page="../main/menuBar.jsp"></jsp:include></div>
+	<div><jsp:include page="/main/menuBar.jsp"></jsp:include></div>
 	<div><jsp:include page="ingredient.jsp"></jsp:include></div>
 	<div class="row" style="margin-top: 4%; text-align: left;">
 		<div class="col-md-2 "></div>
