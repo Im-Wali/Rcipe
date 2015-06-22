@@ -99,7 +99,7 @@ stylize any heading tags withing white-panel below
 				<div align="right" style="margin-bottom: 1%">
 					<span> <a
 						href="viewModifyRecipe?recipeNo=${recipe.recipeNo}"><button
-								type="button" class="btn btn-primary">레시피 수정</button></a>
+								type="button" class="btn btn-warning">레시피 수정</button></a>
 					</span>
 					<button type="button" class="btn btn-danger" data-toggle="modal"
 						data-target="#modifyRecipeRemove" data-backdrop="false"

@@ -119,11 +119,11 @@ h4 {
 						</a>
 						<c:if test="${board.nickname eq user.nickname }">
 							<a href="viewModifyBoard?boardNo=${board.boardNo}">
-								<button type="button" class="btn btn-info ">수정하기</button>
+								<button type="button" class="btn btn-warning ">수정하기</button>
 							</a>
 							<a
 								href="deleteBoard?boardNo=${board.boardNo}&boardImgPath=/${board.nickname}/${board.boardImgPath}">
-								<button type="button" class="btn btn-info">게시글 삭제</button>
+								<button type="button" class="btn btn-danger">게시글 삭제</button>
 							</a>
 						</c:if>
 					</div>
