@@ -261,7 +261,7 @@
 							id="1" style="color:black;">추천맛집</a></li>
 						<li><a href="#" onClick="funcTab(3);" data-toggle="tab"
 							id="2" style="color:black;">고민상담</a></li>
-						<li><a href="#" onClick="funcTab(0);" data-toggle="tab"
+						<li><a href="#" onClick="funcTab(4);" data-toggle="tab"
 							id="3" style="color:black;">기타</a></li>
 						<li style="float: right; width: 500px;"><form
 								class="navbar-form navbar-left" role="search">
