@@ -25,8 +25,7 @@
 											chk1 = /[가-힝]/; //적어도 한개의 a-z 확인
 											chk2 = /[a-z]{2}/i; //적어도 한개의 0-9 확인
 											if (str == "") {
-												alert("AAA");
-												alert("검색 키워드이 없습니다.");
+												alert("검색 키워드가 없습니다.");
 												return;
 											} else if (!chk1.test(str)
 													&& !chk2.test(str)) {

@@ -195,7 +195,7 @@
 					data-target="#joinModal" data-whatever="Join" data-backdrop="false"
 					style="color: white; padding-right: 30px" >회원가입</a></li>
 					
-				<li style="background-color: #75DDFF"><a data-target="#searchIngredient" class="btn"
+				<li style="background-color: #75DDFF"><a data-target="#searchIngredientInMenuInMenu" class="btn"
 					data-whatever="dialog" data-toggle="modal"
 					data-backdrop="false" style="color: white; padding-right:30px">재료상세검색</a></li>
 					

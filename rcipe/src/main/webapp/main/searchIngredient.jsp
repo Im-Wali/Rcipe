@@ -2,13 +2,13 @@
 	pageEncoding="UTF-8"%>
 <style type="text/css">
 </style>
-<div class="modal fade" id="searchIngredient" tabindex="-1"
-	role="dialog" aria-labelledby="ingredient" aria-hidden="false">
+<div class="modal fade" id="searchIngredientInMenuInMenu" tabindex="-1"
+	role="dialog" aria-labelledby="searchIngredientInMenuInMenu" aria-hidden="false">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header" style="border-color: white" align="right">
 				<button type="button" class="close" data-dismiss="modal"
-					id="ingredientClose" aria-label="Close">
+					id="searchIngredientClose" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<h3 class="modal-title" align="center">재료상세검색</h3>
@@ -16,11 +16,11 @@
 			<div class="modal-body">
 				<div class="row" style="margin-top: 2%;">
 					<div class="col-md-12">
-						<form id="searchIngredientForm" action="#">
+						<form id="searchIngredientInMenuForm" action="#">
 							<span id="imaginary_container"> <span
 								class="input-group stylish-input-group"> <input
 									type="text" class="form-control" placeholder="Search"
-									id="searchIngredientKeyword"> <span
+									id="searchIngredientInMenuKeyword"> <span
 									class="input-group-addon">
 										<button type="submit" id="searchIngreButton">
 											<span class="glyphicon glyphicon-search"></span>
@@ -39,7 +39,7 @@
 					</div>
 					<div align="right"  class="col-md-6">
 						<button type="button" class="btn  btn-primary btn-lg "
-							id="settingSearchIngredient" style="color: white; margin-top: 1%">해당 재료포함 검색</button>
+							id="settingsearchIngredientInMenu" style="color: white; margin-top: 1%">해당 재료포함 검색</button>
 					</div>
 				</div>
 				<div class="row" style="margin-top: 2%;">
@@ -85,16 +85,16 @@
 						$(document.body)
 								.on(
 										"submit",
-										'#searchIngredientForm',
+										'#searchIngredientInMenuForm',
 										function(event) {
 											event.preventDefault();
 											var str = $(
-													"#searchIngredientKeyword")
+													"#searchIngredientInMenuKeyword")
 													.val();
 											chk1 = /[가-힝]/; //적어도 한개의 a-z 확인
 											chk2 = /[a-z]{2}/i; //적어도 한개의 0-9 확인
 											if (str == "") {
-												alert("검색 키워드이 없습니다.");
+												alert("검색 키워드가 없습니다.");
 												return;
 											} else if (!chk1.test(str)
 													&& !chk2.test(str)) {
@@ -185,7 +185,7 @@
 						$(document.body)
 								.on(
 										'click',
-										'#settingSearchIngredient',
+										'#settingsearchIngredientInMenu',
 										function() {
 											ingredientValues = "";
 											for (var i = 1; i <= ingredientNumber; i++) {
@@ -202,11 +202,11 @@
 											}
 											ingredientValues=ingredientValues.trim();
 											ingredientValues=ingredientValues.substring(0,ingredientValues.length-1);
-											$("#ingredientClose").click();
+											$("#searchIngredientClose").click();
 											$("#searchKeyword").val(ingredientValues);
 											$("#searchForm").submit();
 										});
-						$("#searchIngredientForm").submit(function(event) {
+						$("#searchIngredientInMenuForm").submit(function(event) {
 							event.preventDefault();
 							$("#searchIngreButton").click();
 						})
