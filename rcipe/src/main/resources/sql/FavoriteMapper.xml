@@ -44,7 +44,8 @@
 		f.rcp_no rcp_no,
 		f.nickname nickname,
 		f.fav_title fav_title,
-		to_char(f.fav_date,'YYYY/MM/DD') fav_date
+		to_char(f.fav_date,'YYYY/MM/DD') fav_date,
+		r.RCP_IMG_PATH rcp_img_path 
 		FROM fav_recipes f, recipes r
 		WHERE
 		f.rcp_no = r.rcp_no 
