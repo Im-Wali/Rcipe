@@ -288,7 +288,7 @@
 							<table class="table table-fixed">
 								<thead>
 									<tr>
-										<th class="col-xs-2">#</th>
+										<th class="col-xs-2">게시판번호</th>
 										<th class="col-xs-6">제목</th>
 										<th class="col-xs-2">작성자</th>
 										<th class="col-xs-1">올린날짜</th>

@@ -119,34 +119,41 @@
 		</div>
 		<div class="col-md-2 "></div>
 	</div>
+		<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script
+		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 	<script>
-		CKEDITOR.replace('editor1', {
-			'filebrowserUploadUrl' : '../app/file/uploadBoard',
-			enterMode : '2',
-			shiftEnterMode : '3',
-			width : '100%',
-			height : 500,
-			toolbar : [
-					[ 'Source', '-', 'Save', 'NewPage', 'Preview', '-',
-							'Templates' ],
-					[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
-							'-', 'Print', 'SpellChecker', 'Scayt' ],
-					[ 'Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll',
-							'RemoveFormat' ],
-					[ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea',
-							'Select', 'Button', 'ImageButton', 'HiddenField' ],
-					[ 'Bold', 'Italic', 'Underline', 'Strike', '-',
-							'Subscript', 'Superscript' ],
-					[ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
-							'Blockquote' ],
-					[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
-							'JustifyBlock' ],
-					[ 'Link', 'Unlink', 'Anchor' ],
-					[ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
-							'SpecialChar', 'PageBreak' ],
-					[ 'Styles', 'Format', 'Font', 'FontSize' ],
-					[ 'TextColor', 'BGColor' ], ]
-		});
+	CKEDITOR.replace('editor1', {
+		'filebrowserUploadUrl' : '../file/uploadBoard',
+		enterMode : '2',
+		shiftEnterMode : '3',
+		width : '100%',
+		height : 500,
+		toolbar : [
+				[ 'Source', '-', 'Save', 'NewPage', 'Preview', '-',
+						'Templates' ],
+				[ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord',
+						'-', 'Print', 'SpellChecker', 'Scayt' ],
+				[ 'Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll',
+						'RemoveFormat' ],
+				[ 'Form', 'Checkbox', 'Radio', 'TextField', 'Textarea',
+						'Select', 'Button', 'ImageButton', 'HiddenField' ],
+				[ 'Bold', 'Italic', 'Underline', 'Strike', '-',
+						'Subscript', 'Superscript' ],
+				[ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent',
+						'Blockquote' ],
+				[ 'JustifyLeft', 'JustifyCenter', 'JustifyRight',
+						'JustifyBlock' ],
+				[ 'Link', 'Unlink', 'Anchor' ],
+				[ 'Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley',
+						'SpecialChar', 'PageBreak' ],
+				[ 'Styles', 'Format', 'Font', 'FontSize' ],
+				[ 'TextColor', 'BGColor' ], ]
+	});
 		var editor;
 		CKEDITOR
 				.on(
@@ -167,12 +174,5 @@
 											});
 						});
 	</script>
-	<link rel="stylesheet"
-		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
 </body>
 </html>
