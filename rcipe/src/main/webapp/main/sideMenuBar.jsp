@@ -208,7 +208,7 @@
 					href="../../app/user/userLogout"
 					class="btn " style="color: white; padding-right: 30px">로그아웃</a></li>
 				<li style="background-color: #75DDFF;"><a
-					data-target="#searchIngredient" class="btn "
+					data-target="#searchIngredientInMenuInMenu" class="btn "
 					style="color: white; padding-right: 30px" data-whatever="dialog"
 					data-toggle="modal" data-backdrop="false">재료상세검색</a></li>
 				<li style="background-color: #75DDFF;"><a
