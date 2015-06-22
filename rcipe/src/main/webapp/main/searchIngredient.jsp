@@ -104,7 +104,7 @@
 											$("#searchIngre").empty();
 											$
 													.ajax({
-														url : '../recipe/getIngredientList',
+														url : '../../recipe/getIngredientList',
 														type : 'POST',
 														dataType : 'json',
 														data : "keyword=" + str,
