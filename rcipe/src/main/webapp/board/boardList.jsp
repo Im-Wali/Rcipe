@@ -273,8 +273,8 @@
 								<button type="button" class="btn btn-default"
 									id="getViewBoardButton">글쓰기</button>
 							</form>
-							<div class="select-style" style="margin-top: 8px;">
-								<select id="selectList">
+							<div style="margin-top: 8px;">
+								<select class="select-style" id="selectList">
 									<option value="10" selected="selected">10</option>
 									<option value="20">20</option>
 									<option value="50">50</option>
