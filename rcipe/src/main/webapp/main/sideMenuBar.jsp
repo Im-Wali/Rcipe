@@ -200,7 +200,7 @@
 					data-backdrop="false" style="color: white; padding-right:30px">재료상세검색</a></li>
 					
 				<li style="background-color: #75DDFF"><a  class="btn"
-					href="../../app/board/getBoardListFirst?searchCategory=0"
+					href="../../app/board/getBoardListFirst?searchCategory=1"
 					style="color: white; padding-right: 30px">게시판리스트</a></li>
 			</c:if>
 			<c:if test="${user.nickname != null }">
@@ -212,7 +212,7 @@
 					style="color: white; padding-right: 30px" data-whatever="dialog"
 					data-toggle="modal" data-backdrop="false">재료상세검색</a></li>
 				<li style="background-color: #75DDFF;"><a
-					href="../../app/board/getBoardListFirst?searchCategory=0"
+					href="../../app/board/getBoardListFirst?searchCategory=1"
 					class="btn " style="color: white; padding-right: 30px">게시판리스트</a></li>
 				<li style="background-color: #75DDFF;"><a
 					href="../../app/recipe/viewInsertRecipe"
