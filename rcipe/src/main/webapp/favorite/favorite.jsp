@@ -100,7 +100,7 @@
 														href="../../app/recipe/viewRecipe?recipeNo=${favorite.recipeNo}"
 														style="color: black"><h2>${ favorite.favorTitle }</h2></a>
 												</div>
-												<div align="left">${ favorite.recipe.recipeContents }</div>
+<%-- 												<div align="left">${ favorite.recipe.recipeContents }</div> --%>
 												<div align="right">
 													<button type="button"
 														class="btn btn-warning removeFavorite"
@@ -123,7 +123,7 @@
 																<i class='fa fa-star-o' style='margin-right: -8px'></i>
 															</c:forEach>
 														</div>
-														<span id="count-existing">현재 별점:${favorite.starCnt !="" ? favorite.starAvg : 0  }점</span>
+														<span id="count-existing">현재 별점:${favorite.starAvg!=null ? favorite.starAvg : 0 }점</span>
 														<span class="separator">|</span> <span
 															class="glyphicon glyphicon-comment"></span>(${ favorite.cmtCnt }
 														Comments)
@@ -235,17 +235,17 @@
 																+ "'>"
 																+ "<img src='../../images/"+list[i].recipe.titleImage +"' alt='bootsnipp' style='width: 114px; height: 114px; position: absolute;'"
                                           +" class='img-rounded img-responsive' /></a></div>"
-																+ "<div class='col-xs-9 col-md-9 section-box'>"
+																+ "<div class='col-xs-9 col-md-9 section-box' style='text-overflow:ellipsis; overflow:hidden; white-space:nowrap; font-family:'맑은고딕';'>"
 																+ "<a href='"
 																+ projectPath
 																+ "/app/recipe/viewRecipe?recipeNo="
 																+ list[i].recipeNo
-																+ "' style='color: black'>"
+																+ "' style='color: black' >"
 																+ "<h2 style=''>"
 																+ list[i].favorTitle
 																+ "</h2></a>"
 																+ "<div align='left'>"
-																+ list[i].recipe.recipeContents
+// 																+ list[i].recipe.recipeContents
 																+ "</div>"
 																+ "<div align='right'><button type='button' class='btn btn-warning removeFavorite' title='"+list[i].recipeNo+"'>즐겨찾기 삭제</button>"
 																+ " <button type='button' class='btn btn-warning modifyFavorite' data-toggle='modal' data-target='#modifyFavorite'"
