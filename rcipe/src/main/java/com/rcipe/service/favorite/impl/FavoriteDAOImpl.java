@@ -53,9 +53,7 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 		if(list.size()!=0){
 			for(int i=0; i < list.size(); i++){
 				list.get(i).setCmtCnt(((Integer) sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i).getRecipeNo())));
-				System.out.println("ㅊㅋ1 : "+((Integer) sqlSession.selectOne("FavoriteMapper.getCommentCount", list.get(i).getRecipeNo())));
 				list.get(i).setStarAvg(((Integer) sqlSession.selectOne("FavoriteMapper.getStarAvg", list.get(i).getRecipeNo())));
-				System.out.println("ㅊㅋ2 : "+((Integer) sqlSession.selectOne("FavoriteMapper.getStarAvg", list.get(i).getRecipeNo())));
 			}
 		}
 		Map<String,Object> map=new HashMap<String, Object>();
