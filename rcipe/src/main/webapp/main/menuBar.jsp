@@ -2,12 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <link rel="stylesheet"
-	href="${pageContext.servletContext.contextPath }/css/style.css"
+	href="../../css/style.css"
 	type="text/css" />
 <link rel="stylesheet"
-	href="${pageContext.servletContext.contextPath }/css/menuBar01.css"
+	href="../../css/menuBar01.css"
 	type="text/css" />
-<script src="${pageContext.servletContext.contextPath }/js/menuBar01.js">
+<script src="../../js/menuBar01.js">
 	
 </script>
 <script type="text/javascript">
@@ -47,7 +47,7 @@
 							style="font-size: 2.5em; font-family: cursive; color: black; background-color: #75DDFF; border-color: #75DDFF;">Rcipe</button></a>
 					<div id="imaginary_container">
 						<form method="GET" name="searchForm" id="searchForm"
-							action="${pageContext.servletContext.contextPath }/app/recipe/getRecipeList">
+							action="../recipe/getRecipeList">
 							<span class="input-group stylish-input-group"> <input
 								type="hidden" name="searchCategory" value="inquiry " /> <input
 								type="text" value="${search.searchKeyword}" class="form-control"
