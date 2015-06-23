@@ -47,7 +47,7 @@
 							style="font-size: 2.5em; font-family: cursive; color: black; background-color: #75DDFF; border-color: #75DDFF;">Rcipe</button></a>
 					<div id="imaginary_container">
 						<form method="GET" name="searchForm" id="searchForm"
-							action="../recipe/getRecipeList">
+							action="${pageContext.servletContext.contextPath }/app/recipe/getRecipeList">
 							<span class="input-group stylish-input-group"> <input
 								type="hidden" name="searchCategory" value="inquiry " /> <input
 								type="text" value="${search.searchKeyword}" class="form-control"
