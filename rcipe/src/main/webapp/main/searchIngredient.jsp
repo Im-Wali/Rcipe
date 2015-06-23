@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <style type="text/css">
+
+.form-login {
+	background-color: #DDDDDD;
+	padding-top: 10px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	border-radius: 15px;
+	border-color: #d2d2d2;
+	border-width: 5px;
+	box-shadow: 0 1px 0 #cfcfcf;
+}
 </style>
 <div class="modal fade" id="searchIngredientInMenuInMenu" tabindex="-1"
 	role="dialog" aria-labelledby="searchIngredientInMenuInMenu" aria-hidden="false">
@@ -32,7 +44,7 @@
 					</div>
 				</div>
 				<div class="row" style="border-color: white;margin-top:1%">
-					<div align="left" class="col-md-6">
+					<div  align="left" class="col-md-6">
 						<label for="title"
 							style="color: red; font-size: medium; margin: 1%">*검색할
 							재료들을 추가하세요.</label>
@@ -43,21 +55,21 @@
 					</div>
 				</div>
 				<div class="row" style="margin-top: 2%;">
-					<div class="col-md-6">
-						<hr style="border-color: black" />
-						<h4 align="center" style="font: bolder;">음식재료 선택</h4>
-						<hr style="border-color: black" />
+					<div class="col-md-6" >
+						<div class="form-login" style="background-color:#5bc0de;color:white;text-align:center;">
+							<h4 align="center" style="font: bolder;margin-bottom:1%">음식재료 선택</h4>
+						</div>
 						<!-- <iframe height="600px" width="100%" style="border: none;" > -->
 						<div class="row" style="margin-top: 2%;" id="searchIngre">
 							<!-- 음식재료을 보여주는 부분 -->
 						</div>
 						<!-- </iframe> -->
 					</div>
-					<div class="col-md-6">
-						<hr style="border-color: black" />
-						<h4 align="center" style="font: bolder;">선택된 음식재료</h4>
-						<hr style="border-color: black" />
-						<div class="row">
+					<div class="col-md-6" >
+						<div class="form-login" style="background-color:#d9534f;color:white;text-align:center;">
+							<h4 align="center" style="font: bolder;;margin-bottom:1%">선택된 음식재료</h4>
+						</div>
+						<div class="row" style="margin-top: 2%;">
 							<!-- <iframe height="600px" width="100%" style="border: none;"> -->
 							<div id="ingredSearchIentAfter"></div>
 							<!--선택된 음식을 보여주는 부분 -->
