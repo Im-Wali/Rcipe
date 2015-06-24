@@ -356,7 +356,6 @@
 										alert("로그인 후 이용해 주세요");
 										return;
 									} else {
-										alert($("#content").val());
 										alert("댓글을 작성했습니다.");
 										$.ajax("../comment/insertComment", {
 											method : 'POST',
