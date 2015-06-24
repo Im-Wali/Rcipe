@@ -77,7 +77,7 @@ public class BoardController {
 		boardService.updateBoard(board);
 		session.removeAttribute("boardImgPath");
 		model.addAttribute("board",boardService.getBoard(board.getBoardNo()));
-		return "viewBoard";
+		return "redirect:viewBoard?boardNo="+board.getBoardNo();
 	}
 	
 	@RequestMapping(value = "/viewBoard", method = RequestMethod.GET)
