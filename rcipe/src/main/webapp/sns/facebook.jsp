@@ -42,12 +42,12 @@
 											FB
 													.ui({
 														method : 'feed',
-														name : 'This is the content of the "name" field.',
+														name : 'Rcipe SNS 공유',
 														link : 'http://127.0.0.1:8080/rcipe/app/recipe/viewRecipe?recipeNo='
 																+ Temp,
-														caption : 'This is the content of the "caption" field.',
+														caption : 'Rcipe 공유하기 입니다.',
 														description : 'This is the content of the "description" field, below the caption.',
-														message : 'This is text in the message box a user can add to or replace.'
+														message : 'Rcipe 바로가기'
 													});
 										});
 					});
