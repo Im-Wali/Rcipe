@@ -29,7 +29,7 @@
 		document.getElementById("select_category").innerHTML = value;
 		document.getElementById("boardCategory").value = value2;
 	};
-	$('document').ready(function() {
+	$(document).ready(function() {
 		$('#boardSubmit').click(function(event) {
 			if ($('#boardTitle').val() == '') {
 				alert("제목을 입력하세요");
